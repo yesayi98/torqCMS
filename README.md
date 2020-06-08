@@ -1,3 +1,3 @@
 # torq
 
-// the first armenian e-commerse CMS 
+the first armenian e-commerse CMS 
