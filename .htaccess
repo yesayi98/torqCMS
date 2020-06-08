@@ -1,0 +1,22 @@
+DirectoryIndex  index.php
+
+Options +ExecCGI
+AddHandler cgi-script .sh
+
+Options  FollowSymlinks
+
+Options -Indexes
+
+RewriteEngine On
+
+RewriteBase /
+
+RewriteCond %{HTTPS} !=on
+# RewriteRule backend/(.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+RewriteRule ^(.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+RewriteRule ^googlebase.xml$ index.php?route=feed/google_base [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !.*\.(ico|gif|jpg|jpeg|png|js|css)
+RewriteRule ^([^?]*) index.php?route=$1 [L,QSA]
