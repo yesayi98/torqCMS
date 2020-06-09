@@ -68,7 +68,7 @@
                         <td>
                           <div class="form-group row">
                             <div class="col-sm-12" >
-                              <textarea readonly name="tranaslate[{$lang}]" form='{$selector}' class="form-control description" rows=5>{$translate.$lang.translate}</textarea>
+                              <textarea readonly name="translate[{$lang}]" form='{$selector}' class="form-control description" rows=5>{$translate.$lang.translate}</textarea>
                             </div>
                           </div>
                         </td>

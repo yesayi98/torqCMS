@@ -52,45 +52,6 @@ class View extends Container
 
   public function __call($method, $args)
   {
-    // var_dump($args);
-    // $methodName = 'translate'.$method;
-    if (strpos($method, 'Article')) {
-      $array = call_user_func_array(array($this->Articles(), $method), $args);
-      // $array = $this->Articles()->{ $method }(implode("','",$args));
-      if ($array != null) {
-        if ($this->lang != 1) {
-          $array = $this->translateArticles($array, $this->lang);
-        }
-        if ($this->currency['default'] != 1) {
-          $array = $this->setPrices($array);
-        }
-      }
-
-      return $array;
-    }
-
-
-
-    elseif (strpos($method, 'Categor')) {
-      $array = call_user_func_array(array($this->Categories(), $method), $args);
-
-      // $array = $this->Categories()->{ $method }(implode("','",$args));
-      if ($this->lang == 1) {
-        return $array;
-      }else{
-        return $this->translateCategories($array, $this->lang);
-      }
-    }
-    elseif (strpos($method, 'Advertising')) {
-      $array = call_user_func_array(array($this->Advertisings(), $method), $args);
-
-      // $array = $this->Advertisings()->{ $method }(implode("','",$args));
-      if ($this->lang == 1) {
-        return $array;
-      }else{
-        return $this->translateAdvertising($array, $this->lang);
-      }
-    }
 
   }
 
