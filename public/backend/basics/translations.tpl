@@ -74,7 +74,7 @@
                         </td>
                         {/foreach}
                         <td>
-                          <form action="{url url='backend/translations/save'}" id='{$selector}' method="post">
+                          <form action="{url url='backend/translations/save'}" id='{$selector}' method="post" data-ajaxsend='true'>
                             <input type="hidden" name="selector" value="{$selector}">
                             <button type='submit' class="btn btn-info waves-effect waves-light m-1">save</button>
                           </form>
@@ -162,7 +162,7 @@
 
 {block name="js-container"}
   {$smarty.block.parent}
-  <!-- ckeditor -->
+  <!-- add readonly -->
   <script type="text/javascript">
     $('.description').dblclick(function (event) {
       event.stopImmediatePropagation();
@@ -174,4 +174,7 @@
       }
     })
   </script>
+
+  <!--Detail Js-->
+  <script src="{$BASE_BACKEND}assets/js/jquery.detail.js"></script>
 {/block}
