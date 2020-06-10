@@ -18,7 +18,7 @@ class checkoutController extends Controller
       Container()->setSession('redirect', 'checkout');
 
       $this->View()->setAssign('checkout', true);
-      $this->route = 'register';
+      $this->route = 'frontend/account/login';
     }
 
     $products;
@@ -33,9 +33,11 @@ class checkoutController extends Controller
       $products[$key]['total'] = floatval($product['quantity'])*floatval($product['price']);
       $totalPrice += $products[$key]['total'];
     }
+    $deliveryPrice = $this->__get('Core')->getItem('deliveryPrice')['content'];
 
     $this->View()->setAssign('Articles.orderItems', $products);
     $this->View()->setAssign('totalPrice', $totalPrice);
+    $this->View()->setAssign('deliveryPrice', $deliveryPrice);
 
   }
 

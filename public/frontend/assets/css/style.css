@@ -11522,3 +11522,12 @@ input[type=number]::-webkit-inner-spin-button {
 .big-text {
     font-size: 100px;
 }
+.phone-number{
+  display: flex;
+}
+.phone-number .phone-code {
+  width: 75px;
+}
+.phone-number .phone{
+  width: 100%;
+}
