@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-05-16 17:05:49
+/* Smarty version 3.1.34-dev-7, created on 2020-06-10 09:05:16
   from 'C:\Users\User\OSPanel\domains\torq\public\backend\categories\detail.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ebff33daf3739_07749585',
+  'unifunc' => 'content_5ee0781ce076a5_80724746',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '3951ee45c545358e2735b10d0da7c2d4b729d27c' => 
     array (
       0 => 'C:\\Users\\User\\OSPanel\\domains\\torq\\public\\backend\\categories\\detail.tpl',
-      1 => 1589637948,
+      1 => 1591768784,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ebff33daf3739_07749585 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ee0781ce076a5_80724746 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 if ($_smarty_tpl->tpl_vars['category']->value['name']) {?>
@@ -183,12 +183,12 @@ if (!$_smarty_tpl->tpl_vars['category']->value) {?>checked<?php }?>>
   </div>
 </div>
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_18144567725ebff33dadc8d9_65046033', "translations-modal");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_10184335975ee0781cd5e4a9_16050374', "translations-modal");
 ?>
 
 <?php }
 /* {block "translations-content"} */
-class Block_14325015955ebff33dadda08_83172285 extends Smarty_Internal_Block
+class Block_6979938015ee0781cd5fd32_43021067 extends Smarty_Internal_Block
 {
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
@@ -271,16 +271,16 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 }
 /* {/block "translations-content"} */
 /* {block "translations-modal"} */
-class Block_18144567725ebff33dadc8d9_65046033 extends Smarty_Internal_Block
+class Block_10184335975ee0781cd5e4a9_16050374 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'translations-modal' => 
   array (
-    0 => 'Block_18144567725ebff33dadc8d9_65046033',
+    0 => 'Block_10184335975ee0781cd5e4a9_16050374',
   ),
   'translations-content' => 
   array (
-    0 => 'Block_14325015955ebff33dadda08_83172285',
+    0 => 'Block_6979938015ee0781cd5fd32_43021067',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -298,7 +298,7 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
       <div class="modal-body">
         <div class="contaiener">
                       <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_14325015955ebff33dadda08_83172285', "translations-content", $this->tplIndex);
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_6979938015ee0781cd5fd32_43021067', "translations-content", $this->tplIndex);
 ?>
 
                   </div>

@@ -25,6 +25,8 @@ class Emotions extends \Model
   public function getEmotionList()
   {
     $emotions = $this->getList('emotions');
+
+    return $emotions;
   }
 
   public function setEmotion()
@@ -42,11 +44,26 @@ class Emotions extends \Model
     // code...
   }
 
+  // get all types of emotions
+  /**
+  * @return array $emotionTypes
+  */
+  public function getEmotionTypeList()
+  {
+    $emotionTypes = $this->getList('emotion_types');
+    return $emotionTypes;
+  }
+
+  // get emotion type by ID
+  /**
+  * @param int $id
+  * @return array $emotionType
+  */
   public function getEmotionType($id)
   {
-    $emotion = $this->get('emotion_types', $id);
+    $emotionType = $this->get('emotion_types', $id);
 
-    return $emotion;
+    return $emotionType;
   }
 
   public function updateEmotionType()
@@ -64,6 +81,25 @@ class Emotions extends \Model
     // code...
   }
 
+  // get emotion by id from emotions table
+  /**
+  * @param integer $emotion_id
+  * @return array $emotion
+  */
+  public function getEmotion($emotion_id)
+  {
+    $emotion = $this->get('emotions', $emotion_id);
+
+    $emotion['components'] = $this->getEmotionComponentsByEmotionId($emotion_id);
+
+    return $emotion;
+  }
+
+  // get emotion components by emotion_id from emotion_components table
+  /**
+  * @param integer $emotion_id
+  * @return array $emotions
+  */
   public function getEmotionComponentsByEmotionId($emotion_id)
   {
     $components = $this->get('emotion_components', $emotion_id, 'emotion_id');
