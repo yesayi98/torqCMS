@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-10 17:50:16
+/* Smarty version 3.1.34-dev-7, created on 2020-06-11 13:40:13
   from 'C:\Users\User\OSPanel\domains\torq\public\frontend\checkout\index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ee0f3282e6a16_74830669',
+  'unifunc' => 'content_5ee20a0d5aba21_20474869',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '14641551fc1527db71506738badda3e01595550b' => 
     array (
       0 => 'C:\\Users\\User\\OSPanel\\domains\\torq\\public\\frontend\\checkout\\index.tpl',
-      1 => 1591800614,
+      1 => 1591872011,
       2 => 'file',
     ),
   ),
@@ -20,29 +20,29 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ee0f3282e6a16_74830669 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ee20a0d5aba21_20474869 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_3092468725ee0f3282c1d53_74165923', 'breadcrumbs_area');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_7240620275ee20a0d56e499_65047200', 'breadcrumbs_area');
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1302961615ee0f3282c5411_04630548', "pageContent");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_130000315ee20a0d572107_41397253', "pageContent");
 ?>
 
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, "frontend/index/index.tpl");
 }
 /* {block 'breadcrumbs_area'} */
-class Block_3092468725ee0f3282c1d53_74165923 extends Smarty_Internal_Block
+class Block_7240620275ee20a0d56e499_65047200 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'breadcrumbs_area' => 
   array (
-    0 => 'Block_3092468725ee0f3282c1d53_74165923',
+    0 => 'Block_7240620275ee20a0d56e499_65047200',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -67,12 +67,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block 'breadcrumbs_area'} */
 /* {block "pageContent"} */
-class Block_1302961615ee0f3282c5411_04630548 extends Smarty_Internal_Block
+class Block_130000315ee20a0d572107_41397253 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'pageContent' => 
   array (
-    0 => 'Block_1302961615ee0f3282c5411_04630548',
+    0 => 'Block_130000315ee20a0d572107_41397253',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -211,7 +211,9 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                                     <tr class='d-none'>
                                         <th><?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['translator'][0], array( array('selector'=>"discounted"),$_smarty_tpl ) );?>
 </th>
-                                        <td data-discounted='true'></td>
+                                        <td data-discounted='true'><strong><span data-total='true'><?php echo $_smarty_tpl->tpl_vars['totalPrice']->value+$_smarty_tpl->tpl_vars['deliveryPrice']->value;?>
+ </span><?php echo $_smarty_tpl->tpl_vars['currentCur']->value['symbol'];?>
+</strong></td>
                                     </tr>
 
                                     <tr>
@@ -222,9 +224,9 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 </strong></td>
                                     </tr>
 
-
                                     <tr class="order_total">
-                                        <th>Վճարման ենթակա</th>
+                                        <th><?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['translator'][0], array( array('selector'=>"totalPrice"),$_smarty_tpl ) );?>
+</th>
                                         <td><strong><span data-total='true'><?php echo $_smarty_tpl->tpl_vars['totalPrice']->value+$_smarty_tpl->tpl_vars['deliveryPrice']->value;?>
  </span><?php echo $_smarty_tpl->tpl_vars['currentCur']->value['symbol'];?>
 </strong></td>
@@ -233,10 +235,11 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                                 </tfoot>
                             </table>
                         </div>
-                        <div class="payment_method">
+                        <div class="payment_method" id='accordion'>
                            <div class="panel-default">
                                 <input id="payment" name="check_method" type="radio" data-target="createp_account" />
-                                <label for="payment" data-toggle="collapse" data-target="#method" aria-controls="method">Create an account?</label>
+                                <label for="payment" data-toggle="collapse" data-target="#method" aria-controls="method"><?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['translator'][0], array( array('selector'=>"paywithcash"),$_smarty_tpl ) );?>
+</label>
 
                                 <div id="method" class="collapse one" data-parent="#accordion">
                                     <div class="card-body1">

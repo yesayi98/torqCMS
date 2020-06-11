@@ -111,7 +111,8 @@ window.plugin.basket = {
       if (window.route.controller == 'basket') return;
 
       url = $(this).attr('href');
-      me.openPreloader();
+      var loader = window.plugin.loader;
+      loader.addLoaderToContent($(me.miniBasketBox));;
       me.getMiniCartContent(url);
     });
   },
@@ -134,16 +135,5 @@ window.plugin.basket = {
     });
   },
 
-  openPreloader: function () {
-    var me = this;
 
-    var preloader = $('<div>', {
-          'class': [
-            'preloader',
-          ].join(),
-          'html': $('<span>', {'class': ['inner-preloader'].join(),}),
-        });
-    $(me.miniBasketBox).html(preloader);
-
-  }
 }

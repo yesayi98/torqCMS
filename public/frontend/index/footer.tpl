@@ -151,6 +151,8 @@
 <script src="{$BASE_FRONTEND}assets/js/jquery.wishlist.js"></script>
 <!-- paginator JS -->
 <script src="{$BASE_FRONTEND}assets/js/jquery.paginator.js"></script>
+<!-- loader JS -->
+<script src="{$BASE_FRONTEND}assets/js/jquery.loader.js"></script>
 <!-- Main JS -->
 <script src="{$BASE_FRONTEND}assets/js/main.js"></script>
 <script>

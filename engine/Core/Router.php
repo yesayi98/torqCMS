@@ -55,7 +55,7 @@
       if (method_exists($controller, $action)) {
         $controller->{$action}();
       }else{
-        trigger_error('Error: Could not call ' . $routFile . '/' . $action . '!');exit;
+        trigger_error('Error: Could not call ' . $route['controller'] . '/' . $action . '!');exit;
       }
 
       $templateDir = DOCUMENT_ROOT.DIRECTORY_SEPARATOR.'public'.DIRECTORY_SEPARATOR;

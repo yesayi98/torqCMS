@@ -26,8 +26,7 @@ window.plugin.paginator = {
       currentUrl.searchParams.set('limit', limit);
       url = currentUrl.toString();
 
-      // window.history.pushState( null , document.title, url);
-
+      window.history.pushState( null , document.title, url);
 
       me.getCurrentPage(url, this);
     })
@@ -38,9 +37,10 @@ window.plugin.paginator = {
     if (!url) {
       return ;
     }
+    var loader = window.plugin.loader;
+    loader.addLoaderToContent($(self).parents(me.contentSelector));
     $.get(url, function(data) {
       $(self).parents(me.contentSelector).html(data);
-
       $.publish('plugin/paginator/pageLoaded', [me, self]);
     });
   }

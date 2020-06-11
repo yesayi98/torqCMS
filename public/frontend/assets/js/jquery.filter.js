@@ -46,6 +46,8 @@ window.plugin.filter = {
   sendAjaxRequest: function (data, url) {
     var me = this;
 
+    var loader = window.plugin.loader;
+    loader.addLoaderToContent($(me.contentWrapper));
     $.get(url, data, function(response) {
       if (response) {
         window.history.pushState("", "", this.url);

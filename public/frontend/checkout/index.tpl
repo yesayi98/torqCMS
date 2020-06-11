@@ -109,7 +109,7 @@
 
                                     <tr class='d-none'>
                                         <th>{translator selector="discounted"}</th>
-                                        <td data-discounted='true'></td>
+                                        <td data-discounted='true'><strong><span data-total='true'>{$totalPrice + $deliveryPrice} </span>{$currentCur.symbol}</strong></td>
                                     </tr>
 
                                     <tr>
@@ -117,30 +117,29 @@
                                         <td><strong>{$deliveryPrice} {$currentCur.symbol}</strong></td>
                                     </tr>
 
-
                                     <tr class="order_total">
-                                        <th>Վճարման ենթակա</th>
+                                        <th>{translator selector="totalPrice"}</th>
                                         <td><strong><span data-total='true'>{$totalPrice + $deliveryPrice} </span>{$currentCur.symbol}</strong></td>
                                     </tr>
 
                                 </tfoot>
                             </table>
                         </div>
-                        <div class="payment_method">
+                        <div class="payment_method" id='accordion'>
                            <div class="panel-default">
-                                <input id="payment" name="check_method" type="radio" data-target="createp_account" />
-                                <label for="payment" data-toggle="collapse" data-target="#method" aria-controls="method">Create an account?</label>
+                                <input id="payment" name="payment_method" type="radio" data-target="createp_account" />
+                                <label for="payment" data-toggle="collapse" data-target="#method" aria-controls="method">{translator selector="payinshipping"}</label>
 
                                 <div id="method" class="collapse one" data-parent="#accordion">
                                     <div class="card-body1">
-                                       <p>Please send a check to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</p>
+                                       <p>{translator selector="payinshippingaddress"}</p>
                                     </div>
                                 </div>
                             </div>
 
                            <div class="panel-default">
-                                <input id="payment_defult2" name="check_method" type="radio" data-target="createp_account" />
-                                <label for="payment_defult2" data-toggle="collapse" data-target="#collapsedefult_2" aria-controls="collapsedefult_2">PayPal <img src="assets/img/icon/papyel.png" alt=""></label>
+                                <input id="payment_defult2" name="payment_method" type="radio" data-target="createp_account" />
+                                <label for="payment_defult2" data-toggle="collapse" data-target="#collapsedefult_2" aria-controls="collapsedefult_2">Idram <img src="{$BASE_FRONTEND}assets/img/icon/papyel.png" alt=""></label>
 
                                 <div id="collapsedefult_2" class="collapse one" data-parent="#accordion">
                                     <div class="card-body1">
@@ -150,7 +149,7 @@
                             </div>
 
                             <div class="panel-default">
-                                <input id="payment_defult" name="check_method" type="radio" data-target="createp_account" />
+                                <input id="payment_defult" name="payment_method" type="radio" data-target="createp_account" />
                                 <label for="payment_defult" data-toggle="collapse" data-target="#collapsedefult" aria-controls="collapsedefult">PayPal_2 <img src="assets/img/icon/papyel.png" alt=""></label>
 
                                 <div id="collapsedefult" class="collapse one" data-parent="#accordion">
