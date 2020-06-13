@@ -69,58 +69,26 @@
  			return $translations;
  		}
 
-		public function updateTranslation(array $translations)
+		public function saveTranslation($translation, $selector, $langID)
 		{
-			if (!$translations) {
+			if (empty($selector) || empty($langID)) {
 				return;
 			}
 
-			foreach ($translations as $translation) {
-				$langId = intval($translation['id']);
-				$content = htmlspecialchars($translation['translation']);
-				$selector = htmlspecialchars($translation['selector']);
-				$sql = "SELECT * FROM translations WHERE `selector` = '$selector' AND lang = $langId";
-								$translationExist = Connection()->fetchOne($sql);
-				if($translationExist){
-					$sql = "UPDATE translations SET
-													`translate` = '$content' WHERE `selector` = '$selector' AND lang = $langId";
-					$query = Connection()->set($sql);
-				}else{
-					$newTranslations;
-					$newTranslations[0]=$translation;
-					$this->saveTranslation($newTranslations);
-				}
+			$sql = "SELECT * FROM translations WHERE `selector` = '$selector' AND lang = $langID";
+			$translationExist = Connection()->fetchOne($sql);
 
-				if(!$query){
-					return false;
-				}
-			}
-
-			return true;
-
-		}
-		public function saveTranslation(array $translations)
-		{
-			if (!$translations) {
-				return;
-			}
-
-			foreach ($translations as $translation) {
-				$langId = intval($translation['id']);
-				$content = htmlspecialchars($translation['translation']);
-				$selector = htmlspecialchars($translation['selector']);
-
-				$sql = "INSERT INTO translations (`translate`, `selector`, `lang`) VALUES ('$content', '$selector', $langId);";
+			if(!empty($translationExist)){
+				$sql = "UPDATE translations SET `translate` = '$translation' WHERE `selector` = '$selector' AND lang = $langID";
 				$query = Connection()->set($sql);
-
-				if(!$query){
-					return false;
-				}
+			}else{
+				$sql = "INSERT INTO translations (`translate`, `selector`, `lang`) VALUES ('$translation', '$selector', $langID);";
+				$query = Connection()->set($sql);
 			}
 
-			return true;
-
+			return $query;
 		}
+
 
 		// returns the boolean true or false;
 

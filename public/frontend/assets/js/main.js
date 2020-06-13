@@ -618,15 +618,18 @@
     });
     $( "#amount" ).val( $( "#slider-range" ).slider( "values", 0 ) + window.currentCur.symbol + " - " + $( "#slider-range" ).slider( "values", 1 ) + window.currentCur.symbol );
     // csrf validator
-    var getCsrf = true;
-    $.ajax({
-      url: window.location.origin + '/frontend/csrf',
-      method: 'post',
-      data: {getCsrf},
-      success: function (response) {
-        $('form[method="post"]').append(response);
-      }
-    })
+    if ($(document).find('form[method="post"]')) {
+      var getCsrf = true;
+      $.ajax({
+        url: window.location.origin + '/frontend/csrf',
+        method: 'post',
+        data: {getCsrf},
+        success: function (response) {
+          $('form[method="post"]').append(response);
+        }
+      })
+    }
+
   });
 
 
@@ -804,6 +807,7 @@
      /*---slide toggle activation---*/
     $('.mini_cart_wrapper > a').on('click', function(event){
         if($(window).width() < 991){
+            event.preventDefault();
             $('.mini_cart').slideToggle('medium');
         }
     });

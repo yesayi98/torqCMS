@@ -160,12 +160,12 @@
                                 <div class="header_account_list header_wishlist">
                                     <a href="{url url='wishlist'}"><span class="lnr lnr-heart"></span> <span class="item_count">{$favCount}</span> </a>
                                 </div>
-                                <div class="header_account_list  mini_cart_wrapper">
+                                <div class="header_account_list {if $route.controller != "basket"}mini_cart_wrapper{/if}">
                                    <a href="{url url='basket'}" class="opener"><span class="lnr lnr-cart"></span><span class="item_count">{$basketCount}</span></a>
                                     <!--mini cart-->
                                     {block name='mini-cart'}
                                     <div class="mini_cart" data-basket=true>
-                                      {action module="frontend" controller="basket" action='minicart'}
+
                                     </div>
                                     {/block}
                                     <!--mini cart end-->

@@ -25,7 +25,33 @@ class translationsController extends BackendController
 
   public function save()
   {
-    // code...
+    //get request params
+    $request = $this->getRequest()->post;
+    $model = $this->__get('Translator');
+    $languages = $model->getLanguageList();
+    $selector = $request['selector'];
+    $translations = $request['translate'];
+    $success = true;
+    foreach ($translations as $lang => $translation) {
+      $key = array_search($lang, array_column($languages, 'short_code'));
+      if ($languages[$key]["short_code"] == $lang) {
+        $langID = (int) $languages[$key]["id"];
+      }else{
+        $langID = 1;
+      }
+      $result = $model->saveTranslation($translation, $selector, $langID);
+      if (!$result) {
+        $success = false;
+        break;
+      }
+    }
+    if (isset($request['XHR'])) {
+      die(json_encode([
+        'success' => $success,
+      ]));
+    }else{
+        Router::redirect('backend/translations');
+    }
   }
 
   public function delete()

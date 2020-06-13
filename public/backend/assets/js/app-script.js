@@ -193,7 +193,7 @@ $.ajax({
   url: window.location.origin + '/backend/csrf',
   method: 'post',
   data: {getCsrf},
-  success: function () {
+  success: function (response) {
     $('form[method="post"]').append(response);
   }
 })

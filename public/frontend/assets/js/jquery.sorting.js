@@ -21,6 +21,8 @@ window.plugin.sorting = {
   sendRequestWithAjax: function (data) {
     var me = this;
 
+    var loader = window.plugin.loader;
+    loader.addLoaderToContent($(me.contentWrapper));
     $.ajax({
       url: me.url,
       method: 'get',
