@@ -400,23 +400,23 @@ class Container
 }
 
 
-$containerRequirements = file_get_contents(DOCUMENT_ROOT.'/container.json');
-$containerRequirements = json_decode($containerRequirements);
-foreach (glob(__DIR__."/Library/*/autoload.php") as $filepath) {
-  include $filepath;
-}
-
-$cores = $containerRequirements->include_paths;
-$cores = (array) $cores;
-
-foreach ($cores as $class => $path) {
-  include DOCUMENT_ROOT.'/engine/'.$path;
-}
-$models = $containerRequirements->models;
-$models = (array) $models;
-foreach ($models as $model => $path) {
-  include DOCUMENT_ROOT.'/engine/'.$path;
-}
+// $containerRequirements = file_get_contents(DOCUMENT_ROOT.'/container.json');
+// $containerRequirements = json_decode($containerRequirements);
+// foreach (glob(__DIR__."/Library/*/autoload.php") as $filepath) {
+//   include $filepath;
+// }
+//
+// $cores = $containerRequirements->include_paths;
+// $cores = (array) $cores;
+//
+// foreach ($cores as $class => $path) {
+//   include DOCUMENT_ROOT.'/engine/'.$path;
+// }
+// $models = $containerRequirements->models;
+// $models = (array) $models;
+// foreach ($models as $model => $path) {
+//   include DOCUMENT_ROOT.'/engine/'.$path;
+// }
 
 // include "Translation.php"; // defined function Translation()
 // include "AdminValidator.php"; // defined obj var $adminValidator
@@ -443,35 +443,6 @@ foreach ($models as $model => $path) {
 // }
 
 
-if (isset(get()['lang']) || isset(post()['lang'])) {
-  $_SESSION['lang'] = (get()['lang'])?(get()['lang']):(post()['lang']);
-}else{
-  if (!$_SESSION['lang']) {
-    $_SESSION['lang'] = 1;
-  }
-}
-
-$lang = $_SESSION['lang'];
-
-if (isset(get()['cur'])) {
-  $_SESSION['currency'] = get()['cur'];
-}else{
-  if (!$_SESSION['currency']) {
-    $_SESSION['currency'] = 1;
-  }
-}
-
-$cur = $_SESSION['currency'];
-
-function Container()
-{
-  $connection = $GLOBALS['connection'];
-
-  $Container = new Container($connection);
-
-  return $Container;
-
-}
 
 
 

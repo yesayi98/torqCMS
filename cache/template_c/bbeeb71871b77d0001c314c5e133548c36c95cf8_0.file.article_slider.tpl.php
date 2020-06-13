@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-07 12:36:17
+/* Smarty version 3.1.34-dev-7, created on 2020-06-08 22:55:05
   from 'D:\OSPanel\domains\torq\public\frontend\emotions\components\article_slider.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5edcb511334285_66087850',
+  'unifunc' => 'content_5ede9799c6af59_45198590',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'bbeeb71871b77d0001c314c5e133548c36c95cf8' => 
     array (
       0 => 'D:\\OSPanel\\domains\\torq\\public\\frontend\\emotions\\components\\article_slider.tpl',
-      1 => 1590227198,
+      1 => 1591636513,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:frontend/category/product-box/box-minimal.tpl' => 1,
   ),
 ),false)) {
-function content_5edcb511334285_66087850 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ede9799c6af59_45198590 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!--product area start-->
 
             <div class="row">

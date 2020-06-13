@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-07 12:36:21
+/* Smarty version 3.1.34-dev-7, created on 2020-06-08 22:55:11
   from 'D:\OSPanel\domains\torq\public\frontend\emotions\category.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5edcb5158b65e7_56086554',
+  'unifunc' => 'content_5ede979fd1ec40_52189605',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'c99275e560af8bb409754edfd286445338948649' => 
     array (
       0 => 'D:\\OSPanel\\domains\\torq\\public\\frontend\\emotions\\category.tpl',
-      1 => 1589873207,
+      1 => 1591636513,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:frontend/category/product-box/box-minimal.tpl' => 1,
   ),
 ),false)) {
-function content_5edcb5158b65e7_56086554 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ede979fd1ec40_52189605 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="product_carousel product_column5 owl-carousel category-teaser">
     <?php echo smarty_function_split_array(array('var'=>$_smarty_tpl->tpl_vars['articles']->value,'num'=>count($_smarty_tpl->tpl_vars['articles']->value)/3,'assign'=>"product_arrays"),$_smarty_tpl);?>
 

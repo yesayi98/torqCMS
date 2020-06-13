@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-07 12:36:17
+/* Smarty version 3.1.34-dev-7, created on 2020-06-08 22:55:06
   from 'D:\OSPanel\domains\torq\public\frontend\index\modal.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5edcb511cfa615_07649159',
+  'unifunc' => 'content_5ede979ad997b4_43260405',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b7170251811edd8f34275fc7f82bd4a7cf4275f1' => 
     array (
       0 => 'D:\\OSPanel\\domains\\torq\\public\\frontend\\index\\modal.tpl',
-      1 => 1589816457,
+      1 => 1591636513,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5edcb511cfa615_07649159 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ede979ad997b4_43260405 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="modal fade" id="modal_box" tabindex="-1" role="dialog"  aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">

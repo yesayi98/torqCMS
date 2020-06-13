@@ -4,6 +4,8 @@
 if (is_file('config.php')) {
 	require_once('config.php');
 }
+
+// var_dump(get_included_files());exit;
 //ERROR Reporting and Debug mode
 if (!DEBUG) {
 	error_reporting(E_ALL);
@@ -13,6 +15,7 @@ if (!DEBUG) {
 if (version_compare(phpversion(), '5.4.0', '<') == true) {
 	exit('PHP 5.4+ Required');
 }
+
 
 require_once 'system/router.php';
  ?>

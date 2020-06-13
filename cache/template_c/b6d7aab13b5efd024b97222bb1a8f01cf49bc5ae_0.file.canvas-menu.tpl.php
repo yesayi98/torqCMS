@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-07 12:36:15
+/* Smarty version 3.1.34-dev-7, created on 2020-06-08 22:55:03
   from 'D:\OSPanel\domains\torq\public\frontend\index\canvas-menu.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5edcb50f49bc99_84815034',
+  'unifunc' => 'content_5ede9797d08044_05270215',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b6d7aab13b5efd024b97222bb1a8f01cf49bc5ae' => 
     array (
       0 => 'D:\\OSPanel\\domains\\torq\\public\\frontend\\index\\canvas-menu.tpl',
-      1 => 1589629682,
+      1 => 1591636513,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5edcb50f49bc99_84815034 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ede9797d08044_05270215 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="offcanvas_menu">
     <div class="container">
         <div class="row">

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-07 12:36:17
+/* Smarty version 3.1.34-dev-7, created on 2020-06-08 22:55:05
   from 'D:\OSPanel\domains\torq\public\frontend\emotions\components\category_teaser.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5edcb511180459_81736917',
+  'unifunc' => 'content_5ede97999c0a09_26889710',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '6f8a67334bf805ab7708983462847c873bb52cd0' => 
     array (
       0 => 'D:\\OSPanel\\domains\\torq\\public\\frontend\\emotions\\components\\category_teaser.tpl',
-      1 => 1589869935,
+      1 => 1591636513,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5edcb511180459_81736917 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ede97999c0a09_26889710 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_assignInScope('category', $_smarty_tpl->tpl_vars['items']->value['category']);
 $_smarty_tpl->_assignInScope('sorting', $_smarty_tpl->tpl_vars['items']->value['sorting']);?>
 <div class="category-header">

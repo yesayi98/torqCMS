@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-07 12:36:17
+/* Smarty version 3.1.34-dev-7, created on 2020-06-08 22:55:06
   from 'D:\OSPanel\domains\torq\public\frontend\emotions\components\blog_slider.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5edcb511b53db1_75839702',
+  'unifunc' => 'content_5ede979a489b12_02807494',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '9d9d2ac6dd9dd554b65be025e003b484179f3b9d' => 
     array (
       0 => 'D:\\OSPanel\\domains\\torq\\public\\frontend\\emotions\\components\\blog_slider.tpl',
-      1 => 1589874141,
+      1 => 1591636513,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:frontend/category/product-box/box-blog.tpl' => 1,
   ),
 ),false)) {
-function content_5edcb511b53db1_75839702 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ede979a489b12_02807494 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="row">
     <div class="col-12">
         <div class="section_title">
