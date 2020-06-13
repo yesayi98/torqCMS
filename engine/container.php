@@ -118,7 +118,7 @@ class Container
 
   public function getSessionId()
   {
-    $request = request();
+    $request = Router::request();
 
     if (isset($request['session_id'])) {
       return $request['session_id'];

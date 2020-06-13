@@ -11,7 +11,7 @@ class checkoutController extends Controller
     if (empty($orderItems)) {
       $this->View()->setMessage('warning', 'emptybasket');
 
-      redirect(url('basket'));
+      Router::redirect('basket');
 
     }
     if (!Container()->getSession('user')) {
@@ -46,11 +46,11 @@ class checkoutController extends Controller
   {
     $request = $this->getRequest()->post;
     if (!$request) {
-      redirect(url('index'));
+      Router::redirect('index');
     }
     if($request['terms'] !== 'on'){
       $this->View()->setMessage('error', 'terms');
-      redirect(url('checkout'));
+      Router::redirect('checkout');
     }
     $user = $this->view->getAssign('user');
 
@@ -62,7 +62,7 @@ class checkoutController extends Controller
     if (empty($orderItems)) {
       $this->View()->setMessage('warning', 'emptybasket');
 
-      redirect(url('basket'));
+      Router::redirect('basket');
     }
 
 
@@ -112,57 +112,46 @@ class checkoutController extends Controller
     $orderModel = $this->__get('Orders');
     $isset = $orderModel->setOrder($order);
     $order_id = Connection()->getInsertedId();
-    // var_dump($order_id);
-    // var_dump($request);exit;
 
     $this->View()->setSession('order_id', $order_id);
     $setFirstOrderDiscount = false;
-    // if ($user['attributes']['first_order'] == 0) {
-    //   $user['attributes']['first_order'] = 1;
-    //   if (!empty($user['password']) || $user['password'] == "") {
-    //     unset($user['password']);
-    //   }
-    //   $this->__get('Users')->updateUser($user);
-    //   $setFirstOrderDiscount = true;
-    // }
-
 
     $result = $this->setOrderDetails($products, $order_id, $setFirstOrderDiscount);
 
     if ($request['XHR']) {
       if($order['payment_method'] == '1'){
-        echo url('credit/init');exit;
+        echo Router::url('credit/init');exit;
       }
       if($order['payment_method'] == '2'){
-        echo url('idram/payOrder');exit;
+        echo Router::url('idram/payOrder');exit;
       }
       if($order['payment_method'] == '3'){
-        echo url('ameria'); exit;
+        echo Router::url('ameria'); exit;
       }
       if($result) {
         $this->View()->setSession('order_id', '');
 
-        echo url('checkout/success'); exit;
+        echo Router::url('checkout/success'); exit;
       }else{
-        echo url('checkout/error'); exit;
+        echo Router::url('checkout/error'); exit;
       }
     }
 
     if($order['payment_method'] == '2'){
-      redirect(url('idram/payOrder'));
+      Router::redirect('idram/payOrder');
     }
     if($order['payment_method'] == '3'){
-      redirect(url('ameria'));
+      Router::redirect('ameria');
     }
 
     if ($result) {
       $this->View()->setSession('order_id', '');
 
-      redirect(url('checkout/success'));
+      Router::redirect('checkout/success');
       return;
     }
 
-    redirect(url('checkout/error'));
+    Router::redirect('checkout/error');
     return;
 
   }

@@ -19,6 +19,25 @@
 
     public static function start($request){
 
+      if (isset(self::get()['lang']) || isset(self::post()['lang'])) {
+        $_SESSION['lang'] = (self::get()['lang'])?(self::get()['lang']):(self::post()['lang']);
+      }else{
+        if (!$_SESSION['lang']) {
+          $_SESSION['lang'] = 1;
+        }
+      }
+
+      $lang = $_SESSION['lang'];
+
+      if (isset(self::get()['cur'])) {
+        $_SESSION['currency'] = self::get()['cur'];
+      }else{
+        if (!$_SESSION['currency']) {
+          $_SESSION['currency'] = 1;
+        }
+      }
+
+      $cur = $_SESSION['currency'];
       //create route
       $url = Container()->CoreUrls()->getUrlByChanged($request['route'])['params'];
       if (!empty($url)) {
@@ -40,17 +59,17 @@
 
       //create Assign for all
       if ($route['module'] === 'frontend') {
-        $assign = new Assign(self::$_VIEW, post(), get(), request(), $routefile);
+        $assign = new Assign(self::$_VIEW, self::post(), self::get(), self::request(), $routefile);
         $assign->view();
       }elseif ($route['module'] === 'backend') {
-        $assign = new BackendAssign(self::$_VIEW, post(), get(), request(), $routefile);
+        $assign = new BackendAssign(self::$_VIEW, self::post(), self::get(), self::request(), $routefile);
         $assign->view();
       }
 
       include $controller['file'];
 
       $controllerClassName = $controller['name'];
-      $controller = new $controllerClassName(self::$_VIEW, post(), get(), request(), $routefile);
+      $controller = new $controllerClassName(self::$_VIEW, self::post(), self::get(), self::request(), $routefile);
 
       if (method_exists($controller, $action)) {
         $controller->{$action}();
@@ -76,7 +95,7 @@
       if (!empty($template)) {
         $smarty->display($template);
       }else{
-        self::redirect(url('error'));
+        self::redirect('error');
       }
 
       return $route;
@@ -123,7 +142,7 @@
       $controller['file'] = self::getFile($controllerFileName, $controllerBasePath);
       $controller['name'] = $controllerClassName;
       if (!$controller['file']) {
-        self::redirect(url('error'));
+        self::redirect('error');
       }
 
       return $controller;
@@ -166,12 +185,36 @@
     }
 
 
-    function validator($request)
+    static function validator($request)
     {
       if (isset($request)) {
         $validator = new Validator($request);
       }
       return $validator->getRequest();
+    }
+
+    static function post()
+    {
+      $request = $_POST;
+      if ($request) {
+        return self::validator($request, 'post');
+      }
+    }
+
+    static function get()
+    {
+      $request = $_GET;
+      if ($request) {
+        return self::validator($request);
+      }
+    }
+
+    static function request()
+    {
+      $request = $_REQUEST;
+      if ($request) {
+        return self::validator($request);
+      }
     }
   }
 
