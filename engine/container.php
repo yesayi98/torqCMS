@@ -58,7 +58,7 @@ class Container
   public function get($key){
 
     if (method_exists($this, $key)) {
-      return $this->{$key}();
+      return $this->{$key};
     }
 
   }
@@ -399,52 +399,4 @@ class Container
 
 }
 
-
-// $containerRequirements = file_get_contents(DOCUMENT_ROOT.'/container.json');
-// $containerRequirements = json_decode($containerRequirements);
-// foreach (glob(__DIR__."/Library/*/autoload.php") as $filepath) {
-//   include $filepath;
-// }
-//
-// $cores = $containerRequirements->include_paths;
-// $cores = (array) $cores;
-//
-// foreach ($cores as $class => $path) {
-//   include DOCUMENT_ROOT.'/engine/'.$path;
-// }
-// $models = $containerRequirements->models;
-// $models = (array) $models;
-// foreach ($models as $model => $path) {
-//   include DOCUMENT_ROOT.'/engine/'.$path;
-// }
-
-// include "Translation.php"; // defined function Translation()
-// include "AdminValidator.php"; // defined obj var $adminValidator
-// foreach (glob("plugins/*/*.php") as $filepath) {
-//     $filename = basename($filepath, ".php");
-//     $sql = "SELECT * FROM core_plugins WHERE name = '$filename'";
-//     $query = Connection()->fetchOne($sql);
-//
-//     if (!$query) {
-//       $sql = "INSERT INTO core_plugins (
-//         `name`,
-//         `path`,
-//         `status`
-//       ) VALUES (
-//         '$filename',
-//         '$filepath',
-//         'deactive'
-//       )";
-//       $query = Connection()->set($sql);
-//
-//     }else{
-//       continue;
-//     }
-// }
-
-
-
-
-
-
- ?>
+?>

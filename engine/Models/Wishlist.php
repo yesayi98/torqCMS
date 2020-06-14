@@ -48,10 +48,12 @@ class Wishlist extends Model
   }
 
 
-  public function updateBySession()
+  public function updateBySession($user_id)
   {
     $session_id = $this->session_id;
-    $user_id = $this->user_id;
+    if (empty($user_id)) {
+      $user_id = $this->user_id;
+    }
 
     $sql = "UPDATE `article_wishlist` SET
                 `user_id` = $user_id

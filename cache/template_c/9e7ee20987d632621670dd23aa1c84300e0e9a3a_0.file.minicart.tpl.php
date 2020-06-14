@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-14 01:00:56
+/* Smarty version 3.1.34-dev-7, created on 2020-06-14 23:03:02
   from 'D:\OSPanel\domains\torq\public\frontend\basket\minicart.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ee54c98ec5f70_94847253',
+  'unifunc' => 'content_5ee68276b6f7f6_79227494',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ee54c98ec5f70_94847253 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ee68276b6f7f6_79227494 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="cart_gallery">
   <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['basketProducts']->value, 'product');

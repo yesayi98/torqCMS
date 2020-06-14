@@ -49,16 +49,17 @@ class Basket extends Orders
     return $query;
   }
 
-  public function updateBySession()
+  public function updateBySession($user_id)
   {
     $session_id = $this->session_id;
-    $user_id = $this->user_id;
-
+    if (empty($user_id)) {
+      $user_id = $this->user_id;
+    }
     $sql = "UPDATE `basket` SET
                 `user_id` = $user_id
             WHERE `session_id` = '$session_id'";
     $query = Connection()->set($sql);
-    
+
     return $query;
   }
 

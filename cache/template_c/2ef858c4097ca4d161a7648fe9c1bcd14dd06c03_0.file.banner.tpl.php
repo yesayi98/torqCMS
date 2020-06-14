@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-08 22:55:05
+/* Smarty version 3.1.34-dev-7, created on 2020-06-14 22:54:57
   from 'D:\OSPanel\domains\torq\public\frontend\emotions\components\banner.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ede9799bcfdd8_37342851',
+  'unifunc' => 'content_5ee680912f71e9_09362994',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ede9799bcfdd8_37342851 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ee680912f71e9_09362994 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="banner-component banner_fullwidth mt-40" style="background-image: url(<?php echo $_smarty_tpl->tpl_vars['items']->value[0]['media']['path'];?>
 )">
     <div class="container">

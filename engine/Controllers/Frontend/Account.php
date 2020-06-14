@@ -342,10 +342,10 @@ class accountController extends Controller
     return $user;
   }
 
-  private function updateShopInfo()
+  private function updateShopInfo($user)
   {
-    $this->__get('Basket')->updateBySession();
-    $this->__get('Wishlist')->updateBySession();
+    $this->__get('Basket')->updateBySession($user['id']);
+    $this->__get('Wishlist')->updateBySession($user['id']);
   }
 
   private function setGuestUser()

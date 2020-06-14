@@ -39,12 +39,11 @@
            </div>
         </div>
         <div class="checkout_form">
-          <form action="{url url='checkout/confirm'}">
+          <form action="{url url='checkout/confirm'}" method='post'>
             <div class="row">
                 <div class="col-lg-6 col-md-6">
                         <h3>{translator selector="setLabels"}</h3>
                         <div class="row mt-20">
-
                             <div class="col-lg-6 mb-20">
                                 <label>{translator selector="name"} <span>*</span></label>
                                 <input type="text" name='name' value="{$user.name}">
@@ -115,6 +114,7 @@
                                     <tr>
                                         <th>{translator selector="deliveryprice"}</th>
                                         <td><strong>{$deliveryPrice} {$currentCur.symbol}</strong></td>
+                                        <input type="hidden" name="shipping" value="{$deliveryPrice}">
                                     </tr>
 
                                     <tr class="order_total">
@@ -127,7 +127,7 @@
                         </div>
                         <div class="payment_method" id='accordion'>
                            <div class="panel-default">
-                                <input id="payment" name="payment_method" type="radio" data-target="createp_account" />
+                                <input id="payment" name="payment_method" type="radio" data-target="createp_account" value="1" />
                                 <label for="payment" data-toggle="collapse" data-target="#method" aria-controls="method">{translator selector="payinshipping"}</label>
 
                                 <div id="method" class="collapse one" data-parent="#accordion">
@@ -158,10 +158,18 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="order_button mt-20">
-                                <button  type="submit">Վճարել հիմա</button>
+                            <div class="row">
+                              <div class="col-6 mt-20">
+                                <label>
+                                  <input type="checkbox" name="terms" required>
+                                  <span>{translator selector="aggreedwith"}</span> <a href="{url url="category?c=32"}">{translator selector="terms"}</a>
+                                </label>
+                              </div>
+                              <div class="col-6 order_button mt-20">
+                                  <button type="submit">Վճարել հիմա</button>
+                              </div>
                             </div>
+
                         </div>
                   </div>
             </div>
