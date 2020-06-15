@@ -24,7 +24,7 @@ class View extends Container
     if(!$currency){
       $currency = 1;
     }
-    $this->currency = $this->Currencies()->getCurrency(intval($currency));
+    $this->currency = Container()->Currencies()->getCurrency(intval($currency));
 
     // parent::__construct($container);
 
@@ -33,14 +33,14 @@ class View extends Container
     }else{
       $this->writeLanguageCache();
     }
-    $this->translations = $this->Translator()->getTranslationsByLanguageID($this->lang);
+    $this->translations = Container()->Translator()->getTranslationsByLanguageID($this->lang);
   }
 
 
   private function writeLanguageCache()
   {
 
-    $translations = json_encode($this->Translator()->getTranslationsByLanguageID($this->lang), JSON_UNESCAPED_UNICODE);
+    $translations = json_encode(Container()->Translator()->getTranslationsByLanguageID($this->lang), JSON_UNESCAPED_UNICODE);
     // $translations = $this->normJsonStr($translations);
     //open and write into the translations file
     $file = fopen(DOCUMENT_ROOT.'/cache/language/translations_'.$this->lang.'.json', 'w');
@@ -50,10 +50,6 @@ class View extends Container
     fclose($file);
   }
 
-  public function __call($method, $args)
-  {
-
-  }
 
   /**
   * @param mixed $message

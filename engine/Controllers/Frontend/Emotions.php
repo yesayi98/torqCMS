@@ -69,7 +69,6 @@ class emotionsController extends Controller
     $category_id = $variables[0];
 
     $categoryModel = $this->__get('Categories');
-
     $category = $categoryModel->getCategoryById($category_id);
 
     $sorting = array(
@@ -142,8 +141,7 @@ class emotionsController extends Controller
     $request = $this->getRequest()->request;
     $category_id = $request['c'];
     $sort = $request['sort'];
-    $_GET['limit'] = 24;
-    $articles = $this->__get('Articles')->getArticlesByCategoryWithPagination($category_id, $sort)['data'];
+    $articles = $this->__get('Articles')->getArticlesByCategoryWithPagination($category_id, $sort, 24)['data'];
 
     $this->View()->setAssign('Articles.articles', $articles);
   }

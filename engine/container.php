@@ -57,7 +57,7 @@ class Container
 
   public function get($key){
 
-    if (method_exists($this, $key)) {
+    if (isset($this->$key)) {
       return $this->{$key};
     }
 
@@ -265,125 +265,11 @@ class Container
     }
 
   }
-  public function Categories()
-  {
-    return $this->Categories;
-  }
 
-  public function Articles()
+  public function __call($method, $args)
   {
-    return $this->Articles;
-  }
-  public function CoreMenu()
-  {
-    return $this->CoreMenu;
-  }
-
-  public function Media()
-  {
-    return $this->Media;
-  }
-
-  public function Filters()
-  {
-    return $this->Filters;
-  }
-  public function ModelEntity()
-  {
-    return $this->ModelEntity;
-  }
-
-  public function Core()
-  {
-    return $this->Core;
-  }
-
-  public function Advertisings()
-  {
-    return $this->Advertisings;
-  }
-
-  public function Translator()
-  {
-    return $this->Translator;
-  }
-
-  public function Delivery()
-  {
-    return $this->Delivery;
-  }
-
-  public function Orders()
-  {
-    return $this->Orders;
-  }
-
-  public function Units()
-  {
-    return $this->Units;
-  }
-
-  public function Admins()
-  {
-    return $this->Admins;
-  }
-
-  public function Plugin()
-  {
-    return $this->Plugin;
-  }
-
-  public function Users()
-  {
-    return $this->Users;
-  }
-
-  public function Payments()
-  {
-    return $this->Payments;
-  }
-
-  public function Emotions()
-  {
-    return $this->Emotions;
-  }
-
-  public function Wishlist()
-  {
-    return $this->Wishlist;
-  }
-
-  public function Template()
-  {
-    return $this->Template;
-  }
-
-  public function Basket()
-  {
-    return $this->Basket;
-  }
-
-  public function Supplier()
-  {
-    return $this->Supplier;
-  }
-
-  public function Currencies()
-  {
-    return $this->Currencies;
-  }
-
-  public function Search()
-  {
-    return $this->Search;
-  }
-  public function Blog()
-  {
-    return $this->Blog;
-  }
-  public function CoreUrls()
-  {
-    return $this->CoreUrls;
+    $return = $this->{$method};
+    return $return;
   }
 
   public static function numberToString($number, $lenght = 6)
