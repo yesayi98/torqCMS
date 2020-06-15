@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-11 13:40:13
+/* Smarty version 3.1.34-dev-7, created on 2020-06-14 11:03:25
   from 'C:\Users\User\OSPanel\domains\torq\public\frontend\checkout\index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ee20a0d5aba21_20474869',
+  'unifunc' => 'content_5ee5d9cd1814b6_81448255',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '14641551fc1527db71506738badda3e01595550b' => 
     array (
       0 => 'C:\\Users\\User\\OSPanel\\domains\\torq\\public\\frontend\\checkout\\index.tpl',
-      1 => 1591872011,
+      1 => 1592121802,
       2 => 'file',
     ),
   ),
@@ -20,29 +20,29 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ee20a0d5aba21_20474869 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ee5d9cd1814b6_81448255 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_7240620275ee20a0d56e499_65047200', 'breadcrumbs_area');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1316346325ee5d9cd14c478_85386819', 'breadcrumbs_area');
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_130000315ee20a0d572107_41397253', "pageContent");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_17300794375ee5d9cd14f8d5_32701036', "pageContent");
 ?>
 
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, "frontend/index/index.tpl");
 }
 /* {block 'breadcrumbs_area'} */
-class Block_7240620275ee20a0d56e499_65047200 extends Smarty_Internal_Block
+class Block_1316346325ee5d9cd14c478_85386819 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'breadcrumbs_area' => 
   array (
-    0 => 'Block_7240620275ee20a0d56e499_65047200',
+    0 => 'Block_1316346325ee5d9cd14c478_85386819',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -67,12 +67,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block 'breadcrumbs_area'} */
 /* {block "pageContent"} */
-class Block_130000315ee20a0d572107_41397253 extends Smarty_Internal_Block
+class Block_17300794375ee5d9cd14f8d5_32701036 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'pageContent' => 
   array (
-    0 => 'Block_130000315ee20a0d572107_41397253',
+    0 => 'Block_17300794375ee5d9cd14f8d5_32701036',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -108,7 +108,7 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
         </div>
         <div class="checkout_form">
           <form action="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['url'][0], array( array('url'=>'checkout/confirm'),$_smarty_tpl ) );?>
-">
+" method="post">
             <div class="row">
                 <div class="col-lg-6 col-md-6">
                         <h3><?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['translator'][0], array( array('selector'=>"setLabels"),$_smarty_tpl ) );?>
@@ -237,20 +237,22 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                         </div>
                         <div class="payment_method" id='accordion'>
                            <div class="panel-default">
-                                <input id="payment" name="check_method" type="radio" data-target="createp_account" />
-                                <label for="payment" data-toggle="collapse" data-target="#method" aria-controls="method"><?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['translator'][0], array( array('selector'=>"paywithcash"),$_smarty_tpl ) );?>
+                                <input id="payment" name="payment_method" type="radio" data-target="createp_account" />
+                                <label for="payment" data-toggle="collapse" data-target="#method" aria-controls="method"><?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['translator'][0], array( array('selector'=>"payinshipping"),$_smarty_tpl ) );?>
 </label>
 
                                 <div id="method" class="collapse one" data-parent="#accordion">
                                     <div class="card-body1">
-                                       <p>Please send a check to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</p>
+                                       <p><?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['translator'][0], array( array('selector'=>"payinshippingaddress"),$_smarty_tpl ) );?>
+</p>
                                     </div>
                                 </div>
                             </div>
 
                            <div class="panel-default">
-                                <input id="payment_defult2" name="check_method" type="radio" data-target="createp_account" />
-                                <label for="payment_defult2" data-toggle="collapse" data-target="#collapsedefult_2" aria-controls="collapsedefult_2">PayPal <img src="assets/img/icon/papyel.png" alt=""></label>
+                                <input id="payment_defult2" name="payment_method" type="radio" data-target="createp_account" />
+                                <label for="payment_defult2" data-toggle="collapse" data-target="#collapsedefult_2" aria-controls="collapsedefult_2">Idram <img src="<?php echo $_smarty_tpl->tpl_vars['BASE_FRONTEND']->value;?>
+assets/img/icon/papyel.png" alt=""></label>
 
                                 <div id="collapsedefult_2" class="collapse one" data-parent="#accordion">
                                     <div class="card-body1">
@@ -260,7 +262,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                             </div>
 
                             <div class="panel-default">
-                                <input id="payment_defult" name="check_method" type="radio" data-target="createp_account" />
+                                <input id="payment_defult" name="payment_method" type="radio" data-target="createp_account" />
                                 <label for="payment_defult" data-toggle="collapse" data-target="#collapsedefult" aria-controls="collapsedefult">PayPal_2 <img src="assets/img/icon/papyel.png" alt=""></label>
 
                                 <div id="collapsedefult" class="collapse one" data-parent="#accordion">

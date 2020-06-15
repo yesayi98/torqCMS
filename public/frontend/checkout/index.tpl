@@ -39,7 +39,7 @@
            </div>
         </div>
         <div class="checkout_form">
-          <form action="{url url='checkout/confirm'}">
+          <form action="{url url='checkout/confirm'}" method="post">
             <div class="row">
                 <div class="col-lg-6 col-md-6">
                         <h3>{translator selector="setLabels"}</h3>
@@ -158,13 +158,18 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="order_button mt-20">
-                                <button  type="submit">Վճարել հիմա</button>
+                            <div class="mt-20">
+                              <div class="agreed-terms">
+                                <span>{translator selector='agreedwith'}</span><a href=""></a>
+                              </div>
                             </div>
+                            <div class="order_button mt-20">
+                                <button  type="submit">{translator selector='paynow'}</button>
+                            </div>
+
                         </div>
                   </div>
-            </div>
+               </div>
           </form>
         </div>
     </div>
