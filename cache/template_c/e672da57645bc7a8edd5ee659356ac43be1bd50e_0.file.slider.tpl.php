@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-08 22:55:05
+/* Smarty version 3.1.34-dev-7, created on 2020-06-14 22:54:56
   from 'D:\OSPanel\domains\torq\public\frontend\emotions\components\slider.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ede97997f7574_15624058',
+  'unifunc' => 'content_5ee680905e8308_54977711',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ede97997f7574_15624058 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ee680905e8308_54977711 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!--slider area start-->
     <section class="slider_section">

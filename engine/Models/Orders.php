@@ -146,50 +146,10 @@
 
 		public function setOrder($order)
 		{
-
 			if(!$order){
 				return;
 			}
-
-			$total_price = $order['total_price'];
-			$count_product = $order['count_product'];
-			$product_total = $order['product_total'];
-			$delivery_price = $order['delivery_price'];
-			$user_id = $order['user_id'];
-			$address_id = $order['address_id'];
-			$buy_date = date('Y-m-d');
-			$delivery_date = $order['delivery_date'];
-			$order_status = $order['order_status'];
-			$delivery_status = $order['delivery_status'];
-			$payment_method = $order['payment_method'];
-			$sql = "INSERT INTO orders (
-								count_product,
-								product_total,
-								delivery_price,
-								total_price,
-								payment_method,
-								user_id,
-								address_id,
-								order_status,
-								delivery_status,
-								delivery_date,
-								buy_date
-							) VALUES (
-								'$count_product',
-								'$product_total',
-								'$delivery_price',
-								'$total_price',
-								'$payment_method',
-								'$user_id',
-								'$address_id',
-								'$order_status',
-								'$delivery_status',
-								'$delivery_date',
-								'$buy_date'
-							)
-			";
-			$query = Connection()->set($sql);
-
+			$query = $this->insert('orders', $order);
 
 			return $query;
 		}
@@ -249,7 +209,6 @@
 
 		public function setOrderDetails($orderDetails)
 		{
-
 			if(!$orderDetails){
 				return;
 			}
@@ -308,7 +267,6 @@
 
 			$query = Connection()->set($sql);
 
-
 			return $query;
 		}
 
@@ -318,8 +276,6 @@
 			if (!$detail_id) {
 				return;
 			}
-
-
 
 			$sql = "SELECT * FROM order_details WHERE id = $detail_id";
 

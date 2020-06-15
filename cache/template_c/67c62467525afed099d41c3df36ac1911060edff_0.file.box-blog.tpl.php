@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-08 22:55:06
+/* Smarty version 3.1.34-dev-7, created on 2020-06-14 22:54:58
   from 'D:\OSPanel\domains\torq\public\frontend\category\product-box\box-blog.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ede979a511ce2_38523668',
+  'unifunc' => 'content_5ee680925c89d9_47334212',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ede979a511ce2_38523668 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ee680925c89d9_47334212 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'D:\\OSPanel\\domains\\torq\\engine\\Library\\smarty-master\\libs\\plugins\\modifier.truncate.php','function'=>'smarty_modifier_truncate',),));
 ?>
 <article class="single_blog">

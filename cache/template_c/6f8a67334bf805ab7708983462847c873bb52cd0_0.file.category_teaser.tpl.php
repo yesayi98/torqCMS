@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-08 22:55:05
+/* Smarty version 3.1.34-dev-7, created on 2020-06-14 22:54:56
   from 'D:\OSPanel\domains\torq\public\frontend\emotions\components\category_teaser.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ede97999c0a09_26889710',
+  'unifunc' => 'content_5ee68090c6d471_53592809',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ede97999c0a09_26889710 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ee68090c6d471_53592809 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_assignInScope('category', $_smarty_tpl->tpl_vars['items']->value['category']);
 $_smarty_tpl->_assignInScope('sorting', $_smarty_tpl->tpl_vars['items']->value['sorting']);?>
 <div class="category-header">

@@ -38,6 +38,7 @@ class checkoutController extends Controller
     $this->View()->setAssign('Articles.orderItems', $products);
     $this->View()->setAssign('totalPrice', $totalPrice);
     $this->View()->setAssign('deliveryPrice', $deliveryPrice);
+    $this->View()->setAssign('title', $this->View()->translating('checkout'));
 
   }
 
@@ -112,30 +113,10 @@ class checkoutController extends Controller
     $orderModel = $this->__get('Orders');
     $isset = $orderModel->setOrder($order);
     $order_id = Connection()->getInsertedId();
-
     $this->View()->setSession('order_id', $order_id);
     $setFirstOrderDiscount = false;
 
     $result = $this->setOrderDetails($products, $order_id, $setFirstOrderDiscount);
-
-    if ($request['XHR']) {
-      if($order['payment_method'] == '1'){
-        echo Router::url('credit/init');exit;
-      }
-      if($order['payment_method'] == '2'){
-        echo Router::url('idram/payOrder');exit;
-      }
-      if($order['payment_method'] == '3'){
-        echo Router::url('ameria'); exit;
-      }
-      if($result) {
-        $this->View()->setSession('order_id', '');
-
-        echo Router::url('checkout/success'); exit;
-      }else{
-        echo Router::url('checkout/error'); exit;
-      }
-    }
 
     if($order['payment_method'] == '2'){
       Router::redirect('idram/payOrder');
@@ -145,7 +126,6 @@ class checkoutController extends Controller
     }
 
     if ($result) {
-      $this->View()->setSession('order_id', '');
 
       Router::redirect('checkout/success');
       return;
@@ -158,27 +138,28 @@ class checkoutController extends Controller
 
   public function success()
   {
+    $order_id = $this->View()->getSession('order_id');
+    $order = $this->__get('Orders')->getOrder($order_id);
+    $this->View()->setSession('order_id', '');
+
     $basketmodel = $this->__get('Basket');
     $basketmodel->deleteItemsBySession();
-
+    $this->View()->setAssign('order', $order);
     if ($this->getRequest()->request['EDP_BILL_NO']) {
       $order_id = $this->getRequest()->request['EDP_BILL_NO'];
 
       $sql = "UPDATE orders SET order_status = 2 WHERE id ='$order_id'";
       Connection()->set($sql);
     }
-
-    $this->route = 'paysuccess';
   }
 
   public function error()
   {
-    $this->route = 'payerror';
   }
 
   private function setOrderDetails($products, $order_id, $firstOrder = 0)
   {
-    if (!$products) {
+    if (empty($products)) {
       return;
     }
     if (!$order_id) {
@@ -211,6 +192,7 @@ class checkoutController extends Controller
     }
 
     $result = $orderModel->setOrderDetails($orderItems);
+
     return $result;
   }
 
