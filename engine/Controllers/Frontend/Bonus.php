@@ -3,8 +3,9 @@ class bonusController extends Controller
 {
 	 public function index()
 		{
-			$category = $this->__get('Categories')->getCategoryById(5);
-			$this->View()->setAssign('Categories.content', $category);
+			$request = $this->getRequest()->post;
+
+			$userSpecId = $request['specific_id'];
 		}
 }
 
