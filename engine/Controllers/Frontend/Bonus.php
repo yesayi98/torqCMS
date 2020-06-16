@@ -5,7 +5,7 @@ class bonusController extends Controller
 		{
 			$request = $this->getRequest()->post;
 
-			$userSpecId = $request['specific_id'];
+			$userSpecId = $request['specific_id']; 
 		}
 }
 
