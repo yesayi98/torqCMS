@@ -47,7 +47,7 @@
       }
       $route = self::setRouterParams($request['route']);
       self::$route = $route;
-      $routefile = implode(DIRECTORY_SEPARATOR, $route);
+      $routefile = implode(SEPARATOR, $route);
       $controller = self::getController($route);
       $action = $route['action'];
       //get globals
@@ -77,7 +77,7 @@
         trigger_error('Error: Could not call ' . $route['controller'] . '/' . $action . '!');exit;
       }
 
-      $templateDir = DOCUMENT_ROOT.DIRECTORY_SEPARATOR.'public'.DIRECTORY_SEPARATOR;
+      $templateDir = DOCUMENT_ROOT.SEPARATOR.'public'.SEPARATOR;
       $smarty = new Smarty;
       $smarty->setTemplateDir($templateDir)
              ->setCompileDir(DOCUMENT_ROOT.'/cache/template_c')
@@ -90,7 +90,7 @@
         $smarty->assign($key, $value);
       }
       $smarty->assign('route', $route);
-      $route = str_replace('/', DIRECTORY_SEPARATOR, $controller->route);
+      $route = str_replace('/', SEPARATOR, $controller->route);
       $template = self::getFile($controller->route, $templateDir);
       if (!empty($template)) {
         $smarty->display($template);

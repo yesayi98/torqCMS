@@ -1,7 +1,7 @@
 <?php
 
 /**
- * csrf token generator class
+ * extends from csrf token generator class
  */
 class csrfController extends csrfValidatorController
 {

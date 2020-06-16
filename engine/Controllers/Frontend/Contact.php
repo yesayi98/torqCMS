@@ -48,7 +48,7 @@ class contactController extends Controller
 		$headers = "MIME-Version: 1.0" . "\r\n";
 		$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 		$headers .= 'From:'.$from . "\r\n";
-		$headers .= 'Cc: eurobaza.am' . "\r\n";
+		$headers .= 'Cc: 1shop.am' . "\r\n";
 
 		mail($to,$subject,$message,$headers);
 

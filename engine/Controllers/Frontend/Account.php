@@ -20,6 +20,7 @@ class accountController extends Controller
     $this->View()->setAssign('user', $user);
     $this->View()->setAssign('userOrders', $userOrders['data']);
     $this->View()->setAssign('userOrderPagination', $userOrders['pagination']);
+    $this->View()->setAssign('title', $this->View()->translating('account'));
   }
 
   // user login action

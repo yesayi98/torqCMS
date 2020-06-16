@@ -1,4 +1,6 @@
 <?php
+// SERVER SIDE
+PHP_OS == "Windows" || PHP_OS == "WINNT" ? define("SEPARATOR", "\\") : define("SEPARATOR", "/");
 // Base
 if ($_SERVER['REQUEST_SCHEME'] == "https") {
   define('PROTOCOL', "https");

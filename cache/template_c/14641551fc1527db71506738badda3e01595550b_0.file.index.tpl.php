@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-15 13:47:33
+/* Smarty version 3.1.34-dev-7, created on 2020-06-16 15:34:07
   from 'C:\Users\User\OSPanel\domains\torq\public\frontend\checkout\index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ee751c5314444_65157321',
+  'unifunc' => 'content_5ee8bc3f47cf60_46534860',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '14641551fc1527db71506738badda3e01595550b' => 
     array (
       0 => 'C:\\Users\\User\\OSPanel\\domains\\torq\\public\\frontend\\checkout\\index.tpl',
-      1 => 1592218049,
+      1 => 1592310599,
       2 => 'file',
     ),
   ),
@@ -20,29 +20,29 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ee751c5314444_65157321 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ee8bc3f47cf60_46534860 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_5994360275ee751c52e6c71_87318746', 'breadcrumbs_area');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_20360506515ee8bc3f451211_24704408', 'breadcrumbs_area');
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_21402701655ee751c52ead82_45966978', "pageContent");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1524008705ee8bc3f454177_78340972', "pageContent");
 ?>
 
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, "frontend/index/index.tpl");
 }
 /* {block 'breadcrumbs_area'} */
-class Block_5994360275ee751c52e6c71_87318746 extends Smarty_Internal_Block
+class Block_20360506515ee8bc3f451211_24704408 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'breadcrumbs_area' => 
   array (
-    0 => 'Block_5994360275ee751c52e6c71_87318746',
+    0 => 'Block_20360506515ee8bc3f451211_24704408',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -67,12 +67,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block 'breadcrumbs_area'} */
 /* {block "pageContent"} */
-class Block_21402701655ee751c52ead82_45966978 extends Smarty_Internal_Block
+class Block_1524008705ee8bc3f454177_78340972 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'pageContent' => 
   array (
-    0 => 'Block_21402701655ee751c52ead82_45966978',
+    0 => 'Block_1524008705ee8bc3f454177_78340972',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -108,7 +108,7 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
         </div>
         <div class="checkout_form">
           <form action="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['url'][0], array( array('url'=>'checkout/confirm'),$_smarty_tpl ) );?>
-">
+" method="post">
             <div class="row">
                 <div class="col-lg-6 col-md-6">
                         <h3><?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['translator'][0], array( array('selector'=>"setLabels"),$_smarty_tpl ) );?>
@@ -237,7 +237,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                         </div>
                         <div class="payment_method" id='accordion'>
                            <div class="panel-default">
-                                <input id="payment" name="payment_method" type="radio" data-target="createp_account" />
+                                <input id="payment" name="payment_method" type="radio" data-target="createp_account" value="1"/>
                                 <label for="payment" data-toggle="collapse" data-target="#method" aria-controls="method"><?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['translator'][0], array( array('selector'=>"payinshipping"),$_smarty_tpl ) );?>
 </label>
 

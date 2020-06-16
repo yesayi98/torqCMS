@@ -39,7 +39,7 @@
            </div>
         </div>
         <div class="checkout_form">
-          <form action="{url url='checkout/confirm'}">
+          <form action="{url url='checkout/confirm'}" method="post">
             <div class="row">
                 <div class="col-lg-6 col-md-6">
                         <h3>{translator selector="setLabels"}</h3>
@@ -127,7 +127,7 @@
                         </div>
                         <div class="payment_method" id='accordion'>
                            <div class="panel-default">
-                                <input id="payment" name="payment_method" type="radio" data-target="createp_account" />
+                                <input id="payment" name="payment_method" type="radio" data-target="createp_account" value="1"/>
                                 <label for="payment" data-toggle="collapse" data-target="#method" aria-controls="method">{translator selector="payinshipping"}</label>
 
                                 <div id="method" class="collapse one" data-parent="#accordion">

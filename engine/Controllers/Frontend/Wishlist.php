@@ -21,6 +21,7 @@ class wishlistController extends Controller
       $products[$key]['total'] = floatval($product['quantity'])*floatval($product['price']);
     }
     $this->View()->setAssign('Articles.wishlistProducts', $products);
+    $this->View()->setAssign('title', $this->View()->translating('wishlist'));
   }
 
   public function add()

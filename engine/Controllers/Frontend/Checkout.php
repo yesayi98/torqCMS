@@ -42,7 +42,22 @@ class checkoutController extends Controller
 
   }
 
+  /**
+  * bonus action called in requesting Checkout bonus
+  */
+  public function bonus()
+  {
+    // getting request
+    // get user spec_id
+    $request = $this->getRequest()->post;
+    $spec_id = $request['specific_id'];
 
+    $userModel = $this->__get('Users');
+  }
+
+  /**
+  * confirm action called in confirming Checkout
+  */
   public function confirm()
   {
     $request = $this->getRequest()->post;
@@ -126,7 +141,6 @@ class checkoutController extends Controller
     }
 
     if ($result) {
-
       Router::redirect('checkout/success');
       return;
     }

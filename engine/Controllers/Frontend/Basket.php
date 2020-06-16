@@ -36,6 +36,8 @@ class basketController extends Controller
     if ($this->getRequest()->request['XHR']) {
       $this->route = 'frontend/basket/minicart';
     }
+    
+    $this->View()->setAssign('title', $this->View()->translating('basket'));
   }
 
   public function add()

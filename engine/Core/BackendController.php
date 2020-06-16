@@ -13,7 +13,7 @@
 
       $admin = $this->View()->getAssign('admin');
       if (empty($admin)) {
-        $this->route = 'backend\login\login';
+        $this->route = 'backend/login/login';
       }
     }
 

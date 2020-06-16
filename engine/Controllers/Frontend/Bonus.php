@@ -1,11 +1,10 @@
 <?
 class bonusController extends Controller
 {
+		// action index for bonus controller
 	 public function index()
 		{
-			$request = $this->getRequest()->post;
 
-			$userSpecId = $request['specific_id']; 
 		}
 }
 
