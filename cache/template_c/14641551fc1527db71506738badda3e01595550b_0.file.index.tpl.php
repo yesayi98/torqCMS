@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-16 15:34:07
+/* Smarty version 3.1.34-dev-7, created on 2020-06-16 17:38:47
   from 'C:\Users\User\OSPanel\domains\torq\public\frontend\checkout\index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ee8bc3f47cf60_46534860',
+  'unifunc' => 'content_5ee8d9775c6549_64096863',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '14641551fc1527db71506738badda3e01595550b' => 
     array (
       0 => 'C:\\Users\\User\\OSPanel\\domains\\torq\\public\\frontend\\checkout\\index.tpl',
-      1 => 1592310599,
+      1 => 1592318322,
       2 => 'file',
     ),
   ),
@@ -20,29 +20,29 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ee8bc3f47cf60_46534860 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ee8d9775c6549_64096863 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_20360506515ee8bc3f451211_24704408', 'breadcrumbs_area');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_14833347145ee8d97758dcd1_70667144', 'breadcrumbs_area');
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1524008705ee8bc3f454177_78340972', "pageContent");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_14065864275ee8d977592f03_86884924', "pageContent");
 ?>
 
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, "frontend/index/index.tpl");
 }
 /* {block 'breadcrumbs_area'} */
-class Block_20360506515ee8bc3f451211_24704408 extends Smarty_Internal_Block
+class Block_14833347145ee8d97758dcd1_70667144 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'breadcrumbs_area' => 
   array (
-    0 => 'Block_20360506515ee8bc3f451211_24704408',
+    0 => 'Block_14833347145ee8d97758dcd1_70667144',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -67,12 +67,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block 'breadcrumbs_area'} */
 /* {block "pageContent"} */
-class Block_1524008705ee8bc3f454177_78340972 extends Smarty_Internal_Block
+class Block_14065864275ee8d977592f03_86884924 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'pageContent' => 
   array (
-    0 => 'Block_1524008705ee8bc3f454177_78340972',
+    0 => 'Block_14065864275ee8d977592f03_86884924',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -208,10 +208,10 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 </td>
                                     </tr>
 
-                                    <tr class='d-none'>
+                                    <tr <?php if (!$_smarty_tpl->tpl_vars['bonusPrice']->value) {?>class='d-none'<?php }?>>
                                         <th><?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['translator'][0], array( array('selector'=>"discounted"),$_smarty_tpl ) );?>
 </th>
-                                        <td data-discounted='true'><strong><span data-total='true'><?php echo $_smarty_tpl->tpl_vars['totalPrice']->value+$_smarty_tpl->tpl_vars['deliveryPrice']->value;?>
+                                        <td><strong><span data-total='true'><?php echo $_smarty_tpl->tpl_vars['bonusPrice']->value;?>
  </span><?php echo $_smarty_tpl->tpl_vars['currentCur']->value['symbol'];?>
 </strong></td>
                                     </tr>
@@ -227,7 +227,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                                     <tr class="order_total">
                                         <th><?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['translator'][0], array( array('selector'=>"totalPrice"),$_smarty_tpl ) );?>
 </th>
-                                        <td><strong><span data-total='true'><?php echo $_smarty_tpl->tpl_vars['totalPrice']->value+$_smarty_tpl->tpl_vars['deliveryPrice']->value;?>
+                                        <td><strong><span data-total='true'><?php echo $_smarty_tpl->tpl_vars['totalPrice']->value+$_smarty_tpl->tpl_vars['deliveryPrice']->value-$_smarty_tpl->tpl_vars['bonusPrice']->value;?>
  </span><?php echo $_smarty_tpl->tpl_vars['currentCur']->value['symbol'];?>
 </strong></td>
                                     </tr>
@@ -245,29 +245,6 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                                     <div class="card-body1">
                                        <p><?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['translator'][0], array( array('selector'=>"payinshippingaddress"),$_smarty_tpl ) );?>
 </p>
-                                    </div>
-                                </div>
-                            </div>
-
-                           <div class="panel-default">
-                                <input id="payment_defult2" name="payment_method" type="radio" data-target="createp_account" />
-                                <label for="payment_defult2" data-toggle="collapse" data-target="#collapsedefult_2" aria-controls="collapsedefult_2">Idram <img src="<?php echo $_smarty_tpl->tpl_vars['BASE_FRONTEND']->value;?>
-assets/img/icon/papyel.png" alt=""></label>
-
-                                <div id="collapsedefult_2" class="collapse one" data-parent="#accordion">
-                                    <div class="card-body1">
-                                       <p>Pay via PayPal; you can pay with your credit card if you don’t have a PayPal account.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="panel-default">
-                                <input id="payment_defult" name="payment_method" type="radio" data-target="createp_account" />
-                                <label for="payment_defult" data-toggle="collapse" data-target="#collapsedefult" aria-controls="collapsedefult">PayPal_2 <img src="assets/img/icon/papyel.png" alt=""></label>
-
-                                <div id="collapsedefult" class="collapse one" data-parent="#accordion">
-                                    <div class="card-body1">
-                                       <p>Pay via PayPal; you can pay with your credit card if you don’t have a PayPal account.</p>
                                     </div>
                                 </div>
                             </div>

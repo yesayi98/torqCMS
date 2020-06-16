@@ -21,15 +21,15 @@ class Users extends \Model{
 				$user['password'] = md5($user['password']);
 			}
 
-
 			$query = $this->insert('users', $user);
 			$this->insertedUserId = $this->connection->getInsertedId();
 			$uniqueId = hash( 'sha256', $this->insertedUserId);
 			$id = $this->insertedUserId;
 			$user['id'] = $id;
+      $uniqueId = 'AC'.substr($uniqueId, 0, 6);
 			$sql = "UPDATE users SET specific_id = '$uniqueId' WHERE id = $id";
+      Connection()->set($sql);
 			$this->setOrUpdateUserAttributes($user);
-			Connection()->set($sql);
  			return $query;
  		}
 
@@ -119,36 +119,20 @@ class Users extends \Model{
 
  		public function updateUser(array $user){
 
-			if(!$user){
+			if(empty($user)){
  				return;
  			}
-			$name = $user['name'];
- 			$lastname = $user['lastname'];
-			$email = $user['email'];
-			$phone = $user['phone'];
-			$user_type = $user['usertype'];
-			$id = $user['id'];
-			$guest = $user['guest'];
+
+      $id = (int) $user['id'];
 
 			if ($user['password']) {
-				$password = md5($user['password']);
+				$user['password'] = md5($user['password']);
 			}else{
-				$password = Connection()->fetchOne("SELECT password FROM users WHERE id = $id" )['password'];
+				$user['password'] = Connection()->fetchOne("SELECT password FROM users WHERE id = $id" )['password'];
 			}
 
-			$gender = $user['gender'];
-			$sql = "UPDATE users SET
-			 				name = '$name',
-							lastname = '$lastname',
-			 				email = '$email',
-			 				user_type = '$user_type',
-			 				phone = '$phone',
-			 				password = '$password',
-							gender = '$gender'
-							WHERE id = $id";
+			$query = $this->update('users', $user);
 
-
-			$query = Connection()->set($sql);
  			// $user = mysqli_fetch_assoc($query);
 			$this->setOrUpdateUserAttributes($user);
 

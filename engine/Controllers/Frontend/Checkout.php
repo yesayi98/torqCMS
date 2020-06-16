@@ -35,11 +35,57 @@ class checkoutController extends Controller
     }
     $deliveryPrice = $this->__get('Core')->getItem('deliveryPrice')['content'];
 
+    // get session bonus
+    $bonus = Container()->getSession('bonus');
+
+    // get bonus discount
+    if (!empty($bonus)) {
+      $bonusDiscount = $this->__get('Core')->getItem('bonus')['content'];
+      // calculating bonus
+      $bonusDiscountedPrice = intval($totalPrice) * intval($bonusDiscount)/100;
+      // check if bonus can be did
+      $result = $this->checkIfBonusCanBe($bonusDiscountedPrice);
+
+      if ($result) {
+        Container()->setSession('bonus', $bonusDiscountedPrice);
+        $this->View()->setMessage('success', 'bonus');
+        $this->View()->setAssign('bonusPrice', $bonusDiscountedPrice);
+      }else{
+        $this->View()->setMessage('error', 'emptybonus');
+      }
+    }
+
     $this->View()->setAssign('Articles.orderItems', $products);
     $this->View()->setAssign('totalPrice', $totalPrice);
     $this->View()->setAssign('deliveryPrice', $deliveryPrice);
     $this->View()->setAssign('title', $this->View()->translating('checkout'));
 
+  }
+
+
+  /**
+  *@param integer $bonusDiscountedPrice
+  *@return bool
+  */
+  private function checkIfBonusCanBe($bonusDiscountedPrice = 0)
+  {
+    (float) $bonusDiscountedPrice;
+    // get current user bonus from session or cookie
+    $user = Container()->getCurrentUser();
+    $bonus = (float) $user['attributes']['bonus'];
+
+    // check possibility give bonus
+    if ($bonus - $bonusDiscountedPrice >= 0) {
+      $user['attributes']['bonus'] = $bonus - $bonusDiscountedPrice;
+      // update user
+      $query = $this->__get('Users')->updateUser($user);
+      if ($query) {
+        Container()->updateSessionUser();
+        return true;
+      }
+    }
+
+    return false;
   }
 
   /**
@@ -52,7 +98,16 @@ class checkoutController extends Controller
     $request = $this->getRequest()->post;
     $spec_id = $request['specific_id'];
 
-    $userModel = $this->__get('Users');
+    // get current user
+    $user = Container()->getCurrentUser();
+    // checking if valid user
+    if ($spec_id === $user['specific_id']) {
+      Container()->setSession('bonus', 1);
+    }else{
+      $this->View()->setMessage('error', 'bonusUser');
+    }
+
+    Router::redirect('checkout');
   }
 
   /**
@@ -80,8 +135,6 @@ class checkoutController extends Controller
 
       Router::redirect('basket');
     }
-
-
 
     $products;
     $totalPrice = 0;
@@ -115,11 +168,15 @@ class checkoutController extends Controller
       $result = $addressModel->setAddress($address);
       $address['id'] = Connection()->getInsertedId();
     }
+    // get session bonus
+    $bonus = Container()->getSession('bonus');
 
     $order['count_product'] = count($products);
     $order['product_total'] = $totalPrice;
-    $order['delivery_price'] = $request['shipping'];
-    $order['total_price'] = !empty($request['checkoutTotal'])?$request['checkoutTotal']:floatval($totalPrice)+floatval($request['shipping']);
+    $order['delivery_price'] = isset($request['shipping'])?$request['shipping']:$this->__get('Core')->getItem('deliveryPrice')['content'];
+    $order['total_price'] = floatval($order['product_total'])+floatval($order['delivery_price']);
+    $order['bonus_price'] = isset($bonus)?intval($bonus):0;
+    $order['total_price'] = $order['total_price'] - $order['bonus_price'];
     $order['payment_method'] = !empty($request['paymentmethod'])?$request['paymentmethod']:1;
     $order['user_id'] = $user['id'];
     $order['address_id'] = $address['id'];
@@ -144,7 +201,6 @@ class checkoutController extends Controller
       Router::redirect('checkout/success');
       return;
     }
-
     Router::redirect('checkout/error');
     return;
 
@@ -153,22 +209,22 @@ class checkoutController extends Controller
   public function success()
   {
     $order_id = $this->View()->getSession('order_id');
+    if (empty($order_id)) {
+      Router::redirect('');
+    }
     $order = $this->__get('Orders')->getOrder($order_id);
     $this->View()->setSession('order_id', '');
+    $this->View()->setSession('bonus', '');
 
     $basketmodel = $this->__get('Basket');
     $basketmodel->deleteItemsBySession();
     $this->View()->setAssign('order', $order);
-    if ($this->getRequest()->request['EDP_BILL_NO']) {
-      $order_id = $this->getRequest()->request['EDP_BILL_NO'];
-
-      $sql = "UPDATE orders SET order_status = 2 WHERE id ='$order_id'";
-      Connection()->set($sql);
-    }
   }
 
   public function error()
   {
+    var_dump(Container()->getSession('message'));
+    $this->View()->setSession('bonus', '');
   }
 
   private function setOrderDetails($products, $order_id, $firstOrder = 0)

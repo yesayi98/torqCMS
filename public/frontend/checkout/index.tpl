@@ -107,9 +107,9 @@
                                         <td>{$totalPrice} {$currentCur.symbol}</td>
                                     </tr>
 
-                                    <tr class='d-none'>
+                                    <tr {if !$bonusPrice}class='d-none'{/if}>
                                         <th>{translator selector="discounted"}</th>
-                                        <td data-discounted='true'><strong><span data-total='true'>{$totalPrice + $deliveryPrice} </span>{$currentCur.symbol}</strong></td>
+                                        <td><strong><span data-total='true'>{$bonusPrice} </span>{$currentCur.symbol}</strong></td>
                                     </tr>
 
                                     <tr>
@@ -119,7 +119,7 @@
 
                                     <tr class="order_total">
                                         <th>{translator selector="totalPrice"}</th>
-                                        <td><strong><span data-total='true'>{$totalPrice + $deliveryPrice} </span>{$currentCur.symbol}</strong></td>
+                                        <td><strong><span data-total='true'>{$totalPrice + $deliveryPrice - $bonusPrice} </span>{$currentCur.symbol}</strong></td>
                                     </tr>
 
                                 </tfoot>
@@ -133,28 +133,6 @@
                                 <div id="method" class="collapse one" data-parent="#accordion">
                                     <div class="card-body1">
                                        <p>{translator selector="payinshippingaddress"}</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                           <div class="panel-default">
-                                <input id="payment_defult2" name="payment_method" type="radio" data-target="createp_account" />
-                                <label for="payment_defult2" data-toggle="collapse" data-target="#collapsedefult_2" aria-controls="collapsedefult_2">Idram <img src="{$BASE_FRONTEND}assets/img/icon/papyel.png" alt=""></label>
-
-                                <div id="collapsedefult_2" class="collapse one" data-parent="#accordion">
-                                    <div class="card-body1">
-                                       <p>Pay via PayPal; you can pay with your credit card if you don’t have a PayPal account.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="panel-default">
-                                <input id="payment_defult" name="payment_method" type="radio" data-target="createp_account" />
-                                <label for="payment_defult" data-toggle="collapse" data-target="#collapsedefult" aria-controls="collapsedefult">PayPal_2 <img src="assets/img/icon/papyel.png" alt=""></label>
-
-                                <div id="collapsedefult" class="collapse one" data-parent="#accordion">
-                                    <div class="card-body1">
-                                       <p>Pay via PayPal; you can pay with your credit card if you don’t have a PayPal account.</p>
                                     </div>
                                 </div>
                             </div>

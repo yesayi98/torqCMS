@@ -248,24 +248,25 @@
 				$sql .= ";";
 				$query = Connection()->set($sql);
 			}
+			if ($query) {
+				$sql = "UPDATE articles
+									 SET  sold = CASE ";
 
-			$sql = "UPDATE articles
-								 SET  sold = CASE ";
+									 foreach ($orderDetails as $key => $orderDetail) {
+										$article_id = $orderDetail['article_id'];
+										$quantity = $orderDetail['quantity'];
+										$sql .= " WHEN id = '$article_id' THEN sold + $quantity " ;
+									}
+				$sql .= "END, in_stock = CASE ";
+									foreach ($orderDetails as $key => $orderDetail) {
+									 $article_id = $orderDetail['article_id'];
+									 $quantity = $orderDetail['quantity'];
+									 $sql .= " WHEN id = '$article_id' THEN in_stock - $quantity " ;
+								 }
+				$sql .= "END WHERE id = '$article_id';";
 
-								 foreach ($orderDetails as $key => $orderDetail) {
-							 		$article_id = $orderDetail['article_id'];
-							 		$quantity = $orderDetail['quantity'];
-							 		$sql .= " WHEN id = '$article_id' THEN sold + $quantity " ;
-							 	}
-			$sql .= "END, in_stock = CASE ";
-								foreach ($orderDetails as $key => $orderDetail) {
-								 $article_id = $orderDetail['article_id'];
-								 $quantity = $orderDetail['quantity'];
-								 $sql .= " WHEN id = '$article_id' THEN in_stock - $quantity " ;
-							 }
-	    $sql .= "END WHERE id = '$article_id';";
-
-			$query = Connection()->set($sql);
+				$query = Connection()->set($sql);
+			}
 
 			return $query;
 		}

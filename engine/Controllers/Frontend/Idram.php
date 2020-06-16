@@ -79,6 +79,28 @@ class idramController extends Controller
 
     }
 
+    public function success()
+    {
+      if ($this->getRequest()->request['EDP_BILL_NO']) {
+        $order_id = $this->getRequest()->request['EDP_BILL_NO'];
+
+        $sql = "UPDATE orders SET order_status = 2 WHERE id ='$order_id'";
+        Connection()->set($sql);
+      }
+      Router::redirect('checkout/success');
+    }
+
+    public function error()
+    {
+      if ($this->getRequest()->request['EDP_BILL_NO']) {
+        $order_id = $this->getRequest()->request['EDP_BILL_NO'];
+
+        $sql = "UPDATE orders SET order_status = 3 WHERE id ='$order_id'";
+        Connection()->set($sql);
+      }
+      Router::redirect('checkout/error');
+    }
+
     public function debug()
     {
       var_dump($this->getRequest()->post);exit;

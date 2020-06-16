@@ -283,6 +283,31 @@ class Container
     return $number;
   }
 
+  // get current session user if it exist
+  public function getCurrentUser()
+  {
+    $user = $this->getSession('user');
+    if (empty($user)) {
+      $user = $this->getCookie('user');
+    }
+
+    return $user;
+  }
+
+  // update current session user if it exist
+  public function updateSessionUser()
+  {
+    $user = $this->getCurrentUser();
+    if (empty($user['id'])) {
+      return;
+    }
+
+    $userDB = $this->Users->getUser($user['id']);
+    unset($userDB['password']);
+
+    $this->setSession('user', $userDB);
+    $this->setCookie('user', $userDB);
+  }
 }
 
 ?>

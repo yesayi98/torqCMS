@@ -192,19 +192,4 @@
     </header>
     <!--header area end-->
     {/block}
-
     <!--  BIG MENU END -->
-		{if $message}
-		<div class="message-container">
-			<div class="container">
-				{foreach from=$message item=$messages key=type name=name}
-					{foreach $messages as $mess}
-						<div class="{$type} message" data-type="{$type}_{$mess}">
-							<?= translator($type.'_'.$mess)?>
-						</div>
-					{/foreach}
-				{/foreach}
-
-			</div>
-		</div>
-		{/if}

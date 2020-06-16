@@ -168,7 +168,32 @@
 
 
 
-
+{if $message}
+<div class="lobibox-notify-wrapper top right">
+  <div class="container">
+    {foreach from=$message item=$messages key=type name=name}
+      {foreach $messages as $mess}
+        <div class="lobibox-notify lobibox-notify-{$type} animated-fast fadeInDown notify-mini rounded" style="width: 400px;" data-type="{$type}_{$mess}">
+          {$selector = $type|cat:'_'|cat:$mess}
+          <div class="lobibox-notify-icon-wrapper">
+            <div class="lobibox-notify-icon">
+              <div>
+                <div class="icon-el">
+                  <i class="fa fa-check-circle"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="lobibox-notify-body">
+            <div class="lobibox-notify-msg" style="max-height: 32px;">{translator selector="$selector"}</div>
+          </div>
+          <span class="lobibox-close">×</span>
+        </div>
+      {/foreach}
+    {/foreach}
+  </div>
+</div>
+{/if}
 </body>
 
 </html>
