@@ -37,7 +37,7 @@
                             <div class="login_submit">
                                 <div class="pull-left">
                                   <label>
-                                    <a href="{url url='account/remindpassword'}">{translator selector="remind"}</a>
+                                    <a href="{url url='account/remindpassword'}">{translator selector="remaindpassword"}</a>
                                   </label>
                                 </div>
                                 <button type="submit">{translator selector="login"}</button>
@@ -84,7 +84,8 @@
                                 <div class="pull-left">
                                   <label>
                                     <input type="checkbox" name="agreedwithterms" checked>
-                                    <span>{translator selector="agreedwith"}</span>
+                                    <span>{translator selector="agreedwith"} </span>
+                                    <a href="{url url="paymannyer/"}">{translator selector="terms"}</a>
                                   </label>
                                 </div>
                                 <button type="submit">{translator selector="register"}</button>

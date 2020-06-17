@@ -160,7 +160,12 @@ function smarty_function_translator($params, $template)
   $translation = $view->translating($selector);
 
   if (preg_match('/{\$(.*?)}/', $translation, $match) == 1) {
-    $translation = str_replace('{$'.$match[1].'}', $view->getAssign($match[1]), $translation);
+    $components = explode('.', $match[1]);
+    $variable = $view->getAssign($components[0]);
+    if (isset($variable[$components[1]][$components[2]])) {
+      $variable = $variable[$components[1]][$components[2]];
+    }
+    $translation = str_replace('{$'.$match[1].'}', $variable, $translation);
   }
 
   return htmlspecialchars_decode($translation);

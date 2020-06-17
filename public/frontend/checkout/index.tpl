@@ -141,7 +141,7 @@
                               <div class="col-6 mt-20">
                                 <label>
                                   <input type="checkbox" name="terms" required>
-                                  <span>{translator selector="aggreedwith"}</span> <a href="{url url="paymannyer/"}">{translator selector="terms"}</a>
+                                  <span>{translator selector="agreedwith"}</span> <a href="{url url="paymannyer/"}">{translator selector="terms"}</a>
                                 </label>
                               </div>
                               <div class="col-6 order_button mt-20">

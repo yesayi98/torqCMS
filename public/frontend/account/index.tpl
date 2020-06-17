@@ -42,7 +42,7 @@
                         <div class="tab-pane fade show active" id="dashboard">
                             <h3>{translator selector='account'} </h3>
                             <p>{translator selector='accountText'}</p>
-                            <h5 class="my-account-id">{translator selector='youraccountid'} - <span>{$user.specific_id}</span></h5>
+                            <h5 class="my-account-id">{translator selector='specific_id'} - <span>{$user.specific_id}</span></h5>
                             <h6 class="my-account-bon">{translator selector='youraccountbonuses'}</h6>
                         </div>
 

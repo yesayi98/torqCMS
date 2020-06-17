@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-16 17:38:47
+/* Smarty version 3.1.34-dev-7, created on 2020-06-17 17:14:06
   from 'C:\Users\User\OSPanel\domains\torq\public\frontend\checkout\index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ee8d9775c6549_64096863',
+  'unifunc' => 'content_5eea252e9c0b58_98413925',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '14641551fc1527db71506738badda3e01595550b' => 
     array (
       0 => 'C:\\Users\\User\\OSPanel\\domains\\torq\\public\\frontend\\checkout\\index.tpl',
-      1 => 1592318322,
+      1 => 1592400433,
       2 => 'file',
     ),
   ),
@@ -20,29 +20,29 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ee8d9775c6549_64096863 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5eea252e9c0b58_98413925 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_14833347145ee8d97758dcd1_70667144', 'breadcrumbs_area');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_18874268085eea252e7b49d2_90720868', 'breadcrumbs_area');
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_14065864275ee8d977592f03_86884924', "pageContent");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_6145068575eea252e7ba6e6_55902899', "pageContent");
 ?>
 
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, "frontend/index/index.tpl");
 }
 /* {block 'breadcrumbs_area'} */
-class Block_14833347145ee8d97758dcd1_70667144 extends Smarty_Internal_Block
+class Block_18874268085eea252e7b49d2_90720868 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'breadcrumbs_area' => 
   array (
-    0 => 'Block_14833347145ee8d97758dcd1_70667144',
+    0 => 'Block_18874268085eea252e7b49d2_90720868',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -67,12 +67,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block 'breadcrumbs_area'} */
 /* {block "pageContent"} */
-class Block_14065864275ee8d977592f03_86884924 extends Smarty_Internal_Block
+class Block_6145068575eea252e7ba6e6_55902899 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'pageContent' => 
   array (
-    0 => 'Block_14065864275ee8d977592f03_86884924',
+    0 => 'Block_6145068575eea252e7ba6e6_55902899',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -253,7 +253,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                               <div class="col-6 mt-20">
                                 <label>
                                   <input type="checkbox" name="terms" required>
-                                  <span><?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['translator'][0], array( array('selector'=>"aggreedwith"),$_smarty_tpl ) );?>
+                                  <span><?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['translator'][0], array( array('selector'=>"agreedwith"),$_smarty_tpl ) );?>
 </span> <a href="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['url'][0], array( array('url'=>"paymannyer/"),$_smarty_tpl ) );?>
 "><?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['translator'][0], array( array('selector'=>"terms"),$_smarty_tpl ) );?>
 </a>

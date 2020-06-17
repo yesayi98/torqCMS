@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-16 15:55:25
+/* Smarty version 3.1.34-dev-7, created on 2020-06-17 16:27:39
   from 'C:\Users\User\OSPanel\domains\torq\public\frontend\account\login.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ee8c13d6990d6_04150281',
+  'unifunc' => 'content_5eea1a4befbc11_74784075',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7bd6514d43d895849cca1e08ce84e9d057d9a489' => 
     array (
       0 => 'C:\\Users\\User\\OSPanel\\domains\\torq\\public\\frontend\\account\\login.tpl',
-      1 => 1590483374,
+      1 => 1592400262,
       2 => 'file',
     ),
   ),
@@ -20,28 +20,28 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ee8c13d6990d6_04150281 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5eea1a4befbc11_74784075 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_17111116725ee8c13d684af5_24184153', 'breadcrumbs_area');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_18030636595eea1a4bee6de9_03712150', 'breadcrumbs_area');
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_16256332525ee8c13d68b940_92709901', "pageContent");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1230979225eea1a4beeeb82_63840653', "pageContent");
 ?>
 
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, 'frontend/index/index.tpl');
 }
 /* {block 'breadcrumbs_area'} */
-class Block_17111116725ee8c13d684af5_24184153 extends Smarty_Internal_Block
+class Block_18030636595eea1a4bee6de9_03712150 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'breadcrumbs_area' => 
   array (
-    0 => 'Block_17111116725ee8c13d684af5_24184153',
+    0 => 'Block_18030636595eea1a4bee6de9_03712150',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -71,12 +71,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block 'breadcrumbs_area'} */
 /* {block "pageContent"} */
-class Block_16256332525ee8c13d68b940_92709901 extends Smarty_Internal_Block
+class Block_1230979225eea1a4beeeb82_63840653 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'pageContent' => 
   array (
-    0 => 'Block_16256332525ee8c13d68b940_92709901',
+    0 => 'Block_1230979225eea1a4beeeb82_63840653',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -107,7 +107,7 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
                                 <div class="pull-left">
                                   <label>
                                     <a href="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['url'][0], array( array('url'=>'account/remindpassword'),$_smarty_tpl ) );?>
-"><?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['translator'][0], array( array('selector'=>"remind"),$_smarty_tpl ) );?>
+"><?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['translator'][0], array( array('selector'=>"remaindpassword"),$_smarty_tpl ) );?>
 </a>
                                   </label>
                                 </div>
@@ -164,7 +164,10 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
                                   <label>
                                     <input type="checkbox" name="agreedwithterms" checked>
                                     <span><?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['translator'][0], array( array('selector'=>"agreedwith"),$_smarty_tpl ) );?>
-</span>
+ </span>
+                                    <a href="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['url'][0], array( array('url'=>"paymannyer/"),$_smarty_tpl ) );?>
+"><?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['translator'][0], array( array('selector'=>"terms"),$_smarty_tpl ) );?>
+</a>
                                   </label>
                                 </div>
                                 <button type="submit"><?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['translator'][0], array( array('selector'=>"register"),$_smarty_tpl ) );?>
