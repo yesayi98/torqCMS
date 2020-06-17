@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-17 11:17:20
+/* Smarty version 3.1.34-dev-7, created on 2020-06-17 13:37:04
   from 'C:\Users\User\OSPanel\domains\torq\public\frontend\index\canvas-menu.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ee9d190bc3807_56505216',
+  'unifunc' => 'content_5ee9f250b69ff2_63643976',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '8a2e2d44fae8999cb7968eb63d3228b669f6bde3' => 
     array (
       0 => 'C:\\Users\\User\\OSPanel\\domains\\torq\\public\\frontend\\index\\canvas-menu.tpl',
-      1 => 1592381839,
+      1 => 1592390221,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ee9d190bc3807_56505216 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ee9f250b69ff2_63643976 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 ?>
@@ -33,7 +33,7 @@ $_smarty_tpl->inheritance->init($_smarty_tpl, false);
                         <a href="javascript:void(0)"><i class="icon-x"></i></a>
                     </div>
                     <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_15912556615ee9d190ba4262_16248708', "language_currency_canvas");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_4556339675ee9f250b43ac7_61493859', "language_currency_canvas");
 ?>
 
                     <div class="header_social text-right">
@@ -43,7 +43,7 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_15912556615ee9d190
                         </ul>
                     </div>
                     <div class="search_container">
-                       <form action="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['url'][0], array( array('url'=>''),$_smarty_tpl ) );?>
+                       <form action="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['url'][0], array( array('url'=>"category/search"),$_smarty_tpl ) );?>
 ">
                             <div class="search_box">
                                 <input placeholder="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['translator'][0], array( array('selector'=>"search"),$_smarty_tpl ) );?>
@@ -80,7 +80,7 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_15912556615ee9d190
                     <div class="call-support">
                         <p><a href="tel:<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['translator'][0], array( array('selector'=>'phoneNumber'),$_smarty_tpl ) );?>
 "><?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['translator'][0], array( array('selector'=>'phoneNumber'),$_smarty_tpl ) );?>
-</a> <?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['translator'][0], array( array('selector'=>'ifquetions'),$_smarty_tpl ) );?>
+</a> <?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['translator'][0], array( array('selector'=>'ifquestions'),$_smarty_tpl ) );?>
 </p>
                     </div>
 
@@ -110,7 +110,8 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                         </ul>
                     </div>
                     <div class="offcanvas_footer">
-                        <span><a href="index.html#"><i class="fa fa-envelope-o"></i> info@yourdomain.com</a></span>
+                        <span><a href="index.html#"><i class="fa fa-envelope-o"></i> <?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['translator'][0], array( array('selector'=>'emailAddress'),$_smarty_tpl ) );?>
+</a></span>
                     </div>
                 </div>
             </div>
@@ -119,12 +120,12 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
   </div>
 <?php }
 /* {block "language_currency_canvas"} */
-class Block_15912556615ee9d190ba4262_16248708 extends Smarty_Internal_Block
+class Block_4556339675ee9f250b43ac7_61493859 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'language_currency_canvas' => 
   array (
-    0 => 'Block_15912556615ee9d190ba4262_16248708',
+    0 => 'Block_4556339675ee9f250b43ac7_61493859',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {

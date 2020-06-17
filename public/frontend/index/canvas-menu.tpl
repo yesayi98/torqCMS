@@ -33,7 +33,7 @@
                         </ul>
                     </div>
                     <div class="search_container">
-                       <form action="{url url=""}">
+                       <form action="{url url="category/search"}">
                             <div class="search_box">
                                 <input placeholder="{translator selector="search"}" name="search" type="text">
                                 <button type="submit"><span class="lnr lnr-magnifier"></span></button>
@@ -58,7 +58,7 @@
                         </div>
                     </div>
                     <div class="call-support">
-                        <p><a href="tel:{translator selector='phoneNumber'}">{translator selector='phoneNumber'}</a> {translator selector='ifquetions'}</p>
+                        <p><a href="tel:{translator selector='phoneNumber'}">{translator selector='phoneNumber'}</a> {translator selector='ifquestions'}</p>
                     </div>
 
                     <div id="menu" class="text-left ">
@@ -74,7 +74,7 @@
                         </ul>
                     </div>
                     <div class="offcanvas_footer">
-                        <span><a href="index.html#"><i class="fa fa-envelope-o"></i> info@yourdomain.com</a></span>
+                        <span><a href="index.html#"><i class="fa fa-envelope-o"></i> {translator selector='emailAddress'}</a></span>
                     </div>
                 </div>
             </div>

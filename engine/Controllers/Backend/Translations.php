@@ -32,12 +32,16 @@ class translationsController extends BackendController
     $selector = $request['selector'];
     $translations = $request['translate'];
     $success = true;
+    // set translation by language
     foreach ($translations as $lang => $translation) {
       $key = array_search($lang, array_column($languages, 'short_code'));
       if ($languages[$key]["short_code"] == $lang) {
         $langID = (int) $languages[$key]["id"];
       }else{
         $langID = 1;
+      }
+      if (empty($translation)) {
+        $translation = '';
       }
       $result = $model->saveTranslation($translation, $selector, $langID);
       if (!$result) {

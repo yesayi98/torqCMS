@@ -53,7 +53,7 @@
     {block name='phone-area'}
     <div class="col-lg-3">
         <div class="call-support">
-            <p><a href="tel:{translator selector='phoneNumber'}">{translator selector='phoneNumber'}</a> {translator selector='ifquetions'}</p>
+            <p><a href="tel:{translator selector='phoneNumber'}">{translator selector='phoneNumber'}</a> {translator selector='ifquestions'}</p>
         </div>
     </div>
     {/block}

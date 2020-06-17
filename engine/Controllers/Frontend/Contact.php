@@ -25,9 +25,7 @@ class contactController extends Controller
   {
     $request = $this->getRequest()->request;
 
-    if (isset($request['email']))  {
-
-		$request = $this->getRequest()->post;
+    if (!empty($request['email']) && !empty($request['name']) && !empty($request['message']))  {
 		$to = $this->View()->translating('emailAddress');
 		$from = $request['email'];
 		$message = $request['message'];
@@ -41,7 +39,6 @@ class contactController extends Controller
 		</head>
 		<body>
 		<p>".$message."</p>
-		<p><b>Contact phone :".$phone."</b></p>
 		<p><b>Contact email :".$from."</b></p>
 		</body>
 		</html>
@@ -55,11 +52,11 @@ class contactController extends Controller
 		mail($to,$subject,$message,$headers);
 
     }else{
-    	$this->View()->setMessage('error', 'notMessage');
+    	$this->View()->setMessage('error', 'contactFields');
       Router::redirect('contact');
     }
-    	$this->View()->setMessage('success', 'send');
-      Router::redirect('contact');
+  	$this->View()->setMessage('success', 'send');
+    Router::redirect('contact');
   }
 
 

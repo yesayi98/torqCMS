@@ -131,13 +131,13 @@
                 <tbody>
                     <tr>
                         <td>ID</td>
-                        <td><input type="text" name="selector" class="form-control" value=""></td>
+                        <td><input type="text" name="selector" form='newTranslation' class="form-control" value=""></td>
                         {foreach $languages as $language}
                         {$lang = $language.short_code}
                         <td>
                           <div class="form-group row">
                             <div class="col-sm-12" >
-                              <textarea name="tranaslate[{$lang}]" form='newTranslation' class="form-control" rows=5></textarea>
+                              <textarea name="translate[{$lang}]" form='newTranslation' class="form-control" rows=5></textarea>
                             </div>
                           </div>
                         </td>
