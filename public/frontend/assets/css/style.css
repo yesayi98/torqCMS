@@ -5269,7 +5269,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     margin-bottom: 50px;
   }
 }
-@media only screen and (max-width: 575px) {
+@media only screen and (max-width: 991px) {
   .widgets_container {
     text-align: center;
   }
@@ -11606,4 +11606,12 @@ input[type=number]::-webkit-inner-spin-button {
 }
 .shop_wrapper .product-item.box-minimal .product-img {
     height: 190px;
+}
+@media screen and (max-width: 991px){
+  .hidden-before-lg{
+    display: none;
+  }
+}
+.filter-opener.shop_toolbar_wrapper {
+    padding: 5px 10px;
 }

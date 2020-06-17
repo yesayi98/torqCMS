@@ -5,7 +5,7 @@
         {continue}
       {/if}
         <li class="{if $level < 2}menu_item_children{/if}">
-          <a href="{url url="category?c="|cat:$entry.id}">
+          <a href="{url url="category?c="|cat:$entry.id}" class="{if $entry.subCategories}has-children{/if}">
             <span>{$entry.name}</span>
             {if $entry.subCategories && $level == 0}
               <i class="fa fa-angle-right"></i>

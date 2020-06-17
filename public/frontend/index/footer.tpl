@@ -7,7 +7,7 @@
       <div class="footer_top">
           <div class="container">
               <div class="row">
-                  <div class="col-lg-4 col-md-12 col-sm-7">
+                  <div class="col-lg-4 col-md-12">
                       <div class="widgets_container contact_us">
                          <div class="footer_logo">
                              <a href="{url url=''}"><img src="{$footerLogo.image.path}" alt=""></a>
@@ -18,7 +18,7 @@
                           <p><span>{translator selector="phone"}:</span> <a href="tel:{translator selector="phoneNumber"}">{translator selector="phoneNumber"}</a> </p>
                       </div>
                   </div>
-                  <div class="col-lg-с1 offset-1 col-md-3 col-sm-5">
+                  <div class="col-lg-с1 offset-1 col-md-3">
                       <div class="widgets_container widget_menu">
                           <h3>{translator selector="link"}</h3>
                           <div class="footer_menu">
@@ -37,7 +37,7 @@
                           </div>
                       </div>
                   </div>
-                  <div class="col-lg-4 col-md-6 col-sm-8">
+                  <div class="col-lg-4 col-md-6">
                       <div class="widgets_container widget_newsletter">
                           <h3>{translator selector='getNews'}</h3>
                           <p class="footer_desc">{translator selector='newsdesc'}</p>

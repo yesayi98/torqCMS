@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-15 09:50:43
+/* Smarty version 3.1.34-dev-7, created on 2020-06-17 15:23:48
   from 'C:\Users\User\OSPanel\domains\torq\public\frontend\category\filter.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ee71a43069946_80535869',
+  'unifunc' => 'content_5eea0b54c3a990_11486937',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ba4bd5c5863aa8dba33e161aa131520cb862e98e' => 
     array (
       0 => 'C:\\Users\\User\\OSPanel\\domains\\torq\\public\\frontend\\category\\filter.tpl',
-      1 => 1590238458,
+      1 => 1592396621,
       2 => 'file',
     ),
   ),
@@ -20,13 +20,13 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ee71a43069946_80535869 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5eea0b54c3a990_11486937 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
   'categories' => 
   array (
     'compiled_filepath' => 'C:\\Users\\User\\OSPanel\\domains\\torq\\cache\\template_c\\ba4bd5c5863aa8dba33e161aa131520cb862e98e_0.file.filter.tpl.php',
     'uid' => 'ba4bd5c5863aa8dba33e161aa131520cb862e98e',
-    'call_name' => 'smarty_template_function_categories_3147463585ee71a4300e7a1_23233610',
+    'call_name' => 'smarty_template_function_categories_10350049435eea0b54beb822_96528473',
   ),
 ));
 ?>
@@ -61,38 +61,24 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
 ">
              </form>
          </div>
-        <!--  <div class="widget_list widget_color">
-             <h3>Select By Color</h3>
-             <ul>
-                 <li>
-                     <a href="shop.html#">Black  <span>(6)</span></a>
-                 </li>
-                 <li>
-                     <a href="shop.html#"> Blue <span>(8)</span></a>
-                 </li>
-                 <li>
-                     <a href="shop.html#">Brown <span>(10)</span></a>
-                 </li>
-                 <li>
-                     <a href="shop.html#"> Green <span>(6)</span></a>
-                 </li>
-                 <li>
-                     <a href="shop.html#">Pink <span>(4)</span></a>
-                 </li>
-
-             </ul>
-         </div> -->
-
+        
          <div class="widget_list tags_widget">
              <h3>Ամենափնտրվողները</h3>
              <div class="tag_cloud">
-                 <a href="shop.html#">Բանան</a>
-                 <a href="shop.html#">Միս</a>
-                 <a href="shop.html#">խՆձոր</a>
-                 <a href="shop.html#">խոզի չալաղաջ</a>
-                 <a href="shop.html#">կաթ</a>
-                 <a href="shop.html#">Մանդարին</a>
-                 <a href="shop.html#">Կիվի</a>
+                 <a href="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['url'][0], array( array('url'=>'category/search?search=բանան'),$_smarty_tpl ) );?>
+">Բանան</a>
+                 <a href="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['url'][0], array( array('url'=>'category/search?search=միս'),$_smarty_tpl ) );?>
+">Միս</a>
+                 <a href="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['url'][0], array( array('url'=>'category/search?search=խնձոր'),$_smarty_tpl ) );?>
+">խՆձոր</a>
+                 <a href="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['url'][0], array( array('url'=>'category/search?search=չալաղաջ'),$_smarty_tpl ) );?>
+">խոզի չալաղաջ</a>
+                 <a href="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['url'][0], array( array('url'=>'category/search?search=կաթ'),$_smarty_tpl ) );?>
+">կաթ</a>
+                 <a href="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['url'][0], array( array('url'=>'category/search?search=մանդարին'),$_smarty_tpl ) );?>
+">Մանդարին</a>
+                 <a href="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['url'][0], array( array('url'=>'category/search?search=կիվի'),$_smarty_tpl ) );?>
+">Կիվի</a>
              </div>
          </div>
          <div class="widget_list banner_widget">
@@ -104,9 +90,9 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
  </aside>
  <!--sidebar widget end-->
 <?php }
-/* smarty_template_function_categories_3147463585ee71a4300e7a1_23233610 */
-if (!function_exists('smarty_template_function_categories_3147463585ee71a4300e7a1_23233610')) {
-function smarty_template_function_categories_3147463585ee71a4300e7a1_23233610(Smarty_Internal_Template $_smarty_tpl,$params) {
+/* smarty_template_function_categories_10350049435eea0b54beb822_96528473 */
+if (!function_exists('smarty_template_function_categories_10350049435eea0b54beb822_96528473')) {
+function smarty_template_function_categories_10350049435eea0b54beb822_96528473(Smarty_Internal_Template $_smarty_tpl,$params) {
 $params = array_merge(array('level'=>0), $params);
 foreach ($params as $key => $value) {
 $_smarty_tpl->tpl_vars[$key] = new Smarty_Variable($value, $_smarty_tpl->isRenderingCache);
@@ -149,5 +135,5 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
     </ul>
 <?php
 }}
-/*/ smarty_template_function_categories_3147463585ee71a4300e7a1_23233610 */
+/*/ smarty_template_function_categories_10350049435eea0b54beb822_96528473 */
 }

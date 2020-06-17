@@ -42,7 +42,7 @@
                  <input type="hidden" name="c" value="{$category.id}">
              </form>
          </div>
-        <!--  <div class="widget_list widget_color">
+        {* <!--  <div class="widget_list widget_color">
              <h3>Select By Color</h3>
              <ul>
                  <li>
@@ -62,18 +62,18 @@
                  </li>
 
              </ul>
-         </div> -->
+         </div> --> *}
 
          <div class="widget_list tags_widget">
              <h3>Ամենափնտրվողները</h3>
              <div class="tag_cloud">
-                 <a href="shop.html#">Բանան</a>
-                 <a href="shop.html#">Միս</a>
-                 <a href="shop.html#">խՆձոր</a>
-                 <a href="shop.html#">խոզի չալաղաջ</a>
-                 <a href="shop.html#">կաթ</a>
-                 <a href="shop.html#">Մանդարին</a>
-                 <a href="shop.html#">Կիվի</a>
+                 <a href="{url url='category/search?search=բանան'}">Բանան</a>
+                 <a href="{url url='category/search?search=միս'}">Միս</a>
+                 <a href="{url url='category/search?search=խնձոր'}">խՆձոր</a>
+                 <a href="{url url='category/search?search=չալաղաջ'}">խոզի չալաղաջ</a>
+                 <a href="{url url='category/search?search=կաթ'}">կաթ</a>
+                 <a href="{url url='category/search?search=մանդարին'}">Մանդարին</a>
+                 <a href="{url url='category/search?search=կիվի'}">Կիվի</a>
              </div>
          </div>
          <div class="widget_list banner_widget">

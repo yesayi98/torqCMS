@@ -707,7 +707,7 @@
 
     /*---Category menu---*/
     function categorySubMenuToggle(){
-        $('.categories_menu_toggle li.menu_item_children > a').on('click', function(){
+        $('.categories_menu_toggle li.menu_item_children > a.has-children').on('click', function(){
         if($(window).width() < 991){
             $(this).removeAttr('href');
             var element = $(this).parent('li');
@@ -848,6 +848,11 @@
         	$this.toggleClass('menu-open');
         }
     });
+
+    // filter opener
+    $('.filter-opener-button').click(function () {
+      $(".filter-container").slideToggle();
+    })
 
     // // if images not loaded
     // fixBrokenImages = function( url ){
