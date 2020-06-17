@@ -6237,6 +6237,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .shop_wrapper {
   margin-bottom: 10px;
 }
+
 @media only screen and (max-width: 767px) {
   .shop_wrapper {
     margin-bottom: 30px;
@@ -11602,4 +11603,7 @@ input[type=number]::-webkit-inner-spin-button {
   text-align: right;
   margin-top: 10px;
   margin-right: 3px;
+}
+.shop_wrapper .product-item.box-minimal .product-img {
+    height: 190px;
 }
