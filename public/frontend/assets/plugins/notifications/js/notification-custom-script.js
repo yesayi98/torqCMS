@@ -82,7 +82,7 @@
 		    });
 		  }
 
-        function round_warning_noti(){
+      function round_warning_noti(msg){
 			Lobibox.notify('warning', {
 		    pauseDelayOnHover: true,
 		    size: 'mini',
@@ -91,7 +91,7 @@
 		    icon: 'fa fa-exclamation-circle',
             continueDelayOnInactiveTab: false,
 		    position: 'top right',
-		    msg: 'Lorem ipsum dolor sit amet hears farmer indemnity inherent.'
+		    msg: msg?msg:'warning',
 		    });
 		  }
 

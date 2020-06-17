@@ -45,6 +45,23 @@ abstract class Controller
     return Container()->set($key, $value);
   }
 
+
+  /* pre dispatch method calling before calling controller action */
+  public function preDispatch()
+  {
+    // there are will be written subscribers from plugins
+  }
+
+  /* post dispatch method calling after writing content in the view */
+  public function postDispatch()
+  {
+    // get Container
+    // destroying session messages
+    Container()->setSession('message', []);
+
+    // there are will be written subscribers from plugins
+  }
+
 }
 
  ?>

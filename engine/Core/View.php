@@ -52,6 +52,7 @@ class View extends Container
 
 
   /**
+  * @param string $type
   * @param mixed $message
   */
   public function setMessage($type = null, $message = null)

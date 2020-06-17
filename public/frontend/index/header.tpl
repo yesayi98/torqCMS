@@ -114,14 +114,14 @@
                 <div class="container">
                     <div class="row align-items-center">
                       {block name='header-logo'}
-                      <div class="col-lg-2">
+                      <div class="col-lg-2 col-6">
                           <div class="logo">
                               <a href="{url url=''}"><img src="{$logo.image.path}" alt=""></a>
                           </div>
                       </div>
                       {/block}
                       {block name='header-middle-right'}
-                      <div class="col-lg-10">
+                      <div class="col-lg-10 col-6">
                           <div class="header_right_info">
                             {block name='header-search-bar'}
                             <div class="search_container">
@@ -145,7 +145,7 @@
                                 <div class="header_account_list register">
                                   {if $user}
                                     <ul>
-                                        <li><a href="{url url='account'}">{$user.name} {$user.lastname}</a></li>
+                                        <li><a href="{url url='account'}">{$user.name}</a></li>
                                         <li><span>/</span></li>
                                         <li><a href="{url url='account/logout'}">{translator selector='logout'}</a></li>
                                     </ul>
@@ -169,7 +169,10 @@
                                     </div>
                                     {/block}
                                     <!--mini cart end-->
-                               </div>
+                                </div>
+                                <div class="header_account_list canvas_open">
+                                    <a href="javascript:void(0)"><i class="icon-menu"></i></a>
+                                </div>
                             </div>
                             {/block}
                           </div>

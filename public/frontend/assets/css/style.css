@@ -501,7 +501,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   background: #fff;
   z-index: 99;
   top: 0;
-  height: 100vh;
+  height: 100%;
   transition: .5s;
   left: 0;
   margin-left: -300px;
@@ -609,10 +609,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 .canvas_open {
-  position: absolute;
-  right: 17px;
-  top: 26px;
-  z-index: 9;
+  margin-top: -5px;
 }
 @media only screen and (max-width: 767px) {
   .canvas_open {
@@ -1194,10 +1191,16 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     margin-right: 17px;
   }
 }
+@media only screen and (min-width: 992px) {
+  .canvas_open {
+    display: none;
+  }
+}
 .header_account_list > a {
   font-size: 26px;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 .header_account_list > a:hover {
   color: #40A944;
@@ -1253,15 +1256,13 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   justify-content: flex-end;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-  .header_account_area {
+  .header_account_area .register{
     display: none;
-    margin-bottom: 20px;
   }
 }
 @media only screen and (max-width: 767px) {
-  .header_account_area {
+  .header_account_area .register{
     display: none;
-    margin-bottom: 20px;
   }
 }
 
@@ -11589,4 +11590,10 @@ input[type=number]::-webkit-inner-spin-button {
 }
 .hidden {
   display: none !important;
+}
+.login-register ul{
+  display: flex;
+}
+.login-register ul li{
+  margin-right: 5px
 }

@@ -7,7 +7,8 @@ class contactController extends Controller
 
   public function index()
   {
-    // code...
+    $location = $this->__get('Core')->getItem('location')['content'];
+    $this->View()->setAssign('location', $location);
   }
 
   public function newsletter()
@@ -22,8 +23,9 @@ class contactController extends Controller
 
   public function send()
   {
+    $request = $this->getRequest()->request;
 
-    if (isset($_REQUEST['email']))  {
+    if (isset($request['email']))  {
 
 		$request = $this->getRequest()->post;
 		$to = $this->View()->translating('emailAddress');
@@ -53,11 +55,11 @@ class contactController extends Controller
 		mail($to,$subject,$message,$headers);
 
     }else{
-    	$this->setMessage('error', 'notMessage');
-    	redirect($_SERVER['HTTP_REFERER']);
+    	$this->View()->setMessage('error', 'notMessage');
+      Router::redirect('contact');
     }
     	$this->View()->setMessage('success', 'send');
-    	redirect($_SERVER['HTTP_REFERER']);
+      Router::redirect('contact');
   }
 
 

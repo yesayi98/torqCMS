@@ -177,7 +177,7 @@ class checkoutController extends Controller
     $order['total_price'] = floatval($order['product_total'])+floatval($order['delivery_price']);
     $order['bonus_price'] = isset($bonus)?intval($bonus):0;
     $order['total_price'] = $order['total_price'] - $order['bonus_price'];
-    $order['payment_method'] = !empty($request['paymentmethod'])?$request['paymentmethod']:1;
+    $order['payment_method'] = !empty($request['payment_method'])?$request['payment_method']:1;
     $order['user_id'] = $user['id'];
     $order['address_id'] = $address['id'];
     $order['order_status'] = 1;
@@ -196,10 +196,13 @@ class checkoutController extends Controller
     if($order['payment_method'] == '3'){
       Router::redirect('ameria');
     }
-
-    if ($result) {
-      Router::redirect('checkout/success');
-      return;
+    if ($order['payment_method'] == '1') {
+      if ($result) {
+        Router::redirect('checkout/success');
+        return;
+      }else{
+        Router::redirect('checkout/error', 'not valid payment method', 'error');
+      }
     }
     Router::redirect('checkout/error');
     return;
@@ -223,7 +226,6 @@ class checkoutController extends Controller
 
   public function error()
   {
-    var_dump(Container()->getSession('message'));
     $this->View()->setSession('bonus', '');
   }
 

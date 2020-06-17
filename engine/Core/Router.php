@@ -70,12 +70,16 @@
 
       $controllerClassName = $controller['name'];
       $controller = new $controllerClassName(self::$_VIEW, self::post(), self::get(), self::request(), $routefile);
+      // calling pre dispatch actions
+      $controller->preDispatch();
 
+      // check if action exist and call that
       if (method_exists($controller, $action)) {
         $controller->{$action}();
       }else{
         trigger_error('Error: Could not call ' . $route['controller'] . '/' . $action . '!');exit;
       }
+
 
       $templateDir = DOCUMENT_ROOT.SEPARATOR.'public'.SEPARATOR;
       $smarty = new Smarty;
@@ -97,8 +101,9 @@
       }else{
         self::redirect('error');
       }
-
-      return $route;
+      
+      // calling post dispatch actions
+      $controller->postDispatch();
     }
 
     private static function setRouterParams($route){

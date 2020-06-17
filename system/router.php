@@ -7,7 +7,6 @@ require 'frontfunctions.php';
 $connection = $GLOBALS['connection'];
 $Container = new Container($connection);
 
-$routerParams = Router::start($_GET);
-
+Router::start($_GET);
 
 ?>

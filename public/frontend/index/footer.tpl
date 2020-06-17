@@ -32,7 +32,7 @@
                                 {/if}
                                   <li><a href="{url url='category?c='|cat:$menuitem.id}">{$menuitem.name}</a></li>
                                 {/foreach}
-                                <li><a href="{url url='contact'}">Կապ</a></li>
+                                <li><a href="{url url='contact'}">{translator selector='contact'}</a></li>
                               </ul>
                           </div>
                       </div>
@@ -169,31 +169,19 @@
 
 
 {if $message}
-<div class="lobibox-notify-wrapper top right">
-  <div class="container">
+<script type="text/javascript">
+  jQuery(document).ready(function($) {
     {foreach from=$message item=$messages key=type name=name}
       {foreach $messages as $mess}
-        <div class="lobibox-notify lobibox-notify-{$type} animated-fast fadeInDown notify-mini rounded" style="width: 400px;" data-type="{$type}_{$mess}">
-          {$selector = $type|cat:'_'|cat:$mess}
-          <div class="lobibox-notify-icon-wrapper">
-            <div class="lobibox-notify-icon">
-              <div>
-                <div class="icon-el">
-                  <i class="fa fa-check-circle"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="lobibox-notify-body">
-            <div class="lobibox-notify-msg" style="max-height: 32px;">{translator selector="$selector"}</div>
-          </div>
-          <span class="lobibox-close">×</span>
-        </div>
+        {$selector = $type|cat:'_'|cat:$mess}
+        round_{$type}_noti('{translator selector="$selector"}');
       {/foreach}
     {/foreach}
-  </div>
-</div>
+  });
+</script>
 {/if}
+
+
 </body>
 
 </html>
