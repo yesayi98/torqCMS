@@ -7,19 +7,18 @@ class accountController extends Controller
 
   public function index()
   {
-    if (!Container()->getSession('user')) {
+    if (!Container()->getCurrentUser()) {
       Router::redirect('account/register');
     }
 
-    $user = $this->__get('Users')->getUser(Container()->getSession('user')['id']);
+    $user = $this->__get('Users')->getUser(Container()->getCurrentUser()['id']);
     $_GET['limit'] = 10;
     $userOrders = $this->__get('Orders')->getOrdersByUserId($user['id']);
     // if ($user['confirmed'] != 1) {
     //   Router::redirect('account/confirmation');
     // }
     $this->View()->setAssign('user', $user);
-    $this->View()->setAssign('userOrders', $userOrders['data']);
-    $this->View()->setAssign('userOrderPagination', $userOrders['pagination']);
+    $this->View()->setAssign('orders', $userOrders);
     $this->View()->setAssign('title', $this->View()->translating('account'));
   }
 

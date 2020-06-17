@@ -34,7 +34,7 @@ class detailController extends Controller
 
   public function quickView()
   {
-    $this->route = 'includes/quickView';
+      $this->route = "frontend/detail/content";
 
     $requestCategoryId = $_SESSION['category'];
     $requestCategory = Container()->Categories()->getCategoryById($requestCategoryId);
