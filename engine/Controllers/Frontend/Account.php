@@ -14,9 +14,9 @@ class accountController extends Controller
     $user = $this->__get('Users')->getUser(Container()->getCurrentUser()['id']);
     $_GET['limit'] = 10;
     $userOrders = $this->__get('Orders')->getOrdersByUserId($user['id']);
-    // if ($user['confirmed'] != 1) {
-    //   Router::redirect('account/confirmation');
-    // }
+    if ($user['confirmed'] != 1) {
+      Router::redirect('account/confirmation');
+    }
     $this->View()->setAssign('user', $user);
     $this->View()->setAssign('orders', $userOrders);
     $this->View()->setAssign('title', $this->View()->translating('account'));
@@ -183,6 +183,43 @@ class accountController extends Controller
 
     // setting page post_title
     $this->View()->setAssign('title', $this->View()->translating('loginRegister'));
+  }
+
+  public function sendConfirmation()
+  {
+    // getting user from session
+    if (Container()->getCurrentUser()) {
+      $user = Container()->getCurrentUser();
+
+      // getting current language from front
+      $currentLang = $this->View()->getAssign('currentLang');
+      // getting View object (MVC - View)
+      $view = $this->View();
+
+      // creating mail
+      // get mailer
+      $mailer = new Mailer($view, $currentLang);
+      // get mail template
+      $mailer->createMailTemplate('email_confirmation');
+
+      // setting the mail data
+      // see in the templates table
+      $data = [];
+      $data['token'] = md5($user['email']);
+      $data['useremail'] = $user['email'];
+      $data['facebooklink'] = $view->translating('facebook');
+      $data['instagramlink'] = $view->translating('instagram');
+      // adding users confirmation field
+      $this->addConfirmation($data);
+
+      // setting template params
+      $mailer->setMailParams($data);
+      // sending the message
+      $mailer->send($user);
+      $this->View()->setMessage('success', 'sent');
+      //redirecting to an account page
+      Router::redirect('account');
+    }
   }
 
   // adding user confirmation

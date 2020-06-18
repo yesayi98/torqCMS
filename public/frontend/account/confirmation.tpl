@@ -10,6 +10,9 @@
               <div class="page-content mb-5">
                 <a href="{url url=''}" class="btn btn-primary btn-success">{translator selector='home'}</a>
               </div>
+              <div class="page-content mb-5">
+                <a href="{url url='account/sendConfirmation'}" class="btn btn-primary btn-outline-success">{translator selector='send_again'}</a>
+              </div>
             </div>
         </div>
     </div>

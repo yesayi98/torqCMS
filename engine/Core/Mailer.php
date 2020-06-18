@@ -16,7 +16,7 @@ class Mailer
     $this->lang = $lang;
     $this->view = $view;
     $this->container = Container();
-    $this->sitemame = "Natural";
+    $this->sitemame = Container()->Core()->getItem('sitename')['content'];
     $this->baseurl = BASE_URL;
   }
 
