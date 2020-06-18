@@ -41,6 +41,22 @@ class mediaController extends BackendController
     $this->route = "backend/media/media-box/detail";
   }
 
+  /*action to delete gallery item images*/
+  public function delete()
+  {
+    // get request id...
+    $media_id = $this->getRequest()->request['media_id'];
+    $success = $this->__get('Media')->deleteMedia($media_id);
+    $message = Connection()->getError();
+    if ($this->getRequest()->request['XHR'] == true) {
+      die(json_encode(array(
+        'success'=>$success,
+        'message'=>$message
+      )));
+    }
+
+    Router::redirect('backend/media');
+  }
   /* action to regenerete media thumbnails*/
   public function regenerate()
   {

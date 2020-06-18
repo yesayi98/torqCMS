@@ -843,6 +843,7 @@
         <script src="{$BASE_BACKEND}assets/js/jquery.paginator.js"></script>
       {/if}
         <script>
+            window.route = {$route|@json_encode}
             $(function() {
                 $(".knob").knob();
             });

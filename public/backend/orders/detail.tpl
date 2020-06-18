@@ -118,6 +118,30 @@
                        </div>
                      </div>
                    </div>
+                   <div class="col-12 col-lg-6 col-xl-6">
+                     <div class="form-group row">
+                       <label class="col-sm-2 col-form-label">address</label>
+                       <div class="col-sm-10">
+                         <textarea name="name" readonly class="form-control">{$order.address.city_info.name} {$order.address.address}</textarea>
+                       </div>
+                     </div>
+                   </div>
+                   <div class="col-12 col-lg-6 col-xl-6">
+                     <div class="form-group row">
+                       <label class="col-sm-2 col-form-label">notes</label>
+                       <div class="col-sm-10">
+                         <textarea name="name" readonly class="form-control">{$order.address.notes}</textarea>
+                       </div>
+                     </div>
+                   </div>
+                   <div class="col-12 col-lg-12 col-xl-12">
+                     <div class="form-group row">
+                       <label class="col-sm-1 col-form-label">phone</label>
+                       <div class="col-sm-11">
+                         <input name="name" readonly class="form-control" value="{$order.address.phone}">
+                       </div>
+                     </div>
+                   </div>
                    <div class="col-12">
                      <div class="table-head">
                        <div class="table-title d-inline-block">

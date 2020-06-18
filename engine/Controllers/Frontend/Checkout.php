@@ -172,10 +172,10 @@ class checkoutController extends Controller
     // $address['id'] = $user['address'][0]['id'];
     $address['user_id'] = $user['id'];
     $address['address'] = $request['address'];
-    $address['city'] = $request['city'];
-    $address['region'] = $request['region'];
+    $address['city'] = $request['city']?$request['region']:1;
+    $address['region'] = $request['region']?$request['region']:1;
     $address['postal_code'] = $request['postal_code'];
-    $address['phone'] = $request['phoneNumber'];
+    $address['phone'] = $request['phoneCode'].' '.$request['phone'];
     $address['notes'] = $request['notes'];
 
 

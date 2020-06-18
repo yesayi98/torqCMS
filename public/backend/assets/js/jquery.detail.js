@@ -12,7 +12,6 @@ $(function() {
       articleCategoryDeleter: '.added-category.btn-danger',
       itemDeleter: "*[name='delete-detail']",
       detailSaver: "*[name='save-detail']",
-      deleteImage: '.deleteImage',
       optionAdder: '.addDetailOption',
       optionDeleter: '.deleteDetailOption',
 
@@ -102,7 +101,7 @@ $(function() {
               var value = $(this).siblings('input[type="hidden"]').val();
               var text = $(this).siblings('span').text();
 
-              if(ajaxSend){
+              if(ajaxSend && window.route.controller != 'media'){
                 me.deleteArticleCategory(value, $(this));
               }
               var option = $('<option>', {
@@ -219,6 +218,8 @@ $(function() {
         addDetailImage: ".addDetailImage",
         pathKeeper: ".pathKeeper",
         dropzoneSelectField: 'select[form="dropzone"]',
+        deleteItemSelector: '*[name="deleteImage"]',
+        imageContainer: '.image-container',
 
         init: function () {
           var me = this;
@@ -231,6 +232,40 @@ $(function() {
           me.onImageAlbumSelect();
           me.onAlbumItemClick();
           me.toAddDetailImage();
+          if (window.route.controller == 'media') {
+            me.onImageDelete();
+          }
+        },
+
+        onImageDelete: function() {
+          var me = this;
+          $(me.deleteItemSelector).click(function (event) {
+            event.stopPropagation();
+            var url = $(this).data('url');
+            var media_id = $(this).parent().find('.media-image-id').val();
+
+            var image = $(this).parents(me.imageContainer);
+            console.log(image);
+            $.ajax({
+              url: url,
+              method: 'GET',
+              type: 'GET', // For jQuery < 1.9
+              data: {media_id},
+              dataType: 'json',
+              success: function(response) {
+                if(response.success == true){
+                  var message = 'success';
+                  if (response.message) {
+                    message = response.message
+                  };
+                  image.remove();
+                  round_success_noti(message);
+                }else{
+                  round_error_noti(response.message);
+                }
+              }
+            })
+          })
         },
 
         onImageAlbumSelect: function () {

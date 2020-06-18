@@ -149,6 +149,7 @@
 			if(!$order){
 				return;
 			}
+			$order['buy_date'] = date("Y-m-d H:i:s");
 			$query = $this->insert('orders', $order);
 
 			return $query;

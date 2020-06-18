@@ -35,7 +35,7 @@ class Address extends \Model
     $sql = "SELECT * FROM user_address WHERE id = $address_id";
 
     $address = Connection()->fetchOne($sql);
-
+    $address['city_info'] = Container()->Delivery()->getDeliveryCity($address['city']);
 
     return $address;
   }
