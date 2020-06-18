@@ -15,7 +15,7 @@
         <div class="cart-buttons float-right button-group">
           <button type="button" form="detail-form" class="btn btn-success" name="save-detail"><i class="fa fa-save"></i> save</button>
           {if $order}
-          <button type="button" data-url="{url url='backend/orders/delete?o='|cat:$order.id}" class="btn btn-danger" name="delete-detail"><i class="fa fa-trash"></i> delete</button>
+          <button type="button" data-url="{url url='backend/orders/delete'}" data-name="o" data-id="{$order.id}" class="btn btn-danger" name="delete-detail"><i class="fa fa-trash"></i> delete</button>
           {/if}
           <a href="{url url='backend/orders/'}" class="btn btn-info" ><i class="fa fa-undo"></i> back</a>
         </div>

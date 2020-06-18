@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-14 22:54:56
+/* Smarty version 3.1.34-dev-7, created on 2020-06-18 23:29:13
   from 'D:\OSPanel\domains\torq\public\frontend\emotions\components\category_teaser.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ee68090c6d471_53592809',
+  'unifunc' => 'content_5eebce9963a412_05929091',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '6f8a67334bf805ab7708983462847c873bb52cd0' => 
     array (
       0 => 'D:\\OSPanel\\domains\\torq\\public\\frontend\\emotions\\components\\category_teaser.tpl',
-      1 => 1591636513,
+      1 => 1592510869,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ee68090c6d471_53592809 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5eebce9963a412_05929091 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_assignInScope('category', $_smarty_tpl->tpl_vars['items']->value['category']);
 $_smarty_tpl->_assignInScope('sorting', $_smarty_tpl->tpl_vars['items']->value['sorting']);?>
 <div class="category-header">
@@ -49,11 +49,11 @@ $_smarty_tpl->tpl_vars['sort']->do_else = false;
 "
                          data-toggle="tab"
                          href="#plant<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
-" 
+"
                          role="tab"
                          aria-controls="plant1"
                          aria-selected="true">
-                         <?php echo $_smarty_tpl->tpl_vars['sort']->value;?>
+                         <?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['translator'][0], array( array('selector'=>$_smarty_tpl->tpl_vars['sort']->value),$_smarty_tpl ) );?>
 
                       </a>
                   </li>

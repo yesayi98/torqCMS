@@ -1,22 +1,38 @@
-{block name="html_document"}
-<!DOCTYPE html>
-<html lang="en">
-{block name='head'}
-  <head>
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-    <meta name="description" content=""/>
-    <meta name="author" content=""/>
-    <base href="{$BASE_BACKEND}">
-    <title>Torq ADMIN</title>
-    <!-- loader-->
-    <link href="assets/css/pace.min.css" rel="stylesheet"/>
-    <script src="assets/js/pace.min.js"></script>
-    <!--favicon-->
-    <link rel="icon" href="assets/images/favicon.ico.png" type="image/x-icon">
-    <!-- Vector CSS -->
-    {block name="css-container"}
+<?php
+/* Smarty version 3.1.34-dev-7, created on 2020-06-18 23:32:18
+  from 'D:\OSPanel\domains\torq\public\backend\index\index.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.34-dev-7',
+  'unifunc' => 'content_5eebcf525dc3e0_44678396',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '544e956eadca28012fa7575c6811d8ea1da905e1' => 
+    array (
+      0 => 'D:\\OSPanel\\domains\\torq\\public\\backend\\index\\index.tpl',
+      1 => 1592511965,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_5eebcf525dc3e0_44678396 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->_loadInheritance();
+$_smarty_tpl->inheritance->init($_smarty_tpl, false);
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_5639706125eebcf52583bf9_43009778', "html_document");
+?>
+
+<?php }
+/* {block "css-container"} */
+class Block_9720065605eebcf5258d6f8_82194522 extends Smarty_Internal_Block
+{
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+?>
+
     <link href="assets/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet"/>
     <!-- simplebar CSS-->
     <link href="assets/plugins/simplebar/css/simplebar.css" rel="stylesheet"/>
@@ -32,71 +48,159 @@
     <link href="assets/css/app-style.css" rel="stylesheet"/>
 
     <link rel="stylesheet" href="assets/plugins/notifications/css/lobibox.min.css">
-    {/block}
+    <?php
+}
+}
+/* {/block "css-container"} */
+/* {block 'head'} */
+class Block_11339391225eebcf52587a25_85568675 extends Smarty_Internal_Block
+{
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+?>
+
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <base href="<?php echo $_smarty_tpl->tpl_vars['BASE_BACKEND']->value;?>
+">
+    <title>Torq ADMIN</title>
+    <!-- loader-->
+    <link href="assets/css/pace.min.css" rel="stylesheet"/>
+    <?php echo '<script'; ?>
+ src="assets/js/pace.min.js"><?php echo '</script'; ?>
+>
+    <!--favicon-->
+    <link rel="icon" href="assets/images/favicon.ico.png" type="image/x-icon">
+    <!-- Vector CSS -->
+    <?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_9720065605eebcf5258d6f8_82194522', "css-container", $this->tplIndex);
+?>
+
 
   </head>
-{/block}
+<?php
+}
+}
+/* {/block 'head'} */
+/* {block "logo-container"} */
+class Block_1190532345eebcf52591259_89835614 extends Smarty_Internal_Block
+{
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+?>
 
-{block name="body"}
-
-<body class="bg-theme bg-theme2">
-
-
-  {block name="wrapper"}
-  <!-- Start wrapper-->
-   <div id="wrapper">
-     {block name="sitebar-wrapper"}
-     <!-- Start sitebar-wrapper-->
-
-     <div id="sidebar-wrapper" data-simplebar="" data-simplebar-auto-hide="true">
-       {block name="logo-container"}
          <div class="brand-logo">
-            <a href="{url url="backend"}">
-             <img src="{$BASE_BACKEND}assets/images/logo-icon.png" class="logo-icon" alt="logo icon">
+            <a href="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['url'][0], array( array('url'=>"backend"),$_smarty_tpl ) );?>
+">
+             <img src="<?php echo $_smarty_tpl->tpl_vars['BASE_BACKEND']->value;?>
+assets/images/logo-icon.png" class="logo-icon" alt="logo icon">
              <h5 class="logo-text">Torq Admin</h5>
            </a>
          </div>
-        {/block}
-        {block name="sitebar-menu"}
-          <ul class="sidebar-menu">
-            <li class="sidebar-header">MAIN NAVIGATION</li>
-            {foreach $menu as $menuItem}
-              {block name="menu-item"}
+        <?php
+}
+}
+/* {/block "logo-container"} */
+/* {block "menu-item"} */
+class Block_17198176375eebcf5259dfc5_11236723 extends Smarty_Internal_Block
+{
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+?>
+
                 <li>
-                  <a href="{url url=$menuItem.url}" class="waves-effect">
-                    <i class="{$menuItem.icon}"></i> <span>{$menuItem.name}</span>
-                    {if $menuItem.has_children}
+                  <a href="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['url'][0], array( array('url'=>$_smarty_tpl->tpl_vars['menuItem']->value['url']),$_smarty_tpl ) );?>
+" class="waves-effect">
+                    <i class="<?php echo $_smarty_tpl->tpl_vars['menuItem']->value['icon'];?>
+"></i> <span><?php echo $_smarty_tpl->tpl_vars['menuItem']->value['name'];?>
+</span>
+                    <?php if ($_smarty_tpl->tpl_vars['menuItem']->value['has_children']) {?>
                       <i class="fa fa-angle-left pull-right"></i>
-                    {/if}
+                    <?php }?>
                   </a>
-                  {if $menuItem.has_children}
+                  <?php if ($_smarty_tpl->tpl_vars['menuItem']->value['has_children']) {?>
                     <ul class="sidebar-submenu">
-                      {foreach $menuItem.children as $child}
-                        <li><a href="{url url=$child.url}"><i class="{$child.icon}"></i>{$child.name}</a></li>
-                      {/foreach}
+                      <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['menuItem']->value['children'], 'child');
+$_smarty_tpl->tpl_vars['child']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['child']->value) {
+$_smarty_tpl->tpl_vars['child']->do_else = false;
+?>
+                        <li><a href="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['url'][0], array( array('url'=>$_smarty_tpl->tpl_vars['child']->value['url']),$_smarty_tpl ) );?>
+"><i class="<?php echo $_smarty_tpl->tpl_vars['child']->value['icon'];?>
+"></i><?php echo $_smarty_tpl->tpl_vars['child']->value['name'];?>
+</a></li>
+                      <?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                     </ul>
-                  {/if}
+                  <?php }?>
 
                 </li>
-              {/block}
-            {/foreach}
+              <?php
+}
+}
+/* {/block "menu-item"} */
+/* {block "sitebar-menu"} */
+class Block_6096610905eebcf52595933_86794433 extends Smarty_Internal_Block
+{
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+?>
+
+          <ul class="sidebar-menu">
+            <li class="sidebar-header">MAIN NAVIGATION</li>
+            <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['menu']->value, 'menuItem');
+$_smarty_tpl->tpl_vars['menuItem']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['menuItem']->value) {
+$_smarty_tpl->tpl_vars['menuItem']->do_else = false;
+?>
+              <?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_17198176375eebcf5259dfc5_11236723', "menu-item", $this->tplIndex);
+?>
+
+            <?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 
             <li class="sidebar-header">LABELS</li>
             <li><a href="http://armcoding.com" class="waves-effect"><i class="zmdi zmdi-share text-info"></i> <span>Information</span></a></li>
           </ul>
-        {/block}
+        <?php
+}
+}
+/* {/block "sitebar-menu"} */
+/* {block "sitebar-wrapper"} */
+class Block_10204104475eebcf52590796_03222818 extends Smarty_Internal_Block
+{
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+?>
+
+     <!-- Start sitebar-wrapper-->
+
+     <div id="sidebar-wrapper" data-simplebar="" data-simplebar-auto-hide="true">
+       <?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1190532345eebcf52591259_89835614', "logo-container", $this->tplIndex);
+?>
+
+        <?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_6096610905eebcf52595933_86794433', "sitebar-menu", $this->tplIndex);
+?>
+
 
      </div>
      <!--End sidebar-wrapper-->
-  {/block}
+  <?php
+}
+}
+/* {/block "sitebar-wrapper"} */
+/* {block "navigation-left"} */
+class Block_13003737055eebcf525b9c37_55194183 extends Smarty_Internal_Block
+{
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+?>
 
-  {block name="header"}
-  <!--Start topbar header-->
-
-  <header class="topbar-nav">
-    {block name="top-navbar"}
-    <nav class="navbar navbar-expand fixed-top">
-      {block name="navigation-left"}
         <ul class="navbar-nav mr-auto align-items-center">
           <li class="nav-item">
             <a class="nav-link toggle-menu" href="javascript:void();">
@@ -104,16 +208,23 @@
             </a>
           </li>
           <li class="nav-item">
-            <form class="search-bar" action="{url url='backend/search'}">
+            <form class="search-bar" action="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['url'][0], array( array('url'=>'backend/search'),$_smarty_tpl ) );?>
+">
               <input type="text" class="form-control" placeholder="Enter keywords">
               <a href="javascript:void();"><i class="icon-magnifier"></i></a>
             </form>
           </li>
         </ul>
-      {/block}
-      {block name="navigation-right"}
-      <ul class="navbar-nav align-items-center right-nav-link">
-        {block name="navigation-notifications"}
+      <?php
+}
+}
+/* {/block "navigation-left"} */
+/* {block "navigation-notifications"} */
+class Block_18879831525eebcf525bc155_64374545 extends Smarty_Internal_Block
+{
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+?>
+
           <li class="nav-item dropdown-lg">
             <a class="nav-link dropdown-toggle dropdown-toggle-nocaret waves-effect" data-toggle="dropdown" href="javascript:void();">
               <i class="fa fa-bell-o"></i><span class="badge badge-info badge-up">0</span></a>
@@ -123,45 +234,113 @@
                   </ul>
             </div>
           </li>
-        {/block}
-        {block name="navigation-admin"}
+        <?php
+}
+}
+/* {/block "navigation-notifications"} */
+/* {block "navigation-admin"} */
+class Block_11216149005eebcf525bcfa0_85846952 extends Smarty_Internal_Block
+{
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+?>
+
         <li class="nav-item">
           <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown" href="index.html#">
-            <span class="user-profile"><img src="{$BASE_BACKEND}assets/images/avatars/avatar-13.png" class="img-circle" alt="user avatar"></span>
+            <span class="user-profile"><img src="<?php echo $_smarty_tpl->tpl_vars['BASE_BACKEND']->value;?>
+assets/images/avatars/avatar-13.png" class="img-circle" alt="user avatar"></span>
           </a>
           <ul class="dropdown-menu dropdown-menu-right">
            <li class="dropdown-item user-details">
             <a href="javaScript:void();">
                <div class="media">
-                 <div class="avatar"><img class="align-self-start mr-3" src="{$BASE_BACKEND}assets/images/avatars/avatar-13.png" alt="user avatar"></div>
+                 <div class="avatar"><img class="align-self-start mr-3" src="<?php echo $_smarty_tpl->tpl_vars['BASE_BACKEND']->value;?>
+assets/images/avatars/avatar-13.png" alt="user avatar"></div>
                 <div class="media-body">
-                <h6 class="mt-2 user-title">{$admin.name}</h6>
-                <p class="user-subtitle">{$admin.email}</p>
+                <h6 class="mt-2 user-title"><?php echo $_smarty_tpl->tpl_vars['admin']->value['name'];?>
+</h6>
+                <p class="user-subtitle"><?php echo $_smarty_tpl->tpl_vars['admin']->value['email'];?>
+</p>
                 </div>
                </div>
               </a>
             </li>
             <li class="dropdown-divider"></li>
-            <li class="dropdown-item"><a href="{url url='backend/admin/profile'}"><i class="icon-wallet mr-2"></i> Account</a></li>
+            <li class="dropdown-item"><a href="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['url'][0], array( array('url'=>'backend/admin/profile'),$_smarty_tpl ) );?>
+"><i class="icon-wallet mr-2"></i> Account</a></li>
             <li class="dropdown-divider"></li>
-            <li class="dropdown-item"><a href="{url url='backend/admin/logout'}"><i class="icon-power mr-2"></i> Logout</a></li>
+            <li class="dropdown-item"><a href="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['url'][0], array( array('url'=>'backend/admin/logout'),$_smarty_tpl ) );?>
+"><i class="icon-power mr-2"></i> Logout</a></li>
           </ul>
         </li>
-        {/block}
+        <?php
+}
+}
+/* {/block "navigation-admin"} */
+/* {block "navigation-right"} */
+class Block_20643481945eebcf525bb737_97083105 extends Smarty_Internal_Block
+{
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+?>
+
+      <ul class="navbar-nav align-items-center right-nav-link">
+        <?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_18879831525eebcf525bc155_64374545', "navigation-notifications", $this->tplIndex);
+?>
+
+        <?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_11216149005eebcf525bcfa0_85846952', "navigation-admin", $this->tplIndex);
+?>
+
       </ul>
-      {/block}
+      <?php
+}
+}
+/* {/block "navigation-right"} */
+/* {block "top-navbar"} */
+class Block_21325597025eebcf525b9263_99960254 extends Smarty_Internal_Block
+{
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+?>
+
+    <nav class="navbar navbar-expand fixed-top">
+      <?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_13003737055eebcf525b9c37_55194183', "navigation-left", $this->tplIndex);
+?>
+
+      <?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_20643481945eebcf525bb737_97083105', "navigation-right", $this->tplIndex);
+?>
+
     </nav>
-    {/block}
+    <?php
+}
+}
+/* {/block "top-navbar"} */
+/* {block "header"} */
+class Block_20455485975eebcf525b87f1_32006326 extends Smarty_Internal_Block
+{
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+?>
+
+  <!--Start topbar header-->
+
+  <header class="topbar-nav">
+    <?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_21325597025eebcf525b9263_99960254', "top-navbar", $this->tplIndex);
+?>
+
   </header>
   <!--End topbar header-->
-  {/block}
+  <?php
+}
+}
+/* {/block "header"} */
+/* {block "container-content"} */
+class Block_14158759635eebcf525c45d1_88450784 extends Smarty_Internal_Block
+{
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+?>
 
-
-  <div class="clearfix"></div>
-  {block name="content-wrapper"}
-  <div class="content-wrapper">
-    <div class="container-fluid" {if $route.controller == 'index' || $route.controller == 'categories' || $route.action == 'detail'}data-content="true"{/if}>
-      {block name="container-content"}
       <!--Start Dashboard Content-->
 
   <div class="card mt-3">
@@ -544,7 +723,8 @@
            <ul class="list-group list-group-flush">
               <li class="list-group-item bg-transparent">
                 <div class="media align-items-center">
-                  <img src="{$BASE_BACKEND}assets/images/avatars/avatar-13.png" alt="user avatar" class="customer-img rounded-circle">
+                  <img src="<?php echo $_smarty_tpl->tpl_vars['BASE_BACKEND']->value;?>
+assets/images/avatars/avatar-13.png" alt="user avatar" class="customer-img rounded-circle">
                 <div class="media-body ml-3">
                   <h6 class="mb-0">iPhone X <small class="ml-4">08.34 AM</small></h6>
                   <p class="mb-0 small-font">Sara Jhon : This i svery Nice phone in low budget.</p>
@@ -560,7 +740,8 @@
               </li>
               <li class="list-group-item bg-transparent">
                 <div class="media align-items-center">
-                  <img src="{$BASE_BACKEND}assets/images/avatars/avatar-15.png" alt="user avatar" class="customer-img rounded-circle">
+                  <img src="<?php echo $_smarty_tpl->tpl_vars['BASE_BACKEND']->value;?>
+assets/images/avatars/avatar-15.png" alt="user avatar" class="customer-img rounded-circle">
                 <div class="media-body ml-3">
                   <h6 class="mb-0">Air Pod <small class="ml-4">05.26 PM</small></h6>
                   <p class="mb-0 small-font">Danish Josh : The brand apple is original !</p>
@@ -576,7 +757,8 @@
               </li>
         <li class="list-group-item bg-transparent">
                 <div class="media align-items-center">
-                  <img src="{$BASE_BACKEND}assets/images/avatars/avatar-14.png" alt="user avatar" class="customer-img rounded-circle">
+                  <img src="<?php echo $_smarty_tpl->tpl_vars['BASE_BACKEND']->value;?>
+assets/images/avatars/avatar-14.png" alt="user avatar" class="customer-img rounded-circle">
                 <div class="media-body ml-3">
                   <h6 class="mb-0">Mackbook Pro <small class="ml-4">06.45 AM</small></h6>
                   <p class="mb-0 small-font">Jhon Doe : Excllent product and awsome quality</p>
@@ -592,7 +774,8 @@
               </li>
               <li class="list-group-item bg-transparent">
                 <div class="media align-items-center">
-                  <img src="{$BASE_BACKEND}assets/images/avatars/avatar-16.png" alt="user avatar" class="customer-img rounded-circle">
+                  <img src="<?php echo $_smarty_tpl->tpl_vars['BASE_BACKEND']->value;?>
+assets/images/avatars/avatar-16.png" alt="user avatar" class="customer-img rounded-circle">
                 <div class="media-body ml-3">
                   <h6 class="mb-0">Air Pod <small class="ml-4">08.34 AM</small></h6>
                   <p class="mb-0 small-font">Christine : The brand apple is original !</p>
@@ -608,7 +791,8 @@
               </li>
               <li class="list-group-item bg-transparent">
                 <div class="media align-items-center">
-                  <img src="{$BASE_BACKEND}assets/images/avatars/avatar-17.png" alt="user avatar" class="customer-img rounded-circle">
+                  <img src="<?php echo $_smarty_tpl->tpl_vars['BASE_BACKEND']->value;?>
+assets/images/avatars/avatar-17.png" alt="user avatar" class="customer-img rounded-circle">
                 <div class="media-body ml-3">
                   <h6 class="mb-0">Mackbook <small class="ml-4">08.34 AM</small></h6>
                   <p class="mb-0 small-font">Michle : The brand apple is original !</p>
@@ -660,7 +844,8 @@
                    </thead>
                    <tbody><tr>
                     <td>Iphone 5</td>
-                    <td><img src="{$BASE_BACKEND}assets/images/products/01.png" class="product-img" alt="product img"></td>
+                    <td><img src="<?php echo $_smarty_tpl->tpl_vars['BASE_BACKEND']->value;?>
+assets/images/products/01.png" class="product-img" alt="product img"></td>
                     <td>#9405822</td>
                     <td>$ 1250.00</td>
                     <td>03 Aug 2017</td>
@@ -671,7 +856,8 @@
 
                    <tr>
                     <td>Earphone GL</td>
-                    <td><img src="{$BASE_BACKEND}assets/images/products/02.png" class="product-img" alt="product img"></td>
+                    <td><img src="<?php echo $_smarty_tpl->tpl_vars['BASE_BACKEND']->value;?>
+assets/images/products/02.png" class="product-img" alt="product img"></td>
                     <td>#9405820</td>
                     <td>$ 1500.00</td>
                     <td>03 Aug 2017</td>
@@ -682,7 +868,8 @@
 
                    <tr>
                     <td>HD Hand Camera</td>
-                    <td><img src="{$BASE_BACKEND}assets/images/products/03.png" class="product-img" alt="product img"></td>
+                    <td><img src="<?php echo $_smarty_tpl->tpl_vars['BASE_BACKEND']->value;?>
+assets/images/products/03.png" class="product-img" alt="product img"></td>
                     <td>#9405830</td>
                     <td>$ 1400.00</td>
                     <td>03 Aug 2017</td>
@@ -693,7 +880,8 @@
 
                    <tr>
                     <td>Clasic Shoes</td>
-                    <td><img src="{$BASE_BACKEND}assets/images/products/04.png" class="product-img" alt="product img"></td>
+                    <td><img src="<?php echo $_smarty_tpl->tpl_vars['BASE_BACKEND']->value;?>
+assets/images/products/04.png" class="product-img" alt="product img"></td>
                     <td>#9405825</td>
                     <td>$ 1200.00</td>
                     <td>03 Aug 2017</td>
@@ -704,7 +892,8 @@
 
                    <tr>
                     <td>Hand Watch</td>
-                    <td><img src="{$BASE_BACKEND}assets/images/products/05.png" class="product-img" alt="product img"></td>
+                    <td><img src="<?php echo $_smarty_tpl->tpl_vars['BASE_BACKEND']->value;?>
+assets/images/products/05.png" class="product-img" alt="product img"></td>
                     <td>#9405840</td>
                     <td>$ 1800.00</td>
                     <td>03 Aug 2017</td>
@@ -715,7 +904,8 @@
 
            <tr>
                     <td>Clasic Shoes</td>
-                    <td><img src="{$BASE_BACKEND}assets/images/products/06.png" class="product-img" alt="product img"></td>
+                    <td><img src="<?php echo $_smarty_tpl->tpl_vars['BASE_BACKEND']->value;?>
+assets/images/products/06.png" class="product-img" alt="product img"></td>
                     <td>#9405825</td>
                     <td>$ 1200.00</td>
                     <td>03 Aug 2017</td>
@@ -734,17 +924,36 @@
     <!--start overlay-->
     <div class="overlay toggle-menu"></div>
   <!--end overlay-->
-      {/block}
+      <?php
+}
+}
+/* {/block "container-content"} */
+/* {block "content-wrapper"} */
+class Block_8043495905eebcf525c1437_78140649 extends Smarty_Internal_Block
+{
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+?>
+
+  <div class="content-wrapper">
+    <div class="container-fluid" <?php if ($_smarty_tpl->tpl_vars['route']->value['controller'] == 'index' || $_smarty_tpl->tpl_vars['route']->value['controller'] == 'categories' || $_smarty_tpl->tpl_vars['route']->value['action'] == 'detail') {?>data-content="true"<?php }?>>
+      <?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_14158759635eebcf525c45d1_88450784', "container-content", $this->tplIndex);
+?>
+
     </div>
     <!-- End container-fluid-->
 
     </div><!--End content-wrapper-->
-  {/block}
+  <?php
+}
+}
+/* {/block "content-wrapper"} */
+/* {block "footer"} */
+class Block_13943556335eebcf525c8e13_55539434 extends Smarty_Internal_Block
+{
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+?>
 
-     <!--Start Back To Top Button-->
-      <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
-      <!--End Back To Top Button-->
-    {block name="footer"}
     <!--Start footer-->
     <footer class="footer">
       <div class="container">
@@ -754,10 +963,16 @@
       </div>
     </footer>
     <!--End footer-->
-    {/block}
+    <?php
+}
+}
+/* {/block "footer"} */
+/* {block "right-sidebar"} */
+class Block_5736377385eebcf525c9c84_12947268 extends Smarty_Internal_Block
+{
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+?>
 
-
-    {block name="right-sidebar"}
     <!--start color switcher-->
     <div class="right-sidebar">
      <div class="switcher-icon">
@@ -795,71 +1010,342 @@
       </div>
     </div>
    <!--end color switcher-->
-    {/block}
+    <?php
+}
+}
+/* {/block "right-sidebar"} */
+/* {block "wrapper"} */
+class Block_20351505855eebcf5258f934_71163682 extends Smarty_Internal_Block
+{
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+?>
+
+  <!-- Start wrapper-->
+   <div id="wrapper">
+     <?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_10204104475eebcf52590796_03222818', "sitebar-wrapper", $this->tplIndex);
+?>
+
+
+  <?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_20455485975eebcf525b87f1_32006326', "header", $this->tplIndex);
+?>
+
+
+
+  <div class="clearfix"></div>
+  <?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_8043495905eebcf525c1437_78140649', "content-wrapper", $this->tplIndex);
+?>
+
+
+     <!--Start Back To Top Button-->
+      <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
+      <!--End Back To Top Button-->
+    <?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_13943556335eebcf525c8e13_55539434', "footer", $this->tplIndex);
+?>
+
+
+
+    <?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_5736377385eebcf525c9c84_12947268', "right-sidebar", $this->tplIndex);
+?>
+
     </div>
     <!--End wrapper-->
-  {/block}
+  <?php
+}
+}
+/* {/block "wrapper"} */
+/* {block "modal-container"} */
+class Block_19841770055eebcf525cafe9_12315000 extends Smarty_Internal_Block
+{
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+?>
 
-  {block name="modal-container"}
-  {/block}
+  <?php
+}
+}
+/* {/block "modal-container"} */
+/* {block "notification-container"} */
+class Block_18926154525eebcf525cbdb2_74064556 extends Smarty_Internal_Block
+{
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+?>
 
-  {block name="notification-container"}
     <div class="lobibox-notify-wrapper top right"></div>
-  {/block}
+  <?php
+}
+}
+/* {/block "notification-container"} */
+/* {block "js-container"} */
+class Block_50069185eebcf525ccba1_63076411 extends Smarty_Internal_Block
+{
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+?>
 
-  {block name="js-container"}
       <!-- Bootstrap core JavaScript-->
-      <script src="{$BASE_BACKEND}assets/js/jquery.min.js"></script>
-      <script src="{$BASE_BACKEND}assets/js/jquery.pubSub.js"></script>
-      <script src="{$BASE_BACKEND}assets/js/popper.min.js"></script>
-      <script src="{$BASE_BACKEND}assets/js/bootstrap.min.js"></script>
+      <?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['BASE_BACKEND']->value;?>
+assets/js/jquery.min.js"><?php echo '</script'; ?>
+>
+      <?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['BASE_BACKEND']->value;?>
+assets/js/jquery.pubSub.js"><?php echo '</script'; ?>
+>
+      <?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['BASE_BACKEND']->value;?>
+assets/js/popper.min.js"><?php echo '</script'; ?>
+>
+      <?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['BASE_BACKEND']->value;?>
+assets/js/bootstrap.min.js"><?php echo '</script'; ?>
+>
 
       <!-- simplebar js -->
-      <script src="{$BASE_BACKEND}assets/plugins/simplebar/js/simplebar.js"></script>
+      <?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['BASE_BACKEND']->value;?>
+assets/plugins/simplebar/js/simplebar.js"><?php echo '</script'; ?>
+>
       <!-- sidebar-menu js -->
-      <script src="{$BASE_BACKEND}assets/js/sidebar-menu.js"></script>
+      <?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['BASE_BACKEND']->value;?>
+assets/js/sidebar-menu.js"><?php echo '</script'; ?>
+>
 
       <!-- Custom scripts -->
-      <script src="{$BASE_BACKEND}assets/js/app-script.js"></script>
+      <?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['BASE_BACKEND']->value;?>
+assets/js/app-script.js"><?php echo '</script'; ?>
+>
       <!-- Chart js -->
 
-      <script src="{$BASE_BACKEND}assets/plugins/Chart.js/Chart.min.js"></script>
+      <?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['BASE_BACKEND']->value;?>
+assets/plugins/Chart.js/Chart.min.js"><?php echo '</script'; ?>
+>
       <!-- Vector map JavaScript -->
-      <script src="{$BASE_BACKEND}assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js"></script>
-      <script src="{$BASE_BACKEND}assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js"></script>
+      <?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['BASE_BACKEND']->value;?>
+assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js"><?php echo '</script'; ?>
+>
+      <?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['BASE_BACKEND']->value;?>
+assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js"><?php echo '</script'; ?>
+>
       <!-- Easy Pie Chart JS -->
-      <script src="{$BASE_BACKEND}assets/plugins/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
+      <?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['BASE_BACKEND']->value;?>
+assets/plugins/jquery.easy-pie-chart/jquery.easypiechart.min.js"><?php echo '</script'; ?>
+>
 
       <!--notification js -->
-      <script src="{$BASE_BACKEND}assets/plugins/notifications/js/lobibox.min.js"></script>
-      <script src="{$BASE_BACKEND}assets/plugins/notifications/js/notifications.min.js"></script>
-      <script src="{$BASE_BACKEND}assets/plugins/notifications/js/notification-custom-script.js"></script>
+      <?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['BASE_BACKEND']->value;?>
+assets/plugins/notifications/js/lobibox.min.js"><?php echo '</script'; ?>
+>
+      <?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['BASE_BACKEND']->value;?>
+assets/plugins/notifications/js/notifications.min.js"><?php echo '</script'; ?>
+>
+      <?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['BASE_BACKEND']->value;?>
+assets/plugins/notifications/js/notification-custom-script.js"><?php echo '</script'; ?>
+>
 
       <!-- Sparkline JS -->
-      <script src="{$BASE_BACKEND}assets/plugins/sparkline-charts/jquery.sparkline.min.js"></script>
-      <script src="{$BASE_BACKEND}assets/plugins/jquery-knob/excanvas.js"></script>
-      <script src="{$BASE_BACKEND}assets/plugins/jquery-knob/jquery.knob.js"></script>
-      {if $route.controller != 'index'}
-        <script src="{$BASE_BACKEND}assets/js/jquery.paginator.js"></script>
-      {/if}
-        <script>
-            window.route = {$route|@json_encode}
+      <?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['BASE_BACKEND']->value;?>
+assets/plugins/sparkline-charts/jquery.sparkline.min.js"><?php echo '</script'; ?>
+>
+      <?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['BASE_BACKEND']->value;?>
+assets/plugins/jquery-knob/excanvas.js"><?php echo '</script'; ?>
+>
+      <?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['BASE_BACKEND']->value;?>
+assets/plugins/jquery-knob/jquery.knob.js"><?php echo '</script'; ?>
+>
+      <?php if ($_smarty_tpl->tpl_vars['route']->value['controller'] != 'index') {?>
+        <?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['BASE_BACKEND']->value;?>
+assets/js/jquery.paginator.js"><?php echo '</script'; ?>
+>
+      <?php }?>
+        <?php echo '<script'; ?>
+>
+            window.route = <?php echo json_encode($_smarty_tpl->tpl_vars['route']->value);?>
+
             $(function() {
                 $(".knob").knob();
             });
-        </script>
-      {if $route.controller == 'index'}
+        <?php echo '</script'; ?>
+>
+      <?php if ($_smarty_tpl->tpl_vars['route']->value['controller'] == 'index') {?>
         <!-- Index js -->
-        <script src="{$BASE_BACKEND}assets/js/index.js"></script>
+        <?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['BASE_BACKEND']->value;?>
+assets/js/index.js"><?php echo '</script'; ?>
+>
         <!-- loader scripts -->
-        <script src="{$BASE_BACKEND}assets/js/jquery.loading-indicator.js"></script>
-      {/if}
+        <?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['BASE_BACKEND']->value;?>
+assets/js/jquery.loading-indicator.js"><?php echo '</script'; ?>
+>
+      <?php }?>
 
 
-        {/block}
+        <?php
+}
+}
+/* {/block "js-container"} */
+/* {block "body"} */
+class Block_468233425eebcf5258eec5_94191657 extends Smarty_Internal_Block
+{
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+?>
+
+
+<body class="bg-theme bg-theme2">
+
+
+  <?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_20351505855eebcf5258f934_71163682', "wrapper", $this->tplIndex);
+?>
+
+
+  <?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_19841770055eebcf525cafe9_12315000', "modal-container", $this->tplIndex);
+?>
+
+
+  <?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_18926154525eebcf525cbdb2_74064556', "notification-container", $this->tplIndex);
+?>
+
+
+  <?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_50069185eebcf525ccba1_63076411', "js-container", $this->tplIndex);
+?>
+
       </body>
-    {/block}
+    <?php
+}
+}
+/* {/block "body"} */
+/* {block "html_document"} */
+class Block_5639706125eebcf52583bf9_43009778 extends Smarty_Internal_Block
+{
+public $subBlocks = array (
+  'html_document' => 
+  array (
+    0 => 'Block_5639706125eebcf52583bf9_43009778',
+  ),
+  'head' => 
+  array (
+    0 => 'Block_11339391225eebcf52587a25_85568675',
+  ),
+  'css-container' => 
+  array (
+    0 => 'Block_9720065605eebcf5258d6f8_82194522',
+  ),
+  'body' => 
+  array (
+    0 => 'Block_468233425eebcf5258eec5_94191657',
+  ),
+  'wrapper' => 
+  array (
+    0 => 'Block_20351505855eebcf5258f934_71163682',
+  ),
+  'sitebar-wrapper' => 
+  array (
+    0 => 'Block_10204104475eebcf52590796_03222818',
+  ),
+  'logo-container' => 
+  array (
+    0 => 'Block_1190532345eebcf52591259_89835614',
+  ),
+  'sitebar-menu' => 
+  array (
+    0 => 'Block_6096610905eebcf52595933_86794433',
+  ),
+  'menu-item' => 
+  array (
+    0 => 'Block_17198176375eebcf5259dfc5_11236723',
+  ),
+  'header' => 
+  array (
+    0 => 'Block_20455485975eebcf525b87f1_32006326',
+  ),
+  'top-navbar' => 
+  array (
+    0 => 'Block_21325597025eebcf525b9263_99960254',
+  ),
+  'navigation-left' => 
+  array (
+    0 => 'Block_13003737055eebcf525b9c37_55194183',
+  ),
+  'navigation-right' => 
+  array (
+    0 => 'Block_20643481945eebcf525bb737_97083105',
+  ),
+  'navigation-notifications' => 
+  array (
+    0 => 'Block_18879831525eebcf525bc155_64374545',
+  ),
+  'navigation-admin' => 
+  array (
+    0 => 'Block_11216149005eebcf525bcfa0_85846952',
+  ),
+  'content-wrapper' => 
+  array (
+    0 => 'Block_8043495905eebcf525c1437_78140649',
+  ),
+  'container-content' => 
+  array (
+    0 => 'Block_14158759635eebcf525c45d1_88450784',
+  ),
+  'footer' => 
+  array (
+    0 => 'Block_13943556335eebcf525c8e13_55539434',
+  ),
+  'right-sidebar' => 
+  array (
+    0 => 'Block_5736377385eebcf525c9c84_12947268',
+  ),
+  'modal-container' => 
+  array (
+    0 => 'Block_19841770055eebcf525cafe9_12315000',
+  ),
+  'notification-container' => 
+  array (
+    0 => 'Block_18926154525eebcf525cbdb2_74064556',
+  ),
+  'js-container' => 
+  array (
+    0 => 'Block_50069185eebcf525ccba1_63076411',
+  ),
+);
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_11339391225eebcf52587a25_85568675', 'head', $this->tplIndex);
+?>
+
+
+<?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_468233425eebcf5258eec5_94191657', "body", $this->tplIndex);
+?>
+
 
   </html>
 
-{/block}
+<?php
+}
+}
+/* {/block "html_document"} */
+}

@@ -81,6 +81,9 @@ class ordersController extends BackendController
     if ($request['id']) {
       $order['id'] = $request['id'];
       $success = $orderModel->updateOrder($order);
+      if ($success == false) {
+        $message = Connection()->getError();
+      }
     }else{
       $order['name'] = $request['name'];
       $order['product_price'] = $request['product_price'];

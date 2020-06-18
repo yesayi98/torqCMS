@@ -88,6 +88,11 @@ $(function() {
             success: function(response) {
               if (response) {
                 $.publish('detail/deleted', [me, response]);
+                if(response.success == true){
+                  round_success_noti(response.message);
+                }else{
+                  round_error_noti(response.message);
+                }
               }
             }
           })
