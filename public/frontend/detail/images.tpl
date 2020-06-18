@@ -7,6 +7,7 @@
     </div>
     <div class="single-zoom-thumb">
         <ul class="s-tab-zoom owl-carousel single-product-active" id="gallery_01">
+          {if $images|count > 1}
           {foreach $images as $image}
             <li>
                 <a href="product-details.html#" class="elevatezoom-gallery active" data-update="" data-image="{$image.path}" data-zoom-image="{$image.path}">
@@ -14,6 +15,7 @@
                 </a>
             </li>
           {/foreach}
+          {/if}
         </ul>
     </div>
 </div>

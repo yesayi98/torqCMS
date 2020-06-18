@@ -111,6 +111,26 @@ class checkoutController extends Controller
   }
 
   /**
+  * cenceling given bonus if order get an error
+  * @param float $bonusPrice
+  * @return bool
+  */
+  private function cencelBonus($bonusPrice)
+  {
+    if (empty($bonusPrice)) {
+      return false;
+    }
+    // get session user
+    $sessionUser = Container()->getCurrentUser();
+    // returning given bonus
+    $sessionUser['attributes']['bonus'] += $bonusPrice;
+    $result = $this->__get('Users')->updateUser($sessionUser);
+    Container()->updateSessionUser();
+
+    return $result;
+  }
+
+  /**
   * confirm action called in confirming Checkout
   */
   public function confirm()
@@ -216,6 +236,9 @@ class checkoutController extends Controller
       Router::redirect('');
     }
     $order = $this->__get('Orders')->getOrder($order_id);
+    if (!empty($order)) {
+      $this->sendInvoiceMail($order);
+    }
     $this->View()->setSession('order_id', '');
     $this->View()->setSession('bonus', '');
 
@@ -226,6 +249,12 @@ class checkoutController extends Controller
 
   public function error()
   {
+    $order_id = $this->View()->getSession('order_id');
+    $order = $this->__get('Orders')->getOrder($order_id);
+    $bonus = $this->View()->getSession('bonus');
+    if (!empty($bonus)) {
+      $this->cencelBonus($order['bonus_price']);
+    }
     $this->View()->setSession('bonus', '');
   }
 
@@ -313,6 +342,98 @@ class checkoutController extends Controller
 
     $this->__get('Users')->updateUser($user);
     return $user;
+  }
+
+  private function sendInvoiceMail($order)
+  {
+    $user = Container()->getCookie('user');
+    $currentLang = $this->View()->getAssign('currentLang');
+    $view = $this->View();
+
+    $mailer = new Mailer($view, $currentLang);
+    $mailer->createMailTemplate('invoice');
+
+    $data = [];
+    $data['invoice'] = $this->createInvoice($order);
+    $data['useremail'] = $user['email'];
+
+    $mailer->setMailParams($data);
+
+    $mailer->send($user);
+
+  }
+
+  private function createInvoice($order)
+  {
+    if (empty($order)) {
+      return;
+    }
+    $currentCur = $this->View()->getAssign('currentCur');
+    $invoice = '';
+
+    foreach ($order['details'] as $detail) {
+      $invoice .= '<tr>';
+        $invoice .= '<td>';
+          $invoice .= $detail['article_id'];
+        $invoice .= '</td>';
+        $invoice .= '<td>';
+          $invoice .= $detail['name'];
+        $invoice .= '</td>';
+        $invoice .= '<td>';
+          $invoice .= $detail['price'].' '.$currentCur['symbol'];
+        $invoice .= '</td>';
+        $invoice .= '<td>';
+          $invoice .= $detail['quantity'];
+        $invoice .= '</td>';
+        $invoice .= '<td>';
+          $invoice .= $detail['total'].' '.$currentCur['symbol'];
+        $invoice .= '</td>';
+      $invoice .= '</tr>';
+    }
+    $invoice .= '<tr>';
+      $invoice .= '<td>';
+      $invoice .= '</td>';
+      $invoice .= '<td>';
+        $invoice .= 'Products';
+      $invoice .= '</td>';
+      $invoice .= '<td>';
+      $invoice .= '</td>';
+      $invoice .= '<td>';
+      $invoice .= '</td>';
+      $invoice .= '<td>';
+        $invoice .= $order['product_total'].' '.$currentCur['symbol'];
+      $invoice .= '</td>';
+    $invoice .= '</tr>';
+    $invoice .= '<tr>';
+      $invoice .= '<td>';
+      $invoice .= '</td>';
+      $invoice .= '<td>';
+        $invoice .= 'Delivery';
+      $invoice .= '</td>';
+      $invoice .= '<td>';
+      $invoice .= '</td>';
+      $invoice .= '<td>';
+      $invoice .= '</td>';
+      $invoice .= '<td>';
+        $invoice .= $order['delivery_price'].' '.$currentCur['symbol'];
+      $invoice .= '</td>';
+    $invoice .= '</tr>';
+    $invoice .= '<tr>';
+      $invoice .= '<td>';
+      $invoice .= '</td>';
+      $invoice .= '<td>';
+        $invoice .= 'Total';
+      $invoice .= '</td>';
+      $invoice .= '<td>';
+      $invoice .= '</td>';
+      $invoice .= '<td>';
+      $invoice .= '</td>';
+      $invoice .= '<td>';
+        $invoice .= $order['total_price'].' '.$currentCur['symbol'];
+      $invoice .= '</td>';
+    $invoice .= '</tr>';
+
+    return $invoice;
   }
 }
 

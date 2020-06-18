@@ -257,7 +257,7 @@ class accountController extends Controller
 
     public function remindpassword()
     {
-
+      $this->route = "frontend/account/forgot";
       $request = $this->getRequest()->post;
       if ($request) {
         $userEmail = $request['email'];
@@ -270,6 +270,7 @@ class accountController extends Controller
           unset($this->getRequest()->post);
           Router::redirect('account/remindpassword');
         }
+
         $this->view->setSession('forgotuserid', $user['id']);
         Router::redirect('account/newPassword');
       }
@@ -278,7 +279,7 @@ class accountController extends Controller
 
     public function newPassword()
     {
-      $this->route = "frontend/account/remindpassword";
+      $this->route = "frontend/account/forgot";
 
       $request = $this->getRequest()->post;
       if ($request) {
@@ -289,12 +290,12 @@ class accountController extends Controller
 
           $user['password'] = $request['password'];
           $this->__get('Users')->updateUser($user);
+          $this->View()->setMessage('success', 'changed');
 
          Router::redirect('login');
         }
       }
       $this->View()->setAssign('title', $this->View()->translating('newPassword'));
-
     }
 
 

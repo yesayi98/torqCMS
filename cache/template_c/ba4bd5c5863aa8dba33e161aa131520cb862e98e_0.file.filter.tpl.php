@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-17 15:23:48
+/* Smarty version 3.1.34-dev-7, created on 2020-06-18 08:45:14
   from 'C:\Users\User\OSPanel\domains\torq\public\frontend\category\filter.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5eea0b54c3a990_11486937',
+  'unifunc' => 'content_5eeaff6a3c8b65_62396683',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ba4bd5c5863aa8dba33e161aa131520cb862e98e' => 
     array (
       0 => 'C:\\Users\\User\\OSPanel\\domains\\torq\\public\\frontend\\category\\filter.tpl',
-      1 => 1592396621,
+      1 => 1592459111,
       2 => 'file',
     ),
   ),
@@ -20,13 +20,13 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5eea0b54c3a990_11486937 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5eeaff6a3c8b65_62396683 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
   'categories' => 
   array (
     'compiled_filepath' => 'C:\\Users\\User\\OSPanel\\domains\\torq\\cache\\template_c\\ba4bd5c5863aa8dba33e161aa131520cb862e98e_0.file.filter.tpl.php',
     'uid' => 'ba4bd5c5863aa8dba33e161aa131520cb862e98e',
-    'call_name' => 'smarty_template_function_categories_10350049435eea0b54beb822_96528473',
+    'call_name' => 'smarty_template_function_categories_9307325765eeaff6a19cd71_84140045',
   ),
 ));
 ?>
@@ -90,9 +90,9 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
  </aside>
  <!--sidebar widget end-->
 <?php }
-/* smarty_template_function_categories_10350049435eea0b54beb822_96528473 */
-if (!function_exists('smarty_template_function_categories_10350049435eea0b54beb822_96528473')) {
-function smarty_template_function_categories_10350049435eea0b54beb822_96528473(Smarty_Internal_Template $_smarty_tpl,$params) {
+/* smarty_template_function_categories_9307325765eeaff6a19cd71_84140045 */
+if (!function_exists('smarty_template_function_categories_9307325765eeaff6a19cd71_84140045')) {
+function smarty_template_function_categories_9307325765eeaff6a19cd71_84140045(Smarty_Internal_Template $_smarty_tpl,$params) {
 $params = array_merge(array('level'=>0), $params);
 foreach ($params as $key => $value) {
 $_smarty_tpl->tpl_vars[$key] = new Smarty_Variable($value, $_smarty_tpl->isRenderingCache);
@@ -115,7 +115,7 @@ $_smarty_tpl->tpl_vars['entry']->do_else = false;
             <?php $_smarty_tpl->_assignInScope('href', 'javascript:void(0)');?>
           <?php } else { ?>
             <?php ob_start();
-echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['url'][0], array( array('url'=>("frontend/category?c=").($_smarty_tpl->tpl_vars['entry']->value['id'])),$_smarty_tpl ) );
+echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['url'][0], array( array('url'=>("category?c=").($_smarty_tpl->tpl_vars['entry']->value['id'])),$_smarty_tpl ) );
 $_prefixVariable1 = ob_get_clean();
 $_smarty_tpl->_assignInScope('href', $_prefixVariable1);?>
           <?php }?>
@@ -135,5 +135,5 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
     </ul>
 <?php
 }}
-/*/ smarty_template_function_categories_10350049435eea0b54beb822_96528473 */
+/*/ smarty_template_function_categories_9307325765eeaff6a19cd71_84140045 */
 }

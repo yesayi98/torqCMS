@@ -930,7 +930,7 @@ public function deletePopularArticle($id)
         $min = $value['min'];
         $max = $value['max'];
         if ($min && $max) {
-          $sql .= "$tableKey >= '$min' AND $tableKey <= '$max'";
+          $sql .= "($tableKey BETWEEN '$min' AND '$max')";
         }
         if ($key !== end(array_keys($context))) {
           $sql .= ' AND ';
@@ -1007,13 +1007,14 @@ public function deletePopularArticle($id)
     elseif ($sorting == null) {
       $sortType = null;
     }
+    if (strpos(substr($sql, -4), 'AND') !== false) {
+      $sql = substr($sql, 0, strlen($sql) - 4);
+    }
 
     $sql .= " GROUP BY a.id";
     if ($sortType) {
       $sql .= " ORDER BY $sortType";
     }
-
-
     $this->createdQuery = $sql;
     return $sql;
   }

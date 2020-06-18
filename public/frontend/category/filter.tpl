@@ -8,7 +8,7 @@
           {if $entry.subCategories}
             {$href = 'javascript:void(0)'}
           {else}
-            {$href = {url url="frontend/category?c="|cat:$entry.id}}
+            {$href = {url url="category?c="|cat:$entry.id}}
           {/if}
           <a href="{$href}">
             {$entry.name}

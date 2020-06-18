@@ -34,14 +34,12 @@ class Assign extends Controller
     if($user){
       $basketProducts = Container()->Basket()->getProductsByUser();
       $basketCount = $basketProducts?count($basketProducts):0;
-      $favorites = Container()->Wishlist()->getProductsByUser();
-      $favCount = $favorites?count($favorites):0;
     }elseif (session_id()) {
       $basketProducts = Container()->Basket()->getProductsBySession();
       $basketCount = $basketProducts?count($basketProducts):0;
-      $favorites = Container()->Wishlist()->getProductsBySession();
-      $favCount = $favorites?count($favorites):0;
     }
+    $favorites = Container()->Wishlist()->getProductsBySession();
+    $favCount = $favorites?count($favorites):0;
     $basketTotal = 0;
     if ($basketProducts) {
       foreach ($basketProducts as $basketProduct) {

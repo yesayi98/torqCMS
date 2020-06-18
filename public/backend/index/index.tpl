@@ -160,7 +160,7 @@
   <div class="clearfix"></div>
   {block name="content-wrapper"}
   <div class="content-wrapper">
-    <div class="container-fluid" {if $route.controller=='index' || $route.controller=='categories'}data-content="true"{/if}>
+    <div class="container-fluid" {if $route.controller == 'index' || $route.controller == 'categories' || $route.controller == 'articles'}data-content="true"{/if}>
       {block name="container-content"}
       <!--Start Dashboard Content-->
 

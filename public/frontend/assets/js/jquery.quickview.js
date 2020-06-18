@@ -1,6 +1,7 @@
 window.plugin.quickView = {
   viewButtonSelector: '*[data-modal="quickview"]',
-  viewContainerSelector: '#quick-view .modal-content',
+  viewContainerSelector: '#modal_box *[data-content="true"]',
+  modal: '#modal_box',
 
   init: function () {
     var me = this;
@@ -18,11 +19,10 @@ window.plugin.quickView = {
       me.url = $(this).attr('href');
       console.log( $(this).attr('href'));
     });
-    $('#quick-view').on('shown.bs.modal', function () {
+    $(me.modal).on('shown.bs.modal', function () {
       $.get( me.url, function( data ) {
         if (data) {
           $(me.viewContainerSelector).html(data).promise().done(function(){
-            console.log($(me.viewContainerSelector).find('.product-large-slider'))
             me.slider();
           });
         }
@@ -65,7 +65,7 @@ window.plugin.quickView = {
           }).on('changed.owl.carousel', syncPosition2);
 
       function syncPosition(el) {
-          
+
           var count = el.item.count - 1;
           var current = Math.round(el.item.index - (el.item.count / 2) - .5);
 

@@ -8,7 +8,8 @@ class wishlistController extends Controller
 
   public function index()
   {
-    $wishlistItems = $this->view->getAssign('favorites');
+    $wishlist = $this->__get('Wishlist');
+    $wishlistItems = $wishlist->getProductsBySession();
     $products;
     $totalPrice = 0;
     foreach ($wishlistItems as $key => $product) {

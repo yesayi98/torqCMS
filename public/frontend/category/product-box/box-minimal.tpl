@@ -7,7 +7,7 @@
                 {block name='image-link'}
                 <a class="primary_img" href="{url url='detail?a='|cat:$product.id}">
                   {if $product.images.0.thumbnails.0}
-                  <img src="{$product.images.0.thumbnails.0.thumb_path}" alt="{$product.name}">
+                  <img src="{$product.images.0.thumbnails.1.thumb_path}" alt="{$product.name}">
                   {elseif $product.images.0}
                   <img src="{$product.images.0.path}" alt="{$product.name}">
                   {else}
@@ -18,7 +18,7 @@
                 {block name='button-group'}
                 <div class="img-icon">
                      <ul>
-                          <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box"  title="quick view"> <span class="lnr lnr-magnifier"></span></a></li>
+                          <li class="quick_button"><a href="{url url='detail/quickview?a='|cat:$product.id}" data-toggle="modal" data-modal="quickview" data-target="#modal_box"  title="quick view"> <span class="lnr lnr-magnifier"></span></a></li>
                           <li class="wishlist{if $product.wished} wished{/if}">
                             <a href="{url url='wishlist/add?a='|cat:$product.id}" title="{translator selector='wished'}" data-wishlist="true">
                               <span class="lnr lnr-heart"></span>

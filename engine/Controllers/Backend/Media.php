@@ -41,6 +41,16 @@ class mediaController extends BackendController
     $this->route = "backend/media/media-box/detail";
   }
 
+  /* action to regenerete media thumbnails*/
+  public function regenerate()
+  {
+    $this->__get('Media')->reGenerateThumbnails([100, 300], true);
+    die(json_encode(array(
+      'success'=>true,
+      'message'=>'done'
+    )));
+  }
+
   public function save()
   {
     $request = $this->getRequest()->request;
