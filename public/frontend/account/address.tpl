@@ -5,7 +5,7 @@
     <div class="our-address w-100">
         <p><strong>{$user.name} {$user.lastname}</strong></p>
         <address>
-            <P>{$address.region} {$address.city}, {$address.address}</P>
+            <P>{$address.address}</P>
             <P>{$address.phone}</P>
         </address>
     </div>

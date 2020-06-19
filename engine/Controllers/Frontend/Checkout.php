@@ -12,7 +12,6 @@ class checkoutController extends Controller
       $this->View()->setMessage('warning', 'emptybasket');
 
       Router::redirect('basket');
-
     }
     if (!Container()->getSession('user')) {
       Container()->setSession('redirect', 'checkout');
@@ -39,7 +38,7 @@ class checkoutController extends Controller
     $bonus = Container()->getSession('bonus');
 
     // get bonus discount
-    if (!empty($bonus)) {
+    if (!empty($bonus) && $bonus == 1) {
       $bonusDiscount = $this->__get('Core')->getItem('bonus')['content'];
       // calculating bonus
       $bonusDiscountedPrice = intval($totalPrice) * intval($bonusDiscount)/100;

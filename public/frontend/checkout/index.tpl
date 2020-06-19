@@ -77,7 +77,7 @@
                                 <div class="order-notes">
                                   <div class="row">
                                     <label class="col-12" for="order_note">{translator selector="ordernote"} </label>
-                                    <textarea class="col-12" id="order_note" placeholder="{translator selector="ordernote"}">{$user.address.0.note}</textarea>
+                                    <textarea class="col-12" id="order_note" name="notes" placeholder="{translator selector="ordernote"}">{$user.address.0.note}</textarea>
                                   </div>
                                 </div>
                             </div>
