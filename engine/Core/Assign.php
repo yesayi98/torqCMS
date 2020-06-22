@@ -56,6 +56,10 @@ class Assign extends Controller
 
     $title = ucfirst($routFile);
 
+    if ($this->view->getSession('clearCache')) {
+      $this->view->setAssign('clearCache', true);
+    }
+
     $cookiePopup = "true";
     if (!isset($this->getRequest()->request['widget'])) {
       if (!Container()->getCookie('showpopup')) {

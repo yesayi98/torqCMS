@@ -18,6 +18,18 @@ class indexController extends BackendController
     $this->View()->setAssign('articleCount', $articleCount);
   }
 
+  public function clearCache()
+  {
+    // write something what will clear the cache;
+    Container()->setSession('clearCache', true);
+
+    // tell some message on finish the proccess
+    die(json_encode(array(
+      'success' => true,
+      "message" =>'done'
+    )));
+  }
+
 }
 
 

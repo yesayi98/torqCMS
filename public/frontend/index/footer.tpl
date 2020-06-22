@@ -166,7 +166,17 @@
 
 {/block}
 
-
+{if $clearCache}
+  <script type="text/javascript">
+    $.ajax({
+        url: "",
+        context: document.body,
+        success: function(s,x){
+            $('html[manifest=saveappoffline.appcache]').attr('content', '');
+        }
+    });
+  </script>
+{/if}
 
 {if $message}
 <script type="text/javascript">

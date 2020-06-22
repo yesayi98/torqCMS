@@ -58,6 +58,8 @@ abstract class Controller
     // get Container
     // destroying session messages
     Container()->setSession('message', []);
+    // destroying cache session
+    Container()->setSession('clearCache', false);
 
     // there are will be written subscribers from plugins
   }
