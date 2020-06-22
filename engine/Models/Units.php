@@ -76,7 +76,7 @@
 
 		// returns the array $units
  		public function getUnitList(){
-			$units = $this->getList('units');
+			$units = $this->getList('units', 'all');
  			return $units;
  		}
  	}

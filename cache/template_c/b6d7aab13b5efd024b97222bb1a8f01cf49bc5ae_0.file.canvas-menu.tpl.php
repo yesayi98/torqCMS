@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-14 22:54:54
+/* Smarty version 3.1.34-dev-7, created on 2020-06-18 23:29:10
   from 'D:\OSPanel\domains\torq\public\frontend\index\canvas-menu.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ee6808e937ed1_00746193',
+  'unifunc' => 'content_5eebce96d5a107_49569823',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b6d7aab13b5efd024b97222bb1a8f01cf49bc5ae' => 
     array (
       0 => 'D:\\OSPanel\\domains\\torq\\public\\frontend\\index\\canvas-menu.tpl',
-      1 => 1591636513,
+      1 => 1592510869,
       2 => 'file',
     ),
   ),
@@ -20,164 +20,98 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ee6808e937ed1_00746193 (Smarty_Internal_Template $_smarty_tpl) {
-?><div class="offcanvas_menu">
+function content_5eebce96d5a107_49569823 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->_loadInheritance();
+$_smarty_tpl->inheritance->init($_smarty_tpl, false);
+?>
+<div class="offcanvas_menu">
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <div class="canvas_open">
-                    <a href="javascript:void(0)"><i class="icon-menu"></i></a>
-                </div>
                 <div class="offcanvas_menu_wrapper">
                     <div class="canvas_close">
                         <a href="javascript:void(0)"><i class="icon-x"></i></a>
                     </div>
-                    <div class="language_currency">
-                        <ul>
-                            <li class="language"><a href="index.html#"> Language <i class="icon-right ion-ios-arrow-down"></i></a>
-                                <ul class="dropdown_language">
-                                    <li><a href="index.html#">French</a></li>
-                                    <li><a href="index.html#">Spanish</a></li>
-                                    <li><a href="index.html#">Russian</a></li>
-                                </ul>
-                            </li>
-                            <li class="currency"><a href="index.html#"> Currency <i class="icon-right ion-ios-arrow-down"></i></a>
-                                <ul class="dropdown_currency">
-                                    <li><a href="index.html#">€ Euro</a></li>
-                                    <li><a href="index.html#">£ Pound Sterling</a></li>
-                                    <li><a href="index.html#">$ US Dollar</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
+                    <?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_5452683325eebce96d15846_70897506', "language_currency_canvas");
+?>
+
                     <div class="header_social text-right">
                         <ul>
-                            <!-- <li><a href="index.html#"><i class="ion-social-twitter"></i></a></li>
-                            <li><a href="index.html#"><i class="ion-social-googleplus-outline"></i></a></li>
-                            <li><a href="index.html#"><i class="ion-social-youtube-outline"></i></a></li> -->
                             <li><a href="index.html#"><i class="ion-social-facebook"></i></a></li>
                             <li><a href="index.html#"><i class="ion-social-instagram-outline"></i></a></li>
                         </ul>
                     </div>
                     <div class="search_container">
-                       <form action="index.html#">
-                           <!-- <div class="hover_category">
-                                <select class="select_option" name="select" id="categori1">
-                                    <option selected value="1">Ամենափնտրվողները</option>
-                                    <option value="2">Accessories</option>
-                                    <option value="3">Accessories & More</option>
-                                    <option value="4">Butters & Eggs</option>
-                                    <option value="5">Camera & Video </option>
-                                    <option value="6">Mornitors</option>
-                                    <option value="7">Tablets</option>
-                                    <option value="8">Laptops</option>
-                                    <option value="9">Handbags</option>
-                                    <option value="10">Headphone & Speaker</option>
-                                    <option value="11">Herbs & botanicals</option>
-                                    <option value="12">Vegetables</option>
-                                    <option value="13">Shop</option>
-                                    <option value="14">Laptops & Desktops</option>
-                                    <option value="15">Watchs</option>
-                                    <option value="16">Electronic</option>
-                                </select>
-                           </div> -->
+                       <form action="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['url'][0], array( array('url'=>"category/search"),$_smarty_tpl ) );?>
+">
                             <div class="search_box">
-                                <input placeholder="Փնտրել..." type="text">
-                                 <button type="submit"><span class="lnr lnr-magnifier"></span></button>
+                                <input placeholder="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['translator'][0], array( array('selector'=>"search"),$_smarty_tpl ) );?>
+" name="search" type="text">
+                                <button type="submit"><span class="lnr lnr-magnifier"></span></button>
                             </div>
                         </form>
                     </div>
                     <div class="header_account_area">
-                        <div class="header_account_list register">
+                        <div class="header_account_list login-register">
+                          <?php if ($_smarty_tpl->tpl_vars['user']->value) {?>
                             <ul>
-                                <li><a href="login.html">Գրանցվել</a></li>
+                                <li><a href="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['url'][0], array( array('url'=>'account'),$_smarty_tpl ) );?>
+"><?php echo $_smarty_tpl->tpl_vars['user']->value['name'];?>
+</a></li>
                                 <li><span>/</span></li>
-                                <li><a href="login.html">Մուտք</a></li>
+                                <li><a href="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['url'][0], array( array('url'=>'account/logout'),$_smarty_tpl ) );?>
+"><?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['translator'][0], array( array('selector'=>'logout'),$_smarty_tpl ) );?>
+</a></li>
                             </ul>
+                          <?php } else { ?>
+                          <ul>
+                              <li><a href="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['url'][0], array( array('url'=>'account/login'),$_smarty_tpl ) );?>
+"><?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['translator'][0], array( array('selector'=>'register'),$_smarty_tpl ) );?>
+</a></li>
+                              <li><span>/</span></li>
+                              <li><a href="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['url'][0], array( array('url'=>'account/login'),$_smarty_tpl ) );?>
+"><?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['translator'][0], array( array('selector'=>'login'),$_smarty_tpl ) );?>
+</a></li>
+                          </ul>
+                          <?php }?>
                         </div>
-                        <div class="header_account_list header_wishlist">
-                            <a href="wishlist.html"><span class="lnr lnr-heart"></span> <span class="item_count">3</span> </a>
-                        </div>
-                        <div class="header_account_list  mini_cart_wrapper">
-                           <a href="javascript:void(0)"><span class="lnr lnr-cart"></span><span class="item_count">2</span></a>
-
-                            <!--mini CART-->
-                            <div class="mini_cart">
-                                <div class="cart_gallery">
-                                    <div class="cart_item">
-                                       <div class="cart_img">
-                                           <a href="index.html#"><img src="<?php echo $_smarty_tpl->tpl_vars['BASE_FRONTEND']->value;?>
-assets/img/s-product/product.jpg" alt=""></a>
-                                       </div>
-                                        <div class="cart_info">
-                                            <a href="index.html#">Primis In Faucibus</a>
-                                            <p>1 x <span> $65.00 </span></p>
-                                        </div>
-                                        <div class="cart_remove">
-                                            <a href="index.html#"><i class="icon-x"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="cart_item">
-                                       <div class="cart_img">
-                                           <a href="index.html#"><img src="<?php echo $_smarty_tpl->tpl_vars['BASE_FRONTEND']->value;?>
-assets/img/s-product/product2.jpg" alt=""></a>
-                                       </div>
-                                        <div class="cart_info">
-                                            <a href="index.html#">Letraset Sheets</a>
-                                            <p>1 x <span> $60.00 </span></p>
-                                        </div>
-                                        <div class="cart_remove">
-                                            <a href="index.html#"><i class="icon-x"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="mini_cart_table">
-                                    <div class="cart_table_border">
-                                        <div class="cart_total">
-                                            <span>Sub total:</span>
-                                            <span class="price">$125.00</span>
-                                        </div>
-                                        <div class="cart_total mt-10">
-                                            <span>total:</span>
-                                            <span class="price">$125.00</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="mini_cart_footer">
-                                   <div class="cart_button">
-                                        <a href="cart.html"><i class="fa fa-shopping-cart"></i> View cart</a>
-                                    </div>
-                                    <div class="cart_button">
-                                        <a href="checkout.html"><i class="fa fa-sign-in"></i> Checkout</a>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <!--mini CART end-->
-
-                       </div>
                     </div>
                     <div class="call-support">
-                        <p><a href="tel:(08)23456789">(08) 23 456 789</a> Հարցերի դեպքւմ</p>
+                        <p><a href="tel:<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['translator'][0], array( array('selector'=>'phoneNumber'),$_smarty_tpl ) );?>
+"><?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['translator'][0], array( array('selector'=>'phoneNumber'),$_smarty_tpl ) );?>
+</a> <?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['translator'][0], array( array('selector'=>'ifquestions'),$_smarty_tpl ) );?>
+</p>
                     </div>
+
                     <div id="menu" class="text-left ">
                         <ul class="offcanvas_main_menu">
-                            <li class="menu-item-has-children active">
-                                <a href="index.html#">Գլխավոր</a>
-                            </li>
-                            <li class="menu-item-has-children">
-                                <a href="about.html">Մեր մասին</a>
-                            </li>
-                            <li class="menu-item-has-children">
-                                <a href="contact.html">Կապ</a>
-                            </li>
-                            <li class="menu-item-has-children">
-                                <a href="blog-sidebar.html">Բաղադրատոմսեր</a>
-                            </li>
+                            <li><a class="<?php if ($_smarty_tpl->tpl_vars['route']->value['controller'] == 'index') {?>active<?php }?>"  href="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['url'][0], array( array('url'=>''),$_smarty_tpl ) );?>
+"><?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['translator'][0], array( array('selector'=>'home'),$_smarty_tpl ) );?>
+</a></li>
+                            <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['mainCategories']->value, 'menuItem');
+$_smarty_tpl->tpl_vars['menuItem']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['menuItem']->value) {
+$_smarty_tpl->tpl_vars['menuItem']->do_else = false;
+?>
+                            <?php if (!$_smarty_tpl->tpl_vars['menuItem']->value['in_menu'] || !$_smarty_tpl->tpl_vars['menuItem']->value['active']) {?>
+                              <?php continue 1;?>
+                            <?php }?>
+                              <li><a href="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['url'][0], array( array('url'=>('category?c=').($_smarty_tpl->tpl_vars['menuItem']->value['id'])),$_smarty_tpl ) );?>
+"><?php echo $_smarty_tpl->tpl_vars['menuItem']->value['name'];?>
+</a></li>
+                            <?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+                            <li><a href="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['url'][0], array( array('url'=>'contact'),$_smarty_tpl ) );?>
+"><?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['translator'][0], array( array('selector'=>'contact'),$_smarty_tpl ) );?>
+</a></li>
                         </ul>
                     </div>
                     <div class="offcanvas_footer">
-                        <span><a href="index.html#"><i class="fa fa-envelope-o"></i> info@yourdomain.com</a></span>
+                        <span><a href="index.html#"><i class="fa fa-envelope-o"></i> <?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['translator'][0], array( array('selector'=>'emailAddress'),$_smarty_tpl ) );?>
+</a></span>
                     </div>
                 </div>
             </div>
@@ -185,4 +119,24 @@ assets/img/s-product/product2.jpg" alt=""></a>
     </div>
   </div>
 <?php }
+/* {block "language_currency_canvas"} */
+class Block_5452683325eebce96d15846_70897506 extends Smarty_Internal_Block
+{
+public $subBlocks = array (
+  'language_currency_canvas' => 
+  array (
+    0 => 'Block_5452683325eebce96d15846_70897506',
+  ),
+);
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+?>
+
+                    <div class="language_currency">
+                        <ul>
+                                                    </ul>
+                    </div>
+                    <?php
+}
+}
+/* {/block "language_currency_canvas"} */
 }

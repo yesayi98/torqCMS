@@ -5600,3 +5600,7 @@ table.grid td {
 .hidden{
 	display: none;
 }
+.waves-effect.users{
+	width: auto;
+	margin-right: 0;
+}

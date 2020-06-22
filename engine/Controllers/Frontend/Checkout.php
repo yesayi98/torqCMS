@@ -12,7 +12,6 @@ class checkoutController extends Controller
       $this->View()->setMessage('warning', 'emptybasket');
 
       Router::redirect('basket');
-
     }
     if (!Container()->getSession('user')) {
       Container()->setSession('redirect', 'checkout');
@@ -39,7 +38,7 @@ class checkoutController extends Controller
     $bonus = Container()->getSession('bonus');
 
     // get bonus discount
-    if (!empty($bonus)) {
+    if (!empty($bonus) && $bonus == 1) {
       $bonusDiscount = $this->__get('Core')->getItem('bonus')['content'];
       // calculating bonus
       $bonusDiscountedPrice = intval($totalPrice) * intval($bonusDiscount)/100;
@@ -172,10 +171,10 @@ class checkoutController extends Controller
     // $address['id'] = $user['address'][0]['id'];
     $address['user_id'] = $user['id'];
     $address['address'] = $request['address'];
-    $address['city'] = $request['city'];
-    $address['region'] = $request['region'];
+    $address['city'] = $request['city']?$request['region']:1;
+    $address['region'] = $request['region']?$request['region']:1;
     $address['postal_code'] = $request['postal_code'];
-    $address['phone'] = $request['phoneNumber'];
+    $address['phone'] = $request['phoneCode'].' '.$request['phone'];
     $address['notes'] = $request['notes'];
 
 

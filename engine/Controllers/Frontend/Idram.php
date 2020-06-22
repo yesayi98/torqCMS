@@ -56,7 +56,7 @@ class idramController extends Controller
     }
     public function payOrder()
     {
-      $this->route = 'idram';
+      $this->route = 'frontend/idram/index';
       $payment_method = $this->__get('Payments')->getPayment($this->payment);
       $order_id = $this->View()->getSession('order_id');
 

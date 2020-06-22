@@ -51,6 +51,10 @@ class Articles extends \Model
 
     $sql = "SELECT a.*, aa.video_article, aa.video_url,aa.video_url, aa.size, aa.color, aa.material, aa.ordernumber FROM articles a
             LEFT JOIN article_attributes aa ON aa.article_id = a.id";
+            $route = \Router::getRoute();
+            if ($route['module'] !== 'backend') {
+              $sql .= 'WHERE a.active = 1';
+            }
     if (!$all) {
       $articles = Connection()->query($sql);
       foreach ($articles['data'] as &$article) {
@@ -180,6 +184,10 @@ class Articles extends \Model
     $sql = "SELECT a.*, aa.video_article, aa.video_url,aa.video_url, aa.size, aa.color, aa.material, aa.ordernumber FROM articles a
             LEFT JOIN article_attributes aa ON aa.article_id = a.id
             WHERE a.id = $id";
+    $route = \Router::getRoute();
+    if ($route['module'] !== 'backend') {
+      $sql .= ' AND a.active = 1';
+    }
     $article = Connection()->fetchOne($sql);
     $article['images'] = $this->articleImages->getArticleImages($article['id']);
     $article['category_id'] = $this->articleCategories->getArticleCategories($article['id']);
@@ -198,6 +206,10 @@ class Articles extends \Model
   {
     $builder = $this->getQueryBuilder();
     $query = $builder->select()->setTable('articles');
+    $route = \Router::getRoute();
+    if ($route['module'] !== 'backend') {
+      $query->where()->equals('active', 1)->end();
+    }
     $query->leftJoin('article_attributes', 'id', 'article_id', ['ordernumber', 'material', 'color']);
     $query->leftJoin('article_category', 'id', 'article_id')->where()->equals('category_id', $categoryId)->end();
     $query->limit($offset, $limit);
@@ -228,7 +240,10 @@ class Articles extends \Model
             LEFT JOIN categories c ON c.id = ac.category_id
             LEFT JOIN article_attributes aa ON aa.article_id = a.id
             WHERE ac.category_id = $categoryId";
-
+    $route = \Router::getRoute();
+    if ($route['module'] !== 'backend') {
+      $sql .= " AND a.active = 1";
+    }
 
     if ($sorting == 'price_asc') {
       $sortType = 'a.price ASC';
@@ -266,7 +281,6 @@ class Articles extends \Model
     if ($limit) {
       $_GET['limit']=$limit;
     }
-
 
     $articles = Connection()->query($sql);
 
@@ -1010,7 +1024,10 @@ public function deletePopularArticle($id)
     if (strpos(substr($sql, -4), 'AND') !== false) {
       $sql = substr($sql, 0, strlen($sql) - 4);
     }
-
+    $route = \Router::getRoute();
+    if ($route['module'] !== 'backend') {
+      $sql .= 'AND a.active = 1';
+    }
     $sql .= " GROUP BY a.id";
     if ($sortType) {
       $sql .= " ORDER BY $sortType";

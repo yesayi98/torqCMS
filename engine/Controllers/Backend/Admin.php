@@ -35,8 +35,8 @@ class adminController extends BackendController
 
   public function logout()
   {
-    Container()->setSession('admin', []);
-    Container()->destroyCookie('admin');
+    Container()->setSession('admin', '');
+    Container()->setCookie('admin', '', time()-3600*24, '/backend');
     Router::redirect('backend');
   }
 

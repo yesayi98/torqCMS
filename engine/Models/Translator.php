@@ -125,7 +125,7 @@
 
 		// returns the array $languages
  		public function getLanguageList(){
-			$languages = $this->getList('languages');
+			$languages = $this->getList('languages', 'all');
 
  			return $languages;
  		}

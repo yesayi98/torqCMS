@@ -59,7 +59,7 @@
                  <div class="form-group row">
                    <label class="col-12 col-form-label">Activity</label>
                    <div class="col-12">
-                     <input type="checkbox" name="active" class="js-switch" data-color="#14abef" {if $emotion.active}checked{/if}{if !$emotion}checked{/if}>
+                     <input type="checkbox" name="active" class="js-switch" data-color="#14abef" {if $emotion.active}checked{/if}>
                    </div>
                  </div>
                </div>
@@ -84,6 +84,15 @@
                    <label class="col-12 col-form-label">Sort id</label>
                    <div class="col-12">
                      <input type="number" name="sort_id" class="form-control" value="{$emotion.sort_id}">
+                   </div>
+                 </div>
+               </div>
+               <div class="col-12">
+                 <div class="form-group row">
+                   <label class="col-12 col-form-label">actions</label>
+                   <div class="col-12">
+                     <button type="submit" class="btn btn-success" name="save-detail">Save</button>
+                     <button type="button" data-deleteDetail="true" class="btn btn-danger pull-right" name="delete-detail">Delete</button>
                    </div>
                  </div>
                </div>

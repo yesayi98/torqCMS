@@ -1,5 +1,6 @@
 <?php
 
+date_default_timezone_set(TIMEZONE);
 
 $dbDriver = DB_DRIVER;
 $host = DB_HOSTNAME;

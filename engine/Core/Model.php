@@ -42,7 +42,7 @@ abstract class Model
   * @return bool if not tablename
   * @return array $list
   */
-  public function getList($tablename, $limit = 'all')
+  public function getList($tablename, $limit = null)
   {
 
     if (!$tablename) {
@@ -196,7 +196,9 @@ abstract class Model
   */
   protected function get($table, $condition, $by = "id", $sortBy = 'id', bool $all = true)
   {
-    $sql = "SELECT * FROM $table WHERE $by = '$condition' ORDER BY $sortBy";
+    $sql = "SELECT * FROM $table WHERE $by = '$condition'";
+    
+    $sql .= " ORDER BY $sortBy";
     if ($all) {
       $data = Connection()->fetchAll($sql);
       if (count($data) == 1) {

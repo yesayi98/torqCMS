@@ -130,6 +130,46 @@ class emotionsController extends BackendController
     return $blogs;
   }
 
+  public function save()
+  {
+    $request = $this->getRequest()->request;
+
+    $emotion['id'] = $request['id'];
+    $emotion['name'] = $request['name'];
+    $emotion['row_height'] = $request['row_height'];
+    $emotion['class'] = $request['class'];
+    $emotion['sort_id'] = $request['sort_id'];
+    $emotion['full_screen'] = ($request['full_screen'] === "on")?1:0;
+    $emotion['active'] = ($request['active'] === "on")?1:0;
+
+    $emotionModel = $this->__get('Emotions');
+    if (!empty($emotion['id'])) {
+      $success = $emotionModel->updateEmotion($emotion);
+    }else{
+      $success = $emotionModel->setEmotion($emotion);
+      if ($success) {
+        $emotion['id'] = Connection()->getlLastInserted();
+      }
+    }
+    $message = "success";
+    if (!$success) {
+      $message = Connection()->getError();
+    }
+
+    if ($request['XHR']) {
+      die(
+        json_encode(
+            array(
+              'success' => $success,
+              'message' => $message
+            )
+          )
+        );
+    }else{
+      Router::redirect('backend/emotions/detail?e='.$emotion['id']);
+    }
+  }
+
 }
 
 

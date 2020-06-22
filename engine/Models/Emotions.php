@@ -24,19 +24,40 @@ class Emotions extends \Model
 
   public function getEmotionList()
   {
-    $emotions = $this->getList('emotions');
+    $emotions = $this->getList('emotions', 'all');
 
     return $emotions;
   }
 
+  /**
+  * @param array $emotion
+  * @return bool $query
+  */
   public function setEmotion()
   {
-    // code...
+    if (empty($emotion)) {
+      return false;
+    }
+
+    $query = $this->insert('emotions', $emotion);
+
+    return $query;
   }
 
-  public function updateEmotion()
+
+  /**
+  * @param array $emotion
+  * @return bool $query
+  */
+  public function updateEmotion($emotion)
   {
-    // code...
+    if (empty($emotion)) {
+      return false;
+    }
+
+    $query = $this->update('emotions', $emotion);
+
+    return $query;
   }
 
   public function setEmotionType()

@@ -39,9 +39,9 @@ class Categories extends Model
     return $categories;
   }
 
-  public function getCategoryList()
+  public function getCategoryList($limit = "all")
   {
-    $categories = $this->getList($this->table);
+    $categories = $this->getList($this->table, $limit);
 
     return $categories;
   }

@@ -101,7 +101,7 @@
       }else{
         self::redirect('error');
       }
-      
+
       // calling post dispatch actions
       $controller->postDispatch();
     }
@@ -220,6 +220,11 @@
       if ($request) {
         return self::validator($request);
       }
+    }
+
+    public static function getRoute()
+    {
+      return self::$route;
     }
   }
 

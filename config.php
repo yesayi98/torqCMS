@@ -22,6 +22,7 @@ define('BASE_BACKEND', BASE_URL.'/public/backend/');
 define('DEBUG', true);
 
 // DB
+define('TIMEZONE', 'Asia/Yerevan');
 define('DB_DRIVER', 'mysqli');
 define('DB_HOSTNAME', 'localhost');
 define('DB_USERNAME', 'root');

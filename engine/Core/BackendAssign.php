@@ -15,6 +15,7 @@ class BackendAssign extends Controller
     }else{
       $admin = Container()->Admins()->getAdmin(Container()->getCookie('admin')['id']);
     }
+
     if (Container()->getSession('message') != null){
       $this->view->setAssign('message', Container()->getSession('message'));
     }

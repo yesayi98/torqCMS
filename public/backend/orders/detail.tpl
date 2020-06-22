@@ -15,7 +15,7 @@
         <div class="cart-buttons float-right button-group">
           <button type="button" form="detail-form" class="btn btn-success" name="save-detail"><i class="fa fa-save"></i> save</button>
           {if $order}
-          <button type="button" data-url="{url url='backend/orders/delete?o='|cat:$order.id}" class="btn btn-danger" name="delete-detail"><i class="fa fa-trash"></i> delete</button>
+          <button type="button" data-url="{url url='backend/orders/delete'}" data-name="o" data-id="{$order.id}" class="btn btn-danger" name="delete-detail"><i class="fa fa-trash"></i> delete</button>
           {/if}
           <a href="{url url='backend/orders/'}" class="btn btn-info" ><i class="fa fa-undo"></i> back</a>
         </div>
@@ -30,7 +30,7 @@
                      <div class="form-group row">
                        <label class="col-sm-2 col-form-label">Name</label>
                        <div class="col-sm-10">
-                         <input type="text" name="name" class="form-control" value="{$order.name} {$order.lastname}" {if $order}disabled{/if}>
+                         <input type="text" name="name" class="form-control" value="{$order.name} {$order.lastname}" {if $order}readonly{/if}>
                        </div>
                      </div>
                    </div>
@@ -38,7 +38,7 @@
                      <div class="form-group row">
                        <label class="col-sm-2 col-form-label">Price</label>
                        <div class="col-sm-10">
-                         <input type="number" name="product_price" {if $order}disabled{/if} class="form-control" value="{$order.product_total}">
+                         <input type="number" name="product_price" {if $order}readonly{/if} class="form-control" value="{$order.product_total}">
                        </div>
                      </div>
                    </div>
@@ -46,15 +46,23 @@
                      <div class="form-group row">
                        <label class="col-sm-2 col-form-label">Order number</label>
                        <div class="col-sm-10">
-                         <input type="text" name="order_id" {if $order}disabled{/if} class="form-control" value="{$order.id}">
+                         <input type="text" name="order_id" {if $order}readonly{/if} class="form-control" value="{$order.id}">
                        </div>
                      </div>
                    </div>
                    <div class="col-12 col-lg-6 col-xl-6">
                      <div class="form-group row">
-                       <label class="col-sm-2 col-form-label">delivery price</label>
+                       <label class="col-sm-2 col-form-label">Delivery price</label>
                        <div class="col-sm-10">
-                         <input type="number" name="delivery_price" {if $order}disabled{/if} class="form-control" value="{$order.delivery_price}">
+                         <input type="number" name="delivery_price" {if $order}readonly{/if} class="form-control" value="{$order.delivery_price}">
+                       </div>
+                     </div>
+                   </div>
+                   <div class="col-12 col-lg-6 col-xl-6">
+                     <div class="form-group row">
+                       <label class="col-sm-2 col-form-label">Bonus price</label>
+                       <div class="col-sm-10">
+                         <input type="text" name="bonus_price" {if $order}readonly{/if} class="form-control" value="{$order.bonus_price}">
                        </div>
                      </div>
                    </div>
@@ -62,7 +70,7 @@
                      <div class="form-group row">
                        <label class="col-sm-2 col-form-label">payment Method</label>
                        <div class="col-sm-10">
-                         <select class="form-control" name='payment_method' {if $order}disabled{/if} >
+                         <select class="form-control" name='payment_method' {if $order}readonly{/if} >
                            {foreach $paymentMethods as $method}
                             <option value="{$method.id}" {if $method.id == $order.payment_method}selected{/if}>{$method.name}</option>
                            {/foreach}
@@ -74,7 +82,7 @@
                      <div class="form-group row">
                        <label class="col-sm-2 col-form-label">Total</label>
                        <div class="col-sm-10">
-                         <input type="number" name='total_price' {if $order}disabled{/if} class="form-control" value="{$order.total_price}">
+                         <input type="number" name='total_price' {if $order}readonly{/if} class="form-control" value="{$order.total_price}">
                        </div>
                      </div>
                    </div>
@@ -82,7 +90,7 @@
                      <div class="form-group row">
                        <label class="col-sm-2 col-form-label">buy date</label>
                        <div class="col-sm-10">
-                         <input type="date" name='buy_date' {if $order}disabled{/if} class="form-control" value="{$order.buy_date}">
+                         <input type="text" name='buy_date' {if $order}readonly{/if} class="form-control" value="{$order.buy_date}">
                        </div>
                      </div>
                    </div>
@@ -115,6 +123,30 @@
                             <option value="{$status.id}" {if $status.id == $order.delivery_status}selected{/if}>{$status.name}</option>
                            {/foreach}
                          </select>
+                       </div>
+                     </div>
+                   </div>
+                   <div class="col-12 col-lg-6 col-xl-6">
+                     <div class="form-group row">
+                       <label class="col-sm-2 col-form-label">address</label>
+                       <div class="col-sm-10">
+                         <textarea name="name" readonly class="form-control">{$order.address.city_info.name} {$order.address.address}</textarea>
+                       </div>
+                     </div>
+                   </div>
+                   <div class="col-12 col-lg-6 col-xl-6">
+                     <div class="form-group row">
+                       <label class="col-sm-2 col-form-label">notes</label>
+                       <div class="col-sm-10">
+                         <textarea name="name" readonly class="form-control">{$order.address.notes}</textarea>
+                       </div>
+                     </div>
+                   </div>
+                   <div class="col-12 col-lg-12 col-xl-12">
+                     <div class="form-group row">
+                       <label class="col-sm-1 col-form-label">phone</label>
+                       <div class="col-sm-11">
+                         <input name="name" readonly class="form-control" value="{$order.address.phone}">
                        </div>
                      </div>
                    </div>

@@ -67,20 +67,23 @@ class articlesController extends BackendController
     $article['media'] = $request['media_id'];
     if (!empty($request['id'])) {
       $article['id'] = $request['id'];
-      $this->updateArticle($article);
+      $success = $this->updateArticle($article);
       $request['translation']['article_id'] = $article['id'];
     }else{
       $article['id'] = $this->insertArticle($article);
       $request['translation']['article_id'] = $article['id'];
     }
     $this->saveTranslation($request['translation']);
-
+    $message = "success";
+    if (!$success) {
+      $message = Connection()->getError();
+    }
     if ($request['XHR']) {
       die(
         json_encode(
             array(
-              'success' => true,
-              'message' => 'success'
+              'success' => $success,
+              'message' => $message
             )
           )
         );
@@ -151,6 +154,39 @@ class articlesController extends BackendController
                    ->ArticleCategories()
                    ->deleteArticleCategory($category_id, $article_id);
     die($result);
+  }
+
+
+  /**
+  * actions should be public function
+  * delete is an action, calls on running blog delete
+  */
+  public function delete()
+  {
+    // get request params
+    $reqeust = $this->getRequest();
+    $articleID = $reqeust->get['a'];
+
+    // get blog model
+    $model = $this->__get('Articles');
+    // deleting
+    $success = $model->deleteArticle($articleID);
+    $message = "success";
+    if (!$success) {
+      $message = Connection()->getError();
+    }
+    if ($request['XHR']) {
+      die(
+        json_encode(
+            array(
+              'success' => $success,
+              'message' => $message
+            )
+          )
+        );
+    }else{
+      Router::redirect('backend/articles/');
+    }
   }
 
   public function deleteImage()

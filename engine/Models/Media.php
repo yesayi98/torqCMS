@@ -170,7 +170,6 @@
       }
       $media['path'] = Router::url($media['path']);
       $media['thumbnails'] = $this->getMediaThumbnails($media['id']);
-
       return $media;
     }
 
@@ -196,7 +195,7 @@
 
     public function getAlbumList()
     {
-      $albums = $this->getList('media_albums');
+      $albums = $this->getList('media_albums', 'all');
 
       return $albums;
     }
@@ -227,6 +226,7 @@
       $media = Connection()->fetchOne($sql);
       $deleted = unlink($this->mediaPath.$media['name'].'.'.$media['extension']);
       $this->deleteMediaThumbnailByMedia($id);
+      $deleted = true;
       if ($deleted) {
         $sql = "DELETE FROM media WHERE id = $id";
         return $query = Connection()->set($sql);
@@ -342,7 +342,9 @@
       $sql = "SELECT * FROM media_thumbnails WHERE media_id = '$media_id'";
 
       $thumbnails = Connection()->fetchAll($sql);
-
+      foreach ($thumbnails as &$thumbnail) {
+        $thumbnail['thumb_path'] = Router::url($thumbnail['thumb_path']);
+      }
       return $thumbnails;
     }
 

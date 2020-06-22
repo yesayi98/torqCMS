@@ -14,7 +14,7 @@ class ModelEntity extends \Model
     if (isset($result['media_id'])) {
       $result['media'] = Container()->Media()->getMedia($result['media_id']);
     }
-
+    
     return $result;
   }
 

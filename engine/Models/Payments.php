@@ -94,7 +94,7 @@
 
 		// returns the array $payments
  		public function getPaymentList(){
- 			$payments = $this->getList('payment_methods', true);
+ 			$payments = $this->getList('payment_methods', 'all');
  			return $payments;
  		}
  	}

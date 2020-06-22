@@ -149,42 +149,25 @@
 			if(!$order){
 				return;
 			}
+			$order['buy_date'] = date("Y-m-d H:i:s");
 			$query = $this->insert('orders', $order);
 
 			return $query;
 		}
+
+		/**
+		* update order by id
+		* @param array $order
+		* @return bool $qeury
+		*/
 		public function updateOrder($order)
 		{
-
-			if(!$order){
+			// check if order not empty
+			if(empty($order)){
 				return;
 			}
-			$order_id = $order['order_id'];
-			$total_price = $order['total_price'];
-			$count_product = $order['count_product'];
-			$product_total = $order['product_total'];
-			$delivery_price = $order['delivery_price'];
-			$user_id = $order['user_id'];
-			$address_id = $order['address_id'];
-			$buy_date = $order['buy_date'];
-			$delivery_date = $order['delivery_date']?$order['delivery_date']:0;
-			$order_status = $order['order_status'];
-			$delivery_status = $order['delivery_status'];
-			$payment_method = $order['payment_method'];
-			$sql = "UPDATE orders SET
-								count_product = '$count_product',
-								product_total = '$product_total',
-								delivery_price = '$delivery_price',
-								total_price = '$total_price',
-								payment_method = '$payment_method',
-								user_id = '$user_id',
-								address_id = '$address_id',
-								order_status = '$order_status',
-								delivery_status = '$delivery_status',
-								delivery_date = '$delivery_date',
-								buy_date = '$buy_date'
-							WHERE id = $order_id";
-			$query = Connection()->set($sql);
+			// updating order
+			$query = $this->update('orders', $order);
 			return $query;
 		}
 

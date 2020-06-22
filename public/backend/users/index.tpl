@@ -32,6 +32,8 @@
     </div>
   {/block}
   {block name="table-block"}
-    {include file="backend/users/table.tpl"}
+    <div class="list-container" data-content='true'>
+      {include file="backend/users/table.tpl"}
+    </div>
   {/block}
 {/block}

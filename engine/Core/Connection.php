@@ -12,6 +12,7 @@
 			{
 				$this->connection = new mysqli($host, $dbUser, $dbPassword, $dbName);
 				$this->connection->set_charset('utf8');
+				$this->executeQuery("SET time_zone = '".TIMEZONE."'");
 			}
 
 			public function __call($method, $args)

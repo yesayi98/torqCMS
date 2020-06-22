@@ -21,7 +21,7 @@ class usersController extends BackendController
 
   public function detail()
   {
-    $user_id = $this->getRequest()->request['o'];
+    $user_id = $this->getRequest()->request['u'];
     $usersModel = $this->__get('Users');
     $view = $this->View();
 
@@ -29,6 +29,16 @@ class usersController extends BackendController
       $user = $usersModel->getUser($user_id);
       $view->setAssign('customer', $user);
     }
+  }
+
+  public function delete()
+  {
+    $user_id = $this->getRequest()->request['u'];
+    $usersModel = $this->__get('Users');
+
+    $usersModel->deleteUser($user_id);
+    
+    \Router::redirect('backend/users');
   }
 }
 

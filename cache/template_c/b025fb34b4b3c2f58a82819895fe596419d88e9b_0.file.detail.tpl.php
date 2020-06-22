@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-16 18:07:58
+/* Smarty version 3.1.34-dev-7, created on 2020-06-19 08:53:37
   from 'C:\Users\User\OSPanel\domains\torq\public\backend\orders\detail.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ee8e04e5b2601_71161525',
+  'unifunc' => 'content_5eec52e1c47513_93831855',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b025fb34b4b3c2f58a82819895fe596419d88e9b' => 
     array (
       0 => 'C:\\Users\\User\\OSPanel\\domains\\torq\\public\\backend\\orders\\detail.tpl',
-      1 => 1588691949,
+      1 => 1592546015,
       2 => 'file',
     ),
   ),
@@ -20,35 +20,35 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ee8e04e5b2601_71161525 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5eec52e1c47513_93831855 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_7102731905ee8e04e56ea72_75128566', "css-container");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_9211613075eec52e1bd1608_35450509', "css-container");
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_21390740805ee8e04e571fa2_29961888', "container-content");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_142654595eec52e1bd6dc8_51595078', "container-content");
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_12818050225ee8e04e5afcb5_44734613', "js-container");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_20500296155eec52e1c43708_45461395', "js-container");
 ?>
 
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, "backend/orders/index.tpl");
 }
 /* {block "css-container"} */
-class Block_7102731905ee8e04e56ea72_75128566 extends Smarty_Internal_Block
+class Block_9211613075eec52e1bd1608_35450509 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'css-container' => 
   array (
-    0 => 'Block_7102731905ee8e04e56ea72_75128566',
+    0 => 'Block_9211613075eec52e1bd1608_35450509',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -65,7 +65,7 @@ $_smarty_tpl->inheritance->callParent($_smarty_tpl, $this, '{$smarty.block.paren
 }
 /* {/block "css-container"} */
 /* {block "order-detail-table-head"} */
-class Block_8916735005ee8e04e5a4607_96587534 extends Smarty_Internal_Block
+class Block_16939721525eec52e1c20b34_48235171 extends Smarty_Internal_Block
 {
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
@@ -86,7 +86,7 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block "order-detail-table-head"} */
 /* {block "order-detail-table-body"} */
-class Block_7988443305ee8e04e5a5421_01245068 extends Smarty_Internal_Block
+class Block_19189340355eec52e1c22570_17897602 extends Smarty_Internal_Block
 {
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
@@ -128,7 +128,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 }
 /* {/block "order-detail-table-body"} */
 /* {block "form-content"} */
-class Block_8964423055ee8e04e585677_44055746 extends Smarty_Internal_Block
+class Block_6052436245eec52e1bed517_55821010 extends Smarty_Internal_Block
 {
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
@@ -140,7 +140,7 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
                        <div class="col-sm-10">
                          <input type="text" name="name" class="form-control" value="<?php echo $_smarty_tpl->tpl_vars['order']->value['name'];?>
  <?php echo $_smarty_tpl->tpl_vars['order']->value['lastname'];?>
-" <?php if ($_smarty_tpl->tpl_vars['order']->value) {?>disabled<?php }?>>
+" <?php if ($_smarty_tpl->tpl_vars['order']->value) {?>readonly<?php }?>>
                        </div>
                      </div>
                    </div>
@@ -148,7 +148,7 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
                      <div class="form-group row">
                        <label class="col-sm-2 col-form-label">Price</label>
                        <div class="col-sm-10">
-                         <input type="number" name="product_price" <?php if ($_smarty_tpl->tpl_vars['order']->value) {?>disabled<?php }?> class="form-control" value="<?php echo $_smarty_tpl->tpl_vars['order']->value['product_total'];?>
+                         <input type="number" name="product_price" <?php if ($_smarty_tpl->tpl_vars['order']->value) {?>readonly<?php }?> class="form-control" value="<?php echo $_smarty_tpl->tpl_vars['order']->value['product_total'];?>
 ">
                        </div>
                      </div>
@@ -157,16 +157,25 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
                      <div class="form-group row">
                        <label class="col-sm-2 col-form-label">Order number</label>
                        <div class="col-sm-10">
-                         <input type="text" name="order_id" <?php if ($_smarty_tpl->tpl_vars['order']->value) {?>disabled<?php }?> class="form-control" value="<?php echo $_smarty_tpl->tpl_vars['order']->value['id'];?>
+                         <input type="text" name="order_id" <?php if ($_smarty_tpl->tpl_vars['order']->value) {?>readonly<?php }?> class="form-control" value="<?php echo $_smarty_tpl->tpl_vars['order']->value['id'];?>
 ">
                        </div>
                      </div>
                    </div>
                    <div class="col-12 col-lg-6 col-xl-6">
                      <div class="form-group row">
-                       <label class="col-sm-2 col-form-label">delivery price</label>
+                       <label class="col-sm-2 col-form-label">Delivery price</label>
                        <div class="col-sm-10">
-                         <input type="number" name="delivery_price" <?php if ($_smarty_tpl->tpl_vars['order']->value) {?>disabled<?php }?> class="form-control" value="<?php echo $_smarty_tpl->tpl_vars['order']->value['delivery_price'];?>
+                         <input type="number" name="delivery_price" <?php if ($_smarty_tpl->tpl_vars['order']->value) {?>readonly<?php }?> class="form-control" value="<?php echo $_smarty_tpl->tpl_vars['order']->value['delivery_price'];?>
+">
+                       </div>
+                     </div>
+                   </div>
+                   <div class="col-12 col-lg-6 col-xl-6">
+                     <div class="form-group row">
+                       <label class="col-sm-2 col-form-label">Bonus price</label>
+                       <div class="col-sm-10">
+                         <input type="text" name="bonus_price" <?php if ($_smarty_tpl->tpl_vars['order']->value) {?>readonly<?php }?> class="form-control" value="<?php echo $_smarty_tpl->tpl_vars['order']->value['bonus_price'];?>
 ">
                        </div>
                      </div>
@@ -175,7 +184,7 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
                      <div class="form-group row">
                        <label class="col-sm-2 col-form-label">payment Method</label>
                        <div class="col-sm-10">
-                         <select class="form-control" name='payment_method' <?php if ($_smarty_tpl->tpl_vars['order']->value) {?>disabled<?php }?> >
+                         <select class="form-control" name='payment_method' <?php if ($_smarty_tpl->tpl_vars['order']->value) {?>readonly<?php }?> >
                            <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['paymentMethods']->value, 'method');
 $_smarty_tpl->tpl_vars['method']->do_else = true;
@@ -196,7 +205,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                      <div class="form-group row">
                        <label class="col-sm-2 col-form-label">Total</label>
                        <div class="col-sm-10">
-                         <input type="number" name='total_price' <?php if ($_smarty_tpl->tpl_vars['order']->value) {?>disabled<?php }?> class="form-control" value="<?php echo $_smarty_tpl->tpl_vars['order']->value['total_price'];?>
+                         <input type="number" name='total_price' <?php if ($_smarty_tpl->tpl_vars['order']->value) {?>readonly<?php }?> class="form-control" value="<?php echo $_smarty_tpl->tpl_vars['order']->value['total_price'];?>
 ">
                        </div>
                      </div>
@@ -205,7 +214,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                      <div class="form-group row">
                        <label class="col-sm-2 col-form-label">buy date</label>
                        <div class="col-sm-10">
-                         <input type="date" name='buy_date' <?php if ($_smarty_tpl->tpl_vars['order']->value) {?>disabled<?php }?> class="form-control" value="<?php echo $_smarty_tpl->tpl_vars['order']->value['buy_date'];?>
+                         <input type="date" name='buy_date' <?php if ($_smarty_tpl->tpl_vars['order']->value) {?>readonly<?php }?> class="form-control" value="<?php echo $_smarty_tpl->tpl_vars['order']->value['buy_date'];?>
 ">
                        </div>
                      </div>
@@ -261,6 +270,34 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                        </div>
                      </div>
                    </div>
+                   <div class="col-12 col-lg-6 col-xl-6">
+                     <div class="form-group row">
+                       <label class="col-sm-2 col-form-label">address</label>
+                       <div class="col-sm-10">
+                         <textarea name="name" readonly class="form-control"><?php echo $_smarty_tpl->tpl_vars['order']->value['address']['city_info']['name'];?>
+ <?php echo $_smarty_tpl->tpl_vars['order']->value['address']['address'];?>
+</textarea>
+                       </div>
+                     </div>
+                   </div>
+                   <div class="col-12 col-lg-6 col-xl-6">
+                     <div class="form-group row">
+                       <label class="col-sm-2 col-form-label">notes</label>
+                       <div class="col-sm-10">
+                         <textarea name="name" readonly class="form-control"><?php echo $_smarty_tpl->tpl_vars['order']->value['address']['notes'];?>
+</textarea>
+                       </div>
+                     </div>
+                   </div>
+                   <div class="col-12 col-lg-12 col-xl-12">
+                     <div class="form-group row">
+                       <label class="col-sm-1 col-form-label">phone</label>
+                       <div class="col-sm-11">
+                         <input name="name" readonly class="form-control" value="<?php echo $_smarty_tpl->tpl_vars['order']->value['address']['phone'];?>
+">
+                       </div>
+                     </div>
+                   </div>
                    <div class="col-12">
                      <div class="table-head">
                        <div class="table-title d-inline-block">
@@ -274,11 +311,11 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                      <div class="table-responsive">
                        <table id="default-datatable" class="table table-bordered">
                          <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_8916735005ee8e04e5a4607_96587534', "order-detail-table-head", $this->tplIndex);
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_16939721525eec52e1c20b34_48235171', "order-detail-table-head", $this->tplIndex);
 ?>
 
                          <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_7988443305ee8e04e5a5421_01245068', "order-detail-table-body", $this->tplIndex);
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_19189340355eec52e1c22570_17897602', "order-detail-table-body", $this->tplIndex);
 ?>
 
                        </table>
@@ -290,7 +327,7 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_7988443305ee8e04e5
 }
 /* {/block "form-content"} */
 /* {block "detail-form-container"} */
-class Block_5492029225ee8e04e582da3_46241079 extends Smarty_Internal_Block
+class Block_15760589555eec52e1be9e37_71675753 extends Smarty_Internal_Block
 {
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
@@ -299,7 +336,7 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 " action="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['url'][0], array( array('url'=>'backend/orders/save'),$_smarty_tpl ) );?>
 " method="post" data-ajaxsend="true">
                <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_8964423055ee8e04e585677_44055746', "form-content", $this->tplIndex);
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_6052436245eec52e1bed517_55821010', "form-content", $this->tplIndex);
 ?>
 
                <input type="hidden" name="id" value="<?php echo $_smarty_tpl->tpl_vars['order']->value['id'];?>
@@ -310,28 +347,28 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_8964423055ee8e04e5
 }
 /* {/block "detail-form-container"} */
 /* {block "container-content"} */
-class Block_21390740805ee8e04e571fa2_29961888 extends Smarty_Internal_Block
+class Block_142654595eec52e1bd6dc8_51595078 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'container-content' => 
   array (
-    0 => 'Block_21390740805ee8e04e571fa2_29961888',
+    0 => 'Block_142654595eec52e1bd6dc8_51595078',
   ),
   'detail-form-container' => 
   array (
-    0 => 'Block_5492029225ee8e04e582da3_46241079',
+    0 => 'Block_15760589555eec52e1be9e37_71675753',
   ),
   'form-content' => 
   array (
-    0 => 'Block_8964423055ee8e04e585677_44055746',
+    0 => 'Block_6052436245eec52e1bed517_55821010',
   ),
   'order-detail-table-head' => 
   array (
-    0 => 'Block_8916735005ee8e04e5a4607_96587534',
+    0 => 'Block_16939721525eec52e1c20b34_48235171',
   ),
   'order-detail-table-body' => 
   array (
-    0 => 'Block_7988443305ee8e04e5a5421_01245068',
+    0 => 'Block_19189340355eec52e1c22570_17897602',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -348,7 +385,8 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
         <div class="cart-buttons float-right button-group">
           <button type="button" form="detail-form" class="btn btn-success" name="save-detail"><i class="fa fa-save"></i> save</button>
           <?php if ($_smarty_tpl->tpl_vars['order']->value) {?>
-          <button type="button" data-url="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['url'][0], array( array('url'=>('backend/orders/delete?o=').($_smarty_tpl->tpl_vars['order']->value['id'])),$_smarty_tpl ) );?>
+          <button type="button" data-url="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['url'][0], array( array('url'=>'backend/orders/delete'),$_smarty_tpl ) );?>
+" data-name="o" data-id="<?php echo $_smarty_tpl->tpl_vars['order']->value['id'];?>
 " class="btn btn-danger" name="delete-detail"><i class="fa fa-trash"></i> delete</button>
           <?php }?>
           <a href="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['url'][0], array( array('url'=>'backend/orders/'),$_smarty_tpl ) );?>
@@ -358,7 +396,7 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
        <div class="card-body">
          <div class="detail-form-container">
            <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_5492029225ee8e04e582da3_46241079', "detail-form-container", $this->tplIndex);
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_15760589555eec52e1be9e37_71675753', "detail-form-container", $this->tplIndex);
 ?>
 
          </div>
@@ -369,12 +407,12 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_5492029225ee8e04e5
 }
 /* {/block "container-content"} */
 /* {block "js-container"} */
-class Block_12818050225ee8e04e5afcb5_44734613 extends Smarty_Internal_Block
+class Block_20500296155eec52e1c43708_45461395 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'js-container' => 
   array (
-    0 => 'Block_12818050225ee8e04e5afcb5_44734613',
+    0 => 'Block_20500296155eec52e1c43708_45461395',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {

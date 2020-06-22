@@ -51,7 +51,7 @@
      <div id="sidebar-wrapper" data-simplebar="" data-simplebar-auto-hide="true">
        {block name="logo-container"}
          <div class="brand-logo">
-            <a href="index.html">
+            <a href="{url url="backend"}">
              <img src="{$BASE_BACKEND}assets/images/logo-icon.png" class="logo-icon" alt="logo icon">
              <h5 class="logo-text">Torq Admin</h5>
            </a>
@@ -63,7 +63,7 @@
             {foreach $menu as $menuItem}
               {block name="menu-item"}
                 <li>
-                  <a href="{url url=$menuItem.url}" class="waves-effect">
+                  <a href="{url url=$menuItem.url}" class="waves-effect {$menuItem.name|lower}" data-action="{$menuItem.name|lower}">
                     <i class="{$menuItem.icon}"></i> <span>{$menuItem.name}</span>
                     {if $menuItem.has_children}
                       <i class="fa fa-angle-left pull-right"></i>
@@ -160,7 +160,7 @@
   <div class="clearfix"></div>
   {block name="content-wrapper"}
   <div class="content-wrapper">
-    <div class="container-fluid" {if $route.controller == 'index' || $route.controller == 'categories' || $route.controller == 'articles'}data-content="true"{/if}>
+    <div class="container-fluid" {if $route.controller == 'index' || $route.controller == 'categories' || $route.action == 'detail'}data-content="true"{/if}>
       {block name="container-content"}
       <!--Start Dashboard Content-->
 
@@ -811,6 +811,7 @@
       <!-- Bootstrap core JavaScript-->
       <script src="{$BASE_BACKEND}assets/js/jquery.min.js"></script>
       <script src="{$BASE_BACKEND}assets/js/jquery.pubSub.js"></script>
+      <script src="{$BASE_BACKEND}assets/js/jquery.notification.js"></script>
       <script src="{$BASE_BACKEND}assets/js/popper.min.js"></script>
       <script src="{$BASE_BACKEND}assets/js/bootstrap.min.js"></script>
 
@@ -843,6 +844,7 @@
         <script src="{$BASE_BACKEND}assets/js/jquery.paginator.js"></script>
       {/if}
         <script>
+            window.route = {$route|@json_encode}
             $(function() {
                 $(".knob").knob();
             });

@@ -61,7 +61,7 @@
                                 <label>{translator selector="phone"}</label>
                                   <div class="phone-number">
                                     <input type="text" class="phone-code" name="phoneCode" value="+374" readonly>
-                                    <input type="number" class="phone" name='phone' placeholder="XX XXXXXX" value="{$user.phone}">
+                                    <input type="number" class="phone" name='phone' placeholder="XX XXXXXX" value="{$user.phone}" required>
                                   </div>
                                 </div>
                             </div>
@@ -77,7 +77,7 @@
                                 <div class="order-notes">
                                   <div class="row">
                                     <label class="col-12" for="order_note">{translator selector="ordernote"} </label>
-                                    <textarea class="col-12" id="order_note" placeholder="{translator selector="ordernote"}">{$user.address.0.note}</textarea>
+                                    <textarea class="col-12" id="order_note" name="notes" placeholder="{translator selector="ordernote"}">{$user.address.0.note}</textarea>
                                   </div>
                                 </div>
                             </div>

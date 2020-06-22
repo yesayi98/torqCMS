@@ -16,11 +16,11 @@
                          data-category-sort='{$sort}'
                          data-url="{url url='emotions/category?c='|cat:$category.id|cat:'&sort='|cat:$sort}"
                          data-toggle="tab"
-                         href="#plant{$key}" 
+                         href="#plant{$key}"
                          role="tab"
                          aria-controls="plant1"
                          aria-selected="true">
-                         {$sort}
+                         {translator selector=$sort}
                       </a>
                   </li>
                   {/foreach}
