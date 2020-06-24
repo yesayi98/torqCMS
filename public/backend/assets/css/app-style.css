@@ -5604,3 +5604,9 @@ table.grid td {
 	width: auto;
 	margin-right: 0;
 }
+.relative-box {
+    position: relative;
+    width: 18px;
+    height: 17px;
+    display: inline-block;
+}

@@ -110,8 +110,26 @@ $(function () {
         e.preventDefault();
         $(".right-sidebar").toggleClass("right-toggled");
     });
-
-	$('#theme1').click(theme1);
+    function setCookie(name, value, days = 4) {
+        var expires = "";
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days*24*60*60*1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+    }
+    function getCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for(var i=0;i < ca.length;i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1,c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+        }
+        return null;
+    }
+	  $('#theme1').click(theme1);
     $('#theme2').click(theme2);
     $('#theme3').click(theme3);
     $('#theme4').click(theme4);
@@ -127,64 +145,92 @@ $(function () {
     $('#theme14').click(theme14);
     $('#theme15').click(theme15);
 
+    var themeclass = "bg-theme";
+    var theme = getCookie('theme');
+    console.log(theme);
+    var themeclass = "bg-theme";
+    var theme = getCookie('theme');
+    if (theme == null) {
+      theme = "bg-theme2";
+    }
+
+    themeclass = themeclass + ' ' + theme;
+    $('body').attr('class', themeclass);
+
     function theme1() {
       $('body').attr('class', 'bg-theme bg-theme1');
+      setCookie("theme", "bg-theme1");
     }
 
     function theme2() {
       $('body').attr('class', 'bg-theme bg-theme2');
+      setCookie("theme", "bg-theme2");
+
     }
 
     function theme3() {
       $('body').attr('class', 'bg-theme bg-theme3');
+      setCookie("theme", "bg-theme3");
     }
 
     function theme4() {
       $('body').attr('class', 'bg-theme bg-theme4');
+      setCookie("theme", "bg-theme4");
     }
 
-	function theme5() {
+	  function theme5() {
       $('body').attr('class', 'bg-theme bg-theme5');
+      setCookie("theme", "bg-theme5");
     }
 
 	function theme6() {
       $('body').attr('class', 'bg-theme bg-theme6');
+      setCookie("theme", "bg-theme6");
     }
 
     function theme7() {
       $('body').attr('class', 'bg-theme bg-theme7');
+      setCookie("theme", "bg-theme7");
     }
 
     function theme8() {
       $('body').attr('class', 'bg-theme bg-theme8');
+      setCookie("theme", "bg-theme8");
     }
 
     function theme9() {
       $('body').attr('class', 'bg-theme bg-theme9');
+      setCookie("theme", "bg-theme9");
     }
 
     function theme10() {
       $('body').attr('class', 'bg-theme bg-theme10');
+      setCookie("theme", "bg-theme10");
     }
 
     function theme11() {
       $('body').attr('class', 'bg-theme bg-theme11');
+      setCookie("theme", "bg-theme11");
     }
 
     function theme12() {
       $('body').attr('class', 'bg-theme bg-theme12');
+      setCookie("theme", "bg-theme12");
     }
 
-	function theme13() {
+	  function theme13() {
       $('body').attr('class', 'bg-theme bg-theme13');
+      setCookie("theme", "bg-theme13");
     }
 
-	function theme14() {
+	  function theme14() {
       $('body').attr('class', 'bg-theme bg-theme14');
+      setCookie("theme", "bg-theme14");
     }
 
-	function theme15() {
+	  function theme15() {
       $('body').attr('class', 'bg-theme bg-theme15');
+      setCookie("theme", "bg-theme15");
     }
 
 // csrf validator
