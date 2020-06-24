@@ -67,7 +67,7 @@ class blogController extends BackendController
     $blog['category_id'] = $request['category_id'];
     $blog['created_date'] = $request['created_date'];
     $blog['changed_date'] = date("Y-m-d");
-    $blog['media'] = $request['media_id'];
+    $blog['media_id'] = $request['media_id'];
     if (!empty($request['id'])) {
       $blog['id'] = $request['id'];
       $success = $this->updateBlog($blog);

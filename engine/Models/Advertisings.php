@@ -121,9 +121,7 @@ class Advertisings extends Model
 
   public function getAdvertisingList()
   {
-    $sql = "SELECT * FROM advertisings";
-
-    $advertisings= Connection()->query($sql);
+    $advertisings = $this->getList('advertisings');
 
     return $advertisings;
   }
@@ -135,7 +133,7 @@ class Advertisings extends Model
       return;
     }
 
-    $query = $this->insert($advertising);
+    $query = $this->insert('advertisings', $advertising);
 
     $attributes['typeing'] = $advertising['media_id'];
     $attributes['additional_text'] = $advertising['additional_text'];
@@ -168,23 +166,8 @@ class Advertisings extends Model
     if(!$advertising){
       return;
     }
-    $name = $advertising['name'];
-    $description = $advertising['description'];
-    $langId = $advertising['lang_id'];
-    $advertisingId = $advertising['hidden_id'];
 
-    $sql = "INSERT INTO advertising_translations (
-                            name,
-                            description,
-                            lang_id,
-                            advertising_id
-                        ) VALUES (
-                            '$name',
-                            '$description',
-                            '$langId',
-                            '$advertisingId'
-                        )";
-    $query = Connection()->set($sql);
+    $query = $this->insert('advertisings', $sql);
 
     return $query;
   }

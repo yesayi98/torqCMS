@@ -326,7 +326,8 @@ $(function() {
 
         valueChanger: function (data) {
           var me = this;
-
+          // data pop for remove csrf
+          data.pop();
           data.forEach(function(item, index) {
             var img = $('<img>', {
                  'class': [
@@ -340,7 +341,7 @@ $(function() {
                  ].join(' '),
                  'val':  item.value,
                  'type': 'hidden',
-                 'name': 'media_id[]'
+                 'name': (me.openGallery.parents('.gallery-actions').data('multi') == true)?'media_id[]':'media_id'
              });
             if (me.openGallery.parents('.gallery-actions').data('multi') == true) {
                    var image = $('<div>', {
