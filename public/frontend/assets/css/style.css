@@ -9415,6 +9415,14 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .blog_wrapper .blog_meta {
   margin-bottom: 21px;
 }
+.blog_page_section .blog_thumb, .related_posts .blog_thumb, .owl-item .blog_thumb {
+  height: 250px;
+}
+.blog_page_section .blog_thumb img, .related_posts .blog_thumb img, .owl-item .blog_thumb img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .blog_wrapper .blog_meta {
     margin-bottom: 14px;
