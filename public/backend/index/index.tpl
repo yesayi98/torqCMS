@@ -178,11 +178,11 @@
             </div>
             <div class="col-12 col-lg-6 col-xl-3 border-light">
                 <div class="card-body">
-                  <h5 class="text-white mb-0">{$articleCount} <span class="float-right"><i class="fa fa-usd"></i></span></h5>
+                  <h5 class="text-white mb-0">{$articleCount} <span class="float-right"><i class="zmdi zmdi-labels"></i></span></h5>
                     <div class="progress my-3" style="height:3px;">
                        <div class="progress-bar" style="width:55%"></div>
                     </div>
-                  <p class="mb-0 text-white small-font">Articles <span class="float-right">+1.2% <i class="zmdi zmdi-long-arrow-up"></i></span></p>
+                  <p class="mb-0 text-white small-font">Articles</p>
                 </div>
             </div>
             <div class="col-12 col-lg-6 col-xl-3 border-light">
@@ -191,7 +191,7 @@
                     <div class="progress my-3" style="height:3px;">
                        <div class="progress-bar" style="width:55%"></div>
                     </div>
-                  <p class="mb-0 text-white small-font">Visitors <span class="float-right">+5.2% <i class="zmdi zmdi-long-arrow-up"></i></span></p>
+                  <p class="mb-0 text-white small-font">Users</p>
                 </div>
             </div>
             <div class="col-12 col-lg-6 col-xl-3 border-light">
@@ -775,6 +775,7 @@
          <li id="theme4"></li>
          <li id="theme5"></li>
          <li id="theme6"></li>
+         <li id="theme16"></li>
        </ul>
 
        <p class="mb-0">Gradient Background</p>
@@ -787,7 +788,7 @@
          <li id="theme10"></li>
          <li id="theme11"></li>
          <li id="theme12"></li>
-     <li id="theme13"></li>
+         <li id="theme13"></li>
          <li id="theme14"></li>
          <li id="theme15"></li>
        </ul>

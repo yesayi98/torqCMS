@@ -14,8 +14,10 @@
                 {$height = $height|cat:'px'}
               {/if}
               <div class="emotion-row" style="height: {$height}">
-                {$template = "frontend/"|cat:$component.emotion_type.template}
-                {include $template items=$component.content}
+                {if $component.emotion_type.template}
+                  {$template = "frontend/"|cat:$component.emotion_type.template}
+                  {include $template items=$component.content}
+                {/if}
               </div>
             </div>
           {/foreach}
