@@ -36,7 +36,7 @@
       }
     }
     $_POST = [];
-    exit('<script>window.location.reload()</script>');
+    header('location: '.$_SERVER['HTTP_HOST']);
   }elseif (!empty($_POST)) {
     include 'config.php';
     // set default admin
