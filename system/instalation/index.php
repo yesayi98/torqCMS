@@ -35,8 +35,8 @@
         die($connection->error);
       }
     }
-
-    exit('<script>window.location.reload</script>');
+    $_POST = [];
+    exit('<script>window.location.reload()</script>');
   }elseif (!empty($_POST)) {
     include 'config.php';
     // set default admin
