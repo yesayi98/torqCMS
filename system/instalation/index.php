@@ -15,23 +15,25 @@
     $lockfile = fopen("lock.txt", "w") or die("Unable to open file!");
 
     // installing db
-    $sql = file_get_contents(__DIR__.'/torq_cms.sql');
-    $servername = $_POST['DB_HOSTNAME'];
-    $username = $_POST['DB_USERNAME'];
-    $password = $_POST['DB_PASSWORD'];
-    $db = $_POST['DB_DATABASE'];
+    if ($_POST['skip'] !== 'on') {
 
-    // Create connection
-    $connection = new mysqli($servername, $username, $password, $db);
-    // Check connection
-    if ($connection->connect_error) {
-      die("Connection failed: " . $connection->connect_error);
-    }
+      $sql = file_get_contents(__DIR__.'/torq_cms.sql');
+      $servername = $_POST['DB_HOSTNAME'];
+      $username = $_POST['DB_USERNAME'];
+      $password = $_POST['DB_PASSWORD'];
+      $db = $_POST['DB_DATABASE'];
 
-    // set necessary tables
-    $connection->multi_query((string) $sql);
-    if ($connection->error) {
-      die($connection->error);
+      // Create connection
+      $connection = new mysqli($servername, $username, $password, $db);
+      // Check connection
+      if ($connection->connect_error) {
+        die("Connection failed: " . $connection->connect_error);
+      }
+      // set necessary tables
+      $connection->multi_query((string) $sql);
+      if ($connection->error) {
+        die($connection->error);
+      }
     }
 
     exit('<script>window.location.reload</script>');

@@ -20,6 +20,7 @@
               <input class="form-control mb-2" type="text" name="DB_USERNAME" placeholder="DB USERNAME" value="root">
               <input class="form-control mb-2" type="password" name="DB_PASSWORD" placeholder="DB PASSWORD" value="">
               <input class="form-control mb-2" type="text" name="DB_DATABASE" placeholder="DB NAME" value="">
+              <label class="form-control mb-2"><input type="checkbox" name="skip"> Skip DB Installation</label>
               <input name="DB_DRIVER" type="hidden" value="mysqli" placeholder="DB DRIVER">
             </div>
             <div class="row">
