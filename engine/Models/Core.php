@@ -17,7 +17,7 @@ class Core extends Model
     if ($result['content_type'] === "image") {
       $result['image'] = $this->container->Media()->getMedia($result['content']);
       if (empty($result['image']['id'])) {
-        $result['image'] = Router::url('media/img/logo.png');
+        $result['image']['path'] = Router::url('media/img/logo.png');
       }
     }
 
