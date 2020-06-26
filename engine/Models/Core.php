@@ -16,6 +16,9 @@ class Core extends Model
 
     if ($result['content_type'] === "image") {
       $result['image'] = $this->container->Media()->getMedia($result['content']);
+      if (empty($result['image']['id'])) {
+        $result['image'] = Router::url('media/img/logo.png');
+      }
     }
 
     return $result;
@@ -36,7 +39,7 @@ class Core extends Model
             WHERE id = $id";
     return $query = Connection()->set($sql);
   }
-  
+
   public function getItemList()
   {
     $result = $this->getList('core');
