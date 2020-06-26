@@ -141,6 +141,7 @@ class emotionsController extends BackendController
     $emotion['sort_id'] = $request['sort_id'];
     $emotion['full_screen'] = ($request['full_screen'] === "on")?1:0;
     $emotion['active'] = ($request['active'] === "on")?1:0;
+    $message = "success";
 
     $emotionModel = $this->__get('Emotions');
     if (!empty($emotion['id'])) {
@@ -149,9 +150,10 @@ class emotionsController extends BackendController
       $success = $emotionModel->setEmotion($emotion);
       if ($success) {
         $emotion['id'] = Connection()->getlLastInserted();
+      }else{
+        $message = Connection()->getError();
       }
     }
-    $message = "success";
     if (!$success) {
       $message = Connection()->getError();
     }

@@ -33,7 +33,7 @@ class Emotions extends \Model
   * @param array $emotion
   * @return bool $query
   */
-  public function setEmotion()
+  public function setEmotion($emotion)
   {
     if (empty($emotion)) {
       return false;
@@ -71,7 +71,7 @@ class Emotions extends \Model
   */
   public function getEmotionTypeList()
   {
-    $emotionTypes = $this->getList('emotion_types');
+    $emotionTypes = $this->getList('emotion_types', 'all');
     return $emotionTypes;
   }
 

@@ -104,12 +104,14 @@
                             {if !$image}
                               <div class="image-container">
                               </div>
+                             {else}
+                              <div class="image-container">
+                                <button type="button" name="deleteImage" class="btn btn-danger deleteImage" data-url="{url url='backend/blog/deleteImage'}" data-blog="{$blog.id}"><i class="ti-close"></i></button>
+                                <img src="{$image.path}" class="detail-image" >
+                                <input type="hidden" name="media_id" class="detail-image-id" value="{$image.id}">
+                              </div>
                             {/if}
-                             <div class="image-container">
-                               <button type="button" name="deleteImage" class="btn btn-danger deleteImage" data-url="{url url='backend/blog/deleteImage'}" data-blog="{$blog.id}"><i class="ti-close"></i></button>
-                               <img src="{$image.path}" class="detail-image" >
-                               <input type="hidden" name="media_id" class="detail-image-id" value="{$image.id}">
-                             </div>
+
                           </div>
                        </div>
                      </div>

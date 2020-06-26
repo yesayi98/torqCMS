@@ -5247,6 +5247,9 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 /*  07. footer area css here */
 .footer_top {
   padding-bottom: 64px;
+  padding-top: 64px;
+  background: #272727;
+  color: #fff;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .footer_top {

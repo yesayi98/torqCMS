@@ -89,7 +89,7 @@ abstract class Model
     $tableColumns = $this->getTableColumns($table, true);
     $sql = 'INSERT INTO '.$table.' '.'(';
       foreach ($tableColumns as $key => $value) {
-        $sql .= $value['COLUMN_NAME'];
+        $sql .= '`'.$value['COLUMN_NAME'].'`';
         if ($key != count($tableColumns)-1) {
           $sql .= ", ";
         }
@@ -135,7 +135,6 @@ abstract class Model
     $sql = substr($sql, 0, -1);
 
     $sql .= ')';
-
     $query = $this->connection->set($sql);
 
     return $query;
@@ -166,7 +165,7 @@ abstract class Model
       $tableValue = $values[$tableColumn];
       if ($dataType === 'int') {
         $tableValue = intval($tableValue);
-        $sql .= " $tableColumn = $tableValue,";
+        $sql .= " `$tableColumn` = $tableValue,";
         continue;
       }
       if ($dataType === 'date') {
@@ -197,7 +196,7 @@ abstract class Model
   protected function get($table, $condition, $by = "id", $sortBy = 'id', bool $all = true)
   {
     $sql = "SELECT * FROM $table WHERE $by = '$condition'";
-    
+
     $sql .= " ORDER BY $sortBy";
     if ($all) {
       $data = Connection()->fetchAll($sql);

@@ -39,9 +39,9 @@
   <div class="col-12">
     <div class="emotion-component card">
       <div class="card-body">
-        <form class="emotion-detail" data-ajaxsend=true action="{url url='backend/emotions/save'}" method="post">
+        <form class="emotion-detail" data-ajaxsend=true action="{url url='backend/emotions/componentsave'}" method="post">
           {if $emotion}
-            <input type="hidden" name="id" value="{$emotion.id}">
+            <input type="hidden" name="emotion_id" value="{$emotion.id}">
           {/if}
           <div class="row">
             <div class="col-12">
