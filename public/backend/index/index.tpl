@@ -196,11 +196,11 @@
             </div>
             <div class="col-12 col-lg-6 col-xl-3 border-light">
                 <div class="card-body">
-                  <h5 class="text-white mb-0">5630 <span class="float-right"><i class="fa fa-envira"></i></span></h5>
+                  <h5 class="text-white mb-0">{$ordersTotal.price} Դ <span class="float-right"><i class="fa fa-envira"></i></span></h5>
                     <div class="progress my-3" style="height:3px;">
-                       <div class="progress-bar" style="width:55%"></div>
+                       <div class="progress-bar" style="width:{$ordersTotal.percent}"></div>
                     </div>
-                  <p class="mb-0 text-white small-font">Messages <span class="float-right">+2.2% <i class="zmdi zmdi-long-arrow-up"></i></span></p>
+                  <p class="mb-0 text-white small-font">Daily Income <span class="float-right">{$ordersTotal.percent} {if $ordersTotal.up}<i class="zmdi zmdi-long-arrow-up">{else}<i class="zmdi zmdi-long-arrow-down">{/if}</i></span></p>
                 </div>
             </div>
         </div>

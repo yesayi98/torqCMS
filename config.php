@@ -1,4 +1,8 @@
 <?php
+// use UTF-8
+if (function_exists('mb_internal_charset')) {
+  mb_internal_charset('UTF-8');
+}
 // SERVER SIDE
 PHP_OS == "Windows" || PHP_OS == "WINNT" ? define("SEPARATOR", "\\") : define("SEPARATOR", "/");
 // Base
@@ -17,16 +21,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost') {
 define('BASE_PUBLIC', BASE_URL.'/public/');
 define('BASE_FRONTEND', BASE_URL.'/public/frontend/');
 define('BASE_BACKEND', BASE_URL.'/public/backend/');
-
+// smarty
+define('SMARTY_RESOURCE_CHAR_SET', 'UTF-8');
 // error handling
-define('DEBUG', true);
-
-// DB
-define('TIMEZONE', 'Asia/Yerevan');
-define('DB_DRIVER', 'mysqli');
-define('DB_HOSTNAME', 'localhost');
-define('DB_USERNAME', 'root');
-define('DB_PASSWORD', '');
-define('DB_DATABASE', 'torq_cms');
-define('DB_PORT', '3306');
-?>
+define('DEBUG', false);

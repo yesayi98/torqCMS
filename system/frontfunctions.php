@@ -73,7 +73,12 @@ function smarty_function_action($params, $template)
   if ($params) {
       $data['params'] = $params;
   }
+  $postData = http_build_query($data);
 	// use key 'http' even if you send the request to https://...
+  $header = array(
+            "Content-Type: application/x-www-form-urlencoded",
+            "Content-Length: ".strlen($postdata)
+        );
 	$options = array(
     "ssl"=>array(
         "verify_peer"=>false,
@@ -81,7 +86,8 @@ function smarty_function_action($params, $template)
     ),
     PROTOCOL => array(
 		    'method'  => 'POST',
-		    'content' => http_build_query($data)
+		    'header'  => implode("\r\n", $header),
+		    'content' => $postData
     ),
   );
 	$context  = stream_context_create($options);

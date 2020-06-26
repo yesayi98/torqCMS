@@ -1,6 +1,10 @@
 <?php
-
 // Configuration
+if (!is_file(__DIR__.'/system/instalation/torq.lock')) {
+	require(__DIR__.'/system/instalation/index.php');
+	exit;
+}
+
 if (is_file('config.php')) {
 	require_once('config.php');
 }
