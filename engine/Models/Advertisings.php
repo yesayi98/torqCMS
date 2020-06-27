@@ -132,14 +132,15 @@ class Advertisings extends Model
     if(empty($advertising)){
       return;
     }
-
     $query = $this->insert('advertisings', $advertising);
-
+    $advertising_id = Connection()->getInsertedId();
     $attributes['typeing'] = $advertising['media_id'];
     $attributes['additional_text'] = $advertising['additional_text'];
-    $attributes['advertising_id'] = $this->getLastInsertedId();
+    $attributes['advertising_id'] = $advertising_id;
     $this->setAdvertisingAttributes($attributes);
-    return $query;
+    if ($query) {
+      return $advertising_id;
+    }
   }
 
 
@@ -167,7 +168,7 @@ class Advertisings extends Model
       return;
     }
 
-    $query = $this->insert('advertisings', $sql);
+    $query = $this->insert('advertising_translations', $advertising);
 
     return $query;
   }

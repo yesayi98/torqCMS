@@ -172,6 +172,53 @@ class emotionsController extends BackendController
     }
   }
 
+  public function componentsave()
+  {
+    $request = $this->getRequest()->request;
+
+    $emotion['emotion_id'] = $request['emotion_id'];
+    $emotion['type'] = $request['type'];
+    $emotion['title'] = $request['title'];
+    $emotion['variables'] = $request['variables']?$request['variables']:'';
+    $emotion['col_xl'] = $request['col_xl']?$request['col_xl']:12;
+    $emotion['col_lg'] = $request['col_lg']?$request['col_lg']:12;
+    $emotion['col_md'] = $request['col_md']?$request['col_md']:12;
+    $emotion['col_sm'] = $request['col_sm']?$request['col_sm']:12;
+    $emotion['col_xs'] = $request['col_xs']?$request['col_xs']:12;
+    $emotion['cols'] = $request['cols']?$request['cols']:12;
+    $emotion['rows'] = $request['rows']?$request['rows']:0;
+    $emotion['sort_id'] = $request['sort_id']?$request['sort_id']:0;
+    $message = "success";
+
+    $emotionModel = $this->__get('Emotions');
+    if (!empty($emotion['id'])) {
+      $success = $emotionModel->updateEmotionComponent($emotion);
+    }else{
+      $success = $emotionModel->setEmotionComponent($emotion);
+      if ($success) {
+        $emotion['id'] = Connection()->getlLastInserted();
+      }else{
+        $message = Connection()->getError();
+      }
+    }
+    if (!$success) {
+      $message = Connection()->getError();
+    }
+
+    if ($request['XHR']) {
+      die(
+        json_encode(
+            array(
+              'success' => $success,
+              'message' => $message
+            )
+          )
+        );
+    }else{
+      Router::redirect('backend/emotions/detail?e='.$emotion['id']);
+    }
+  }
+
 }
 
 

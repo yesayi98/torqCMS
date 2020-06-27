@@ -60,6 +60,36 @@ class Emotions extends \Model
     return $query;
   }
 
+  /**
+  * @param array $component
+  * @return bool $query
+  */
+  public function updateEmotionComponent($component)
+  {
+    if (empty($component)) {
+      return false;
+    }
+
+    $query = $this->update('emotion_components', $component);
+
+    return $query;
+  }
+
+  /**
+  * @param array $component
+  * @return bool $query
+  */
+  public function setEmotionComponent($component)
+  {
+    if (empty($component)) {
+      return false;
+    }
+
+    $query = $this->insert('emotion_components', $component);
+
+    return $query;
+  }
+
   public function setEmotionType()
   {
     // code...

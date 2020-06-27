@@ -406,6 +406,9 @@
               $original_img = imagecreatefromjpeg($this->mediaPath.$media['name'].'.'.$media['extension']);
               break;
       }
+      $original_h = ($original_h == 0)?$thumbwidth:$original_h;
+      $original_w = ($original_w == 0)?$thumbwidth:$original_w;
+
       if ($original_w > $original_h) {
         $thumb_w = $thumbwidth;
         $thumb_h = round((intval($original_h) / intval($original_w)) * $thumbheight);

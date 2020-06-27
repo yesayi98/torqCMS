@@ -16,7 +16,7 @@
                          data-category-sort='{$sort}'
                          data-url="{url url='emotions/category?c='|cat:$category.id|cat:'&sort='|cat:$sort}"
                          data-toggle="tab"
-                         href="#plant{$key}"
+                         href="#plant{$component.id}_{$key}"
                          role="tab"
                          aria-controls="plant1"
                          aria-selected="true">
@@ -35,7 +35,7 @@
     <div class="col-12">
       <div class="tab-content">
         {foreach from=$sorting item=$sort key=$key}
-          <div class="tab-pane fade{if $key == 0} show active{/if}" id="plant{$key}" role="tabpanel">
+          <div class="tab-pane fade{if $key == 0} show active{/if}" id="plant{$component.id}_{$key}" role="tabpanel">
             <div class="tab-inner-content" data-content='true'>
               <div class="self-preloader">
                 <img src="{$BASE_FRONTEND}assets/img/icon/preloader.gif" alt="preloader">

@@ -65,6 +65,8 @@ class articlesController extends BackendController
     $article['keywords'] = $request['keywords'];
     $article['sale_end'] = $request['sale_end'];
     $article['media'] = $request['media_id'];
+    $success = true;
+
     if (!empty($request['id'])) {
       $article['id'] = $request['id'];
       $success = $this->updateArticle($article);

@@ -25,7 +25,7 @@
                   <tr>
                       <td>{$advertising.id}</td>
                       <td>{$advertising.name|truncate}</td>
-                      <td>{$advertising.description|strip_tags|escape}</td>
+                      <td>{$advertising.description|strip_tags|escape|truncate}</td>
                       <td>{$advertising.url}</td>
                       <td>
                         <a href="{url url='backend/advertisings/detail?advertising='|cat:$advertising.id}" class="btn btn-info waves-effect waves-light m-1"><i class="fa fa-pencil"></i></a>

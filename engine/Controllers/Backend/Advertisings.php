@@ -57,6 +57,9 @@ class advertisingsController extends BackendController
       $params['translation']['advertising_id'] = $advertising['id'];
     }else{
       $advertising['id'] = $this->insertAdvertising($advertising);
+      if (is_int($advertising['id'])) {
+        $success = true;
+      }
       $params['translation']['advertising_id'] = $advertising['id'];
     }
     // save translations
@@ -85,9 +88,8 @@ class advertisingsController extends BackendController
   */
   private function insertAdvertising($advertising)
   {
-    $this->__get('Advertisings')->setAdvertising($advertising);
-
-    return Connection()->getInsertedId();
+    $query = $this->__get('Advertisings')->setAdvertising($advertising);
+    return $query;
   }
 
   /**

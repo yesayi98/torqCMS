@@ -444,38 +444,10 @@ class Articles extends \Model
     if(!$articleId){
       return;
     }
-    $has_video = $attributes['video_article'];
-    $url_video = $attributes['video_url'];
-    $size = $attributes['size'];
-    $color = $attributes['color'];
-    $material = $attributes['material'];
-    $ordernumber = $attributes['ordernumber'];
-    $sale_end = $attributes['sale_end'];
-    $supplier_id = $attributes['supplier_id'];
+    $attributes['article_id'] = $articleId;
 
-    $sql = "INSERT INTO article_attributes(
-              `article_id`,
-              `video_url`,
-              `video_article`,
-              `size`,
-              `color`,
-              `material`,
-              `sale_end`,
-              `supplier_id`,
-              `ordernumber`
-            ) VALUES (
-              '$articleId',
-              '$url_video',
-              '$has_video',
-              '$size',
-              '$color',
-              '$material',
-              '$sale_end',
-              '$supplier_id',
-              '$ordernumber'
-            )";
-            $articles = Connection()->set($sql);
-            return $query;
+    $articles = $this->insert('article_attributes', $attributes);
+    return $query;
   }
 
   public function updateArticleAttributes($attributes, $articleId){
@@ -497,29 +469,20 @@ class Articles extends \Model
   public function setArticle($data)
   {
 
-    $mediaId = $data['media'];
-    if (is_array($mediaId)) {
-      $imageIds = $mediaId;
-    }else{
-      $imageIds[] = 0;
-    }
-  $name = $data['name'];
-  $description = $data['description'];
-  $date = date("Y-m-d H:i:s", time());
+  $mediaId = $data['media'];
+  if (is_array($mediaId)) {
+    $imageIds = $mediaId;
+  }else{
+    $imageIds[] = 0;
+  }
   $categoryId = $data['category_id'];
   if (is_array($categoryId)) {
     $categoryIds = $categoryId;
   }else{
     $categoryIds = null;
   }
-  $price = $data['price'];
-  $get_price = $data['get_price'];
-  $discount = $data['discount'];
-  $in_stock	= $data['in_stock'];
-  $unit	= $data['unit'];
-  $unit_id	= $data['unit_id'];
-  $keywords	= $data['keywords'];
-  $active	= $data['active'];
+  $data['added_in'] = date('Y:m:d');
+
   $attributes['video_url'] = $data['video_url'];
   $attributes['video_article'] = $data['video_article'];
   $attributes['size'] = $data['size'];
@@ -529,33 +492,7 @@ class Articles extends \Model
   $attributes['sale_end'] = $data['sale_end'];
   $attributes['supplier_id'] = $data['supplier']['id'];
 
-
-  $sql = "INSERT INTO articles(
-            `name`,
-            `description`,
-            `date`,
-            `price`,
-            `get_price`,
-            `discount`,
-            `in_stock`,
-            `unit`,
-            `unit_id`,
-            `keywords`,
-            `active`
-          ) VALUES (
-            '$name',
-            '$description',
-            '$date',
-            '$price',
-            '$get_price',
-            '$discount',
-            '$in_stock',
-            '$unit',
-            '$unit_id',
-            '$keywords',
-            '$active'
-          )";
-  $query = Connection()->set($sql);
+  $query = $this->insert('articles', $data);
   $mediaInserted;
   if($query){
     $articleId = Connection()->getInsertedId();

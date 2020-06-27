@@ -7,10 +7,6 @@ namespace Models\ArticleTranslation;
 class ArticleTranslation extends \Model
 {
 
-  function __construct()
-  {
-  }
-
   public function getArticleTranslation($articleId, $langId = null){
 
     if (!$articleId) {
@@ -38,26 +34,7 @@ class ArticleTranslation extends \Model
       return;
     }
 
-    $name = $article['name'];
-    $description = $article['description'];
-    $author = $article['author'];
-    $langId = $article['lang_id'];
-    $articleId = $article['article_id'];
-
-    $sql = "INSERT INTO article_translations (
-                            name,
-                            description,
-                            author,
-                            lang_id,
-                            article_id
-                        ) VALUES (
-                            '$name',
-                            '$description',
-                            '$author',
-                            '$langId',
-                            '$articleId'
-                        )";
-    $query = Connection()->set($sql);
+    $query = $this->insert('article_translations', $article);
 
     return $query;
   }

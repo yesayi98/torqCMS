@@ -17,7 +17,7 @@ window.plugin.emotions = {
         var me = this;
 
         me.onCategorySelectorClick();
-        $(me.categorySelector).first().click()
+        $(me.categorySelector+'.active').click()
       },
 
       onCategorySelectorClick: function () {
