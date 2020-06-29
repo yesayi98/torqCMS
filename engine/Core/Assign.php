@@ -115,7 +115,7 @@ class Assign extends Controller
       $currencyCourse = $this->view->getAssign('currencies')[$key]['course'];
 
 
-    if ($this->route = 'category') {
+    if ($this->route['controller'] == 'category') {
       $minPrice = $this->__get('Articles')->getMin('price');
       $minPrice = round(intval($minPrice)/intval($currencyCourse), 2);
 

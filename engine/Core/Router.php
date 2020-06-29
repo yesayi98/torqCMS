@@ -192,10 +192,10 @@
     }
 
 
-    static function validator($request)
+    static function validator($request, $type = null)
     {
       if (isset($request)) {
-        $validator = new Validator($request);
+        $validator = new Validator($request, $type);
       }
       return $validator->getRequest();
     }

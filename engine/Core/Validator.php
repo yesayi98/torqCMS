@@ -14,12 +14,18 @@ final class Validator
   {
 
     $this->request = $request;
+
+    $redirect = false;
     if ($type == self::POST && !empty($request)) {
-      if (!isset($request['getCsrf']) && !isset($request['csrf'])) {
+      if (isset($request['csrf']) && $request['csrf'] != Container()->getSession('csrf')) {
         $redirect = true;
-      }elseif (isset($request['csrf']) && $request['csrf'] != Container()->getSession('csrf')) {
+      }elseif (!isset($request['csrf'])){
         $redirect = true;
       }
+    }
+
+    if (isset($request['getCsrf'])) {
+      $redirect = false;
     }
 
     $this->validateRequest = $this->validate();
@@ -28,12 +34,12 @@ final class Validator
     }
 
 
-    if (isset($redirect) && $redirect == true) {
+    if ($redirect === true) {
       if ( $this->validateRequest['XHR'] == true) {
         throw new \Exception("Invalid CSRF token", 1);
-      }else{
-        Router::redirect('error/invalidCsrf');exit;
       }
+
+      Router::redirect('error/invalidCsrf');exit;
     }
   }
 

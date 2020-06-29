@@ -52,6 +52,7 @@ class accountController extends Controller
       // if isset false data
       if (empty($user)) {
         $this->View()->setMessage('error', 'falseData');
+        Router::redirect('account/login');
         return;
       }
 
@@ -118,6 +119,7 @@ class accountController extends Controller
       }
 
       // setting the new user
+      $user['attributes']['bonus'] = 10000;
       $result = $userModel->setUser($user);
 
       if ($result) {

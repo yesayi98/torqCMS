@@ -25,3 +25,11 @@ define('BASE_BACKEND', BASE_URL.'/public/backend/');
 define('SMARTY_RESOURCE_CHAR_SET', 'UTF-8');
 // error handling
 define('DEBUG', false);
+// DB
+                  define('TIMEZONE', 'Asia/Yerevan');
+                  define('DB_DRIVER', 'mysqli');
+                  define('DB_HOSTNAME', 'localhost');
+                  define('DB_USERNAME', 'root');
+                  define('DB_PASSWORD', '');
+                  define('DB_DATABASE', 'torq_cms');
+                  define('DB_PORT', '3306');
