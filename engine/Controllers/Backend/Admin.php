@@ -5,6 +5,7 @@
  */
 class adminController extends BackendController
 {
+  // default action
   public function index()
   {
 
