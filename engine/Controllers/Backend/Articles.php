@@ -49,7 +49,6 @@ class articlesController extends BackendController
   public function save()
   {
     $request = $this->getRequest()->request;
-
     $article['name'] = $request['name'];
     $article['ordernumber'] = $request['ordernumber'];
     $article['supplier'] = $this->getOrSetSupplier($request['supplier']);
@@ -70,6 +69,7 @@ class articlesController extends BackendController
     if (!empty($request['id'])) {
       $article['id'] = $request['id'];
       $success = $this->updateArticle($article);
+
       $request['translation']['article_id'] = $article['id'];
     }else{
       $article['id'] = $this->insertArticle($article);
@@ -112,7 +112,6 @@ class articlesController extends BackendController
   private function updateArticle($article)
   {
     $inserted = $this->__get('Articles')->updateArticle($article);
-
     return $inserted;
   }
 

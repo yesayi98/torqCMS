@@ -29,6 +29,7 @@ class mediaController extends BackendController
     $this->View()->setAssign('albums', $mediaAlbums);
 
     if (!empty($request['XHR'])) {
+      $this->View()->setAssign('ajax', true);
       $this->route = "backend/media/medialist";
     }
   }

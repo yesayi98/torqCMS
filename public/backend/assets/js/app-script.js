@@ -234,14 +234,33 @@ $(function () {
     }
 
 // csrf validator
-var getCsrf = true;
-$.ajax({
-  url: window.location.origin + '/backend/csrf',
-  method: 'post',
-  data: {getCsrf},
-  success: function (response) {
-    $('form[method="post"]').append(response);
-  }
-})
+function getCsrf() {
+  // csrf validator
+  var getCsrf = true;
+  $.ajax({
+    url: window.location.origin + '/backend/csrf',
+    method: 'post',
+    data: {getCsrf},
+    success: function (response) {
+      $('form[method="post"]').append(response);
+    }
+  })
+}
+
+getCsrf();
+
+var token =  $('input[name="csrf"]').attr('value');
+
+jQuery(document).ready(function($) {
+  $.ajaxSetup({
+    beforeSend: function(jqXHR, settings) {
+      console.log(settings);
+      if (settings.dataType != 'json') {
+        settings.data = $.extend(settings.data, {csrf:token});
+        return true;
+      }
+    }
+  });
+});
 
 });
