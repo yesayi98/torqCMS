@@ -817,12 +817,12 @@ public function deletePopularArticle($id)
     return $articles;
   }
 
-  public function getArticleAttributeValueTypes($attributeName)
+  public function getArticleAttributeValueTypes($attribute)
   {
-    if (!$attributeName) {
+    if (!$attribute) {
       return false;
     }
-
+    $attributeName = $attribute['name'];
     if (!empty(Connection()->exec("SHOW COLUMNS FROM `articles` LIKE '$attributeName';")->num_rows)) {
       $tableCode = "a";
       $table = 'articles';
@@ -840,6 +840,24 @@ public function deletePopularArticle($id)
   }
 
   /**
+  * @param string $optionname
+  * @return array $optionValues
+  */
+  public function getArticleOptionTypes($attribute)
+  {
+    if (empty($attribute)) {
+      return false;
+    }
+    $table_name = $attribute['filter_table'];
+    $column_name = $attribute['filter_column'];
+    $value_name = $attribute['name'];
+    $sql = "SELECT * FROM $table_name WHERE $column_name = '$value_name' GROUP BY value";
+    $optionValues = Connection()->fetchAll($sql);
+
+    return $optionValues;
+  }
+
+  /**
   * @param array $context [suppliers, pricing, groups, category]
   * @return string $sql
   */
@@ -848,6 +866,7 @@ public function deletePopularArticle($id)
     $contextTypes = array(
       "suppliers" => 's',
       "groups" => 'aa',
+      "properties" => 'ao',
       "pricing" => 'a.price',
       "category" => 'c.id',
       "search" => 'search'
@@ -856,6 +875,7 @@ public function deletePopularArticle($id)
     unset($context['sortType']);
     $sql = "SELECT a.*, aa.ordernumber FROM articles a
             LEFT JOIN article_category ac ON ac.article_id = a.id
+            LEFT JOIN article_options ao ON ao.article_id = a.id
             LEFT JOIN categories c ON c.id = ac.category_id
             LEFT JOIN article_attributes aa ON aa.article_id = a.id
             LEFT JOIN suppliers s ON s.id = aa.supplier_id
@@ -912,6 +932,32 @@ public function deletePopularArticle($id)
                  }
                  continue;
       }
+      if ($tableKey === "ao" && !empty($value)) {
+        $destruct = false;
+        $sql .= '(';
+        foreach ($value as $key => $property) {
+          $propName = $property['name'];
+          $propVal = $property['value'];
+          if (empty($propName) || empty($propVal)) {
+            $destruct = true;
+            break;
+          }
+          $sql .= "($tableKey.name = '$propName' AND $tableKey.value = '$propVal')";
+
+          if ($key != count($value)-1) {
+            $sql .= " OR ";
+          }else{
+            break;
+          }
+        }
+        if ($destruct) {
+          $sql = substr($sql, 0, strlen($sql) - 1);
+          continue;
+        }
+        $sql .= ') AND ';
+        continue;
+      }
+
       if (!empty($value)) {
         $sql .= '(';
         foreach ($value as $key => $column) {

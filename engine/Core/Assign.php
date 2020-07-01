@@ -115,16 +115,16 @@ class Assign extends Controller
       $currencyCourse = $this->view->getAssign('currencies')[$key]['course'];
 
 
-    if ($this->route['controller'] == 'category') {
-      $minPrice = $this->__get('Articles')->getMin('price');
-      $minPrice = round(intval($minPrice)/intval($currencyCourse), 2);
+    if (strpos($this->route, 'category') !== false) {
+        $minPrice = $this->__get('Articles')->getMin('price');
+        $minPrice = round(intval($minPrice)/intval($currencyCourse), 2);
 
-      $maxPrice = $this->__get('Articles')->getMax('price');
-      $maxPrice = round(intval($maxPrice)/intval($currencyCourse), 2);
+        $maxPrice = $this->__get('Articles')->getMax('price');
+        $maxPrice = round(intval($maxPrice)/intval($currencyCourse), 2);
 
-      $this->view->setAssign('minPrice', $minPrice);
-      $this->view->setAssign('maxPrice', $maxPrice);
-    }
+        $this->view->setAssign('minPrice', $minPrice);
+        $this->view->setAssign('maxPrice', $maxPrice);
+      }
       $this->view->setAssign('Categories.advancedMenuItems', $categories);
 
   }

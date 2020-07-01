@@ -52,17 +52,17 @@ class categoryController extends Controller
 
       // filter attributes
       $suppliers = $this->__get('Supplier')->getSuppliersByCategory($category_id);
-      foreach ($suppliers as &$supplier) {
-        $supplier['productCount'] = count($this->__get('Supplier')->getSupplierArticles($supplier['id']));
-      }
+
       $filterGroups = $this->__get('Filters')->getFilterList();
       $filters;
       foreach ($filterGroups as $filterGroup) {
-        $filters[] = $this->getFiltersByGroupName($filterGroup['name']);
+        $filters[] = $this->getFiltersByGroupName($filterGroup);
+        $properties[] = $this->getFiltersByPropertyName($filterGroup);
       }
 
       $this->View()->setAssign('productCount', $productCount);
-      $this->View()->setAssign('filters', $filters);
+      // $this->View()->setAssign('filters', $filters);
+      $this->View()->setAssign('properties', $properties);
       $this->View()->setAssign('Categories.category', $category);
       $this->View()->setAssign('suppliers', $suppliers);
       $this->View()->setAssign('sort', $sortType);
@@ -75,14 +75,14 @@ class categoryController extends Controller
   }
 
     /**
-    * @param int $filterName
+    * @param int $filterGroup
     * @param bool $addUnsortedFilternames
     * @return array $filter
     */
-  private function getFiltersByGroupName($filterName, $addUnsortedFilternames = true)
+  private function getFiltersByGroupName($filterGroup, $addUnsortedFilternames = true)
   {
     $articleModel = $this->__get('Articles');
-    if (!$filterName) {
+    if (!$filterGroup) {
       return;
     }
     if ($addUnsortedFilternames) {
@@ -91,14 +91,44 @@ class categoryController extends Controller
       $unsortedFilterName = null;
     }
 
-    $filterValueList = $articleModel->getArticleAttributeValueTypes($filterName);
+    $filterValueList = $articleModel->getArticleAttributeValueTypes($filterGroup);
+    // $filterValueList = $articleModel->getArticleOptionTypes($filterGroup);
     $filter;
-    $filter['filter_name'] = $filterName;
+    $filter['filter_name'] = $filterGroup['name'];
 
     foreach ($filterValueList as $key => $value) {
       $filter['filter_values'][$key]['value'] = (!empty($value[$filterName]))?$value[$filterName]:$unsortedFilterName;
-      $filter['filter_values'][$key]['productCount'] = $value['productCount'] = count($articleModel->getArticlesByAttributeName($filterName, $value[$filterName]));
     }
+
+    return $filter;
+  }
+
+    /**
+    * @param int $filterGroup
+    * @param bool $addUnsortedFilternames
+    * @return array $filter
+    */
+  private function getFiltersByPropertyName($filterGroup, $addUnsortedFilternames = true)
+  {
+    $articleModel = $this->__get('Articles');
+    if (!$filterGroup) {
+      return;
+    }
+    if ($addUnsortedFilternames) {
+      $unsortedFilterName = $this->View()->translating('unsorted');
+    }else{
+      $unsortedFilterName = null;
+    }
+
+    // $filterValueList = $articleModel->getArticleAttributeValueTypes($filterGroup);
+    $filterValueList = $articleModel->getArticleOptionTypes($filterGroup);
+    $filter;
+    $filter['filter_name'] = $filterGroup['name'];
+
+    foreach ($filterValueList as $key => $value) {
+      $filter['filter_values'][$key]['value'] = $value['value'];
+    }
+    $filter['filter_values'][$key+1]['value'] = $unsortedFilterName;
 
     return $filter;
   }
@@ -188,9 +218,13 @@ class categoryController extends Controller
     if (!empty($request['group'])) {
       $groups = $this->getGroupsByRequest($request['group']);
     }
+    if (!empty($request['properties'])) {
+      $properties = $this->getPropertiesByRequest($request['properties']);
+    }
     $pricing = $request['price'];
     // $context['suppliers'] = $suppliers;
     $context['groups'] = $groups;
+    $context['properties'] = $properties;
     $context['pricing'] = $pricing;
     $context['category'] = $category;
     $context['search'] = mb_strtolower($search);
@@ -209,11 +243,13 @@ class categoryController extends Controller
     $filterGroups = $this->__get('Filters')->getFilterList();
     $filters;
     foreach ($filterGroups as $filterGroup) {
-      $filters[] = $this->getFiltersByGroupName($filterGroup['name']);
+      $filters[] = $this->getFiltersByGroupName($filterGroup);
+      $properties[] = $this->getFiltersByPropertyName($filterGroup);
     }
 
     $this->View()->setAssign('productCount', $productCount);
-    $this->View()->setAssign('filters', $filters);
+    // $this->View()->setAssign('filters', $filters);
+    $this->View()->setAssign('properties', $properties);
     $this->View()->setAssign('Categories.category', $category);
     // $this->View()->setAssign('suppliers', $suppliers);
     $this->View()->setAssign('Categories.categoryList', $categoryList);
@@ -239,7 +275,8 @@ class categoryController extends Controller
     $filterGroups = $this->__get('Filters')->getFilterList();
     $filters;
     foreach ($filterGroups as $filterGroup) {
-      $filters[] = $this->getFiltersByGroupName($filterGroup['name'], false);
+      $filters[] = $this->getFiltersByGroupName($filterGroup, false);
+      $properties[] = $this->getFiltersByPropertyName($filterGroup, false);
     }
     foreach ($groupContexts as $key => $groupContext) {
       if (!is_int($key)) {
@@ -251,8 +288,30 @@ class categoryController extends Controller
       $groups[$key]['value'] = $filters[$groupContext[0]]['filter_values'][$groupContext[1]]['value'];
 
     }
-
     return $groups;
+  }
+  /**
+  * @param array $groupContexts
+  * @return array $groups
+  */
+  private function getPropertiesByRequest($propertyContexts)
+  {
+    $filterGroups = $this->__get('Filters')->getFilterList();
+    $filters;
+    foreach ($filterGroups as $filterGroup) {
+      $filters[] = $this->getFiltersByPropertyName($filterGroup, false);
+    }
+    foreach ($propertyContexts as $key => $propertyContext) {
+      if (!is_int($key)) {
+        continue;
+      }
+      $propertyContext = explode('_', $propertyContext);
+
+      $properties[$key]['name'] = $filters[$propertyContext[0]]['filter_name'];
+      $properties[$key]['value'] = $filters[$propertyContext[0]]['filter_values'][$propertyContext[1]]['value'];
+
+    }
+    return $properties;
   }
 
 

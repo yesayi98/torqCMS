@@ -42,43 +42,36 @@
                  <input type="hidden" name="c" value="{$category.id}">
              </form>
          </div>
-        {* <!--  <div class="widget_list widget_color">
-             <h3>Select By Color</h3>
-             <ul>
-                 <li>
-                     <a href="shop.html#">Black  <span>(6)</span></a>
-                 </li>
-                 <li>
-                     <a href="shop.html#"> Blue <span>(8)</span></a>
-                 </li>
-                 <li>
-                     <a href="shop.html#">Brown <span>(10)</span></a>
-                 </li>
-                 <li>
-                     <a href="shop.html#"> Green <span>(6)</span></a>
-                 </li>
-                 <li>
-                     <a href="shop.html#">Pink <span>(4)</span></a>
-                 </li>
 
-             </ul>
-         </div> --> *}
-
-         <div class="widget_list tags_widget">
-             <h3>Ամենափնտրվողները</h3>
-             <div class="tag_cloud">
-                 <a href="{url url='category/search?search=բանան'}">Բանան</a>
-                 <a href="{url url='category/search?search=միս'}">Միս</a>
-                 <a href="{url url='category/search?search=խնձոր'}">խՆձոր</a>
-                 <a href="{url url='category/search?search=չալաղաջ'}">խոզի չալաղաջ</a>
-                 <a href="{url url='category/search?search=կաթ'}">կաթ</a>
-                 <a href="{url url='category/search?search=մանդարին'}">Մանդարին</a>
-                 <a href="{url url='category/search?search=կիվի'}">Կիվի</a>
-             </div>
-         </div>
+         {foreach from=$filters item=$filter key=$item}
+         <div class="widget_list widget_color">
+              <h3>{$filter.filter_name}</h3>
+              <ul>
+                {foreach from=$filter.filter_values item=$filter_item key=$key}
+                <li>
+                    <input type="checkbox" data-filter="true" id="fil_{$item}_{$key}" name="group[]" value="{$item}_{$key}" form="filter_form">
+                    <label for="fil_{$item}_{$key}"><a href="javascript:void(0)">{$filter_item.value}</a></label>
+                </li>
+                {/foreach}
+              </ul>
+          </div>
+         {/foreach}
+         {foreach from=$properties item=$property key=$item}
+         <div class="widget_list widget_color">
+              <h3>{$property.filter_name}</h3>
+              <ul>
+                {foreach from=$property.filter_values item=$filter_item key=$key}
+                <li>
+                    <input type="checkbox" data-filter="true" id="fil_{$item}_{$key}" name="properties[]" value="{$item}_{$key}" form="filter_form">
+                    <label for="fil_{$item}_{$key}"><a href="javascript:void(0)">{$filter_item.value}</a></label>
+                </li>
+                {/foreach}
+              </ul>
+          </div>
+         {/foreach}
          <div class="widget_list banner_widget">
              <div class="banner_thumb">
-                 <a href="shop.html#"><img src="assets/img/bg/banner17.jpg" alt=""></a>
+                 {* <a href="shop.html#"><img src="assets/img/bg/banner17.jpg" alt=""></a> *}
              </div>
          </div>
      </div>
