@@ -263,4 +263,7 @@ jQuery(document).ready(function($) {
   });
 });
 
+$.subscribe('detail/loaded', function(event, object) {
+  getCsrf();
+});
 });
