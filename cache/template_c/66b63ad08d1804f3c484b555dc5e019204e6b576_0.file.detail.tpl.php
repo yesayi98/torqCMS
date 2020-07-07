@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-19 12:18:22
+/* Smarty version 3.1.34-dev-7, created on 2020-07-07 15:57:23
   from 'C:\Users\User\OSPanel\domains\torq\public\backend\blog\detail.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5eec74ce929877_63264700',
+  'unifunc' => 'content_5f04632360bb87_18908615',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '66b63ad08d1804f3c484b555dc5e019204e6b576' => 
     array (
       0 => 'C:\\Users\\User\\OSPanel\\domains\\torq\\public\\backend\\blog\\detail.tpl',
-      1 => 1592554700,
+      1 => 1593264170,
       2 => 'file',
     ),
   ),
@@ -20,19 +20,19 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5eec74ce929877_63264700 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f04632360bb87_18908615 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_19106500345eec74ce8fd218_75195808', "container-content");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_19949019315f046323274e91_56628671', "container-content");
 ?>
 
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, "backend/articles/detail.tpl");
 }
 /* {block "form-content"} */
-class Block_20153830255eec74ce90e315_73442114 extends Smarty_Internal_Block
+class Block_15858495175f0463234db6a5_99588680 extends Smarty_Internal_Block
 {
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
@@ -138,16 +138,18 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                             <?php if (!$_smarty_tpl->tpl_vars['image']->value) {?>
                               <div class="image-container">
                               </div>
-                            <?php }?>
-                             <div class="image-container">
-                               <button type="button" name="deleteImage" class="btn btn-danger deleteImage" data-url="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['url'][0], array( array('url'=>'backend/blog/deleteImage'),$_smarty_tpl ) );?>
+                             <?php } else { ?>
+                              <div class="image-container">
+                                <button type="button" name="deleteImage" class="btn btn-danger deleteImage" data-url="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['url'][0], array( array('url'=>'backend/blog/deleteImage'),$_smarty_tpl ) );?>
 " data-blog="<?php echo $_smarty_tpl->tpl_vars['blog']->value['id'];?>
 "><i class="ti-close"></i></button>
-                               <img src="<?php echo $_smarty_tpl->tpl_vars['image']->value['path'];?>
+                                <img src="<?php echo $_smarty_tpl->tpl_vars['image']->value['path'];?>
 " class="detail-image" >
-                               <input type="hidden" name="media_id" class="detail-image-id" value="<?php echo $_smarty_tpl->tpl_vars['image']->value['id'];?>
+                                <input type="hidden" name="media_id" class="detail-image-id" value="<?php echo $_smarty_tpl->tpl_vars['image']->value['id'];?>
 ">
-                             </div>
+                              </div>
+                            <?php }?>
+
                           </div>
                        </div>
                      </div>
@@ -158,7 +160,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 }
 /* {/block "form-content"} */
 /* {block "detail-form-container"} */
-class Block_15383556885eec74ce90c7d2_69881023 extends Smarty_Internal_Block
+class Block_14357433935f0463234d9e17_15514713 extends Smarty_Internal_Block
 {
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
@@ -167,7 +169,7 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 " action="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['url'][0], array( array('url'=>'backend/blog/save'),$_smarty_tpl ) );?>
 " method="post" data-ajaxsend="true">
                <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_20153830255eec74ce90e315_73442114', "form-content", $this->tplIndex);
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_15858495175f0463234db6a5_99588680', "form-content", $this->tplIndex);
 ?>
 
                <input type="hidden" name="id" value="<?php echo $_smarty_tpl->tpl_vars['blog']->value['id'];?>
@@ -178,20 +180,20 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_20153830255eec74ce
 }
 /* {/block "detail-form-container"} */
 /* {block "container-content"} */
-class Block_19106500345eec74ce8fd218_75195808 extends Smarty_Internal_Block
+class Block_19949019315f046323274e91_56628671 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'container-content' => 
   array (
-    0 => 'Block_19106500345eec74ce8fd218_75195808',
+    0 => 'Block_19949019315f046323274e91_56628671',
   ),
   'detail-form-container' => 
   array (
-    0 => 'Block_15383556885eec74ce90c7d2_69881023',
+    0 => 'Block_14357433935f0463234d9e17_15514713',
   ),
   'form-content' => 
   array (
-    0 => 'Block_20153830255eec74ce90e315_73442114',
+    0 => 'Block_15858495175f0463234db6a5_99588680',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -217,7 +219,7 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
        <div class="card-body">
          <div class="detail-form-container">
            <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_15383556885eec74ce90c7d2_69881023', "detail-form-container", $this->tplIndex);
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_14357433935f0463234d9e17_15514713', "detail-form-container", $this->tplIndex);
 ?>
 
          </div>

@@ -68,11 +68,15 @@ class blogController extends BackendController
     $blog['created_date'] = $request['created_date'];
     $blog['changed_date'] = date("Y-m-d");
     $blog['media_id'] = $request['media_id'];
+    $success = true;
     if (!empty($request['id'])) {
       $blog['id'] = $request['id'];
       $success = $this->updateBlog($blog);
     }else{
       $blog['id'] = $this->insertBlog($blog);
+      if (empty($blog['id'])) {
+        $success = false;
+      }
     }
     if (!$success) {
       $message = Connection()->getError();

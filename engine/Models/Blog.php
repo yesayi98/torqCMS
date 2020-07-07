@@ -8,7 +8,7 @@ class Blog extends Model
 
   private $table = "blog";
 
-  public function saveBlog($blog)
+  public function setBlog($blog)
   {
     if (empty($blog)) {
       return;
