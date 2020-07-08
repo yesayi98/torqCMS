@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-19 19:04:39
+/* Smarty version 3.1.34-dev-7, created on 2020-07-08 18:39:39
   from 'C:\Users\User\OSPanel\domains\torq\public\backend\emotions\components.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5eecd407eef018_95635699',
+  'unifunc' => 'content_5f05daabe26263_78839152',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '4922986322c4841b73d71c8a233b3ade9100186e' => 
     array (
       0 => 'C:\\Users\\User\\OSPanel\\domains\\torq\\public\\backend\\emotions\\components.tpl',
-      1 => 1591775564,
+      1 => 1594218879,
       2 => 'file',
     ),
   ),
@@ -20,20 +20,20 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5eecd407eef018_95635699 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f05daabe26263_78839152 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, false);
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_15484172675eecd407e3ab39_49698548', 'emotion-component');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_8914427515f05daabdefa35_32849076', 'emotion-component');
 ?>
 
 <?php }
 /* {block 'emotion-component'} */
-class Block_15484172675eecd407e3ab39_49698548 extends Smarty_Internal_Block
+class Block_8914427515f05daabdefa35_32849076 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'emotion-component' => 
   array (
-    0 => 'Block_15484172675eecd407e3ab39_49698548',
+    0 => 'Block_8914427515f05daabdefa35_32849076',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -83,13 +83,13 @@ $_smarty_tpl->_assignInScope('component', $_tmp_array);?>
             <div class="emotion-action d-flex justify-content-center col-12">
               <div class="m-3">
                 <a href="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['url'][0], array( array('url'=>'backend/emotions/componentDetail'),$_smarty_tpl ) );?>
-" data-value="<?php echo $_smarty_tpl->tpl_vars['component']->value['values'];?>
-" class="btn btn-success">Change</a>
+" data-value="<?php echo $_smarty_tpl->tpl_vars['component']->value['id'];?>
+" class="btn btn-success changer">Change</a>
               </div>
               <div class="m-3">
                 <a href="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['url'][0], array( array('url'=>'backend/emotions/componentDelete'),$_smarty_tpl ) );?>
 " data-value="<?php echo $_smarty_tpl->tpl_vars['component']->value['id'];?>
-" class="btn btn-danger">Delete</a>
+" class="btn btn-danger deleter">Delete</a>
               </div>
             </div>
           </div>
@@ -103,10 +103,10 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
   <div class="col-12">
     <div class="emotion-component card">
       <div class="card-body">
-        <form class="emotion-detail" data-ajaxsend=true action="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['url'][0], array( array('url'=>'backend/emotions/save'),$_smarty_tpl ) );?>
+        <form class="emotion-detail" data-ajaxsend=true action="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['url'][0], array( array('url'=>'backend/emotions/componentsave'),$_smarty_tpl ) );?>
 " method="post">
           <?php if ($_smarty_tpl->tpl_vars['emotion']->value) {?>
-            <input type="hidden" name="id" value="<?php echo $_smarty_tpl->tpl_vars['emotion']->value['id'];?>
+            <input type="hidden" name="emotion_id" value="<?php echo $_smarty_tpl->tpl_vars['emotion']->value['id'];?>
 ">
           <?php }?>
           <div class="row">

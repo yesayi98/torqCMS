@@ -168,6 +168,18 @@ class Emotions extends \Model
     return $emotions;
   }
 
+  // get emotion component by id from emotion_components table
+  /**
+  * @param integer $component_id
+  * @return array $component
+  */
+  public function getEmotionComponent($component_id)
+  {
+    $component = $this->get('emotion_components', $component_id, 'id');
+    $component['emotion_type'] = $this->getEmotionType($component['type']);
+
+    return $component;
+  }
 }
 
 

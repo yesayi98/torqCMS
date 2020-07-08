@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-19 19:29:28
+/* Smarty version 3.1.34-dev-7, created on 2020-07-08 18:39:39
   from 'C:\Users\User\OSPanel\domains\torq\public\backend\emotions\detail.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5eecd9d8e0e875_09296086',
+  'unifunc' => 'content_5f05daab9bbf05_84653083',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd4b0e2d965801a3e8390d8ba02fb7f96c1e90a0f' => 
     array (
       0 => 'C:\\Users\\User\\OSPanel\\domains\\torq\\public\\backend\\emotions\\detail.tpl',
-      1 => 1592580567,
+      1 => 1594219176,
       2 => 'file',
     ),
   ),
@@ -21,34 +21,37 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:backend/emotions/components.tpl' => 1,
   ),
 ),false)) {
-function content_5eecd9d8e0e875_09296086 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f05daab9bbf05_84653083 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_8560056635eecd9d8de53d0_20191309', "css-container");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_19621628905f05daab85c002_12599837', "css-container");
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_14513652355eecd9d8dea6b2_94962406', "container-content");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_12602487985f05daab8e10f9_91672469', "container-content");
 ?>
 
+<?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_6466956295f05daab9af5f6_62548454', "modal-container");
+?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_3785088495eecd9d8e0a838_67810763', "js-container");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_17860258615f05daab9b8333_17041138', "js-container");
 ?>
 
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, "backend/index/index.tpl");
 }
 /* {block "css-container"} */
-class Block_8560056635eecd9d8de53d0_20191309 extends Smarty_Internal_Block
+class Block_19621628905f05daab85c002_12599837 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'css-container' => 
   array (
-    0 => 'Block_8560056635eecd9d8de53d0_20191309',
+    0 => 'Block_19621628905f05daab85c002_12599837',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -68,7 +71,7 @@ $_smarty_tpl->inheritance->callParent($_smarty_tpl, $this, '{$smarty.block.paren
 }
 /* {/block "css-container"} */
 /* {block "breadcrump"} */
-class Block_7787272275eecd9d8dec4e0_75962838 extends Smarty_Internal_Block
+class Block_1338367615f05daab8e21f0_72565669 extends Smarty_Internal_Block
 {
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
@@ -85,7 +88,7 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block "breadcrump"} */
 /* {block "buttons"} */
-class Block_466923745eecd9d8ded403_68661738 extends Smarty_Internal_Block
+class Block_14213496045f05daab8e2da0_71115188 extends Smarty_Internal_Block
 {
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
@@ -96,18 +99,18 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block "buttons"} */
 /* {block "table-list"} */
-class Block_9337476565eecd9d8deb847_56492551 extends Smarty_Internal_Block
+class Block_1049284935f05daab8e19d9_74576092 extends Smarty_Internal_Block
 {
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
     <div class="row pt-2 pb-2">
       <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_7787272275eecd9d8dec4e0_75962838', "breadcrump", $this->tplIndex);
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1338367615f05daab8e21f0_72565669', "breadcrump", $this->tplIndex);
 ?>
 
       <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_466923745eecd9d8ded403_68661738', "buttons", $this->tplIndex);
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_14213496045f05daab8e2da0_71115188', "buttons", $this->tplIndex);
 ?>
 
     </div>
@@ -116,7 +119,7 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_466923745eecd9d8de
 }
 /* {/block "table-list"} */
 /* {block "emotion-content"} */
-class Block_6938654855eecd9d8def351_83820007 extends Smarty_Internal_Block
+class Block_5840467505f05daab8e3c39_43211726 extends Smarty_Internal_Block
 {
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
@@ -221,52 +224,152 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block "emotion-content"} */
 /* {block "container-content"} */
-class Block_14513652355eecd9d8dea6b2_94962406 extends Smarty_Internal_Block
+class Block_12602487985f05daab8e10f9_91672469 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'container-content' => 
   array (
-    0 => 'Block_14513652355eecd9d8dea6b2_94962406',
+    0 => 'Block_12602487985f05daab8e10f9_91672469',
   ),
   'table-list' => 
   array (
-    0 => 'Block_9337476565eecd9d8deb847_56492551',
+    0 => 'Block_1049284935f05daab8e19d9_74576092',
   ),
   'breadcrump' => 
   array (
-    0 => 'Block_7787272275eecd9d8dec4e0_75962838',
+    0 => 'Block_1338367615f05daab8e21f0_72565669',
   ),
   'buttons' => 
   array (
-    0 => 'Block_466923745eecd9d8ded403_68661738',
+    0 => 'Block_14213496045f05daab8e2da0_71115188',
   ),
   'emotion-content' => 
   array (
-    0 => 'Block_6938654855eecd9d8def351_83820007',
+    0 => 'Block_5840467505f05daab8e3c39_43211726',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
   <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_9337476565eecd9d8deb847_56492551', "table-list", $this->tplIndex);
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1049284935f05daab8e19d9_74576092', "table-list", $this->tplIndex);
 ?>
 
   <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_6938654855eecd9d8def351_83820007', "emotion-content", $this->tplIndex);
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_5840467505f05daab8e3c39_43211726', "emotion-content", $this->tplIndex);
 ?>
 
 <?php
 }
 }
 /* {/block "container-content"} */
+/* {block "gallery-modal"} */
+class Block_10018643935f05daab9b0c29_85226874 extends Smarty_Internal_Block
+{
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+?>
+
+  <div class="modal fade gallery-modal">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Gallery</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="contaiener" data-content="true" data-url="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['url'][0], array( array('url'=>'backend/media'),$_smarty_tpl ) );?>
+">
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <form class="addImage" action="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['url'][0], array( array('url'=>'backend/media/'),$_smarty_tpl ) );?>
+" id="imageToDetail" method="post">
+            <button type="submit" class="btn btn-light addDetailImage"><i class="fa fa-check-square-o"></i> Add</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <?php
+}
+}
+/* {/block "gallery-modal"} */
+/* {block "component-modal"} */
+class Block_15859207985f05daab9b4c77_56195861 extends Smarty_Internal_Block
+{
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+?>
+
+  <div class="modal fade component-modal">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Component</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="contaiener" data-content="true" data-url="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['url'][0], array( array('url'=>'backend/emotions/componentDetail'),$_smarty_tpl ) );?>
+">
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <form class="addImage" action="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['url'][0], array( array('url'=>'backend/media/'),$_smarty_tpl ) );?>
+" id="imageToDetail" method="post">
+            <button type="submit" class="btn btn-success addDetailImage"><i class="fa fa-check-square-o"></i> Save</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <?php
+}
+}
+/* {/block "component-modal"} */
+/* {block "modal-container"} */
+class Block_6466956295f05daab9af5f6_62548454 extends Smarty_Internal_Block
+{
+public $subBlocks = array (
+  'modal-container' => 
+  array (
+    0 => 'Block_6466956295f05daab9af5f6_62548454',
+  ),
+  'gallery-modal' => 
+  array (
+    0 => 'Block_10018643935f05daab9b0c29_85226874',
+  ),
+  'component-modal' => 
+  array (
+    0 => 'Block_15859207985f05daab9b4c77_56195861',
+  ),
+);
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+?>
+
+  <?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_10018643935f05daab9b0c29_85226874', "gallery-modal", $this->tplIndex);
+?>
+
+  <?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_15859207985f05daab9b4c77_56195861', "component-modal", $this->tplIndex);
+?>
+
+<?php
+}
+}
+/* {/block "modal-container"} */
 /* {block "js-container"} */
-class Block_3785088495eecd9d8e0a838_67810763 extends Smarty_Internal_Block
+class Block_17860258615f05daab9b8333_17041138 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'js-container' => 
   array (
-    0 => 'Block_3785088495eecd9d8e0a838_67810763',
+    0 => 'Block_17860258615f05daab9b8333_17041138',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -300,6 +403,11 @@ assets/js/jquery.detail.js"><?php echo '</script'; ?>
   <?php echo '<script'; ?>
  src="<?php echo $_smarty_tpl->tpl_vars['BASE_BACKEND']->value;?>
 assets/js/jquery.categories.js"><?php echo '</script'; ?>
+>
+  <!--Emotions Js-->
+  <?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['BASE_BACKEND']->value;?>
+assets/js/jquery.emotions.js"><?php echo '</script'; ?>
 >
   <!--Switchery Js-->
   <?php echo '<script'; ?>

@@ -24,10 +24,10 @@
             </div>
             <div class="emotion-action d-flex justify-content-center col-12">
               <div class="m-3">
-                <a href="{url url='backend/emotions/componentDetail'}" data-value="{$component.values}" class="btn btn-success">Change</a>
+                <a href="{url url='backend/emotions/componentDetail'}" data-value="{$component.id}" class="btn btn-success changer">Change</a>
               </div>
               <div class="m-3">
-                <a href="{url url='backend/emotions/componentDelete'}" data-value="{$component.id}" class="btn btn-danger">Delete</a>
+                <a href="{url url='backend/emotions/componentDelete'}" data-value="{$component.id}" class="btn btn-danger deleter">Delete</a>
               </div>
             </div>
           </div>

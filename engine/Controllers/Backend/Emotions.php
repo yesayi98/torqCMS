@@ -219,6 +219,21 @@ class emotionsController extends BackendController
     }
   }
 
+  public function componentDetail()
+  {
+    // getting reqeust params
+    $request = $this->getRequest()->request;
+    $componentID = $request['id'];
+    // get emption model
+    $emotionModel = $this->__get('Emotions');
+    // get current component
+    $component = $emotionModel->getEmotionComponent($componentID);
+
+    // set a route for emotion component
+    $this->route = 'backend/'.$component['emotion_type']['template'];
+    var_dump($this->route);exit;
+  }
+
 }
 
 

@@ -115,7 +115,56 @@
   </div>
   {/block}
 {/block}
+{block name="modal-container"}
+  {block name="gallery-modal"}
+  <div class="modal fade gallery-modal">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Gallery</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="contaiener" data-content="true" data-url="{url url='backend/media'}">
 
+          </div>
+        </div>
+        <div class="modal-footer">
+          <form class="addImage" action="{url url='backend/media/'}" id="imageToDetail" method="post">
+            <button type="submit" class="btn btn-light addDetailImage"><i class="fa fa-check-square-o"></i> Add</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  {/block}
+  {block name="component-modal"}
+  <div class="modal fade component-modal">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Component</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="contaiener" data-content="true" data-url="{url url='backend/emotions/componentDetail'}">
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <form class="addImage" action="{url url='backend/media/'}" id="imageToDetail" method="post">
+            <button type="submit" class="btn btn-success addDetailImage"><i class="fa fa-check-square-o"></i> Save</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  {/block}
+{/block}
 {block name="js-container"}
   {$smarty.block.parent}
   <!-- ckeditor -->
@@ -128,6 +177,8 @@
   <script src="{$BASE_BACKEND}assets/js/jquery.detail.js"></script>
   <!--emotion Js-->
   <script src="{$BASE_BACKEND}assets/js/jquery.categories.js"></script>
+  <!--Emotions Js-->
+  <script src="{$BASE_BACKEND}assets/js/jquery.emotions.js"></script>
   <!--Switchery Js-->
   <script src="{$BASE_BACKEND}assets/plugins/switchery/js/switchery.min.js"></script>
   <!-- ckeditor initer -->
