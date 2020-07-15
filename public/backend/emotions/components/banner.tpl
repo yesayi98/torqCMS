@@ -1,13 +1,23 @@
-<div class="banner-component banner_fullwidth mt-40" style="background-image: url({$items.0.media.path})">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="banner_full_content" style="padding: 50px 0">
-                    <!-- <p>Black Fridays !</p> -->
-                    <h2>{$items.0.description}</h2>
-                    <!-- <a href="shop.html">discover now</a> -->
-                </div>
-            </div>
+{extends file="backend/emotions/components/slider.tpl"}
+{block name='component-select'}
+  <div class="col-12">
+    <div class="form-group">
+      <div class="card">
+        <div class="card-header text-uppercase">Select {$component.emotion_type.module}</div>
+        <div class="card-body">
+          <select name="variables[]"  form="component-form" class="form-control">
+            {foreach $component.items item=$item key=$key}
+              <option value="{$item.id}" {if in_array($item.id, $component.vars)}selected{/if}>
+                {if $item.name}
+                  {$item.id}: {$item.name}
+                {else}
+                  {$item.id}: -empty-name-
+                {/if}
+              </option>
+            {/foreach}
+          </select>
         </div>
+      </div>
     </div>
-</div>
+  </div>
+{/block}

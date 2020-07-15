@@ -10,17 +10,23 @@ final class Validator
   private const POST = 'post';
   private const GET = 'get';
 
-  function __construct($request, $type = null)
+  function __construct($request, $type = null, $ignoreStatemant)
   {
 
     $this->request = $request;
-
     $redirect = false;
     if ($type == self::POST && !empty($request)) {
       if (isset($request['csrf']) && $request['csrf'] != Container()->getSession('csrf')) {
         $redirect = true;
       }elseif (!isset($request['csrf'])){
         $redirect = true;
+      }
+    }
+
+    if (!empty($ignoreStatemant)) {
+      $route = Router::getRoute();
+      if (in_array($route['action'], $ignoreStatemant)) {
+        $redirect = false;
       }
     }
 
@@ -58,8 +64,9 @@ final class Validator
         $validRequest[$key] = $value;
         continue;
       }
-      $validRequest[$key] = htmlspecialchars($value, ENT_QUOTES);
-      $validRequest[$key] = trim($value);
+      $validRequest[$key] = $value;
+      $validRequest[$key] = trim($validRequest[$key]);
+      $validRequest[$key] = htmlspecialchars($validRequest[$key], ENT_QUOTES);
     }
 
     return $validRequest;

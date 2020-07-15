@@ -167,9 +167,9 @@ class Articles extends \Model
     }
     return $articles;
   }
-  public function getArticleList()
+  public function getArticleList($all = false)
   {
-    $articles = $this->getList('articles');
+    $articles = $this->getList('articles', $all?'all':null);
 
     return $articles;
   }

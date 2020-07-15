@@ -190,6 +190,16 @@
  			return $orderDetails;
 		}
 
+		/**
+		* @param int $orderDetaulID
+		* @return array $orderDetail
+		*/
+		public function getOrderDetail($orderDetailID)
+		{
+			$orderDetail = $this->get('order_details', $orderDetailID);
+			return $orderDetail;
+		}
+
 		public function setOrderDetails($orderDetails)
 		{
 			if(!$orderDetails){
@@ -254,6 +264,12 @@
 			return $query;
 		}
 
+		public function updateOrderDetail($orderDetail)
+		{
+			$result = $this->update('order_details', $orderDetail);
+
+			return $result;
+		}
 
 		public function deleteOrderDetail($detail_id)
 		{

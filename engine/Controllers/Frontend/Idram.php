@@ -9,35 +9,42 @@ class idramController extends Controller
   private $payment = 2;
   private $url = 'https://money.idram.am/payment.aspx';
 
+  public static $ignoreCSRF = array(
+                                'index',
+                                'success',
+                                'error'
+                              );
+
   public function index()
     {
-      $requset = $this->getRequest()->request;
+      $request = $this->getRequest()->request;
       $payment_method = $this->__get('Payments')->getPayment($this->payment);
+
       $order_id = $this->View()->getSession('order_id');
       define("SECRET_KEY", $payment_method["client_secret_key"]); // Idram Payment System provide it
       define("EDP_REC_ACCOUNT", $payment_method["client_id"]); // Idram Payment System provide it
       // var_dump(EDP_REC_ACCOUNT);
       // var_dump($_SESSION['ordernumber']);
-      if(isset($requset['EDP_PRECHECK']) && isset($requset['EDP_BILL_NO']) && isset($requset['EDP_REC_ACCOUNT']) && isset($requset['EDP_AMOUNT'])){
-          if($requset['EDP_PRECHECK'] == "YES"){
-              if($requset['EDP_REC_ACCOUNT'] == EDP_REC_ACCOUNT){
-                $bill_no = $requset['EDP_BILL_NO'];
+      if(isset($request['EDP_PRECHECK']) && isset($request['EDP_BILL_NO']) && isset($request['EDP_REC_ACCOUNT']) && isset($request['EDP_AMOUNT'])){
+          if($request['EDP_PRECHECK'] == "YES"){
+              if($request['EDP_REC_ACCOUNT'] == EDP_REC_ACCOUNT){
+                $bill_no = $request['EDP_BILL_NO'];
                   exit("OK");
               }
           }
       }
-      if(isset($requset['EDP_PAYER_ACCOUNT']) &&
-        isset($requset['EDP_BILL_NO']) && isset($requset['EDP_REC_ACCOUNT']) &&
-        isset($requset['EDP_AMOUNT']) && isset($requset['EDP_TRANS_ID']) && isset($requset['EDP_CHECKSUM'])){
+      if(isset($request['EDP_PAYER_ACCOUNT']) &&
+        isset($request['EDP_BILL_NO']) && isset($request['EDP_REC_ACCOUNT']) &&
+        isset($request['EDP_AMOUNT']) && isset($request['EDP_TRANS_ID']) && isset($request['EDP_CHECKSUM'])){
 
             $txtToHash = EDP_REC_ACCOUNT . ":" .
-                         $requset['EDP_AMOUNT'] . ":" .
+                         $request['EDP_AMOUNT'] . ":" .
                          SECRET_KEY . ":" .
-                         $requset['EDP_BILL_NO'] . ":" .
-                         $requset['EDP_PAYER_ACCOUNT'] . ":" .
-                         $requset['EDP_TRANS_ID'] . ":" .
-                         $requset['EDP_TRANS_DATE'];
-            if(strtoupper($requset['EDP_CHECKSUM']) != strtoupper(md5($txtToHash))){
+                         $request['EDP_BILL_NO'] . ":" .
+                         $request['EDP_PAYER_ACCOUNT'] . ":" .
+                         $request['EDP_TRANS_ID'] . ":" .
+                         $request['EDP_TRANS_DATE'];
+            if(strtoupper($request['EDP_CHECKSUM']) != strtoupper(md5($txtToHash))){
                 // code to handling payment fail
                 $sql = "UPDATE orders SET status = 3 WHERE id = '$order_id'";
                 Connection()->set($sql);

@@ -133,7 +133,6 @@ class emotionsController extends BackendController
   public function save()
   {
     $request = $this->getRequest()->request;
-
     $emotion['id'] = $request['id'];
     $emotion['name'] = $request['name'];
     $emotion['row_height'] = $request['row_height'];
@@ -179,7 +178,7 @@ class emotionsController extends BackendController
     $emotion['emotion_id'] = $request['emotion_id'];
     $emotion['type'] = $request['type'];
     $emotion['title'] = $request['title'];
-    $emotion['variables'] = $request['variables']?$request['variables']:'';
+    $emotion['variables'] = $request['variables']?implode('|', $request['variables']):'';
     $emotion['col_xl'] = $request['col_xl']?$request['col_xl']:12;
     $emotion['col_lg'] = $request['col_lg']?$request['col_lg']:12;
     $emotion['col_md'] = $request['col_md']?$request['col_md']:12;
@@ -191,7 +190,8 @@ class emotionsController extends BackendController
     $message = "success";
 
     $emotionModel = $this->__get('Emotions');
-    if (!empty($emotion['id'])) {
+    if (!empty($request['id'])) {
+      $emotion['id'] = $request['id'];
       $success = $emotionModel->updateEmotionComponent($emotion);
     }else{
       $success = $emotionModel->setEmotionComponent($emotion);
@@ -228,10 +228,24 @@ class emotionsController extends BackendController
     $emotionModel = $this->__get('Emotions');
     // get current component
     $component = $emotionModel->getEmotionComponent($componentID);
+    // get items for component by component type
+    $modelEntity = $this->__get('ModelEntity');
+    $component['items'] = $modelEntity->getElementList($component['emotion_type']['module']);
+    $component['vars'] = explode('|', $component['variables']);
+    // set $component to View
+    $this->View()->setAssign('component', $component);
+  }
 
-    // set a route for emotion component
-    $this->route = 'backend/'.$component['emotion_type']['template'];
-    var_dump($this->route);exit;
+  public function componentDelete()
+  {
+    // getting reqeust params
+    $request = $this->getRequest()->request;
+    $componentID = $request['id'];
+    // get emotion model
+    $emotionModel = $this->__get('Emotions');
+
+    $success = $emotionModel->deleteEmotionComponent($componentID);
+    die(json_encode(array('success' => $success)));
   }
 
 }

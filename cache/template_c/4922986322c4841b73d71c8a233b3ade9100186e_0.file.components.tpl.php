@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-07-08 18:39:39
+/* Smarty version 3.1.34-dev-7, created on 2020-07-09 14:06:36
   from 'C:\Users\User\OSPanel\domains\torq\public\backend\emotions\components.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f05daabe26263_78839152',
+  'unifunc' => 'content_5f06ec2c071c59_14707535',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '4922986322c4841b73d71c8a233b3ade9100186e' => 
     array (
       0 => 'C:\\Users\\User\\OSPanel\\domains\\torq\\public\\backend\\emotions\\components.tpl',
-      1 => 1594218879,
+      1 => 1594289194,
       2 => 'file',
     ),
   ),
@@ -20,20 +20,20 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f05daabe26263_78839152 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f06ec2c071c59_14707535 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, false);
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_8914427515f05daabdefa35_32849076', 'emotion-component');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_20959595215f06ec2be6f059_86754642', 'emotion-component');
 ?>
 
 <?php }
 /* {block 'emotion-component'} */
-class Block_8914427515f05daabdefa35_32849076 extends Smarty_Internal_Block
+class Block_20959595215f06ec2be6f059_86754642 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'emotion-component' => 
   array (
-    0 => 'Block_8914427515f05daabdefa35_32849076',
+    0 => 'Block_20959595215f06ec2be6f059_86754642',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -80,7 +80,7 @@ $_smarty_tpl->_assignInScope('component', $_tmp_array);?>
               <h3><?php echo $_smarty_tpl->tpl_vars['component']->value['emotion_type']['name'];?>
 </h3>
             </div>
-            <div class="emotion-action d-flex justify-content-center col-12">
+            <div class="emotion-action d-flex flex-wrap justify-content-center col-12">
               <div class="m-3">
                 <a href="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['url'][0], array( array('url'=>'backend/emotions/componentDetail'),$_smarty_tpl ) );?>
 " data-value="<?php echo $_smarty_tpl->tpl_vars['component']->value['id'];?>

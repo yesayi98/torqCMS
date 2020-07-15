@@ -4,7 +4,9 @@
   <link href="assets/plugins/inputtags/css/bootstrap-tagsinput.css" rel="stylesheet" />
   <link href="assets/plugins/switchery/css/switchery.min.css" rel="stylesheet">
   <!-- Dropzone css -->
-    <link href="assets/plugins/dropzone/css/dropzone.css" rel="stylesheet" type="text/css">
+  <link href="assets/plugins/dropzone/css/dropzone.css" rel="stylesheet" type="text/css">
+  <!--multi select-->
+  <link href="assets/plugins/jquery-multi-select/multi-select.css" rel="stylesheet" type="text/css">
   {$smarty.block.parent}
 {/block}
 
@@ -156,8 +158,8 @@
           </div>
         </div>
         <div class="modal-footer">
-          <form class="addImage" action="{url url='backend/media/'}" id="imageToDetail" method="post">
-            <button type="submit" class="btn btn-success addDetailImage"><i class="fa fa-check-square-o"></i> Save</button>
+          <form class="addImage" action="{url url="backend/emotions/componentsave"}" data-ajaxsend='true' id="component-form" method="post">
+            <button type="submit" class="btn btn-success"><i class="fa fa-check-square-o"></i> Save</button>
           </form>
         </div>
       </div>
@@ -167,6 +169,9 @@
 {/block}
 {block name="js-container"}
   {$smarty.block.parent}
+  <!--Multi Select Js-->
+  <script src="assets/plugins/jquery-multi-select/jquery.multi-select.js"></script>
+  <script src="assets/plugins/jquery-multi-select/jquery.quicksearch.js"></script>
   <!-- ckeditor -->
   <script src="{$BASE_BACKEND}assets/plugins/ckeditor/js/ckeditor.js"></script>
   <!--select2 plugin-->
@@ -183,6 +188,5 @@
   <script src="{$BASE_BACKEND}assets/plugins/switchery/js/switchery.min.js"></script>
   <!-- ckeditor initer -->
   <script src="{$BASE_BACKEND}assets/js/jquery.editor.js"></script>
-
 
 {/block}

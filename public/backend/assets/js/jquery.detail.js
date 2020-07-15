@@ -389,8 +389,40 @@ $(function() {
       me.gallery.init();
       me.articleDetail.parent = this;
       me.articleDetail.init();
+      me.orderArticle.parent = this;
+      me.orderArticle.init();
     },
 
+    orderArticle: {
+      detailOpener: '.detail-button',
+      detailModal: '.order-detail',
+
+      // init function calls in ready to start
+      init: function () {
+        var me = this;
+        me.$detailOpener = $(me.detailOpener)
+        me.onDetailOpenerClick();
+      },
+
+      onDetailOpenerClick: function () {
+        var me = this;
+        var url = '';
+        me.$detailOpener.click(function (event) {
+          event.preventDefault();
+          url = $(this).attr('href');
+          $(me.detailModal).modal('show');
+        });
+        $(me.detailModal).on('shown.bs.modal', function (event) {
+          var self = $(this);
+          $.get(url, function (response) {
+            self.find(me.parent.content).html(response);
+            var csrf = $(document).find("input[name='csrf']");
+            self.find('form').append(csrf);
+          })
+        })
+      },
+
+    },
 
     onAjaxFormSubmit: function () {
       var me = this;

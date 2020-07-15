@@ -6,7 +6,6 @@
   final class Router
   {
     private const modules = [
-      'admin',
       'backend',
       'frontend',
       'widgets',
@@ -18,9 +17,32 @@
     public static $route;
 
     public static function start($request){
+      //create route
+      $url = Container()->CoreUrls()->getUrlByChanged($request['route'])['params'];
+      if (!empty($url)) {
+        $request = [];
+        parse_str($url, $request);
+        $_GET = array_merge($request, $_GET);
+      }
+      $route = self::setRouterParams($request['route']);
+      self::$route = $route;
+      $routefile = implode(SEPARATOR, $route);
+      $controller = self::getController($route);
+      $action = $route['action'];
+      // get controller file
+      include $controller['file'];
 
-      if (isset(self::get()['lang']) || isset(self::post()['lang'])) {
-        $_SESSION['lang'] = (self::get()['lang'])?(self::get()['lang']):(self::post()['lang']);
+      $controllerClassName = $controller['name'];
+      // check ingnoreCSRF statemant
+      if (isset($controllerClassName::$ignoreCSRF)) {
+        $ignoreStatemant = $controllerClassName::$ignoreCSRF;
+      }else{
+        $ignoreStatemant = [];
+      }
+
+      // get language and currency
+      if (isset(self::get()['lang']) || isset(self::post($ignoreStatemant)['lang'])) {
+        $_SESSION['lang'] = (self::get()['lang'])?(self::get()['lang']):(self::post($ignoreStatemant)['lang']);
       }else{
         if (!$_SESSION['lang']) {
           $_SESSION['lang'] = 1;
@@ -38,40 +60,25 @@
       }
 
       $cur = $_SESSION['currency'];
-      //create route
-      $url = Container()->CoreUrls()->getUrlByChanged($request['route'])['params'];
-      if (!empty($url)) {
-        $request = [];
-        parse_str($url, $request);
-        $_GET = array_merge($request, $_GET);
-      }
-      $route = self::setRouterParams($request['route']);
-      self::$route = $route;
-      $routefile = implode(SEPARATOR, $route);
-      $controller = self::getController($route);
-      $action = $route['action'];
       //get globals
       $lang = $GLOBALS['lang'];
       $cur = $GLOBALS['cur'];
-
       //create View object
       self::$_VIEW = new View($lang, $cur, Connection());
 
       //create Assign for all
       if ($route['module'] === 'frontend') {
-        $assign = new Assign(self::$_VIEW, self::post(), self::get(), self::request(), $routefile);
+        $assign = new Assign(self::$_VIEW, self::post($ignoreStatemant), self::get(), self::request(), $routefile);
         $assign->view();
       }elseif ($route['module'] === 'backend') {
-        $assign = new BackendAssign(self::$_VIEW, self::post(), self::get(), self::request(), $routefile);
+        $assign = new BackendAssign(self::$_VIEW, self::post($ignoreStatemant), self::get(), self::request(), $routefile);
         $assign->view();
       }
 
       self::setHeaders();
 
-      include $controller['file'];
 
-      $controllerClassName = $controller['name'];
-      $controller = new $controllerClassName(self::$_VIEW, self::post(), self::get(), self::request(), $routefile);
+      $controller = new $controllerClassName(self::$_VIEW, self::post($ignoreStatemant), self::get(), self::request(), $routefile);
       // calling pre dispatch actions
       $controller->preDispatch();
 
@@ -192,19 +199,22 @@
     }
 
 
-    static function validator($request, $type = null)
+    static function validator($request, $type = null, $ignoreStatemant = [])
     {
       if (isset($request)) {
-        $validator = new Validator($request, $type);
+        $validator = new Validator($request, $type, $ignoreStatemant);
       }
       return $validator->getRequest();
     }
 
-    static function post()
+    /**
+    * @param array $ignoreStatemant
+    */
+    static function post($ignoreStatemant = [])
     {
       $request = $_POST;
       if ($request) {
-        return self::validator($request, 'post');
+        return self::validator($request, 'post', $ignoreStatemant);
       }
     }
 

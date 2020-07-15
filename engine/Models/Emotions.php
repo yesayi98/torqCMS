@@ -122,14 +122,34 @@ class Emotions extends \Model
     // code...
   }
 
-  public function deleteEmotionType()
+  /**
+  *@param $typeID
+  *@return bool $result
+  */
+  public function deleteEmotionType($typeID)
   {
-    // code...
+    $result = $this->delete('emotion_types', $typeID);
+    return $result;
   }
 
-  public function deleteEmotion()
+  /**
+  *@param $emotionID
+  *@return bool $result
+  */
+  public function deleteEmotion($emotionID)
   {
-    // code...
+    $result = $this->delete('emotions', $emotionID);
+    return $result;
+  }
+
+  /**
+  *@param $componentID
+  *@return bool $result
+  */
+  public function deleteEmotionComponent($componentID)
+  {
+    $result = $this->delete('emotion_components', $componentID);
+    return $result;
   }
 
   // get emotion by id from emotions table

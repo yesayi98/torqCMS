@@ -22,7 +22,7 @@
             <div class="emotion-type d-flex justify-content-center col-12">
               <h3>{$component.emotion_type.name}</h3>
             </div>
-            <div class="emotion-action d-flex justify-content-center col-12">
+            <div class="emotion-action d-flex flex-wrap justify-content-center col-12">
               <div class="m-3">
                 <a href="{url url='backend/emotions/componentDetail'}" data-value="{$component.id}" class="btn btn-success changer">Change</a>
               </div>

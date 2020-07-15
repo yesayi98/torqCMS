@@ -156,7 +156,7 @@
                          ORDER DETAILS
                        </div>
                        <div class="button-group pull-right">
-                         <a href="{url url='backend/orders/articleDetail'}" class="btn btn-info waves-effect waves-light m-1"><i class="fa fa-plus"></i> NEW</a>
+                         <a href="{url url='backend/orders/articleDetail?o='|cat:$order.id}" class="btn btn-info waves-effect detail-button waves-light m-1"><i class="fa fa-plus"></i> NEW</a>
                        </div>
                      </div>
                      <div class="table-responsive">
@@ -185,7 +185,7 @@
                                    <td>{$article.quantity} {$article.mainDetail.unit_params.name}</td>
                                    <td>{$article.total}</td>
                                    <td>
-                                     <a href="{url url='backend/orders/articleDetail?a='|cat:$article.id}" class="btn btn-info waves-effect waves-light m-1"><i class="fa fa-pencil"></i></a>
+                                     <a href="{url url='backend/orders/articleDetail?o='|cat:$order.id|cat:'&od='|cat:$article.id}" class="btn btn-info waves-effect detail-button waves-light m-1"><i class="fa fa-pencil"></i></a>
                                      <a href="{url url='backend/articles/deleteDetail?a='|cat:$article.id}" class="btn btn-danger waves-effect waves-light m-1"><i class="fa fa-trash"></i></a>
                                    </td>
                                </tr>
@@ -205,6 +205,29 @@
      </div>
 {/block}
 
+{block name="modal-container"}
+<div class="modal fade order-detail">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">orderDetail</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="contaiener" data-content="true">
+
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" form="order-detail-form" class="btn btn-success"><i class="fa fa-check-square-o"></i> Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+{/block}
+
 {block name="js-container"}
   {$smarty.block.parent}
   <!-- ckeditor -->
@@ -217,5 +240,4 @@
   <script src="{$BASE_BACKEND}assets/js/jquery.detail.js"></script>
   <!-- ckeditor initer -->
   <script src="{$BASE_BACKEND}assets/js/jquery.editor.js"></script>
-
 {/block}
