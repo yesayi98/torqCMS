@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-18 08:45:14
+/* Smarty version 3.1.34-dev-7, created on 2020-07-16 11:31:33
   from 'C:\Users\User\OSPanel\domains\torq\public\frontend\category\filter.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5eeaff6a3c8b65_62396683',
+  'unifunc' => 'content_5f100255c78c15_23649253',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ba4bd5c5863aa8dba33e161aa131520cb862e98e' => 
     array (
       0 => 'C:\\Users\\User\\OSPanel\\domains\\torq\\public\\frontend\\category\\filter.tpl',
-      1 => 1592459111,
+      1 => 1593597419,
       2 => 'file',
     ),
   ),
@@ -20,13 +20,13 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5eeaff6a3c8b65_62396683 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f100255c78c15_23649253 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
   'categories' => 
   array (
     'compiled_filepath' => 'C:\\Users\\User\\OSPanel\\domains\\torq\\cache\\template_c\\ba4bd5c5863aa8dba33e161aa131520cb862e98e_0.file.filter.tpl.php',
     'uid' => 'ba4bd5c5863aa8dba33e161aa131520cb862e98e',
-    'call_name' => 'smarty_template_function_categories_9307325765eeaff6a19cd71_84140045',
+    'call_name' => 'smarty_template_function_categories_11621566555f1002554ba395_83058811',
   ),
 ));
 ?>
@@ -61,38 +61,88 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
 ">
              </form>
          </div>
-        
-         <div class="widget_list tags_widget">
-             <h3>Ամենափնտրվողները</h3>
-             <div class="tag_cloud">
-                 <a href="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['url'][0], array( array('url'=>'category/search?search=բանան'),$_smarty_tpl ) );?>
-">Բանան</a>
-                 <a href="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['url'][0], array( array('url'=>'category/search?search=միս'),$_smarty_tpl ) );?>
-">Միս</a>
-                 <a href="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['url'][0], array( array('url'=>'category/search?search=խնձոր'),$_smarty_tpl ) );?>
-">խՆձոր</a>
-                 <a href="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['url'][0], array( array('url'=>'category/search?search=չալաղաջ'),$_smarty_tpl ) );?>
-">խոզի չալաղաջ</a>
-                 <a href="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['url'][0], array( array('url'=>'category/search?search=կաթ'),$_smarty_tpl ) );?>
-">կաթ</a>
-                 <a href="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['url'][0], array( array('url'=>'category/search?search=մանդարին'),$_smarty_tpl ) );?>
-">Մանդարին</a>
-                 <a href="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['url'][0], array( array('url'=>'category/search?search=կիվի'),$_smarty_tpl ) );?>
-">Կիվի</a>
-             </div>
-         </div>
+
+         <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['filters']->value, 'filter', false, 'item');
+$_smarty_tpl->tpl_vars['filter']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['item']->value => $_smarty_tpl->tpl_vars['filter']->value) {
+$_smarty_tpl->tpl_vars['filter']->do_else = false;
+?>
+         <div class="widget_list widget_color">
+              <h3><?php echo $_smarty_tpl->tpl_vars['filter']->value['filter_name'];?>
+</h3>
+              <ul>
+                <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['filter']->value['filter_values'], 'filter_item', false, 'key');
+$_smarty_tpl->tpl_vars['filter_item']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['key']->value => $_smarty_tpl->tpl_vars['filter_item']->value) {
+$_smarty_tpl->tpl_vars['filter_item']->do_else = false;
+?>
+                <li>
+                    <input type="checkbox" data-filter="true" id="fil_<?php echo $_smarty_tpl->tpl_vars['item']->value;?>
+_<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+" name="group[]" value="<?php echo $_smarty_tpl->tpl_vars['item']->value;?>
+_<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+" form="filter_form">
+                    <label for="fil_<?php echo $_smarty_tpl->tpl_vars['item']->value;?>
+_<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+"><a href="javascript:void(0)"><?php echo $_smarty_tpl->tpl_vars['filter_item']->value['value'];?>
+</a></label>
+                </li>
+                <?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+              </ul>
+          </div>
+         <?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+         <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['properties']->value, 'property', false, 'item');
+$_smarty_tpl->tpl_vars['property']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['item']->value => $_smarty_tpl->tpl_vars['property']->value) {
+$_smarty_tpl->tpl_vars['property']->do_else = false;
+?>
+         <div class="widget_list widget_color">
+              <h3><?php echo $_smarty_tpl->tpl_vars['property']->value['filter_name'];?>
+</h3>
+              <ul>
+                <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['property']->value['filter_values'], 'filter_item', false, 'key');
+$_smarty_tpl->tpl_vars['filter_item']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['key']->value => $_smarty_tpl->tpl_vars['filter_item']->value) {
+$_smarty_tpl->tpl_vars['filter_item']->do_else = false;
+?>
+                <li>
+                    <input type="checkbox" data-filter="true" id="fil_<?php echo $_smarty_tpl->tpl_vars['item']->value;?>
+_<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+" name="properties[]" value="<?php echo $_smarty_tpl->tpl_vars['item']->value;?>
+_<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+" form="filter_form">
+                    <label for="fil_<?php echo $_smarty_tpl->tpl_vars['item']->value;?>
+_<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+"><a href="javascript:void(0)"><?php echo $_smarty_tpl->tpl_vars['filter_item']->value['value'];?>
+</a></label>
+                </li>
+                <?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+              </ul>
+          </div>
+         <?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
          <div class="widget_list banner_widget">
              <div class="banner_thumb">
-                 <a href="shop.html#"><img src="assets/img/bg/banner17.jpg" alt=""></a>
-             </div>
+                              </div>
          </div>
      </div>
  </aside>
  <!--sidebar widget end-->
 <?php }
-/* smarty_template_function_categories_9307325765eeaff6a19cd71_84140045 */
-if (!function_exists('smarty_template_function_categories_9307325765eeaff6a19cd71_84140045')) {
-function smarty_template_function_categories_9307325765eeaff6a19cd71_84140045(Smarty_Internal_Template $_smarty_tpl,$params) {
+/* smarty_template_function_categories_11621566555f1002554ba395_83058811 */
+if (!function_exists('smarty_template_function_categories_11621566555f1002554ba395_83058811')) {
+function smarty_template_function_categories_11621566555f1002554ba395_83058811(Smarty_Internal_Template $_smarty_tpl,$params) {
 $params = array_merge(array('level'=>0), $params);
 foreach ($params as $key => $value) {
 $_smarty_tpl->tpl_vars[$key] = new Smarty_Variable($value, $_smarty_tpl->isRenderingCache);
@@ -135,5 +185,5 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
     </ul>
 <?php
 }}
-/*/ smarty_template_function_categories_9307325765eeaff6a19cd71_84140045 */
+/*/ smarty_template_function_categories_11621566555f1002554ba395_83058811 */
 }

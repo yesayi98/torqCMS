@@ -100,6 +100,7 @@ class Categories extends Model
 
     $parent_id = $category['parent_id'];
     $query = $this->insert('categories', $category);
+    var_dump($this->getInsertedId());exit;
     $path = implode('|', array_reverse($this->getParentsOfCurrentCategory($this->getLastInsertedId())));
     if($path){
       $sql = "UPDATE categories SET

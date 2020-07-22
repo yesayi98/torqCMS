@@ -16,7 +16,9 @@ class Emotions extends \Model
     }
 
     foreach ($emotions as &$emotion) {
-      $emotion['components'] = $this->getEmotionComponentsByEmotionId($emotion['id']);
+      if (!empty($emotion)) {
+        $emotion['components'] = $this->getEmotionComponentsByEmotionId($emotion['id']);
+      }
     }
 
     return $emotions;

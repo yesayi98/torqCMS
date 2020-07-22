@@ -61,6 +61,7 @@ class idramController extends Controller
       }
       exit("FAIL");
     }
+    
     public function payOrder()
     {
       $this->route = 'frontend/idram/index';
