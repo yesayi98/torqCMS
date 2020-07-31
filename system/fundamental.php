@@ -1,14 +1,8 @@
 <?php
 
-date_default_timezone_set(TIMEZONE);
+date_default_timezone_set($db['db_timezone']);
 
-$dbDriver = DB_DRIVER;
-$host = DB_HOSTNAME;
-$dbUser = DB_USERNAME;
-$dbPassword = DB_PASSWORD;
-$dbName = DB_DATABASE;
-$dbPort = DB_PORT;
-$connection = new Connection($host, $dbUser, $dbPassword, $dbName);
+$connection = new Connection($db);
 
 function Connection(){
   return $GLOBALS['connection'];

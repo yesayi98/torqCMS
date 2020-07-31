@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-17 17:14:06
+/* Smarty version 3.1.34-dev-7, created on 2020-07-29 16:45:51
   from 'C:\Users\User\OSPanel\domains\torq\public\frontend\checkout\index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5eea252e9c0b58_98413925',
+  'unifunc' => 'content_5f216f7f2db1f3_53472850',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '14641551fc1527db71506738badda3e01595550b' => 
     array (
       0 => 'C:\\Users\\User\\OSPanel\\domains\\torq\\public\\frontend\\checkout\\index.tpl',
-      1 => 1592400433,
+      1 => 1592631434,
       2 => 'file',
     ),
   ),
@@ -20,29 +20,29 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5eea252e9c0b58_98413925 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f216f7f2db1f3_53472850 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_18874268085eea252e7b49d2_90720868', 'breadcrumbs_area');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_20465154355f216f7f2b1bf5_58870278', 'breadcrumbs_area');
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_6145068575eea252e7ba6e6_55902899', "pageContent");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_10240419755f216f7f2b57f1_91507363', "pageContent");
 ?>
 
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, "frontend/index/index.tpl");
 }
 /* {block 'breadcrumbs_area'} */
-class Block_18874268085eea252e7b49d2_90720868 extends Smarty_Internal_Block
+class Block_20465154355f216f7f2b1bf5_58870278 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'breadcrumbs_area' => 
   array (
-    0 => 'Block_18874268085eea252e7b49d2_90720868',
+    0 => 'Block_20465154355f216f7f2b1bf5_58870278',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -67,12 +67,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block 'breadcrumbs_area'} */
 /* {block "pageContent"} */
-class Block_6145068575eea252e7ba6e6_55902899 extends Smarty_Internal_Block
+class Block_10240419755f216f7f2b57f1_91507363 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'pageContent' => 
   array (
-    0 => 'Block_6145068575eea252e7ba6e6_55902899',
+    0 => 'Block_10240419755f216f7f2b57f1_91507363',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -139,7 +139,7 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
                                   <div class="phone-number">
                                     <input type="text" class="phone-code" name="phoneCode" value="+374" readonly>
                                     <input type="number" class="phone" name='phone' placeholder="XX XXXXXX" value="<?php echo $_smarty_tpl->tpl_vars['user']->value['phone'];?>
-">
+" required>
                                   </div>
                                 </div>
                             </div>
@@ -159,7 +159,7 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
                                   <div class="row">
                                     <label class="col-12" for="order_note"><?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['translator'][0], array( array('selector'=>"ordernote"),$_smarty_tpl ) );?>
  </label>
-                                    <textarea class="col-12" id="order_note" placeholder="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['translator'][0], array( array('selector'=>"ordernote"),$_smarty_tpl ) );?>
+                                    <textarea class="col-12" id="order_note" name="notes" placeholder="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['translator'][0], array( array('selector'=>"ordernote"),$_smarty_tpl ) );?>
 "><?php echo $_smarty_tpl->tpl_vars['user']->value['address'][0]['note'];?>
 </textarea>
                                   </div>

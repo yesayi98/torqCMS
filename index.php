@@ -5,10 +5,7 @@ if (!is_file(__DIR__.'/system/instalation/torq.lock')) {
 	exit;
 }
 
-if (is_file('config.php')) {
-	require_once('config.php');
-}
-
+require_once('system/config.php');
 // var_dump(get_included_files());exit;
 //ERROR Reporting and Debug mode
 if (!DEBUG) {

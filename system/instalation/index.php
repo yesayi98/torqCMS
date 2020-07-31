@@ -1,13 +1,17 @@
 <?php
  if (!empty($_POST) && !is_file('lock.txt')) {
-    $db_configs = "// DB
-                  define('TIMEZONE', '".$_POST['TIMEZONE']."');
-                  define('DB_DRIVER', '".$_POST['DB_DRIVER']."');
-                  define('DB_HOSTNAME', '".$_POST['DB_HOSTNAME']."');
-                  define('DB_USERNAME', '".$_POST['DB_USERNAME']."');
-                  define('DB_PASSWORD', '".$_POST['DB_PASSWORD']."');
-                  define('DB_DATABASE', '".$_POST['DB_DATABASE']."');
-                  define('DB_PORT', '".$_POST['DB_PORT']."');";
+    $db_configs = "// you can change there only db configs
+    // this file generating in installation process with your configs puted in the input form you will see in the installation
+    \$db = [
+      'timezone' => '".$_POST['TIMEZONE']."',
+      'db_driver' => '".$_POST['DB_DRIVER']."',
+      'db_hostname' => '".$_POST['DB_HOSTNAME']."',
+      'db_username' => '".$_POST['DB_USERNAME']."',
+      'db_password' => '".$_POST['DB_PASSWORD']."',
+      'db_name' => '".$_POST['DB_DATABASE']."',
+      'db_port' => '".$_POST['DB_PORT']."'
+    ]";
+
     $file_path = fopen($_SERVER['DOCUMENT_ROOT'].'/config.php', 'a');
     fwrite($file_path, $db_configs);
     fclose($file_path);

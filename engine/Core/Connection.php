@@ -8,9 +8,9 @@
 			private $lastInsert;
 			private $total;
 
-			function __construct($host, $dbUser, $dbPassword, $dbName)
+			function __construct(array $db)
 			{
-				$this->connection = new mysqli($host, $dbUser, $dbPassword, $dbName);
+				$this->connection = new mysqli($db['db_hostname'], $db['db_username'], $db['db_password'], $db['db_name']);
 				$this->connection->set_charset('utf8');
 				$this->executeQuery("SET time_zone = '".TIMEZONE."'");
 			}
