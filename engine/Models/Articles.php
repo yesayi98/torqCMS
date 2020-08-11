@@ -369,6 +369,7 @@ class Articles extends \Model
     $get_price = $data['get_price']?$data['get_price']:0;
     $discount = $data['discount'];
     $in_stock	= $data['in_stock'];
+    $min_purchuase	= $data['min_purchuase'];
     $unit	= $data['unit'];
     $unit_id = $data['unit_id'];
     $keywords = $data['keywords'];
@@ -391,6 +392,7 @@ class Articles extends \Model
                   `discount` = '$discount',
                   `in_stock` = '$in_stock',
                   `unit` = '$unit',
+                  `min_purchuase` = '$min_purchuase',
                   `unit_id` = '$unit_id',
                   `active` = '$active',
                   `keywords` = '$keywords'

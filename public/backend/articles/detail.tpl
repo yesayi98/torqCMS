@@ -107,6 +107,14 @@
                    </div>
                    <div class="col-12 col-lg-6 col-xl-6">
                      <div class="form-group row">
+                       <label class="col-sm-2 col-form-label">Minimum Count</label>
+                       <div class="col-sm-10">
+                         <input type="number" class="form-control" name="min_purchuase" min=0 value="{$article.min_purchuase}">
+                       </div>
+                     </div>
+                   </div>
+                   <div class="col-12 col-lg-6 col-xl-6">
+                     <div class="form-group row">
                        <label class="col-sm-2 col-form-label">unit</label>
                        <div class="col-sm-10">
                          <input type="number" class="form-control" name="unit" min=0 value="{$article.unit}">

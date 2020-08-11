@@ -28,12 +28,10 @@
                 </div>
                 {/block}
             </div>
-
-
             {block name='product-bages'}
             <div class="label_product">
               {if $product.discount}
-                <span class="label_sale">{translator selector="sale"} {$product.discount}%</span>
+                <span class="label_sale">{$product.discount}%</span>
               {/if}
               {if $product.is_new}
                 <span class="label_new">{translator selector="new"}</span>
@@ -56,9 +54,19 @@
               <h4 class="product_name" title="{$product.name}"><a href="{url url='detail?a='|cat:$product.id}">{$product.name|truncate:40}</a></h4>
             {/block}
             {block name='product-quantity'}
+            {$unit = 1}
+            {if $product.unit}
+              {$unit = $product.unit}
+            {else}
+              {$unit = 1}
+            {/if}
+            {$min_purchuase = $product.min_purchuase}
+            {if !$min_purchuase}
+              {$min_purchuase = $unit}
+            {/if}
             <div class="quantity">
                 <div class="quantity-button desc" >-</div>
-                <input class="nums" type="number" min="{if $product.unit}{$product.unit}{else}1{/if}" max="{$product.in_stock}" step="{if $product.unit}{$product.unit}{else}1{/if}" value="{if $product.unit}{$product.unit}{else}1{/if}">
+                <input class="nums" type="number" readonly min="{$min_purchuase}" max="{$product.in_stock}" step="{$unit}" value="{$min_purchuase}">
                 <div class="quantity-button add">+</div>
             </div>
             {/block}
@@ -71,10 +79,10 @@
               <div class="price_box">
                   {if $product.discount}
                     {$price = $product.price - $product.price * $product.discount/100}
-                    <span class="current_price">{$price} {$currentCur.symbol}</span>
-                    <span class="old_price">{$product.price} {$currentCur.symbol}</span>
+                    <span class="current_price"><span class="unit-price" data-value="{$price}">{$min_purchuase * $price}</span> {$currentCur.symbol}</span>
+                    <span class="old_price"><span class="unit-price" data-value="{$product.price}">{$min_purchuase * $product.price}</span> {$currentCur.symbol}</span>
                   {else}
-                    <span class="current_price">{$product.price} {$currentCur.symbol}</span>
+                    <span class="current_price"><span class="unit-price" data-value="{$product.price}">{$min_purchuase * $product.price}</span> {$currentCur.symbol}</span>
                   {/if}
               </div>
             {/block}

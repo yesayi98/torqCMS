@@ -103,6 +103,7 @@
         $smarty->assign($key, $value);
       }
       $smarty->assign('route', $route);
+      $smarty->assign('css', self::getCompilledCssFile());
       $route = str_replace('/', SEPARATOR, $controller->route);
       $template = self::getFile($controller->route, $templateDir);
       if (!empty($template)) {
@@ -113,6 +114,12 @@
 
       // calling post dispatch actions
       $controller->postDispatch();
+    }
+
+    private static function getCompilledCssFile()
+    {
+      $css = BASE_URL.'/cache/css/'.basename(glob(DOCUMENT_ROOT."/cache/css/*.css")[0]);
+      return $css;
     }
 
     private static function setRouterParams($route){

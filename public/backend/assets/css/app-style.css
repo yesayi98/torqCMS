@@ -5610,3 +5610,7 @@ table.grid td {
     height: 17px;
     display: inline-block;
 }
+.table-responsive .table .table-description{
+	white-space: normal;
+	width: 300px;
+}

@@ -59,6 +59,7 @@ class articlesController extends BackendController
     $article['description'] = $request['description'];
     $article['in_stock'] = $request['in_stock'];
     $article['unit'] = $request['unit'];
+    $article['min_purchuase'] = $request['min_purchuase'];
     $article['unit_id'] = $request['unit_type'];
     $article['category_id'] = $request['category_id'];
     $article['keywords'] = $request['keywords'];

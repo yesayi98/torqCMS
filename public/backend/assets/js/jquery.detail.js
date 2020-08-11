@@ -193,7 +193,6 @@ $(function() {
           var media_id = $(this).parent().find('.detail-image-id').val();
 
           var image = $(this).parent();
-          console.log(image);
           $.ajax({
             url: url,
             method: 'POST',
@@ -354,7 +353,7 @@ $(function() {
            }else{
              me.openGallery.parents('.gallery-actions').find('.image-container:not(.button)').html([img, input]);
            }
-
+           $.publish('detail/gallery/imageAdded', me);
           });
         },
         onGalleryOpen: function () {

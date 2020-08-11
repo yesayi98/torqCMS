@@ -1,5 +1,5 @@
 <?php
-
+use Core\ScssCompiller\ScssCompiller;
 /**
  *
  */
@@ -63,9 +63,12 @@ class indexController extends BackendController
 
   public function clearCache()
   {
+    $cssCompilled = ScssCompiller::compileAllFiles();
     // write something what will clear the cache;
     Container()->setSession('clearCache', true);
-
+    if (!$cssCompilled) {
+      var_dump(123);
+    }
     // tell some message on finish the proccess
     die(json_encode(array(
       'success' => true,

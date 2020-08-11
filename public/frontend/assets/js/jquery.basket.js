@@ -7,6 +7,7 @@ window.plugin.basket = {
   basketRemover: '.cart_remove a',
   minicartContent: '.minicart-inner',
   quantityButton : '.quantity .quantity-button',
+  unitPrice: '.unit-price',
 
 
   init: function () {
@@ -28,16 +29,21 @@ window.plugin.basket = {
       var url = $(this).parent().data('url');
       var a = $(this).parent().data('id');
       var t = $(".total-"+a);
+      var min = parseFloat(input.attr('min'));
       if ($(this).hasClass('add')) {
         q+=step;
       }
       if ($(this).hasClass('desc')) {
-        if (q <= step) {
+        if (q <= min) {
           return;
         }
         q-=step;
       }
       input.val(q);
+      $(this).parents('figure').find(me.unitPrice).each(function(index, element) {
+        var val = Math.round(parseFloat($(this).data('value')));
+        $(this).html(q * val);
+      });
 
       if (window.route.controller == "basket" || window.route.controller == "checkout") {
 

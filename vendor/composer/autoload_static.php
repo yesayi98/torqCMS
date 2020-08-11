@@ -119,7 +119,7 @@ class ComposerStaticInit76fb5bd4931c6fb46f2466a4f4630ca9
         'Core' => __DIR__ . '/../..' . '/engine/Models/Core.php',
         'CoreMenu' => __DIR__ . '/../..' . '/engine/Models/CoreMenu.php',
         'CoreUrls' => __DIR__ . '/../..' . '/engine/Models/CoreUrls.php',
-        'Core\\ScssCompiler\\ScssCompiler' => __DIR__ . '/../..' . '/engine/Core/ScssCompiler.php',
+        'Core\\ScssCompiller\\ScssCompiller' => __DIR__ . '/../..' . '/engine/Core/ScssCompiler.php',
         'CountTest' => __DIR__ . '/../..' . '/engine/Library/php-sql-query-builder-master/vendor/phpunit/phpunit/tests/Framework/Constraint/CountTest.php',
         'CoverageClassExtendedTest' => __DIR__ . '/../..' . '/engine/Library/php-sql-query-builder-master/vendor/phpunit/php-code-coverage/tests/_files/CoverageClassExtendedTest.php',
         'CoverageClassTest' => __DIR__ . '/../..' . '/engine/Library/php-sql-query-builder-master/vendor/phpunit/php-code-coverage/tests/_files/CoverageClassTest.php',

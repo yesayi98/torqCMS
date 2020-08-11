@@ -6,14 +6,13 @@ $(function() {
 //sidebar menu js
 $.sidebarMenu($('.sidebar-menu'));
 $.subscribe('categories/categoryList/updated', function(event, object) {
-  console.log(123);
   $.sidebarMenu($(object.categoryList).find('.sidebar-menu'));
 });
 // === toggle-menu js
 $(".toggle-menu").on("click", function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
+    e.preventDefault();
+    $("#wrapper").toggleClass("toggled");
+});
 
 // === sidebar menu activation js
 
@@ -234,7 +233,7 @@ $(function () {
     }
 
 // csrf validator
-function getCsrf() {
+function getCsrf(element) {
   // csrf validator
   var getCsrf = true;
   $.ajax({
@@ -242,23 +241,26 @@ function getCsrf() {
     method: 'post',
     data: {getCsrf},
     success: function (response) {
-      $('form[method="post"]').append(response);
+      if ($('form[method="post"]').length > 0) {
+        $('form[method="post"]').append(response);
+        window.token = $('input[name="csrf"]').val();
+      }else{
+        $('body').append(response);
+      }
     }
   })
 }
 
 getCsrf();
 
-var token =  $('input[name="csrf"]').attr('value');
-
 jQuery(document).ready(function($) {
   $.ajaxSetup({
     beforeSend: function(jqXHR, settings) {
-      console.log(settings);
-      if (settings.dataType != 'json') {
-        settings.data = $.extend(settings.data, {csrf:token});
-        return true;
-      }
+      var hrefParams = new URLSearchParams(settings.data);
+      hrefParams.set('csrf', window.token);
+      var data = hrefParams.toString();
+      settings.data = data;
+      return true;
     }
   });
 });
