@@ -1,15 +1,16 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.9.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 26, 2020 at 08:54 AM
--- Server version: 10.3.22-MariaDB-log
--- PHP Version: 7.3.16
+-- Generation Time: Aug 12, 2020 at 09:17 AM
+-- Server version: 10.4.13-MariaDB
+-- PHP Version: 7.2.32
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
-SET time_zone = "+00:00";
+SET time_zone = "+04:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -27,15 +28,14 @@ SET time_zone = "+00:00";
 -- Table structure for table `admins`
 --
 
-CREATE TABLE IF NOT EXISTS `admins` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `admins` (
+  `id` int(11) NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `admin_group` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `admin_group` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -43,14 +43,13 @@ CREATE TABLE IF NOT EXISTS `admins` (
 -- Table structure for table `advertisings`
 --
 
-CREATE TABLE IF NOT EXISTS `advertisings` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `advertisings` (
+  `id` int(11) NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `url` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `media_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `media_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -58,13 +57,12 @@ CREATE TABLE IF NOT EXISTS `advertisings` (
 -- Table structure for table `advertising_attributes`
 --
 
-CREATE TABLE IF NOT EXISTS `advertising_attributes` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `advertising_attributes` (
+  `id` int(11) NOT NULL,
   `advertising_id` int(11) NOT NULL,
   `typeing` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `additional_text` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `additional_text` text COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -72,13 +70,12 @@ CREATE TABLE IF NOT EXISTS `advertising_attributes` (
 -- Table structure for table `advertising_translations`
 --
 
-CREATE TABLE IF NOT EXISTS `advertising_translations` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `advertising_translations` (
+  `id` int(11) NOT NULL,
   `name` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `advertising_id` int(11) NOT NULL,
-  `lang_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  `lang_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -87,8 +84,8 @@ CREATE TABLE IF NOT EXISTS `advertising_translations` (
 -- Table structure for table `articles`
 --
 
-CREATE TABLE IF NOT EXISTS `articles` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `articles` (
+  `id` int(11) NOT NULL,
   `name` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` varchar(5000) COLLATE utf8mb4_unicode_ci NOT NULL,
   `date` date NOT NULL,
@@ -98,12 +95,12 @@ CREATE TABLE IF NOT EXISTS `articles` (
   `in_stock` int(11) NOT NULL,
   `sold` int(11) NOT NULL,
   `unit` float NOT NULL,
+  `min_purchuase` float NOT NULL,
   `unit_id` int(11) NOT NULL,
   `keywords` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `added_in` datetime NOT NULL DEFAULT current_timestamp(),
-  `active` int(11) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `active` int(11) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -111,8 +108,8 @@ CREATE TABLE IF NOT EXISTS `articles` (
 -- Table structure for table `article_attributes`
 --
 
-CREATE TABLE IF NOT EXISTS `article_attributes` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `article_attributes` (
+  `id` int(11) NOT NULL,
   `article_id` int(11) NOT NULL,
   `video_article` int(1) NOT NULL DEFAULT 0,
   `video_url` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -122,9 +119,8 @@ CREATE TABLE IF NOT EXISTS `article_attributes` (
   `ordernumber` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL,
   `sale_end` date NOT NULL,
   `supplier_id` int(11) NOT NULL,
-  `not_discounted` int(1) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `not_discounted` int(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -132,12 +128,11 @@ CREATE TABLE IF NOT EXISTS `article_attributes` (
 -- Table structure for table `article_category`
 --
 
-CREATE TABLE IF NOT EXISTS `article_category` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `article_category` (
+  `id` int(11) NOT NULL,
   `article_id` int(11) NOT NULL,
-  `category_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `category_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -145,13 +140,12 @@ CREATE TABLE IF NOT EXISTS `article_category` (
 -- Table structure for table `article_comments`
 --
 
-CREATE TABLE IF NOT EXISTS `article_comments` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `article_comments` (
+  `id` int(11) NOT NULL,
   `comment` varchar(2000) COLLATE utf8mb4_unicode_ci NOT NULL,
   `article_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `active` int(2) DEFAULT 0,
-  PRIMARY KEY (`id`)
+  `active` int(2) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -160,12 +154,11 @@ CREATE TABLE IF NOT EXISTS `article_comments` (
 -- Table structure for table `article_images`
 --
 
-CREATE TABLE IF NOT EXISTS `article_images` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `article_images` (
+  `id` int(11) NOT NULL,
   `article_id` int(11) NOT NULL,
-  `media_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `media_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -173,13 +166,12 @@ CREATE TABLE IF NOT EXISTS `article_images` (
 -- Table structure for table `article_options`
 --
 
-CREATE TABLE IF NOT EXISTS `article_options` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `article_options` (
+  `id` int(11) NOT NULL,
   `name` varchar(512) COLLATE utf8mb4_unicode_ci NOT NULL,
   `value` varchar(1024) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `article_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `article_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -187,13 +179,12 @@ CREATE TABLE IF NOT EXISTS `article_options` (
 -- Table structure for table `article_rating`
 --
 
-CREATE TABLE IF NOT EXISTS `article_rating` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `article_rating` (
+  `id` int(11) NOT NULL,
   `rating_count` int(11) NOT NULL,
   `article_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `active` int(2) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`id`)
+  `active` int(2) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -202,15 +193,14 @@ CREATE TABLE IF NOT EXISTS `article_rating` (
 -- Table structure for table `article_translations`
 --
 
-CREATE TABLE IF NOT EXISTS `article_translations` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `article_translations` (
+  `id` int(11) NOT NULL,
   `name` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` varchar(5000) COLLATE utf8mb4_unicode_ci NOT NULL,
   `author` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `article_id` int(11) NOT NULL,
-  `lang_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `lang_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -218,14 +208,13 @@ CREATE TABLE IF NOT EXISTS `article_translations` (
 -- Table structure for table `article_wishlist`
 --
 
-CREATE TABLE IF NOT EXISTS `article_wishlist` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `article_wishlist` (
+  `id` int(11) NOT NULL,
   `article_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `session_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `datum` date NOT NULL DEFAULT current_timestamp(),
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `datum` date NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -233,8 +222,8 @@ CREATE TABLE IF NOT EXISTS `article_wishlist` (
 -- Table structure for table `basket`
 --
 
-CREATE TABLE IF NOT EXISTS `basket` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `basket` (
+  `id` int(11) NOT NULL,
   `session_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `user_id` int(11) NOT NULL,
   `article_name` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -242,9 +231,8 @@ CREATE TABLE IF NOT EXISTS `basket` (
   `quantity` float NOT NULL,
   `price` float NOT NULL,
   `discount` int(11) NOT NULL,
-  `datum` date NOT NULL DEFAULT current_timestamp(),
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `datum` date NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -252,8 +240,8 @@ CREATE TABLE IF NOT EXISTS `basket` (
 -- Table structure for table `blog`
 --
 
-CREATE TABLE IF NOT EXISTS `blog` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `blog` (
+  `id` int(11) NOT NULL,
   `name` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `author` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -261,9 +249,8 @@ CREATE TABLE IF NOT EXISTS `blog` (
   `category_id` int(11) NOT NULL,
   `created_date` date NOT NULL,
   `changed_date` date NOT NULL,
-  `active` tinyint(4) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `active` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -271,16 +258,11 @@ CREATE TABLE IF NOT EXISTS `blog` (
 -- Table structure for table `blog_articles`
 --
 
-CREATE TABLE IF NOT EXISTS `blog_articles` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `blog_articles` (
+  `id` int(11) NOT NULL,
   `article_id` int(11) NOT NULL,
-  `blog_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `id_3` (`id`),
-  KEY `id` (`id`),
-  KEY `id_2` (`id`),
-  KEY `id_4` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `blog_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -288,8 +270,8 @@ CREATE TABLE IF NOT EXISTS `blog_articles` (
 -- Table structure for table `categories`
 --
 
-CREATE TABLE IF NOT EXISTS `categories` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `categories` (
+  `id` int(11) NOT NULL,
   `path` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `name` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -300,9 +282,8 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `active` int(1) NOT NULL,
   `in_menu` int(1) NOT NULL,
   `content` int(1) NOT NULL,
-  `sort_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `sort_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -310,14 +291,13 @@ CREATE TABLE IF NOT EXISTS `categories` (
 -- Table structure for table `category_translation`
 --
 
-CREATE TABLE IF NOT EXISTS `category_translation` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `category_translation` (
+  `id` int(11) NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `category_id` int(11) NOT NULL,
-  `lang_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `lang_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -325,30 +305,30 @@ CREATE TABLE IF NOT EXISTS `category_translation` (
 -- Table structure for table `core`
 --
 
-CREATE TABLE IF NOT EXISTS `core` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `core` (
+  `id` int(11) NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `content` varchar(2000) COLLATE utf8mb4_unicode_ci NOT NULL,
   `content_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` varchar(2000) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `description` varchar(2000) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `core`
 --
 
 INSERT INTO `core` (`id`, `name`, `content`, `content_type`, `description`) VALUES
-(1, 'meta-description', ' «1SHOP.am»-ը օնլայն գյուղմթերք պատվիրելու հարթակ է, որը սպառողներին է հասցնում հայ գյուղացու աշխատանքի պտուղները։ Սպառողներին հասանելի է դարձել 2020 թվականի փետրվար ամսից։ Այսօր գյուղացին խնդիր ունի իր արտադրանքը սպառելու, իսկ քաղաքաբնակը կամ պարզապես սպառողը որակյալ, մատչելի գյուղմթերքի։', 'text', '&lt;p&gt;website description&lt;/p&gt;\r\n'),
-(2, 'meta-keywords', 'natural, natural eco, food, 1shop, 1, gyuxmterq, gyuxamterq, snund, oneshop', 'text', '&lt;p&gt;website keywords&lt;/p&gt;\r\n'),
+(1, 'meta-description', '1shop.am-ը  թվային հարթակ է , որը թույլ է տալիս գնումներ կատարել օնլայն կամ զանգի միջոցով՝ առանց տանից դուրս գալու։ Սպառողին առաջարկում է  մրգերի, բանջարեղենի, մսի, ձկնեղենի տեղական, թարմ և բարձրակարգ տեսականի։ Սննդամթերքի տեսականին թարմացվում է ամեն օր։ Առաքումը կատարվում է շատ արագ՝ 4-5 ժամվա ընթացքում։ Երեկոյան 18։00-ից հետո կատարած պատվերները կառաքվեն հաջորդ օրը՝ մինրև ժամը 12։00։', 'text', '&lt;p&gt;website description&lt;/p&gt;\r\n'),
+(2, 'meta-keywords', '1shop, 1shop.am, shop, natural, natural eco, food, 1shop, 1, gyuxmterq, gyuxamterq, snund, oneshop', 'text', '&lt;p&gt;website keywords&lt;/p&gt;\r\n'),
 (3, 'logo-image', '21', 'image', '&lt;p&gt;website logo image&lt;/p&gt;\r\n'),
 (4, 'footer-logo', '21', 'image', '&lt;p&gt;website logo image&lt;/p&gt;\r\n'),
 (5, 'location', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3851.0886225623844!2d44.50680353402949!3d40.17076608056598!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x406abc599f231193%3A0xe9ae0dc326754034!2sTigran%20Metz%20Publishing%20House!5e1!3m2!1sru!2s!4v1573449669035!5m2!1sru!2s', 'text', '&lt;p&gt;company location;/p&amp;gt;&lt;/p&gt;\r\n'),
-(6, 'waterImage', '327', 'image', '&lt;p&gt;add image for watermark in added images which added in products album&lt;/p&gt;\r\n\r\n&lt;p&gt;Ավելացրեք նկար որը կերևա բոլոր ավելացված նկարների վրա որոնք ընկել են պրոդուկտների ալբոմի մեջ&lt;/p&gt;\r\n'),
+(6, 'waterImage', '21', 'image', '&lt;p&gt;add image for watermark in added images which added in products album&lt;/p&gt;\r\n\r\n&lt;p&gt;Ավելացրեք նկար որը կերևա բոլոր ավելացված նկարների վրա որոնք ընկել են պրոդուկտների ալբոմի մեջ&lt;/p&gt;'),
 (7, 'additionalDiscount', '', 'number', '&lt;p&gt;առաջին անգամ գնումներ կատարելուց հաճախորդին տրվող զեղջ (նշված տեսականու համար)&lt;/p&gt;\r\n'),
 (8, 'deliveryPrice', '250', 'number', 'նշեք առաքման գումարը'),
 (9, 'bonus', '5', 'number', 'bonus discount for every order checkout'),
-(10, 'sitename', 'sitename', 'text', 'bonus discount for every order checkout');
+(10, 'sitename', '1Shop.am', 'text', 'site name'),
+(11, 'min-order', '3000', 'number', 'minimum amout for order');
 
 -- --------------------------------------------------------
 
@@ -356,16 +336,15 @@ INSERT INTO `core` (`id`, `name`, `content`, `content_type`, `description`) VALU
 -- Table structure for table `core_menu`
 --
 
-CREATE TABLE IF NOT EXISTS `core_menu` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `core_menu` (
+  `id` int(11) NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `url` varchar(1000) COLLATE utf8_unicode_ci NOT NULL,
   `parent_id` int(11) DEFAULT 0,
   `has_children` int(11) NOT NULL,
   `icon` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
-  `sort_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `sort_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `core_menu`
@@ -392,11 +371,13 @@ INSERT INTO `core_menu` (`id`, `name`, `url`, `parent_id`, `has_children`, `icon
 (18, 'Overview', 'backend/orders/', 5, 0, 'zmdi zmdi-view-agenda', 0),
 (19, 'Overview', 'backend/users/', 6, 0, 'zmdi zmdi-view-agenda', 1),
 (20, 'New User', 'backend/users/detail', 6, 0, 'zmdi zmdi-plus-circle-o', 0),
-(21, 'Translations', 'backend/translations', 8, 0, 'fa fa-language', 0),
+(21, 'Translations', 'backend/translations', 8, 0, 'zmdi zmdi-translate', 0),
 (22, 'Emotions', 'backend/emotions', 4, 0, 'zmdi zmdi-developer-board', 0),
 (23, 'new Blog', 'backend/blog/detail', 7, 0, 'zmdi zmdi-plus-circle-o', 0),
 (24, 'Overview', 'backend/blog/', 7, 0, 'zmdi zmdi-view-agenda', 0),
-(29, 'Advertisings', 'backend/advertisings/', 4, 0, 'zmdi zmdi-view-dashboard', 2);
+(25, 'Advertisings', 'backend/advertisings', 4, 0, 'zmdi zmdi-view-dashboard', 1),
+(26, 'Order to call', 'backend/orders/ordertocall', 5, 0, 'zmdi zmdi-view-dashboard', 2),
+(28, 'Core', 'backend/core', 8, 0, 'zmdi zmdi-wrench', 0);
 
 -- --------------------------------------------------------
 
@@ -404,12 +385,11 @@ INSERT INTO `core_menu` (`id`, `name`, `url`, `parent_id`, `has_children`, `icon
 -- Table structure for table `core_plugins`
 --
 
-CREATE TABLE IF NOT EXISTS `core_plugins` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `core_plugins` (
+  `id` int(11) NOT NULL,
   `name` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `path` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `status` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
+  `status` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -418,13 +398,12 @@ CREATE TABLE IF NOT EXISTS `core_plugins` (
 -- Table structure for table `core_url`
 --
 
-CREATE TABLE IF NOT EXISTS `core_url` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `core_url` (
+  `id` int(11) NOT NULL,
   `original_url` text COLLATE utf8_unicode_ci NOT NULL,
   `params` text COLLATE utf8_unicode_ci NOT NULL,
-  `changed_url` text COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `changed_url` text COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -432,16 +411,15 @@ CREATE TABLE IF NOT EXISTS `core_url` (
 -- Table structure for table `currencies`
 --
 
-CREATE TABLE IF NOT EXISTS `currencies` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `currencies` (
+  `id` int(11) NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL,
   `default` int(1) NOT NULL,
   `symbol` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `course` float NOT NULL,
-  `code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `currencies`
@@ -456,22 +434,20 @@ INSERT INTO `currencies` (`id`, `name`, `description`, `default`, `symbol`, `cou
 -- Table structure for table `delivery_city`
 --
 
-CREATE TABLE IF NOT EXISTS `delivery_city` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `delivery_city` (
+  `id` int(11) NOT NULL,
   `name` varchar(1024) NOT NULL,
   `region_id` int(11) NOT NULL,
   `distance` float NOT NULL COMMENT 'km',
-  `price` float NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8;
+  `price` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `delivery_city`
 --
 
 INSERT INTO `delivery_city` (`id`, `name`, `region_id`, `distance`, `price`) VALUES
-(0, 'Երևան', 1, 0, 290),
-(1, 'Արարատ', 3, 46, 9200),
+(1, 'Երևան', 1, 0, 250),
 (2, 'Արտաշատ', 3, 28, 5600),
 (3, 'Մասիս', 3, 11, 2200),
 (4, 'Վեդի', 3, 46, 9200),
@@ -510,7 +486,8 @@ INSERT INTO `delivery_city` (`id`, `name`, `region_id`, `distance`, `price`) VAL
 (37, 'Գորիս', 9, 230, 46000),
 (38, 'Կապան', 9, 300, 60000),
 (39, 'Քաջարան', 9, 320, 64000),
-(40, 'Մեղրի', 9, 370, 74000);
+(40, 'Մեղրի', 9, 370, 74000),
+(50, 'Արարատ', 3, 46, 9200);
 
 -- --------------------------------------------------------
 
@@ -518,12 +495,11 @@ INSERT INTO `delivery_city` (`id`, `name`, `region_id`, `distance`, `price`) VAL
 -- Table structure for table `delivery_status`
 --
 
-CREATE TABLE IF NOT EXISTS `delivery_status` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `delivery_status` (
+  `id` int(11) NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `code` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `code` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `delivery_status`
@@ -541,16 +517,15 @@ INSERT INTO `delivery_status` (`id`, `name`, `code`) VALUES
 -- Table structure for table `emotions`
 --
 
-CREATE TABLE IF NOT EXISTS `emotions` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `emotions` (
+  `id` int(11) NOT NULL,
   `name` text COLLATE utf8_unicode_ci NOT NULL,
   `row_height` int(11) NOT NULL,
   `full_screen` int(11) NOT NULL,
   `class` text COLLATE utf8_unicode_ci NOT NULL,
   `active` int(11) NOT NULL,
-  `sort_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `sort_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -558,8 +533,8 @@ CREATE TABLE IF NOT EXISTS `emotions` (
 -- Table structure for table `emotion_components`
 --
 
-CREATE TABLE IF NOT EXISTS `emotion_components` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `emotion_components` (
+  `id` int(11) NOT NULL,
   `type` int(11) NOT NULL,
   `emotion_id` int(11) NOT NULL,
   `title` text COLLATE utf8_unicode_ci NOT NULL,
@@ -571,9 +546,8 @@ CREATE TABLE IF NOT EXISTS `emotion_components` (
   `col_xs` int(11) NOT NULL,
   `cols` int(11) NOT NULL,
   `rows` int(11) NOT NULL,
-  `sort_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `sort_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -581,14 +555,13 @@ CREATE TABLE IF NOT EXISTS `emotion_components` (
 -- Table structure for table `emotion_types`
 --
 
-CREATE TABLE IF NOT EXISTS `emotion_types` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `emotion_types` (
+  `id` int(11) NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `label` text COLLATE utf8_unicode_ci NOT NULL,
   `template` text COLLATE utf8_unicode_ci NOT NULL,
-  `module` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `module` varchar(300) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `emotion_types`
@@ -611,12 +584,19 @@ INSERT INTO `emotion_types` (`id`, `name`, `label`, `template`, `module`) VALUES
 -- Table structure for table `filter_groups`
 --
 
-CREATE TABLE IF NOT EXISTS `filter_groups` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `filter_groups` (
+  `id` int(11) NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'filter by what',
-  `active` int(1) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `active` int(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `filter_groups`
+--
+
+INSERT INTO `filter_groups` (`id`, `name`, `active`) VALUES
+(1, 'color', 1),
+(2, 'size', 1);
 
 -- --------------------------------------------------------
 
@@ -624,13 +604,12 @@ CREATE TABLE IF NOT EXISTS `filter_groups` (
 -- Table structure for table `languages`
 --
 
-CREATE TABLE IF NOT EXISTS `languages` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `languages` (
+  `id` int(11) NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `short_code` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `is_default` tinyint(1) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `is_default` tinyint(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `languages`
@@ -647,15 +626,14 @@ INSERT INTO `languages` (`id`, `name`, `short_code`, `is_default`) VALUES
 -- Table structure for table `media`
 --
 
-CREATE TABLE IF NOT EXISTS `media` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `media` (
+  `id` int(11) NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `extension` varchar(6) COLLATE utf8mb4_unicode_ci NOT NULL,
   `path` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `size` int(11) NOT NULL,
-  `album` int(11) NOT NULL DEFAULT 1,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `album` int(11) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -663,13 +641,12 @@ CREATE TABLE IF NOT EXISTS `media` (
 -- Table structure for table `media_albums`
 --
 
-CREATE TABLE IF NOT EXISTS `media_albums` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `media_albums` (
+  `id` int(11) NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `posiotion` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `posiotion` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `media_albums`
@@ -689,15 +666,14 @@ INSERT INTO `media_albums` (`id`, `name`, `description`, `posiotion`) VALUES
 -- Table structure for table `media_thumbnails`
 --
 
-CREATE TABLE IF NOT EXISTS `media_thumbnails` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `media_thumbnails` (
+  `id` int(11) NOT NULL,
   `media_id` int(11) NOT NULL,
   `thumb_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `thumb_path` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `thumb_extension` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `size` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `size` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -705,8 +681,8 @@ CREATE TABLE IF NOT EXISTS `media_thumbnails` (
 -- Table structure for table `orders`
 --
 
-CREATE TABLE IF NOT EXISTS `orders` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `orders` (
+  `id` int(11) NOT NULL,
   `count_product` int(11) NOT NULL,
   `product_total` float NOT NULL,
   `delivery_price` float NOT NULL,
@@ -714,13 +690,13 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `total_price` float NOT NULL,
   `payment_method` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
+  `user_name` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `address_id` int(11) NOT NULL,
   `order_status` int(11) NOT NULL,
   `delivery_status` int(11) NOT NULL,
   `delivery_date` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `buy_date` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT current_timestamp(),
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `buy_date` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -728,8 +704,8 @@ CREATE TABLE IF NOT EXISTS `orders` (
 -- Table structure for table `order_details`
 --
 
-CREATE TABLE IF NOT EXISTS `order_details` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `order_details` (
+  `id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
   `article_id` int(11) NOT NULL,
   `quantity` float NOT NULL,
@@ -737,9 +713,8 @@ CREATE TABLE IF NOT EXISTS `order_details` (
   `total` float NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `unit` int(11) NOT NULL,
-  `weight` float NOT NULL DEFAULT 0,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `weight` float NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -747,12 +722,11 @@ CREATE TABLE IF NOT EXISTS `order_details` (
 -- Table structure for table `order_status`
 --
 
-CREATE TABLE IF NOT EXISTS `order_status` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `order_status` (
+  `id` int(11) NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `code` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `code` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `order_status`
@@ -770,15 +744,14 @@ INSERT INTO `order_status` (`id`, `name`, `code`) VALUES
 -- Table structure for table `payment_methods`
 --
 
-CREATE TABLE IF NOT EXISTS `payment_methods` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `payment_methods` (
+  `id` int(11) NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
   `client_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `client_secret_key` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `client_password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `client_password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `payment_methods`
@@ -786,9 +759,8 @@ CREATE TABLE IF NOT EXISTS `payment_methods` (
 
 INSERT INTO `payment_methods` (`id`, `name`, `description`, `client_id`, `client_secret_key`, `client_password`) VALUES
 (1, 'Cash', '&lt;p&gt;asfsafasfsafasfasfasfasfasfa&lt;/p&gt;\r\n', '', '', ''),
-(2, 'Idram', '', '', '', ''),
-(3, 'Bank', '', '', '', ''),
-(4, 'WebX', '', '', '', '');
+(2, 'Idram', '', '110000351', 'cwtSKR4esXzqXtBanKCxtACemv22zCr5HZ7YXw', ''),
+(3, 'Bank', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -796,11 +768,10 @@ INSERT INTO `payment_methods` (`id`, `name`, `description`, `client_id`, `client
 -- Table structure for table `popular_articles`
 --
 
-CREATE TABLE IF NOT EXISTS `popular_articles` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `article_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE `popular_articles` (
+  `id` int(11) NOT NULL,
+  `article_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -808,11 +779,10 @@ CREATE TABLE IF NOT EXISTS `popular_articles` (
 -- Table structure for table `special_articles`
 --
 
-CREATE TABLE IF NOT EXISTS `special_articles` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `article_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE `special_articles` (
+  `id` int(11) NOT NULL,
+  `article_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -820,14 +790,13 @@ CREATE TABLE IF NOT EXISTS `special_articles` (
 -- Table structure for table `suppliers`
 --
 
-CREATE TABLE IF NOT EXISTS `suppliers` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `suppliers` (
+  `id` int(11) NOT NULL,
   `name` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
   `media_id` int(11) NOT NULL,
   `description` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `address` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `address` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -835,14 +804,13 @@ CREATE TABLE IF NOT EXISTS `suppliers` (
 -- Table structure for table `templates`
 --
 
-CREATE TABLE IF NOT EXISTS `templates` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `templates` (
+  `id` int(11) NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `variables` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `media_id` int(11) NOT NULL,
-  `description` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `description` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `templates`
@@ -858,38 +826,13 @@ INSERT INTO `templates` (`id`, `name`, `variables`, `media_id`, `description`) V
 -- Table structure for table `translations`
 --
 
-CREATE TABLE IF NOT EXISTS `translations` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `translations` (
+  `id` int(11) NOT NULL,
   `selector` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `translate` varchar(2000) COLLATE utf8mb4_unicode_ci NOT NULL,
   `lang` int(11) NOT NULL,
-  `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=755 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- phpMyAdmin SQL Dump
--- version 4.9.5
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1:3306
--- Generation Time: Jun 26, 2020 at 10:26 AM
--- Server version: 10.4.13-MariaDB
--- PHP Version: 7.2.29
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `u732798652_torq`
---
+  `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `translations`
@@ -903,16 +846,16 @@ INSERT INTO `translations` (`id`, `selector`, `translate`, `lang`, `description`
 (5, 'allRights', '© 2020. Բոլոր իրավունքները պաշտպանված են։', 1, ''),
 (6, 'allRights2', '․', 1, ''),
 (10, 'workDays', 'Աշխատանքային օրեր', 1, ''),
-(11, 'address', 'Մալաթիա Սեբաստիա Վանցյան 56', 1, ''),
+(11, 'address', 'Մալաթիա Սեբաստիա, Վանցյան 56', 1, ''),
 (12, 'weekDays', 'Երկուշաբթիից - Ուրբաթ', 1, ''),
 (13, 'saturday', 'Շաբաթ', 1, ''),
 (14, 'sunday', 'Կիրակի', 1, ''),
 (15, 'weekEnd', 'Ոչ աշխատանքային', 1, ''),
-(18, 'address2', 'Հասցե', 1, ''),
+(18, 'address2', 'Հասցե՝', 1, ''),
 (19, 'contactPhone', 'Կոնտակտային համար', 1, ''),
 (20, 'phone', 'Բջջ․', 1, ''),
 (21, 'emailAddress', 'info@1shop.am', 1, ''),
-(22, 'email', 'Էլ. հասցե ', 1, ''),
+(22, 'email', 'Էլ. հասցե՝', 1, ''),
 (23, 'follow', 'Հետևեք մեզ', 1, ''),
 (24, 'sendMessage', 'ՈՒՂԱՐԿԵԼ ՀԱՂՈՐԴԱԳՐՈՒԹՅՈՒՆ', 1, ''),
 (25, 'contactUs', 'Կապ մեզ հետ', 1, ''),
@@ -947,7 +890,7 @@ INSERT INTO `translations` (`id`, `selector`, `translate`, `lang`, `description`
 (54, 'allRights', '© 2020. Все права защищены.', 2, ''),
 (55, 'allRights2', '․', 2, ''),
 (56, 'workDays', 'Рабочие дни', 2, ''),
-(57, 'address', 'Адрес офиса: пр. Комитаса 59<br>\r\nЛогистический центр Адрес: Акоп Акопян 10<br>\r\nАдрес скотобойни: с. Прошьяна', 2, ''),
+(57, 'address', 'Адрес офиса: пр. Комитаса 59&lt;br&gt;\r\nЛогистический центр Адрес: Акоп Акопян 10&lt;br&gt;\r\nАдрес скотобойни: с. Прошьяна', 2, ''),
 (58, 'weekDays', 'от Понидельника > до Пятницы', 2, ''),
 (59, 'saturday', 'Суббота', 2, ''),
 (60, 'sunday', 'Воскресенье', 2, ''),
@@ -1027,9 +970,9 @@ INSERT INTO `translations` (`id`, `selector`, `translate`, `lang`, `description`
 (153, 'freeCalculation', '&lt;h5&gt;ՍՍՏԱՑԵՔ ԱՆՎՃԱՐ ՉԱՓԱԳՐՈՒՄ ՁԵՐ ՊՐՈԵԿՏԻ ՀԱՄԱՐ&lt;/h5&gt;\r\n&lt;p&gt;Ձեր էլ․հասցեին՝ 30ր ընթացքում&lt;/p&gt;', 1, ''),
 (154, 'freeCalculation', '&lt;h5&gt;ПОЛУЧИТЕ БЕСПЛАТНЫЙ РАСЧЕТ ВАШЕГО ПРОЕКТА СЕГОДНЯ!&lt;/h5&gt;\r\n&lt;p&gt;На ваш электронный адрес за 30 минут!&lt;/p&gt;\r\n', 2, ''),
 (155, 'freeCalculation', '&lt;h5&gt;GET FREE CALCULATION FOR YOUR PROJECT NOW&lt;/h5&gt;\r\n&lt;p&gt; To your email address in 30 minutes! &lt;/p&gt;', 3, ''),
-(156, 'workHours', '11:00am-20:00pm', 1, ''),
-(157, 'workHours', '11:00am-20:00pm', 2, ''),
-(158, 'workHours', '11:00am-20:00pm', 3, ''),
+(156, 'workHours', 'Աշխատանքային ժամերը ՝ 09:00 - 20:00', 1, ''),
+(157, 'workHours', 'Рабочее время: 09:00 - 20:00', 2, ''),
+(158, 'workHours', 'Working hours: 09:00 - 20:00', 3, ''),
 (159, 'categories', 'ԿԱՏԵԳՈՐԻԱՆԵՐ', 1, ''),
 (160, 'categories', 'КАТЕГОРИИ', 2, ''),
 (161, 'categories', 'CATEGORIES', 3, ''),
@@ -1108,7 +1051,7 @@ INSERT INTO `translations` (`id`, `selector`, `translate`, `lang`, `description`
 (234, 'order_subject', 'Պատվեր հաճախորդի կողմից', 1, ''),
 (235, 'order_subject', 'Заказ клиента', 2, ''),
 (236, 'order_subject', 'Order by customer', 3, ''),
-(237, 'address', 'Office Address: 59 Komitas Ave.<br>\r\nLogistic Center Address: Hakob Hakobyan 10<br>\r\nSlaughterhouse address: c. Proshyan', 3, ''),
+(237, 'address', 'Office Address: 59 Komitas Ave.&lt;br&gt;\r\nLogistic Center Address: Hakob Hakobyan 10&lt;br&gt;\r\nSlaughterhouse address: c. Proshyan', 3, ''),
 (238, 'phoneNumber', '077 234566', 3, ''),
 (239, 'phoneNumber2', '', 3, ''),
 (243, 'phoneNumber', '+(374) 77 59 04 03', 4, ''),
@@ -1677,7 +1620,7 @@ INSERT INTO `translations` (`id`, `selector`, `translate`, `lang`, `description`
 (806, 'newer', 'Նորերը', 1, NULL),
 (807, 'newer', 'Новые', 2, NULL),
 (808, 'newer', 'Newer', 3, NULL),
-(809, 'sales', 'Ձեղջված', 1, NULL),
+(809, 'sales', 'Զեղչված', 1, NULL),
 (810, 'sales', 'Со скидкой', 2, NULL),
 (811, 'sales', 'Sale', 3, NULL),
 (812, 'topseller', 'Թոփ վաճառք', 1, NULL),
@@ -1697,13 +1640,13 @@ INSERT INTO `translations` (`id`, `selector`, `translate`, `lang`, `description`
 (826, 'deliverytatus', 'Delivery status', 3, NULL),
 (827, 'infoabouttotal', 'Վճարման վերջնական գումարը կարող է տատանվել ՝ կախված որոշակի մթերքների քաշից', 1, NULL),
 (828, 'infoabouttotal', 'Сумма оплаты может варьироваться  в зависимости от веса определенных продуктов', 2, NULL),
-(829, 'infoabouttotal', 'Payment amount may vary depending on the weight of certain products', 3, NULL);
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
+(829, 'infoabouttotal', 'Payment amount may vary depending on the weight of certain products', 3, NULL),
+(830, 'ordercallmessage', 'Գրանցեք զանգի պատվեր։ Գրեք Ձեր հեռախոսահամարը մեր մասնագետները կկապնվեն Ձեր հետ', 1, NULL),
+(831, 'ordercallmessage', 'Зарегистрировать заказ звонка. Введите номер телефона Наши специалисты свяжутся с вами', 2, NULL),
+(832, 'ordercallmessage', 'Register a call order. Enter your phone number Our specialists will contact you', 3, NULL),
+(833, 'error_min_order', 'Պատվերի մինիմալ արժեքը 3000 դրամ է', 1, NULL),
+(834, 'error_min_order', 'Минимальная сумма заказа 3000 драм', 2, NULL),
+(835, 'error_min_order', 'Minimal amount of order 3000 drams', 3, NULL);
 
 -- --------------------------------------------------------
 
@@ -1711,12 +1654,11 @@ COMMIT;
 -- Table structure for table `units`
 --
 
-CREATE TABLE IF NOT EXISTS `units` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `units` (
+  `id` int(11) NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `code` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `code` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `units`
@@ -1734,8 +1676,8 @@ INSERT INTO `units` (`id`, `name`, `code`) VALUES
 -- Table structure for table `users`
 --
 
-CREATE TABLE IF NOT EXISTS `users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `lastname` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -1745,9 +1687,8 @@ CREATE TABLE IF NOT EXISTS `users` (
   `user_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `specific_id` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL,
   `guest` int(1) NOT NULL DEFAULT 0,
-  `confirmed` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `confirmed` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -1755,19 +1696,18 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Table structure for table `user_address`
 --
 
-CREATE TABLE IF NOT EXISTS `user_address` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `user_address` (
+  `id` int(11) NOT NULL,
   `address` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `city` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `region` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `city` int(11) NOT NULL DEFAULT 1,
+  `region` int(11) NOT NULL DEFAULT 1,
   `postal_code` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `phone` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `notes` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `dateAddress` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `user_id` int(11) NOT NULL,
-  `default` int(1) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `default` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -1775,15 +1715,14 @@ CREATE TABLE IF NOT EXISTS `user_address` (
 -- Table structure for table `user_attributes`
 --
 
-CREATE TABLE IF NOT EXISTS `user_attributes` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `user_attributes` (
+  `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `about` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `media_id` int(11) NOT NULL,
   `first_order` int(11) NOT NULL DEFAULT 1,
-  `bonus` float NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `bonus` float NOT NULL DEFAULT 10000
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -1791,15 +1730,14 @@ CREATE TABLE IF NOT EXISTS `user_attributes` (
 -- Table structure for table `user_confirmation`
 --
 
-CREATE TABLE IF NOT EXISTS `user_confirmation` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `user_confirmation` (
+  `id` int(11) NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `confirmed` int(1) NOT NULL,
   `created` date NOT NULL DEFAULT current_timestamp(),
-  `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -1807,12 +1745,599 @@ CREATE TABLE IF NOT EXISTS `user_confirmation` (
 -- Table structure for table `user_newsletter`
 --
 
-CREATE TABLE IF NOT EXISTS `user_newsletter` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `user_newsletter` (
+  `id` int(11) NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `sended` int(1) NOT NULL,
-  PRIMARY KEY (`id`)
+  `sended` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `admins`
+--
+ALTER TABLE `admins`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `advertisings`
+--
+ALTER TABLE `advertisings`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `advertising_attributes`
+--
+ALTER TABLE `advertising_attributes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `advertising_translations`
+--
+ALTER TABLE `advertising_translations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `articles`
+--
+ALTER TABLE `articles`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `article_attributes`
+--
+ALTER TABLE `article_attributes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `article_category`
+--
+ALTER TABLE `article_category`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `article_comments`
+--
+ALTER TABLE `article_comments`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `article_images`
+--
+ALTER TABLE `article_images`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `article_options`
+--
+ALTER TABLE `article_options`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `article_rating`
+--
+ALTER TABLE `article_rating`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `article_translations`
+--
+ALTER TABLE `article_translations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `article_wishlist`
+--
+ALTER TABLE `article_wishlist`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `basket`
+--
+ALTER TABLE `basket`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `blog`
+--
+ALTER TABLE `blog`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `blog_articles`
+--
+ALTER TABLE `blog_articles`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id_3` (`id`),
+  ADD KEY `id` (`id`),
+  ADD KEY `id_2` (`id`),
+  ADD KEY `id_4` (`id`);
+
+--
+-- Indexes for table `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `category_translation`
+--
+ALTER TABLE `category_translation`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `core`
+--
+ALTER TABLE `core`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `core_menu`
+--
+ALTER TABLE `core_menu`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `core_plugins`
+--
+ALTER TABLE `core_plugins`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `core_url`
+--
+ALTER TABLE `core_url`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `currencies`
+--
+ALTER TABLE `currencies`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `delivery_city`
+--
+ALTER TABLE `delivery_city`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `delivery_status`
+--
+ALTER TABLE `delivery_status`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `emotions`
+--
+ALTER TABLE `emotions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `emotion_components`
+--
+ALTER TABLE `emotion_components`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `emotion_types`
+--
+ALTER TABLE `emotion_types`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `filter_groups`
+--
+ALTER TABLE `filter_groups`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `languages`
+--
+ALTER TABLE `languages`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `media`
+--
+ALTER TABLE `media`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `media_albums`
+--
+ALTER TABLE `media_albums`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `media_thumbnails`
+--
+ALTER TABLE `media_thumbnails`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `order_details`
+--
+ALTER TABLE `order_details`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `order_status`
+--
+ALTER TABLE `order_status`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `payment_methods`
+--
+ALTER TABLE `payment_methods`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `popular_articles`
+--
+ALTER TABLE `popular_articles`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `special_articles`
+--
+ALTER TABLE `special_articles`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `suppliers`
+--
+ALTER TABLE `suppliers`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `templates`
+--
+ALTER TABLE `templates`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `translations`
+--
+ALTER TABLE `translations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `units`
+--
+ALTER TABLE `units`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user_address`
+--
+ALTER TABLE `user_address`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user_attributes`
+--
+ALTER TABLE `user_attributes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user_confirmation`
+--
+ALTER TABLE `user_confirmation`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user_newsletter`
+--
+ALTER TABLE `user_newsletter`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `admins`
+--
+ALTER TABLE `admins`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `advertisings`
+--
+ALTER TABLE `advertisings`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `advertising_attributes`
+--
+ALTER TABLE `advertising_attributes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `advertising_translations`
+--
+ALTER TABLE `advertising_translations`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `articles`
+--
+ALTER TABLE `articles`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `article_attributes`
+--
+ALTER TABLE `article_attributes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `article_category`
+--
+ALTER TABLE `article_category`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `article_comments`
+--
+ALTER TABLE `article_comments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `article_images`
+--
+ALTER TABLE `article_images`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `article_options`
+--
+ALTER TABLE `article_options`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `article_rating`
+--
+ALTER TABLE `article_rating`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `article_translations`
+--
+ALTER TABLE `article_translations`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `article_wishlist`
+--
+ALTER TABLE `article_wishlist`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `basket`
+--
+ALTER TABLE `basket`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `blog`
+--
+ALTER TABLE `blog`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `blog_articles`
+--
+ALTER TABLE `blog_articles`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `category_translation`
+--
+ALTER TABLE `category_translation`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `core`
+--
+ALTER TABLE `core`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `core_menu`
+--
+ALTER TABLE `core_menu`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+
+--
+-- AUTO_INCREMENT for table `core_plugins`
+--
+ALTER TABLE `core_plugins`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `core_url`
+--
+ALTER TABLE `core_url`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `currencies`
+--
+ALTER TABLE `currencies`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `delivery_city`
+--
+ALTER TABLE `delivery_city`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+
+--
+-- AUTO_INCREMENT for table `delivery_status`
+--
+ALTER TABLE `delivery_status`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `emotions`
+--
+ALTER TABLE `emotions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `emotion_components`
+--
+ALTER TABLE `emotion_components`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `emotion_types`
+--
+ALTER TABLE `emotion_types`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `filter_groups`
+--
+ALTER TABLE `filter_groups`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `languages`
+--
+ALTER TABLE `languages`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `media`
+--
+ALTER TABLE `media`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `media_albums`
+--
+ALTER TABLE `media_albums`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `media_thumbnails`
+--
+ALTER TABLE `media_thumbnails`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `order_details`
+--
+ALTER TABLE `order_details`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `order_status`
+--
+ALTER TABLE `order_status`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `payment_methods`
+--
+ALTER TABLE `payment_methods`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `popular_articles`
+--
+ALTER TABLE `popular_articles`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `special_articles`
+--
+ALTER TABLE `special_articles`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `suppliers`
+--
+ALTER TABLE `suppliers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `templates`
+--
+ALTER TABLE `templates`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `translations`
+--
+ALTER TABLE `translations`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=836;
+
+--
+-- AUTO_INCREMENT for table `units`
+--
+ALTER TABLE `units`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `user_address`
+--
+ALTER TABLE `user_address`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `user_attributes`
+--
+ALTER TABLE `user_attributes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `user_confirmation`
+--
+ALTER TABLE `user_confirmation`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `user_newsletter`
+--
+ALTER TABLE `user_newsletter`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

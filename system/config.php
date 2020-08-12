@@ -24,7 +24,7 @@ define('BASE_BACKEND', BASE_URL.'/public/backend/');
 // smarty
 define('SMARTY_RESOURCE_CHAR_SET', 'UTF-8');
 // error handling
-define('DEBUG', true);
+define('DEBUG', false);
 // DB
 $db = [
   'timezone' => 'Asia/Yerevan',

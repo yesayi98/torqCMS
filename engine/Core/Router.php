@@ -1,5 +1,6 @@
 <?php
-
+use Core\Compiller\JsCompiller;
+use Core\Compiller\ScssCompiller;
   /**
    * Router for Torq CMS
    */
@@ -104,6 +105,7 @@
       }
       $smarty->assign('route', $route);
       $smarty->assign('css', self::getCompilledCssFile());
+      $smarty->assign('js', self::getCompilledJsFile());
       $route = str_replace('/', SEPARATOR, $controller->route);
       $template = self::getFile($controller->route, $templateDir);
       if (!empty($template)) {
@@ -124,6 +126,16 @@
         return self::getCompilledCssFile();
       }
       return $css;
+    }
+
+    private static function getCompilledJsFile()
+    {
+      $js = BASE_URL.'/cache/js/'.basename(glob(DOCUMENT_ROOT."/cache/js/*.js")[0]);
+      if (empty($js)) {
+        JsCompiller::compileAllFiles(self::$_VIEW->theme);
+        return self::getCompilledJsFile();
+      }
+      return $js;
     }
 
     private static function setRouterParams($route){

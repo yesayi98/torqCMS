@@ -94,8 +94,8 @@
 <!-- JS
 ============================================ -->
 {block name="javascript-area"}
-<!--jquery min js-->
 <script src="{$BASE_FRONTEND}assets/js/vendor/jquery-3.4.1.min.js"></script>
+{* <!--jquery min js-->
 <!-- plugins JS -->
 <!-- publish subscribe plugin JS -->
 <script src="{$BASE_FRONTEND}assets/plugins/pubSub/jquery.pubSub.js"></script>
@@ -154,7 +154,8 @@
 <!-- loader JS -->
 <script src="{$BASE_FRONTEND}assets/js/jquery.loader.js"></script>
 <!-- Main JS -->
-<script src="{$BASE_FRONTEND}assets/js/main.js"></script>
+<script src="{$BASE_FRONTEND}assets/js/main.js"></script> *}
+<script src="{$js}"></script>
 <script>
   window.route = {$route|@json_encode};
   window.currentCur = {$currentCur|@json_encode};
@@ -165,18 +166,6 @@
 
 
 {/block}
-
-{if $clearCache}
-  <script type="text/javascript">
-    $.ajax({
-        url: "",
-        context: document.body,
-        success: function(s,x){
-            $('html[manifest=saveappoffline.appcache]').attr('content', '');
-        }
-    });
-  </script>
-{/if}
 
 {if $message}
 <script type="text/javascript">

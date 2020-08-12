@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-08-11 16:20:41
+/* Smarty version 3.1.34-dev-7, created on 2020-08-12 17:47:07
   from 'C:\Users\User\OSPanel\domains\torq\public\frontend\index\footer.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f329b29c06258_09951801',
+  'unifunc' => 'content_5f3400ebaa85d5_71994062',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '99f014f224838ed5561207acf4b6b4ff8526a225' => 
     array (
       0 => 'C:\\Users\\User\\OSPanel\\domains\\torq\\public\\frontend\\index\\footer.tpl',
-      1 => 1597152021,
+      1 => 1597243626,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:frontend/index/modal.tpl' => 1,
   ),
 ),false)) {
-function content_5f329b29c06258_09951801 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f3400ebaa85d5_71994062 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 ?>
@@ -29,14 +29,14 @@ $_smarty_tpl->inheritance->init($_smarty_tpl, false);
     <!--footer area start-->
 
     <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_5203028135f329b29ba35a7_03850152', "footer");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_12038246585f3400eba528f6_55005909', "footer");
 ?>
 
     <!--footer area end-->
 
     <!-- modal area start-->
     <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_3617258175f329b29bdda48_88036987', "modal-area");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_20249887185f3400eba84fc7_48651465', "modal-area");
 ?>
 
     <!-- modal area end-->
@@ -45,7 +45,7 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_3617258175f329b29b
 <!-- JS
 ============================================ -->
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_120503865f329b29be54e9_26379504', "javascript-area");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_7790826635f3400eba8c496_40916035', "javascript-area");
 ?>
 
 
@@ -100,7 +100,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 </html>
 <?php }
 /* {block "footer-top"} */
-class Block_14064898915f329b29ba6949_10499969 extends Smarty_Internal_Block
+class Block_17103381855f3400eba54276_29512825 extends Smarty_Internal_Block
 {
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
@@ -193,7 +193,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 }
 /* {/block "footer-top"} */
 /* {block "footer-bottom"} */
-class Block_19722767175f329b29bda295_55972353 extends Smarty_Internal_Block
+class Block_9612146885f3400eba82256_29868573 extends Smarty_Internal_Block
 {
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
@@ -223,20 +223,20 @@ assets/img/icon/payment-methods.png" alt=""></a></li>
 }
 /* {/block "footer-bottom"} */
 /* {block "footer"} */
-class Block_5203028135f329b29ba35a7_03850152 extends Smarty_Internal_Block
+class Block_12038246585f3400eba528f6_55005909 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'footer' => 
   array (
-    0 => 'Block_5203028135f329b29ba35a7_03850152',
+    0 => 'Block_12038246585f3400eba528f6_55005909',
   ),
   'footer-top' => 
   array (
-    0 => 'Block_14064898915f329b29ba6949_10499969',
+    0 => 'Block_17103381855f3400eba54276_29512825',
   ),
   'footer-bottom' => 
   array (
-    0 => 'Block_19722767175f329b29bda295_55972353',
+    0 => 'Block_9612146885f3400eba82256_29868573',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -244,12 +244,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 
     <footer class="footer_widgets">
       <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_14064898915f329b29ba6949_10499969', "footer-top", $this->tplIndex);
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_17103381855f3400eba54276_29512825', "footer-top", $this->tplIndex);
 ?>
 
 
         <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_19722767175f329b29bda295_55972353', "footer-bottom", $this->tplIndex);
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_9612146885f3400eba82256_29868573', "footer-bottom", $this->tplIndex);
 ?>
 
     </footer>
@@ -258,12 +258,12 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_19722767175f329b29
 }
 /* {/block "footer"} */
 /* {block "modal-area"} */
-class Block_3617258175f329b29bdda48_88036987 extends Smarty_Internal_Block
+class Block_20249887185f3400eba84fc7_48651465 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'modal-area' => 
   array (
-    0 => 'Block_3617258175f329b29bdda48_88036987',
+    0 => 'Block_20249887185f3400eba84fc7_48651465',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -276,161 +276,24 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block "modal-area"} */
 /* {block "javascript-area"} */
-class Block_120503865f329b29be54e9_26379504 extends Smarty_Internal_Block
+class Block_7790826635f3400eba8c496_40916035 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'javascript-area' => 
   array (
-    0 => 'Block_120503865f329b29be54e9_26379504',
+    0 => 'Block_7790826635f3400eba8c496_40916035',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
-<!--jquery min js-->
 <?php echo '<script'; ?>
  src="<?php echo $_smarty_tpl->tpl_vars['BASE_FRONTEND']->value;?>
 assets/js/vendor/jquery-3.4.1.min.js"><?php echo '</script'; ?>
 >
-<!-- plugins JS -->
-<!-- publish subscribe plugin JS -->
 <?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['BASE_FRONTEND']->value;?>
-assets/plugins/pubSub/jquery.pubSub.js"><?php echo '</script'; ?>
->
-<!-- notigications plugin JS -->
-<?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['BASE_FRONTEND']->value;?>
-assets/plugins/notifications/js/lobibox.min.js"><?php echo '</script'; ?>
->
-<?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['BASE_FRONTEND']->value;?>
-assets/plugins/notifications/js/notification-custom-script.js"><?php echo '</script'; ?>
->
-<?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['BASE_FRONTEND']->value;?>
-assets/plugins/notifications/js/notifications.min.js"><?php echo '</script'; ?>
->
-<!--state manager js-->
-<?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['BASE_FRONTEND']->value;?>
-assets/js/stateManager.js"><?php echo '</script'; ?>
->
-<!--popper min js-->
-<?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['BASE_FRONTEND']->value;?>
-assets/js/popper.js"><?php echo '</script'; ?>
->
-<!--bootstrap min js-->
-<?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['BASE_FRONTEND']->value;?>
-assets/js/bootstrap.min.js"><?php echo '</script'; ?>
->
-<!--owl carousel min js-->
-<?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['BASE_FRONTEND']->value;?>
-assets/js/owl.carousel.min.js"><?php echo '</script'; ?>
->
-<!--slick min js-->
-<?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['BASE_FRONTEND']->value;?>
-assets/js/slick.min.js"><?php echo '</script'; ?>
->
-<!--magnific popup min js-->
-<?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['BASE_FRONTEND']->value;?>
-assets/js/jquery.magnific-popup.min.js"><?php echo '</script'; ?>
->
-<!--counterup min js-->
-<?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['BASE_FRONTEND']->value;?>
-assets/js/jquery.counterup.min.js"><?php echo '</script'; ?>
->
-<!--jquery countdown min js-->
-<?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['BASE_FRONTEND']->value;?>
-assets/js/jquery.countdown.js"><?php echo '</script'; ?>
->
-<!--jquery ui min js-->
-<?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['BASE_FRONTEND']->value;?>
-assets/js/jquery.ui.js"><?php echo '</script'; ?>
->
-<!--jquery elevatezoom min js-->
-<?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['BASE_FRONTEND']->value;?>
-assets/js/jquery.elevatezoom.js"><?php echo '</script'; ?>
->
-<!--isotope packaged min js-->
-<?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['BASE_FRONTEND']->value;?>
-assets/js/isotope.pkgd.min.js"><?php echo '</script'; ?>
->
-<!--slinky menu js-->
-<?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['BASE_FRONTEND']->value;?>
-assets/js/slinky.menu.js"><?php echo '</script'; ?>
->
-<!-- Plugins JS -->
-<?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['BASE_FRONTEND']->value;?>
-assets/js/plugins.js"><?php echo '</script'; ?>
->
-<?php if ($_smarty_tpl->tpl_vars['route']->value['controller'] == 'category') {?>
-<!-- filter JS -->
-<?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['BASE_FRONTEND']->value;?>
-assets/js/jquery.filter.js"><?php echo '</script'; ?>
->
-<!-- sorting JS -->
-<?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['BASE_FRONTEND']->value;?>
-assets/js/jquery.sorting.js"><?php echo '</script'; ?>
->
-<?php }
-if ($_smarty_tpl->tpl_vars['route']->value['controller'] == 'checkout') {?>
-<!-- chechout JS -->
-<?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['BASE_FRONTEND']->value;?>
-assets/js/jquery.checkout.js"><?php echo '</script'; ?>
->
-<?php }
-if ($_smarty_tpl->tpl_vars['route']->value['controller'] == 'index') {?>
-<!-- Emotions JS -->
-<?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['BASE_FRONTEND']->value;?>
-assets/js/jquery.emotions.js"><?php echo '</script'; ?>
->
-<?php }?>
-<!-- quickview JS -->
-<?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['BASE_FRONTEND']->value;?>
-assets/js/jquery.quickview.js"><?php echo '</script'; ?>
->
-<!-- basket JS -->
-<?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['BASE_FRONTEND']->value;?>
-assets/js/jquery.basket.js"><?php echo '</script'; ?>
->
-<!-- wishlist JS -->
-<?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['BASE_FRONTEND']->value;?>
-assets/js/jquery.wishlist.js"><?php echo '</script'; ?>
->
-<!-- paginator JS -->
-<?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['BASE_FRONTEND']->value;?>
-assets/js/jquery.paginator.js"><?php echo '</script'; ?>
->
-<!-- loader JS -->
-<?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['BASE_FRONTEND']->value;?>
-assets/js/jquery.loader.js"><?php echo '</script'; ?>
->
-<!-- Main JS -->
-<?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['BASE_FRONTEND']->value;?>
-assets/js/main.js"><?php echo '</script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['js']->value;?>
+"><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
 >

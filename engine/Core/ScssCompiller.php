@@ -1,5 +1,5 @@
 <?php
-namespace Core\ScssCompiller;
+namespace Core\Compiller;
 use Leafo\ScssPhp\Compiler;
 /**
  *
@@ -12,8 +12,8 @@ class ScssCompiller
     $scss = new Compiler();
     $scss->setFormatter($minify ? '\\Leafo\\ScssPhp\\Formatter\\Crunched' : '\\Leafo\\ScssPhp\\Formatter\\Expanded');
     $scss->addImportPath(function($path) {
-                          if (!file_exists('public/frontend/'.$path)) return null;
-                              return 'public/frontend/'.$path;
+                          if (!file_exists($path)) return null;
+                              return $path;
                           });
     $compiledCss = '';
     $styleFiles = array_merge($theme->css, $theme->scss);
