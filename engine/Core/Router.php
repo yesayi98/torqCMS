@@ -119,6 +119,10 @@
     private static function getCompilledCssFile()
     {
       $css = BASE_URL.'/cache/css/'.basename(glob(DOCUMENT_ROOT."/cache/css/*.css")[0]);
+      if (empty($css)) {
+        ScssCompiller::compileAllFiles(self::$_VIEW->theme);
+        return self::getCompilledCssFile();
+      }
       return $css;
     }
 
