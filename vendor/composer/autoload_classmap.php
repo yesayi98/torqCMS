@@ -1660,6 +1660,7 @@ return array(
     'TestToto' => $baseDir . '/engine/Library/php-sql-query-builder-master/vendor/symfony/console/Tests/Fixtures/TestToto.php',
     'TestWithTest' => $baseDir . '/engine/Library/php-sql-query-builder-master/vendor/phpunit/phpunit/tests/_files/TestWithTest.php',
     'Text_Template' => $baseDir . '/engine/Library/php-sql-query-builder-master/vendor/phpunit/php-text-template/src/Template.php',
+    'Theme' => $baseDir . '/engine/Core/Theme.php',
     'ThrowExceptionTestCase' => $baseDir . '/engine/Library/php-sql-query-builder-master/vendor/phpunit/phpunit/tests/_files/ThrowExceptionTestCase.php',
     'ThrowNoExceptionTestCase' => $baseDir . '/engine/Library/php-sql-query-builder-master/vendor/phpunit/phpunit/tests/_files/ThrowNoExceptionTestCase.php',
     'TokenVerificationTest' => $baseDir . '/engine/Library/Jumbojett/tests/TokenVerificationTest.php',

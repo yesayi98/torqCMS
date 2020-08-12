@@ -9,6 +9,7 @@ class View extends Container
   public $categories;
   public $translations;
   public $advertisings;
+  public $theme;
   protected $assign = array();
 
   protected $connection;
@@ -26,6 +27,7 @@ class View extends Container
     }
     $this->currency = Container()->Currencies()->getCurrency(intval($currency));
 
+    $this->theme = new Theme();
     // parent::__construct($container);
 
     if (is_file(DOCUMENT_ROOT.'/cache/language/translations_'.$this->lang.'.json')) {

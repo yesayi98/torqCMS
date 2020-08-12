@@ -13,32 +13,14 @@
     {block name='stylesheet-area'}
       <!-- CSS
       ========================= -->
-      <!--bootstrap min css-->
-      <link rel="stylesheet" href="{$BASE_FRONTEND}assets/css/bootstrap.min.css">
-      <!--bootstrap min css-->
-      <link rel="stylesheet" href="{$BASE_FRONTEND}assets/plugins/notifications/css/lobibox.min.css">
-      <!--owl carousel min css-->
-      <link rel="stylesheet" href="{$BASE_FRONTEND}assets/css/owl.carousel.min.css">
-      <!--slick min css-->
-      <link rel="stylesheet" href="{$BASE_FRONTEND}assets/css/slick.css">
-      <!--magnific popup min css-->
-      <link rel="stylesheet" href="{$BASE_FRONTEND}assets/css/magnific-popup.css">
       <!--font awesome css-->
       <link rel="stylesheet" href="{$BASE_FRONTEND}assets/css/font.awesome.css">
       <!--ionicons css-->
       <link rel="stylesheet" href="{$BASE_FRONTEND}assets/css/ionicons.min.css">
       <!--linearicons css-->
       <link rel="stylesheet" href="{$BASE_FRONTEND}assets/css/linearicons.css">
-      <!--animate css-->
-      <link rel="stylesheet" href="{$BASE_FRONTEND}assets/css/animate.css">
-      <!--jquery ui min css-->
-      <link rel="stylesheet" href="{$BASE_FRONTEND}assets/css/jquery-ui.min.css">
-      <!--slinky menu css-->
-      <link rel="stylesheet" href="{$BASE_FRONTEND}assets/css/slinky.menu.css">
-      <!--plugins css-->
-      <link rel="stylesheet" href="{$BASE_FRONTEND}assets/css/plugins.css">
-      <!-- Main Style CSS -->
-      <link rel="stylesheet" href="{$BASE_FRONTEND}assets/css/style.css">
+
+      <link rel="stylesheet" href="{$css}">
     {/block}
     <!--modernizr min js here-->
     <script src="{$BASE_FRONTEND}assets/js/vendor/modernizr-3.7.1.min.js"></script>

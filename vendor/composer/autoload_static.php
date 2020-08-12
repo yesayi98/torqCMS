@@ -1727,6 +1727,7 @@ class ComposerStaticInit76fb5bd4931c6fb46f2466a4f4630ca9
         'TestToto' => __DIR__ . '/../..' . '/engine/Library/php-sql-query-builder-master/vendor/symfony/console/Tests/Fixtures/TestToto.php',
         'TestWithTest' => __DIR__ . '/../..' . '/engine/Library/php-sql-query-builder-master/vendor/phpunit/phpunit/tests/_files/TestWithTest.php',
         'Text_Template' => __DIR__ . '/../..' . '/engine/Library/php-sql-query-builder-master/vendor/phpunit/php-text-template/src/Template.php',
+        'Theme' => __DIR__ . '/../..' . '/engine/Core/Theme.php',
         'ThrowExceptionTestCase' => __DIR__ . '/../..' . '/engine/Library/php-sql-query-builder-master/vendor/phpunit/phpunit/tests/_files/ThrowExceptionTestCase.php',
         'ThrowNoExceptionTestCase' => __DIR__ . '/../..' . '/engine/Library/php-sql-query-builder-master/vendor/phpunit/phpunit/tests/_files/ThrowNoExceptionTestCase.php',
         'TokenVerificationTest' => __DIR__ . '/../..' . '/engine/Library/Jumbojett/tests/TokenVerificationTest.php',
