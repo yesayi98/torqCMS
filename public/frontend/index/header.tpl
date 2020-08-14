@@ -19,6 +19,8 @@
       <link rel="stylesheet" href="{$BASE_FRONTEND}assets/css/ionicons.min.css">
       <!--linearicons css-->
       <link rel="stylesheet" href="{$BASE_FRONTEND}assets/css/linearicons.css">
+      <!--themify-icons css-->
+      <link rel="stylesheet" href="{$BASE_FRONTEND}assets/css/themify-icons.css">
 
       <link rel="stylesheet" href="{$css}">
     {/block}
@@ -124,20 +126,20 @@
                             {/block}
                             {block name='header-info-bar'}
                             <div class="header_account_area">
-                                <div class="header_account_list register">
+                                <div class="header_account_list register d-flex" >
+                                  <span class="lnr lnr-user" style="font-size: 26px"></span>
                                   {if $user}
                                     <ul>
-                                        <li><a href="{url url='account'}">{$user.name}</a></li>
-                                        <li><span>/</span></li>
-                                        <li><a href="{url url='account/logout'}">{translator selector='logout'}</a></li>
+                                        <li><a href="{url url='account'}"> {$user.name}</a> <span>/</span> <a href="{url url='account/logout'}">{translator selector='logout'}</a></li>
                                     </ul>
                                   {else}
                                   <ul>
-                                      <li><a href="{url url='account/login'}">{translator selector='register'}</a></li>
-                                      <li><span>/</span></li>
-                                      <li><a href="{url url='account/login'}">{translator selector='login'}</a></li>
+                                      <li><a href="{url url='account/login'}">{translator selector='register'} <span>/</span> {translator selector='login'}</a></li>
                                   </ul>
                                   {/if}
+                                </div>
+                                <div class="header_account_list header_compare">
+                                    <a href="{url url='compare'}"><span class="ti ti-control-shuffle"></span> <span class="item_count">{$compareCount}</span> </a>
                                 </div>
                                 <div class="header_account_list header_wishlist">
                                     <a href="{url url='wishlist'}"><span class="lnr lnr-heart"></span> <span class="item_count">{$favCount}</span> </a>

@@ -99,6 +99,7 @@ class Supplier extends Model
             ";
 
     $supplier = Connection()->fetchOne($sql);
+    $supplier['image'] = Container()->Media()->getMedia($supplier['media_id']);
 
     return $supplier;
   }
@@ -118,7 +119,7 @@ class Supplier extends Model
             ";
 
     $supplier = Connection()->fetchOne($sql);
-
+    $supplier['image'] = Container()->Media()->getMedia($supplier['media_id']);
     return $supplier;
   }
 

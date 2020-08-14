@@ -95,66 +95,6 @@
 ============================================ -->
 {block name="javascript-area"}
 <script src="{$BASE_FRONTEND}assets/js/vendor/jquery-3.4.1.min.js"></script>
-{* <!--jquery min js-->
-<!-- plugins JS -->
-<!-- publish subscribe plugin JS -->
-<script src="{$BASE_FRONTEND}assets/plugins/pubSub/jquery.pubSub.js"></script>
-<!-- notigications plugin JS -->
-<script src="{$BASE_FRONTEND}assets/plugins/notifications/js/lobibox.min.js"></script>
-<script src="{$BASE_FRONTEND}assets/plugins/notifications/js/notification-custom-script.js"></script>
-<script src="{$BASE_FRONTEND}assets/plugins/notifications/js/notifications.min.js"></script>
-<!--state manager js-->
-<script src="{$BASE_FRONTEND}assets/js/stateManager.js"></script>
-<!--popper min js-->
-<script src="{$BASE_FRONTEND}assets/js/popper.js"></script>
-<!--bootstrap min js-->
-<script src="{$BASE_FRONTEND}assets/js/bootstrap.min.js"></script>
-<!--owl carousel min js-->
-<script src="{$BASE_FRONTEND}assets/js/owl.carousel.min.js"></script>
-<!--slick min js-->
-<script src="{$BASE_FRONTEND}assets/js/slick.min.js"></script>
-<!--magnific popup min js-->
-<script src="{$BASE_FRONTEND}assets/js/jquery.magnific-popup.min.js"></script>
-<!--counterup min js-->
-<script src="{$BASE_FRONTEND}assets/js/jquery.counterup.min.js"></script>
-<!--jquery countdown min js-->
-<script src="{$BASE_FRONTEND}assets/js/jquery.countdown.js"></script>
-<!--jquery ui min js-->
-<script src="{$BASE_FRONTEND}assets/js/jquery.ui.js"></script>
-<!--jquery elevatezoom min js-->
-<script src="{$BASE_FRONTEND}assets/js/jquery.elevatezoom.js"></script>
-<!--isotope packaged min js-->
-<script src="{$BASE_FRONTEND}assets/js/isotope.pkgd.min.js"></script>
-<!--slinky menu js-->
-<script src="{$BASE_FRONTEND}assets/js/slinky.menu.js"></script>
-<!-- Plugins JS -->
-<script src="{$BASE_FRONTEND}assets/js/plugins.js"></script>
-{if $route.controller == 'category'}
-<!-- filter JS -->
-<script src="{$BASE_FRONTEND}assets/js/jquery.filter.js"></script>
-<!-- sorting JS -->
-<script src="{$BASE_FRONTEND}assets/js/jquery.sorting.js"></script>
-{/if}
-{if $route.controller == 'checkout'}
-<!-- chechout JS -->
-<script src="{$BASE_FRONTEND}assets/js/jquery.checkout.js"></script>
-{/if}
-{if $route.controller == 'index'}
-<!-- Emotions JS -->
-<script src="{$BASE_FRONTEND}assets/js/jquery.emotions.js"></script>
-{/if}
-<!-- quickview JS -->
-<script src="{$BASE_FRONTEND}assets/js/jquery.quickview.js"></script>
-<!-- basket JS -->
-<script src="{$BASE_FRONTEND}assets/js/jquery.basket.js"></script>
-<!-- wishlist JS -->
-<script src="{$BASE_FRONTEND}assets/js/jquery.wishlist.js"></script>
-<!-- paginator JS -->
-<script src="{$BASE_FRONTEND}assets/js/jquery.paginator.js"></script>
-<!-- loader JS -->
-<script src="{$BASE_FRONTEND}assets/js/jquery.loader.js"></script>
-<!-- Main JS -->
-<script src="{$BASE_FRONTEND}assets/js/main.js"></script> *}
 <script src="{$js}"></script>
 <script>
   window.route = {$route|@json_encode};
