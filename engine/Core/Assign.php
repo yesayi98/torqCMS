@@ -87,6 +87,7 @@ class Assign extends Controller
     $this->view->setAssign('basketTotal', $basketTotal);
     $this->view->setAssign('Articles.favorites', $favorites);
     $this->view->setAssign('favCount', $favCount);
+    $this->view->setAssign('compareCount', Container()->getSession('compare')?count(Container()->getSession('compare')):0);
     $this->view->setAssign('Categories.mainCategories', $mainCategories);
     $this->view->setAssign('BASE_FRONTEND', BASE_FRONTEND);
     $this->view->setAssign('title', $title);

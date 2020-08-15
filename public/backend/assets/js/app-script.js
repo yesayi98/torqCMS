@@ -243,10 +243,10 @@ function getCsrf(element) {
     success: function (response) {
       if ($('form[method="post"]').length > 0) {
         $('form[method="post"]').append(response);
-        window.token = $('input[name="csrf"]').val();
       }else{
         $('body').append(response);
       }
+      window.token = $('input[name="csrf"]').val();
     }
   })
 }

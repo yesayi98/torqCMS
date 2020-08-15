@@ -105,7 +105,7 @@ window.plugin.basket = {
           $(me.basketNote).show();
         }
         msg = window.basketMessage;
-        round_success_noti(msg)
+        $.fn.round_success_noti(msg)
       }
     });
   },

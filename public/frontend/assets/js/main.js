@@ -617,18 +617,39 @@
        }
     });
     $( "#amount" ).val( $( "#slider-range" ).slider( "values", 0 ) + window.currentCur.symbol + " - " + $( "#slider-range" ).slider( "values", 1 ) + window.currentCur.symbol );
+
     // csrf validator
-    if ($(document).find('form[method="post"]')) {
+    function getCsrf(element) {
+      // csrf validator
       var getCsrf = true;
       $.ajax({
         url: window.location.origin + '/frontend/csrf',
         method: 'post',
         data: {getCsrf},
         success: function (response) {
-          $('form[method="post"]').append(response);
+          if ($('form[method="post"]').length > 0) {
+            $('form[method="post"]').append(response);
+          }else{
+            $('body').append(response);
+          }
+          window.token = $('input[name="csrf"]').val();
         }
       })
     }
+
+    getCsrf();
+
+    jQuery(document).ready(function($) {
+      $.ajaxSetup({
+        beforeSend: function(jqXHR, settings) {
+          var hrefParams = new URLSearchParams(settings.data);
+          hrefParams.set('csrf', window.token);
+          var data = hrefParams.toString();
+          settings.data = data;
+          return true;
+        }
+      });
+    });
 
   });
 

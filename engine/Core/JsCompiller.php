@@ -13,7 +13,7 @@ class JsCompiller
     foreach ($theme->js as $path) {
       $js = file_get_contents($path);
       // Basic (default) usage.
-      $compiledJs .= '(function ($) {'.Minifier::minify($js).'})(jQuery);';
+      $compiledJs .= Minifier::minify($js).';';
     }
     foreach (glob(DOCUMENT_ROOT."/cache/js/*.js") as $filepath) {
       unlink($filepath);

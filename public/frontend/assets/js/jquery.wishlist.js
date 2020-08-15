@@ -21,6 +21,7 @@ window.plugin.wishlist = {
       if (!($(this).hasClass('wished'))) {
         url = $(this).attr('href');
         $(this).addClass('wished');
+        $.fn.round_success_noti(window.wishlistMessage);
       }else{
         url = $(this).attr('href').replace('add', 'delete');
         $(this).removeClass('wished');

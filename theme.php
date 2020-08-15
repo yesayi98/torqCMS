@@ -42,6 +42,7 @@ return array(
     "public/frontend/assets/js/jquery.wishlist.js",
     "public/frontend/assets/js/jquery.paginator.js",
     "public/frontend/assets/js/jquery.loader.js",
+    "public/frontend/assets/js/jquery.compare.js",
     "public/frontend/assets/js/main.js",
     ],
 );

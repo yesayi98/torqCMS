@@ -127,16 +127,19 @@
                             {block name='header-info-bar'}
                             <div class="header_account_area">
                                 <div class="header_account_list register d-flex" >
-                                  <span class="lnr lnr-user" style="font-size: 26px"></span>
-                                  {if $user}
-                                    <ul>
-                                        <li><a href="{url url='account'}"> {$user.name}</a> <span>/</span> <a href="{url url='account/logout'}">{translator selector='logout'}</a></li>
-                                    </ul>
-                                  {else}
-                                  <ul>
-                                      <li><a href="{url url='account/login'}">{translator selector='register'} <span>/</span> {translator selector='login'}</a></li>
-                                  </ul>
-                                  {/if}
+                                  <a href="#"><span class="lnr lnr-user"></span>
+                                    <div class="canvas hover canvas invisible d-none">
+                                      {if $user}
+                                        <ul>
+                                            <li><a href="{url url='account'}"> {$user.name}</a> <span>/</span> <a href="{url url='account/logout'}">{translator selector='logout'}</a></li>
+                                        </ul>
+                                      {else}
+                                        <ul>
+                                            <li><a href="{url url='account/login'}">{translator selector='register'} <span>/</span> {translator selector='login'}</a></li>
+                                        </ul>
+                                      {/if}
+                                    </div>
+                                  </a>
                                 </div>
                                 <div class="header_account_list header_compare">
                                     <a href="{url url='compare'}"><span class="ti ti-control-shuffle"></span> <span class="item_count">{$compareCount}</span> </a>

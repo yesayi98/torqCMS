@@ -24,6 +24,11 @@
                               <span class="lnr lnr-heart"></span>
                             </a>
                           </li>
+                          <li class="compare">
+                            <a href="{url url='compare/add?a='|cat:$product.id}" data-url="{url url='compare/add'}" data-id="{$product.id}" class="compare-btn" title="{translator selector='compare'}">
+                              <span class="ti ti-control-shuffle"></span>
+                            </a>
+                          </li>
                      </ul>
                 </div>
                 {/block}

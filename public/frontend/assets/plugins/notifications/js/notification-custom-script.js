@@ -1,7 +1,6 @@
-
     /* Default Notifications */
 
-         function default_noti(){
+      $.fn.default_noti = function(){
 			Lobibox.notify('default', {
 		    pauseDelayOnHover: true,
             continueDelayOnInactiveTab: false,
@@ -11,7 +10,7 @@
 		  }
 
 
-        function info_noti(){
+      $.fn.info_noti = function(){
 			Lobibox.notify('info', {
 		    pauseDelayOnHover: true,
             continueDelayOnInactiveTab: false,
@@ -21,7 +20,7 @@
 		    });
 		  }
 
-        function warning_noti(){
+      $.fn.warning_noti = function(){
 			Lobibox.notify('warning', {
 		    pauseDelayOnHover: true,
             continueDelayOnInactiveTab: false,
@@ -31,7 +30,7 @@
 		    });
 		  }
 
-		  function error_noti(){
+		  $.fn.error_noti = function(){
 			Lobibox.notify('error', {
 		    pauseDelayOnHover: true,
             continueDelayOnInactiveTab: false,
@@ -41,7 +40,7 @@
 		    });
 		  }
 
-		  function success_noti(){
+		  $.fn.success_noti = function(){
 			Lobibox.notify('success', {
 		    pauseDelayOnHover: true,
             continueDelayOnInactiveTab: false,
@@ -56,7 +55,7 @@
 
 /* Rounded corners Notifications */
 
-      function round_default_noti(){
+    $.fn.round_default_noti = function(){
 		    Lobibox.notify('default', {
 		    pauseDelayOnHover: true,
 		    size: 'mini',
@@ -69,7 +68,7 @@
 		  }
 
 
-        function round_info_noti(){
+      $.fn.round_info_noti = function (){
 			Lobibox.notify('info', {
 		    pauseDelayOnHover: true,
 		    size: 'mini',
@@ -82,7 +81,7 @@
 		    });
 		  }
 
-      function round_warning_noti(msg){
+      $.fn.round_warning_noti = function (msg){
 			Lobibox.notify('warning', {
 		    pauseDelayOnHover: true,
 		    size: 'mini',
@@ -95,7 +94,7 @@
 		    });
 		  }
 
-		  function round_error_noti(msg){
+		  $.fn.round_error_noti = function (msg){
 			Lobibox.notify('error', {
 		    pauseDelayOnHover: true,
 		    size: 'mini',
@@ -108,7 +107,7 @@
 		    });
 		  }
 
-		  function round_success_noti(msg){
+		  $.fn.round_success_noti = function (msg){
 			Lobibox.notify('success', {
 		    pauseDelayOnHover: true,
 		    size: 'mini',
@@ -126,7 +125,7 @@
 
      /* Notifications With Images*/
 
-         function img_default_noti(){
+      $.fn.img_default_noti = function(){
 			Lobibox.notify('default', {
 		    pauseDelayOnHover: true,
             continueDelayOnInactiveTab: false,
@@ -137,7 +136,7 @@
 		  }
 
 
-        function img_info_noti(){
+      $.fn.img_info_noti = function (){
 			Lobibox.notify('info', {
 		    pauseDelayOnHover: true,
             continueDelayOnInactiveTab: false,
@@ -148,7 +147,7 @@
 		    });
 		  }
 
-        function img_warning_noti(){
+      $.fn.img_warning_noti = function (){
 			Lobibox.notify('warning', {
 		    pauseDelayOnHover: true,
 		    icon: 'fa fa-exclamation-circle',
@@ -159,7 +158,7 @@
 		    });
 		  }
 
-		  function img_error_noti(){
+		  $.fn.img_error_noti = function (){
 			Lobibox.notify('error', {
 		    pauseDelayOnHover: true,
             continueDelayOnInactiveTab: false,
@@ -170,7 +169,7 @@
 		    });
 		  }
 
-		  function img_success_noti(){
+		  $.fn.img_success_noti = function (){
 			Lobibox.notify('success', {
 		    pauseDelayOnHover: true,
             continueDelayOnInactiveTab: false,
@@ -188,7 +187,7 @@
      /* Notifications With Images*/
 
 
-      function pos1_default_noti(){
+      $.fn.pos1_default_noti = function(){
 			Lobibox.notify('default', {
 		    pauseDelayOnHover: true,
             continueDelayOnInactiveTab: false,
@@ -198,7 +197,7 @@
 		    });
 		  }
 
-        function pos2_info_noti(){
+      $.fn.pos2_info_noti = function (){
 			Lobibox.notify('info', {
 		    pauseDelayOnHover: true,
 		    icon: 'fa fa-info-circle',
@@ -209,7 +208,7 @@
 		    });
 		  }
 
-        function pos3_warning_noti(){
+      $.fn.pos3_warning_noti = function (){
 			Lobibox.notify('warning', {
 		    pauseDelayOnHover: true,
 		    icon: 'fa fa-exclamation-circle',
@@ -220,7 +219,7 @@
 		    });
 		  }
 
-		  function pos4_error_noti(){
+		  $.fn.pos4_error_noti = function (){
 			Lobibox.notify('error', {
 		    pauseDelayOnHover: true,
 		    icon: 'fa fa-times-circle',
@@ -231,7 +230,7 @@
 		    });
 		  }
 
-		  function pos5_success_noti(){
+		  $.fn.pos5_success_noti = function pos5_success_noti(){
 			Lobibox.notify('success', {
 		    pauseDelayOnHover: true,
 		    size: 'mini',
@@ -248,7 +247,7 @@
      /* Animated Notifications*/
 
 
-      function anim1_noti(){
+      $.fn.anim1_noti = function (){
 			Lobibox.notify('default', {
 		    pauseDelayOnHover: true,
             continueDelayOnInactiveTab: false,
@@ -261,7 +260,7 @@
 		  }
 
 
-		  function anim2_noti(){
+		  $.fn.anim2_noti = function (){
 			Lobibox.notify('info', {
 		    pauseDelayOnHover: true,
 		    icon: 'fa fa-info-circle',
@@ -274,7 +273,7 @@
 		    });
 		  }
 
-		  function anim3_noti(){
+		  $.fn.anim3_noti = function (){
 			Lobibox.notify('warning', {
 		    pauseDelayOnHover: true,
             continueDelayOnInactiveTab: false,
@@ -287,7 +286,7 @@
 		    });
 		  }
 
-		  function anim4_noti(){
+		  $.fn.anim4_noti = function (){
 			Lobibox.notify('error', {
 		    pauseDelayOnHover: true,
             continueDelayOnInactiveTab: false,
@@ -300,7 +299,7 @@
 		    });
 		  }
 
-		  function anim5_noti(){
+		  $.fn.anim5_noti = function (){
 			Lobibox.notify('success', {
 		    pauseDelayOnHover: true,
             continueDelayOnInactiveTab: false,
