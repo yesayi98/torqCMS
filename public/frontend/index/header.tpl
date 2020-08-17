@@ -98,14 +98,14 @@
                 <div class="container">
                     <div class="row align-items-center">
                       {block name='header-logo'}
-                      <div class="col-lg-2 col-6">
+                      <div class="col-lg-2 col-sm-6 col-12">
                           <div class="logo">
                               <a href="{url url=''}"><img src="{$logo.image.path}" alt=""></a>
                           </div>
                       </div>
                       {/block}
                       {block name='header-middle-right'}
-                      <div class="col-lg-10 col-6">
+                      <div class="col-lg-10 col-sm-6 col-12 mt-3">
                           <div class="header_right_info">
                             {block name='header-search-bar'}
                             <div class="search_container">
@@ -127,7 +127,7 @@
                             {block name='header-info-bar'}
                             <div class="header_account_area">
                                 <div class="header_account_list register d-flex" >
-                                  <a href="#"><span class="lnr lnr-user"></span>
+                                  <a href="{url url="account"}"><span class="lnr lnr-user"></span>
                                     <div class="canvas hover canvas invisible d-none">
                                       {if $user}
                                         <ul>

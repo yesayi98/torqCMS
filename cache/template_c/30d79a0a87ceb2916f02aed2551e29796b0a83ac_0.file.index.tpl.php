@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-08-15 17:20:33
+/* Smarty version 3.1.34-dev-7, created on 2020-08-15 17:30:03
   from 'C:\Users\User\OSPanel\domains\torq\public\frontend\compare\index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f37ef31aea795_09700596',
+  'unifunc' => 'content_5f37f16b31a541_12583112',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '30d79a0a87ceb2916f02aed2551e29796b0a83ac' => 
     array (
       0 => 'C:\\Users\\User\\OSPanel\\domains\\torq\\public\\frontend\\compare\\index.tpl',
-      1 => 1597501232,
+      1 => 1597501801,
       2 => 'file',
     ),
   ),
@@ -20,25 +20,25 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f37ef31aea795_09700596 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f37f16b31a541_12583112 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_9762050335f37ef31ac4b54_90169243', "pageContent");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_7937092245f37f16b2fa131_82921293', "pageContent");
 ?>
 
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, "frontend/index/index.tpl");
 }
 /* {block "pageContent"} */
-class Block_9762050335f37ef31ac4b54_90169243 extends Smarty_Internal_Block
+class Block_7937092245f37f16b2fa131_82921293 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'pageContent' => 
   array (
-    0 => 'Block_9762050335f37ef31ac4b54_90169243',
+    0 => 'Block_7937092245f37f16b2fa131_82921293',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -46,9 +46,9 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'C:\\Users\\User\\OSPanel\\do
 ?>
 
 <div class="container">
-  <div class="table-content mt-3 mb-3">
+  <div class="table-content mt-3 mb-3 cart_page table-responsive">
     <?php if ($_smarty_tpl->tpl_vars['products']->value) {?>
-    <table class="table table-bordered table-dark">
+    <table class="table table-bordered">
       <thead>
         <tr>
           <th scope="col">ID</th>

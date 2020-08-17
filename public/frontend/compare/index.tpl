@@ -2,9 +2,9 @@
 
 {block name="pageContent"}
 <div class="container">
-  <div class="table-content mt-3 mb-3">
+  <div class="table-content mt-3 mb-3 cart_page table-responsive">
     {if $products}
-    <table class="table table-bordered table-dark">
+    <table class="table table-bordered">
       <thead>
         <tr>
           <th scope="col">ID</th>
