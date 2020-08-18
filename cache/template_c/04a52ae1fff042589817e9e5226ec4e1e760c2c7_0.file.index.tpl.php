@@ -1,34 +1,35 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-25 11:37:14
+/* Smarty version 3.1.34-dev-7, created on 2020-08-18 16:09:13
   from 'C:\Users\User\OSPanel\domains\torq\public\backend\index\index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ef4542adc7182_70622156',
+  'unifunc' => 'content_5f3bd2f9b569e3_36238501',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '04a52ae1fff042589817e9e5226ec4e1e760c2c7' => 
     array (
       0 => 'C:\\Users\\User\\OSPanel\\domains\\torq\\public\\backend\\index\\index.tpl',
-      1 => 1593070632,
+      1 => 1597756152,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
+    'file:backend/orders/table.tpl' => 1,
   ),
 ),false)) {
-function content_5ef4542adc7182_70622156 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f3bd2f9b569e3_36238501 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, false);
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1658887545ef4542ad7cdf1_59284359', "html_document");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_8060477605f3bd2f9ace4b0_80924276', "html_document");
 ?>
 
 <?php }
 /* {block "css-container"} */
-class Block_21191811155ef4542ad839c6_84700293 extends Smarty_Internal_Block
+class Block_16308863365f3bd2f9ad39c3_28252889 extends Smarty_Internal_Block
 {
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
@@ -53,7 +54,7 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block "css-container"} */
 /* {block 'head'} */
-class Block_15918933685ef4542ad7fe52_46586127 extends Smarty_Internal_Block
+class Block_12484110475f3bd2f9ad06a4_47653977 extends Smarty_Internal_Block
 {
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
@@ -76,7 +77,7 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
     <link rel="icon" href="assets/images/favicon.ico.png" type="image/x-icon">
     <!-- Vector CSS -->
     <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_21191811155ef4542ad839c6_84700293', "css-container", $this->tplIndex);
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_16308863365f3bd2f9ad39c3_28252889', "css-container", $this->tplIndex);
 ?>
 
 
@@ -86,7 +87,7 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_21191811155ef4542a
 }
 /* {/block 'head'} */
 /* {block "logo-container"} */
-class Block_6389344345ef4542ad86df1_72215114 extends Smarty_Internal_Block
+class Block_12475103445f3bd2f9ad6aa9_49038123 extends Smarty_Internal_Block
 {
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
@@ -104,7 +105,7 @@ assets/images/logo-icon.png" class="logo-icon" alt="logo icon">
 }
 /* {/block "logo-container"} */
 /* {block "menu-item"} */
-class Block_20833459685ef4542ad90e14_85488588 extends Smarty_Internal_Block
+class Block_1424955175f3bd2f9ae9db7_09802307 extends Smarty_Internal_Block
 {
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
@@ -145,7 +146,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 }
 /* {/block "menu-item"} */
 /* {block "sitebar-menu"} */
-class Block_14474324715ef4542ad8a135_26145166 extends Smarty_Internal_Block
+class Block_18569081355f3bd2f9add5b6_51202533 extends Smarty_Internal_Block
 {
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
@@ -159,7 +160,7 @@ if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['menuItem']->valu
 $_smarty_tpl->tpl_vars['menuItem']->do_else = false;
 ?>
               <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_20833459685ef4542ad90e14_85488588', "menu-item", $this->tplIndex);
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1424955175f3bd2f9ae9db7_09802307', "menu-item", $this->tplIndex);
 ?>
 
             <?php
@@ -174,7 +175,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 }
 /* {/block "sitebar-menu"} */
 /* {block "sitebar-wrapper"} */
-class Block_17059742775ef4542ad864f7_95187283 extends Smarty_Internal_Block
+class Block_16639821885f3bd2f9ad5cf1_29263161 extends Smarty_Internal_Block
 {
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
@@ -183,11 +184,11 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 
      <div id="sidebar-wrapper" data-simplebar="" data-simplebar-auto-hide="true">
        <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_6389344345ef4542ad86df1_72215114', "logo-container", $this->tplIndex);
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_12475103445f3bd2f9ad6aa9_49038123', "logo-container", $this->tplIndex);
 ?>
 
         <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_14474324715ef4542ad8a135_26145166', "sitebar-menu", $this->tplIndex);
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_18569081355f3bd2f9add5b6_51202533', "sitebar-menu", $this->tplIndex);
 ?>
 
 
@@ -198,7 +199,7 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_14474324715ef4542a
 }
 /* {/block "sitebar-wrapper"} */
 /* {block "navigation-left"} */
-class Block_18141545145ef4542ada9973_62092389 extends Smarty_Internal_Block
+class Block_11753518505f3bd2f9b0a1b9_94128634 extends Smarty_Internal_Block
 {
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
@@ -222,7 +223,7 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block "navigation-left"} */
 /* {block "navigation-notifications"} */
-class Block_958265905ef4542adab638_85997259 extends Smarty_Internal_Block
+class Block_8376334805f3bd2f9b0d078_33314278 extends Smarty_Internal_Block
 {
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
@@ -241,7 +242,7 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block "navigation-notifications"} */
 /* {block "navigation-admin"} */
-class Block_9865270135ef4542adac2f8_69958700 extends Smarty_Internal_Block
+class Block_12440995305f3bd2f9b0e545_69117926 extends Smarty_Internal_Block
 {
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
@@ -279,18 +280,18 @@ assets/images/avatars/avatar-13.png" alt="user avatar"></div>
 }
 /* {/block "navigation-admin"} */
 /* {block "navigation-right"} */
-class Block_2801703555ef4542adaace1_82233453 extends Smarty_Internal_Block
+class Block_13901900195f3bd2f9b0c068_15062158 extends Smarty_Internal_Block
 {
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
       <ul class="navbar-nav align-items-center right-nav-link">
         <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_958265905ef4542adab638_85997259', "navigation-notifications", $this->tplIndex);
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_8376334805f3bd2f9b0d078_33314278', "navigation-notifications", $this->tplIndex);
 ?>
 
         <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_9865270135ef4542adac2f8_69958700', "navigation-admin", $this->tplIndex);
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_12440995305f3bd2f9b0e545_69117926', "navigation-admin", $this->tplIndex);
 ?>
 
       </ul>
@@ -299,18 +300,18 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_9865270135ef4542ad
 }
 /* {/block "navigation-right"} */
 /* {block "top-navbar"} */
-class Block_9589230495ef4542ada9089_98394039 extends Smarty_Internal_Block
+class Block_1163207195f3bd2f9b08b95_23999705 extends Smarty_Internal_Block
 {
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
     <nav class="navbar navbar-expand fixed-top">
       <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_18141545145ef4542ada9973_62092389', "navigation-left", $this->tplIndex);
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_11753518505f3bd2f9b0a1b9_94128634', "navigation-left", $this->tplIndex);
 ?>
 
       <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_2801703555ef4542adaace1_82233453', "navigation-right", $this->tplIndex);
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_13901900195f3bd2f9b0c068_15062158', "navigation-right", $this->tplIndex);
 ?>
 
     </nav>
@@ -319,7 +320,7 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_2801703555ef4542ad
 }
 /* {/block "top-navbar"} */
 /* {block "header"} */
-class Block_20961559485ef4542ada86f2_15635374 extends Smarty_Internal_Block
+class Block_21331622165f3bd2f9b07623_52104773 extends Smarty_Internal_Block
 {
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
@@ -328,7 +329,7 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 
   <header class="topbar-nav">
     <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_9589230495ef4542ada9089_98394039', "top-navbar", $this->tplIndex);
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1163207195f3bd2f9b08b95_23999705', "top-navbar", $this->tplIndex);
 ?>
 
   </header>
@@ -337,8 +338,57 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_9589230495ef4542ad
 }
 }
 /* {/block "header"} */
+/* {block "table-head"} */
+class Block_15294986925f3bd2f9b386d9_82611818 extends Smarty_Internal_Block
+{
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+?>
+
+               <thead>
+                   <tr>
+                       <th>ID</th>
+                       <th>Name</th>
+                       <th>Action</th>
+                   </tr>
+               </thead>
+             <?php
+}
+}
+/* {/block "table-head"} */
+/* {block "table-body"} */
+class Block_18472716095f3bd2f9b39cf9_58438121 extends Smarty_Internal_Block
+{
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+?>
+
+               <tbody>
+                 <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['users']->value, 'user');
+$_smarty_tpl->tpl_vars['user']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['user']->value) {
+$_smarty_tpl->tpl_vars['user']->do_else = false;
+?>
+                   <tr>
+                       <td><?php echo $_smarty_tpl->tpl_vars['user']->value['id'];?>
+</td>
+                       <td><?php echo $_smarty_tpl->tpl_vars['user']->value['name'];?>
+ <?php echo $_smarty_tpl->tpl_vars['user']->value['lastname'];?>
+</td>
+                       <td>
+                         <a href="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['url'][0], array( array('url'=>('backend/users/detail?u=').($_smarty_tpl->tpl_vars['user']->value['id'])),$_smarty_tpl ) );?>
+" class="btn btn-info waves-effect waves-light m-1"><i class="fa fa-pencil"></i></a>
+                       </td>
+                   </tr>
+                 <?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+               </tbody>
+             <?php
+}
+}
+/* {/block "table-body"} */
 /* {block "container-content"} */
-class Block_7925215395ef4542adb2d62_37578724 extends Smarty_Internal_Block
+class Block_1626594885f3bd2f9b2d127_03057045 extends Smarty_Internal_Block
 {
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
@@ -395,535 +445,34 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
   </div>
 
   <div class="row">
-     <div class="col-12 col-lg-8 col-xl-8">
-      <div class="card">
-     <div class="card-header">Site Traffic
-       <div class="card-action">
-       <div class="dropdown">
-       <a href="javascript:void();" class="dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown">
-        <i class="icon-options"></i>
-       </a>
-        <div class="dropdown-menu dropdown-menu-right">
-        <a class="dropdown-item" href="javascript:void();">Action</a>
-        <a class="dropdown-item" href="javascript:void();">Another action</a>
-        <a class="dropdown-item" href="javascript:void();">Something else here</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="javascript:void();">Separated link</a>
-         </div>
-        </div>
-       </div>
-     </div>
-     <div class="card-body">
-        <ul class="list-inline">
-        <li class="list-inline-item"><i class="fa fa-circle mr-2 text-white"></i>New Visitor</li>
-        <li class="list-inline-item"><i class="fa fa-circle mr-2 text-light"></i>Old Visitor</li>
-      </ul>
-      <div class="chart-container-1">
-        <canvas id="chart1"></canvas>
-      </div>
-     </div>
-
-     <div class="row m-0 row-group text-center border-top border-light-3">
-       <div class="col-12 col-lg-4">
-         <div class="p-3">
-           <h5 class="mb-0">45.87M</h5>
-         <small class="mb-0">Overall Visitor <span> <i class="fa fa-arrow-up"></i> 2.43%</span></small>
-         </div>
-       </div>
-       <div class="col-12 col-lg-4">
-         <div class="p-3">
-           <h5 class="mb-0">15:48</h5>
-         <small class="mb-0">Visitor Duration <span> <i class="fa fa-arrow-up"></i> 12.65%</span></small>
-         </div>
-       </div>
-       <div class="col-12 col-lg-4">
-         <div class="p-3">
-           <h5 class="mb-0">245.65</h5>
-         <small class="mb-0">Pages/Visit <span> <i class="fa fa-arrow-up"></i> 5.62%</span></small>
-         </div>
-       </div>
-     </div>
-
-    </div>
-   </div>
-
-     <div class="col-12 col-lg-4 col-xl-4">
-        <div class="card">
-           <div class="card-header">Weekly sales
-             <div class="card-action">
-             <div class="dropdown">
-             <a href="javascript:void();" class="dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown">
-              <i class="icon-options"></i>
-             </a>
-              <div class="dropdown-menu dropdown-menu-right">
-              <a class="dropdown-item" href="javascript:void();">Action</a>
-              <a class="dropdown-item" href="javascript:void();">Another action</a>
-              <a class="dropdown-item" href="javascript:void();">Something else here</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="javascript:void();">Separated link</a>
-               </div>
-              </div>
-             </div>
-           </div>
-           <div class="card-body">
-         <div class="chart-container-2">
-               <canvas id="chart2"></canvas>
-        </div>
-           </div>
-           <div class="table-responsive">
-             <table class="table align-items-center">
-               <tbody>
-                 <tr>
-                   <td><i class="fa fa-circle text-white mr-2"></i> Direct</td>
-                   <td>$5856</td>
-                   <td>+55%</td>
-                 </tr>
-                 <tr>
-                   <td><i class="fa fa-circle text-light-1 mr-2"></i>Affiliate</td>
-                   <td>$2602</td>
-                   <td>+25%</td>
-                 </tr>
-                 <tr>
-                   <td><i class="fa fa-circle text-light-2 mr-2"></i>E-mail</td>
-                   <td>$1802</td>
-                   <td>+15%</td>
-                 </tr>
-                 <tr>
-                   <td><i class="fa fa-circle text-light-3 mr-2"></i>Other</td>
-                   <td>$1105</td>
-                   <td>+5%</td>
-                 </tr>
-               </tbody>
-             </table>
-           </div>
-         </div>
-     </div>
-  </div><!--End Row-->
-
-   <div class="row">
-  <div class="col-12 col-lg-6 col-xl-4">
+   <div class="col-12 col-lg-9">
      <div class="card">
-       <div class="card-body">
-       <div class="media align-items-center">
-         <div class="w_chart easy-dash-chart" data-percent="60">
-         <span class="w_percent"></span>
+       <div class="card-header">Not Delivered Orders
        </div>
-       <div class="media-body ml-3">
-         <h6 class="mb-0">Facebook Followers</h6>
-         <small class="mb-0">22.14% <i class="fa fa-arrow-up"></i> Since Last Week</small>
+       <div class="content" data-content='true'>
+         <?php $_smarty_tpl->_subTemplateRender('file:backend/orders/table.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
        </div>
-       <i class="fa fa-facebook text-white text-right fa-2x"></i>
-       </div>
-     </div>
      </div>
    </div>
-   <div class="col-12 col-lg-6 col-xl-4">
+   <div class="col-12 col-lg-3">
      <div class="card">
-       <div class="card-body">
-       <div class="media align-items-center">
-         <div class="w_chart easy-dash-chart" data-percent="65">
-         <span class="w_percent"></span>
+       <div class="card-header">NEW USERS
        </div>
-       <div class="media-body ml-3">
-         <h6 class="mb-0">Twitter Tweets</h6>
-         <small class="mb-0">32.15% <i class="fa fa-arrow-up"></i> Since Last Week</small>
-       </div>
-       <i class="fa fa-twitter text-white text-right fa-2x"></i>
-       </div>
-     </div>
-     </div>
-   </div>
-   <div class="col-12 col-lg-12 col-xl-4">
-     <div class="card">
-       <div class="card-body">
-       <div class="media align-items-center">
-         <div class="w_chart easy-dash-chart" data-percent="75">
-         <span class="w_percent"></span>
-       </div>
-       <div class="media-body ml-3">
-         <h6 class="mb-0">Youtube Subscribers</h6>
-         <small class="mb-0">58.24% <i class="fa fa-arrow-up"></i> Since Last Week</small>
-       </div>
-       <i class="fa fa-youtube text-white fa-2x"></i>
-       </div>
-     </div>
-     </div>
-   </div>
-  </div><!--End Row-->
-
-
-  <div class="row">
-     <div class="col-12 col-lg-12 col-xl-6">
-       <div class="card">
-         <div class="card-header">World Selling Region
-             <div class="card-action">
-             <div class="dropdown">
-             <a href="javascript:void();" class="dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown">
-              <i class="icon-options"></i>
-             </a>
-              <div class="dropdown-menu dropdown-menu-right">
-              <a class="dropdown-item" href="javascript:void();">Action</a>
-              <a class="dropdown-item" href="javascript:void();">Another action</a>
-              <a class="dropdown-item" href="javascript:void();">Something else here</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="javascript:void();">Separated link</a>
-               </div>
-              </div>
-             </div>
-           </div>
-         <div class="card-body">
-            <div id="dashboard-map" style="height: 275px;"></div>
-         </div>
+       <div class="content" data-content='true'>
          <div class="table-responsive">
-            <table class="table table-hover align-items-center">
-               <thead>
-                  <tr>
-                      <th>Country</th>
-                      <th>Income</th>
-                      <th>Trend</th>
-                  </tr>
-              </thead>
-              <tbody>
-                  <tr>
-                      <td><i class="flag-icon flag-icon-ca mr-2"></i> USA</td>
-                      <td>4,586$</td>
-                      <td><span id="trendchart1"></span></td>
-                  </tr>
-                  <tr>
-                      <td><i class="flag-icon flag-icon-us mr-2"></i>Canada</td>
-                      <td>2,089$</td>
-                      <td><span id="trendchart2"></span></td>
-                  </tr>
+           <table id="default-datatable" class="table table-bordered">
+             <?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_15294986925f3bd2f9b386d9_82611818', "table-head", $this->tplIndex);
+?>
 
-                  <tr>
-                      <td><i class="flag-icon flag-icon-in mr-2"></i>India</td>
-                      <td>3,039$</td>
-                      <td><span id="trendchart3"></span></td>
-                  </tr>
+             <?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_18472716095f3bd2f9b39cf9_58438121', "table-body", $this->tplIndex);
+?>
 
-                  <tr>
-                      <td><i class="flag-icon flag-icon-gb mr-2"></i>UK</td>
-                      <td>2,309$</td>
-                      <td><span id="trendchart4"></span></td>
-                  </tr>
-
-                  <tr>
-                      <td><i class="flag-icon flag-icon-de mr-2"></i>Germany</td>
-                      <td>7,209$</td>
-                      <td><span id="trendchart5"></span></td>
-                  </tr>
-
-              </tbody>
-          </table>
-          </div>
-       </div>
-     </div>
-
-   <div class="col-12 col-lg-12 col-xl-6">
-        <div class="row">
-      <div class="col-12 col-lg-6">
-        <div class="card">
-       <div class="card-body">
-        <p>Page Views</p>
-        <h4 class="mb-0">8,293 <small class="small-font">5.2% <i class="zmdi zmdi-long-arrow-up"></i></small></h4>
-       </div>
-       <div class="chart-container-3">
-         <canvas id="chart3"></canvas>
-       </div>
-       </div>
-      </div>
-      <div class="col-12 col-lg-6">
-        <div class="card">
-       <div class="card-body">
-        <p>Total Clicks</p>
-        <h4 class="mb-0">7,493 <small class="small-font">1.4% <i class="zmdi zmdi-long-arrow-up"></i></small></h4>
-       </div>
-       <div class="chart-container-3">
-        <canvas id="chart4"></canvas>
-        </div>
-       </div>
-      </div>
-      <div class="col-12 col-lg-6">
-        <div class="card">
-       <div class="card-body text-center">
-        <p class="mb-4">Total Downloads</p>
-        <input class="knob" data-width="175" data-height="175" data-readOnly="true" data-thickness=".2" data-angleoffset="90" data-linecap="round" data-bgcolor="rgba(255, 255, 255, 0.14)" data-fgcolor="#fff" data-max="15000" value="8550"/>
-        <hr>
-        <p class="mb-0 small-font text-center">3.4% <i class="zmdi zmdi-long-arrow-up"></i> since yesterday</p>
-       </div>
-       </div>
-      </div>
-      <div class="col-12 col-lg-6">
-        <div class="card">
-       <div class="card-body">
-        <p>Device Storage</p>
-        <h4 class="mb-3">42620/50000</h4>
-        <hr>
-        <div class="progress-wrapper mb-4">
-           <p>Documents <span class="float-right">12GB</span></p>
-                   <div class="progress" style="height:5px;">
-                       <div class="progress-bar" style="width:80%"></div>
-                   </div>
-                </div>
-
-        <div class="progress-wrapper mb-4">
-           <p>Images <span class="float-right">10GB</span></p>
-                   <div class="progress" style="height:5px;">
-                       <div class="progress-bar" style="width:60%"></div>
-                   </div>
-                </div>
-
-        <div class="progress-wrapper mb-4">
-            <p>Mails <span class="float-right">5GB</span></p>
-                   <div class="progress" style="height:5px;">
-                       <div class="progress-bar" style="width:40%"></div>
-                   </div>
-                </div>
-
-       </div>
-       </div>
-      </div>
-    </div>
-   </div>
-
-  </div><!--End Row-->
-
-
-    <div class="row">
-      <div class="col-12 col-lg-6 col-xl-4">
-        <div class="card">
-           <div class="card-body">
-             <p>Total Earning</p>
-             <h4 class="mb-0">287,493$</h4>
-             <small>1.4% <i class="zmdi zmdi-long-arrow-up"></i> Since Last Month</small>
-             <hr>
-             <p>Total Sales</p>
-             <h4 class="mb-0">87,493</h4>
-             <small>5.43% <i class="zmdi zmdi-long-arrow-up"></i> Since Last Month</small>
-             <div class="mt-5">
-       <div class="chart-container-4">
-               <canvas id="chart5"></canvas>
-        </div>
-            </div>
-           </div>
-        </div>
-
-      </div>
-
-      <div class="col-12 col-lg-6 col-xl-8">
-         <div class="card">
-           <div class="card-header">Customer Review
-             <div class="card-action">
-             <div class="dropdown">
-             <a href="javascript:void();" class="dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown">
-              <i class="icon-options"></i>
-             </a>
-              <div class="dropdown-menu dropdown-menu-right">
-              <a class="dropdown-item" href="javascript:void();">Action</a>
-              <a class="dropdown-item" href="javascript:void();">Another action</a>
-              <a class="dropdown-item" href="javascript:void();">Something else here</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="javascript:void();">Separated link</a>
-               </div>
-              </div>
-             </div>
-           </div>
-           <ul class="list-group list-group-flush">
-              <li class="list-group-item bg-transparent">
-                <div class="media align-items-center">
-                  <img src="<?php echo $_smarty_tpl->tpl_vars['BASE_BACKEND']->value;?>
-assets/images/avatars/avatar-13.png" alt="user avatar" class="customer-img rounded-circle">
-                <div class="media-body ml-3">
-                  <h6 class="mb-0">iPhone X <small class="ml-4">08.34 AM</small></h6>
-                  <p class="mb-0 small-font">Sara Jhon : This i svery Nice phone in low budget.</p>
-                </div>
-                <div class="star">
-                  <i class="zmdi zmdi-star"></i>
-                  <i class="zmdi zmdi-star"></i>
-                  <i class="zmdi zmdi-star"></i>
-                  <i class="zmdi zmdi-star text-light"></i>
-                  <i class="zmdi zmdi-star text-light"></i>
-                </div>
-              </div>
-              </li>
-              <li class="list-group-item bg-transparent">
-                <div class="media align-items-center">
-                  <img src="<?php echo $_smarty_tpl->tpl_vars['BASE_BACKEND']->value;?>
-assets/images/avatars/avatar-15.png" alt="user avatar" class="customer-img rounded-circle">
-                <div class="media-body ml-3">
-                  <h6 class="mb-0">Air Pod <small class="ml-4">05.26 PM</small></h6>
-                  <p class="mb-0 small-font">Danish Josh : The brand apple is original !</p>
-                </div>
-                <div class="star">
-                  <i class="zmdi zmdi-star"></i>
-                  <i class="zmdi zmdi-star"></i>
-                  <i class="zmdi zmdi-star"></i>
-                  <i class="zmdi zmdi-star text-light"></i>
-                  <i class="zmdi zmdi-star text-light"></i>
-                </div>
-              </div>
-              </li>
-        <li class="list-group-item bg-transparent">
-                <div class="media align-items-center">
-                  <img src="<?php echo $_smarty_tpl->tpl_vars['BASE_BACKEND']->value;?>
-assets/images/avatars/avatar-14.png" alt="user avatar" class="customer-img rounded-circle">
-                <div class="media-body ml-3">
-                  <h6 class="mb-0">Mackbook Pro <small class="ml-4">06.45 AM</small></h6>
-                  <p class="mb-0 small-font">Jhon Doe : Excllent product and awsome quality</p>
-                </div>
-                <div class="star">
-                  <i class="zmdi zmdi-star"></i>
-                  <i class="zmdi zmdi-star"></i>
-                  <i class="zmdi zmdi-star"></i>
-                  <i class="zmdi zmdi-star text-light"></i>
-                  <i class="zmdi zmdi-star text-light"></i>
-                </div>
-              </div>
-              </li>
-              <li class="list-group-item bg-transparent">
-                <div class="media align-items-center">
-                  <img src="<?php echo $_smarty_tpl->tpl_vars['BASE_BACKEND']->value;?>
-assets/images/avatars/avatar-16.png" alt="user avatar" class="customer-img rounded-circle">
-                <div class="media-body ml-3">
-                  <h6 class="mb-0">Air Pod <small class="ml-4">08.34 AM</small></h6>
-                  <p class="mb-0 small-font">Christine : The brand apple is original !</p>
-                </div>
-                <div class="star">
-                  <i class="zmdi zmdi-star"></i>
-                  <i class="zmdi zmdi-star"></i>
-                  <i class="zmdi zmdi-star"></i>
-                  <i class="zmdi zmdi-star"></i>
-                  <i class="zmdi zmdi-star text-light"></i>
-                </div>
-              </div>
-              </li>
-              <li class="list-group-item bg-transparent">
-                <div class="media align-items-center">
-                  <img src="<?php echo $_smarty_tpl->tpl_vars['BASE_BACKEND']->value;?>
-assets/images/avatars/avatar-17.png" alt="user avatar" class="customer-img rounded-circle">
-                <div class="media-body ml-3">
-                  <h6 class="mb-0">Mackbook <small class="ml-4">08.34 AM</small></h6>
-                  <p class="mb-0 small-font">Michle : The brand apple is original !</p>
-                </div>
-                <div class="star">
-                  <i class="zmdi zmdi-star"></i>
-                  <i class="zmdi zmdi-star"></i>
-                  <i class="zmdi zmdi-star"></i>
-                  <i class="zmdi zmdi-star"></i>
-                  <i class="zmdi zmdi-star text-light"></i>
-                </div>
-              </div>
-              </li>
-            </ul>
+           </table>
          </div>
-      </div>
-    </div><!--End Row-->
-
-  <div class="row">
-   <div class="col-12 col-lg-12">
-     <div class="card">
-       <div class="card-header">Recent Order Tables
-      <div class="card-action">
-             <div class="dropdown">
-             <a href="javascript:void();" class="dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown">
-              <i class="icon-options"></i>
-             </a>
-              <div class="dropdown-menu dropdown-menu-right">
-              <a class="dropdown-item" href="javascript:void();">Action</a>
-              <a class="dropdown-item" href="javascript:void();">Another action</a>
-              <a class="dropdown-item" href="javascript:void();">Something else here</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="javascript:void();">Separated link</a>
-               </div>
-              </div>
-             </div>
-     </div>
-         <div class="table-responsive">
-                 <table class="table align-items-center table-flush table-borderless">
-                  <thead>
-                   <tr>
-                     <th>Product</th>
-                     <th>Photo</th>
-                     <th>Product ID</th>
-                     <th>Amount</th>
-                     <th>Date</th>
-                     <th>Shipping</th>
-                   </tr>
-                   </thead>
-                   <tbody><tr>
-                    <td>Iphone 5</td>
-                    <td><img src="<?php echo $_smarty_tpl->tpl_vars['BASE_BACKEND']->value;?>
-assets/images/products/01.png" class="product-img" alt="product img"></td>
-                    <td>#9405822</td>
-                    <td>$ 1250.00</td>
-                    <td>03 Aug 2017</td>
-          <td><div class="progress shadow" style="height: 3px;">
-                          <div class="progress-bar" role="progressbar" style="width: 90%"></div>
-                        </div></td>
-                   </tr>
-
-                   <tr>
-                    <td>Earphone GL</td>
-                    <td><img src="<?php echo $_smarty_tpl->tpl_vars['BASE_BACKEND']->value;?>
-assets/images/products/02.png" class="product-img" alt="product img"></td>
-                    <td>#9405820</td>
-                    <td>$ 1500.00</td>
-                    <td>03 Aug 2017</td>
-          <td><div class="progress shadow" style="height: 3px;">
-                          <div class="progress-bar" role="progressbar" style="width: 60%"></div>
-                        </div></td>
-                   </tr>
-
-                   <tr>
-                    <td>HD Hand Camera</td>
-                    <td><img src="<?php echo $_smarty_tpl->tpl_vars['BASE_BACKEND']->value;?>
-assets/images/products/03.png" class="product-img" alt="product img"></td>
-                    <td>#9405830</td>
-                    <td>$ 1400.00</td>
-                    <td>03 Aug 2017</td>
-          <td><div class="progress shadow" style="height: 3px;">
-                          <div class="progress-bar" role="progressbar" style="width: 70%"></div>
-                        </div></td>
-                   </tr>
-
-                   <tr>
-                    <td>Clasic Shoes</td>
-                    <td><img src="<?php echo $_smarty_tpl->tpl_vars['BASE_BACKEND']->value;?>
-assets/images/products/04.png" class="product-img" alt="product img"></td>
-                    <td>#9405825</td>
-                    <td>$ 1200.00</td>
-                    <td>03 Aug 2017</td>
-          <td><div class="progress shadow" style="height: 3px;">
-                          <div class="progress-bar" role="progressbar" style="width: 100%"></div>
-                        </div></td>
-                   </tr>
-
-                   <tr>
-                    <td>Hand Watch</td>
-                    <td><img src="<?php echo $_smarty_tpl->tpl_vars['BASE_BACKEND']->value;?>
-assets/images/products/05.png" class="product-img" alt="product img"></td>
-                    <td>#9405840</td>
-                    <td>$ 1800.00</td>
-                    <td>03 Aug 2017</td>
-          <td><div class="progress shadow" style="height: 3px;">
-                          <div class="progress-bar" role="progressbar" style="width: 40%"></div>
-                        </div></td>
-                   </tr>
-
-           <tr>
-                    <td>Clasic Shoes</td>
-                    <td><img src="<?php echo $_smarty_tpl->tpl_vars['BASE_BACKEND']->value;?>
-assets/images/products/06.png" class="product-img" alt="product img"></td>
-                    <td>#9405825</td>
-                    <td>$ 1200.00</td>
-                    <td>03 Aug 2017</td>
-          <td><div class="progress shadow" style="height: 3px;">
-                          <div class="progress-bar" role="progressbar" style="width: 100%"></div>
-                        </div></td>
-                   </tr>
-
-                 </tbody></table>
-               </div>
+       </div>
      </div>
    </div>
   </div><!--End Row-->
@@ -937,7 +486,7 @@ assets/images/products/06.png" class="product-img" alt="product img"></td>
 }
 /* {/block "container-content"} */
 /* {block "content-wrapper"} */
-class Block_127733145ef4542adb0116_44132559 extends Smarty_Internal_Block
+class Block_11996955875f3bd2f9b14664_04611167 extends Smarty_Internal_Block
 {
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
@@ -945,7 +494,7 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
   <div class="content-wrapper">
     <div class="container-fluid" <?php if ($_smarty_tpl->tpl_vars['route']->value['controller'] == 'index' || $_smarty_tpl->tpl_vars['route']->value['controller'] == 'categories' || $_smarty_tpl->tpl_vars['route']->value['action'] == 'detail') {?>data-content="true"<?php }?>>
       <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_7925215395ef4542adb2d62_37578724', "container-content", $this->tplIndex);
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1626594885f3bd2f9b2d127_03057045', "container-content", $this->tplIndex);
 ?>
 
     </div>
@@ -957,7 +506,7 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_7925215395ef4542ad
 }
 /* {/block "content-wrapper"} */
 /* {block "footer"} */
-class Block_15570129325ef4542adba6e1_79435887 extends Smarty_Internal_Block
+class Block_12144954695f3bd2f9b44a77_03328963 extends Smarty_Internal_Block
 {
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
@@ -976,7 +525,7 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block "footer"} */
 /* {block "right-sidebar"} */
-class Block_9097253185ef4542adbb6a9_26241460 extends Smarty_Internal_Block
+class Block_1439748405f3bd2f9b46835_77799593 extends Smarty_Internal_Block
 {
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
@@ -1024,7 +573,7 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block "right-sidebar"} */
 /* {block "wrapper"} */
-class Block_11069859985ef4542ad85bb8_27421611 extends Smarty_Internal_Block
+class Block_7085917405f3bd2f9ad5522_14816278 extends Smarty_Internal_Block
 {
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
@@ -1032,19 +581,19 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
   <!-- Start wrapper-->
    <div id="wrapper">
      <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_17059742775ef4542ad864f7_95187283', "sitebar-wrapper", $this->tplIndex);
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_16639821885f3bd2f9ad5cf1_29263161', "sitebar-wrapper", $this->tplIndex);
 ?>
 
 
   <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_20961559485ef4542ada86f2_15635374', "header", $this->tplIndex);
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_21331622165f3bd2f9b07623_52104773', "header", $this->tplIndex);
 ?>
 
 
 
   <div class="clearfix"></div>
   <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_127733145ef4542adb0116_44132559', "content-wrapper", $this->tplIndex);
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_11996955875f3bd2f9b14664_04611167', "content-wrapper", $this->tplIndex);
 ?>
 
 
@@ -1052,13 +601,13 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_127733145ef4542adb
       <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
       <!--End Back To Top Button-->
     <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_15570129325ef4542adba6e1_79435887', "footer", $this->tplIndex);
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_12144954695f3bd2f9b44a77_03328963', "footer", $this->tplIndex);
 ?>
 
 
 
     <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_9097253185ef4542adbb6a9_26241460', "right-sidebar", $this->tplIndex);
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1439748405f3bd2f9b46835_77799593', "right-sidebar", $this->tplIndex);
 ?>
 
     </div>
@@ -1068,7 +617,7 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_9097253185ef4542ad
 }
 /* {/block "wrapper"} */
 /* {block "modal-container"} */
-class Block_6419126725ef4542adbc948_56833774 extends Smarty_Internal_Block
+class Block_12892726025f3bd2f9b48732_99319853 extends Smarty_Internal_Block
 {
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
@@ -1078,7 +627,7 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block "modal-container"} */
 /* {block "notification-container"} */
-class Block_6494529325ef4542adbd616_58972348 extends Smarty_Internal_Block
+class Block_18668325995f3bd2f9b49801_51895414 extends Smarty_Internal_Block
 {
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
@@ -1089,7 +638,7 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block "notification-container"} */
 /* {block "js-container"} */
-class Block_6812145165ef4542adbe2a0_79314610 extends Smarty_Internal_Block
+class Block_1158201865f3bd2f9b4aad6_71553383 extends Smarty_Internal_Block
 {
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
@@ -1180,12 +729,10 @@ assets/plugins/jquery-knob/excanvas.js"><?php echo '</script'; ?>
  src="<?php echo $_smarty_tpl->tpl_vars['BASE_BACKEND']->value;?>
 assets/plugins/jquery-knob/jquery.knob.js"><?php echo '</script'; ?>
 >
-      <?php if ($_smarty_tpl->tpl_vars['route']->value['controller'] != 'index') {?>
-        <?php echo '<script'; ?>
+      <?php echo '<script'; ?>
  src="<?php echo $_smarty_tpl->tpl_vars['BASE_BACKEND']->value;?>
 assets/js/jquery.paginator.js"><?php echo '</script'; ?>
 >
-      <?php }?>
         <?php echo '<script'; ?>
 >
             window.route = <?php echo json_encode($_smarty_tpl->tpl_vars['route']->value);?>
@@ -1214,7 +761,7 @@ assets/js/jquery.loading-indicator.js"><?php echo '</script'; ?>
 }
 /* {/block "js-container"} */
 /* {block "body"} */
-class Block_18058155735ef4542ad85263_69638925 extends Smarty_Internal_Block
+class Block_10686327075f3bd2f9ad4d01_40535733 extends Smarty_Internal_Block
 {
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
@@ -1224,22 +771,22 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 
 
   <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_11069859985ef4542ad85bb8_27421611', "wrapper", $this->tplIndex);
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_7085917405f3bd2f9ad5522_14816278', "wrapper", $this->tplIndex);
 ?>
 
 
   <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_6419126725ef4542adbc948_56833774', "modal-container", $this->tplIndex);
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_12892726025f3bd2f9b48732_99319853', "modal-container", $this->tplIndex);
 ?>
 
 
   <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_6494529325ef4542adbd616_58972348', "notification-container", $this->tplIndex);
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_18668325995f3bd2f9b49801_51895414', "notification-container", $this->tplIndex);
 ?>
 
 
   <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_6812145165ef4542adbe2a0_79314610', "js-container", $this->tplIndex);
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1158201865f3bd2f9b4aad6_71553383', "js-container", $this->tplIndex);
 ?>
 
       </body>
@@ -1248,96 +795,104 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_6812145165ef4542ad
 }
 /* {/block "body"} */
 /* {block "html_document"} */
-class Block_1658887545ef4542ad7cdf1_59284359 extends Smarty_Internal_Block
+class Block_8060477605f3bd2f9ace4b0_80924276 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'html_document' => 
   array (
-    0 => 'Block_1658887545ef4542ad7cdf1_59284359',
+    0 => 'Block_8060477605f3bd2f9ace4b0_80924276',
   ),
   'head' => 
   array (
-    0 => 'Block_15918933685ef4542ad7fe52_46586127',
+    0 => 'Block_12484110475f3bd2f9ad06a4_47653977',
   ),
   'css-container' => 
   array (
-    0 => 'Block_21191811155ef4542ad839c6_84700293',
+    0 => 'Block_16308863365f3bd2f9ad39c3_28252889',
   ),
   'body' => 
   array (
-    0 => 'Block_18058155735ef4542ad85263_69638925',
+    0 => 'Block_10686327075f3bd2f9ad4d01_40535733',
   ),
   'wrapper' => 
   array (
-    0 => 'Block_11069859985ef4542ad85bb8_27421611',
+    0 => 'Block_7085917405f3bd2f9ad5522_14816278',
   ),
   'sitebar-wrapper' => 
   array (
-    0 => 'Block_17059742775ef4542ad864f7_95187283',
+    0 => 'Block_16639821885f3bd2f9ad5cf1_29263161',
   ),
   'logo-container' => 
   array (
-    0 => 'Block_6389344345ef4542ad86df1_72215114',
+    0 => 'Block_12475103445f3bd2f9ad6aa9_49038123',
   ),
   'sitebar-menu' => 
   array (
-    0 => 'Block_14474324715ef4542ad8a135_26145166',
+    0 => 'Block_18569081355f3bd2f9add5b6_51202533',
   ),
   'menu-item' => 
   array (
-    0 => 'Block_20833459685ef4542ad90e14_85488588',
+    0 => 'Block_1424955175f3bd2f9ae9db7_09802307',
   ),
   'header' => 
   array (
-    0 => 'Block_20961559485ef4542ada86f2_15635374',
+    0 => 'Block_21331622165f3bd2f9b07623_52104773',
   ),
   'top-navbar' => 
   array (
-    0 => 'Block_9589230495ef4542ada9089_98394039',
+    0 => 'Block_1163207195f3bd2f9b08b95_23999705',
   ),
   'navigation-left' => 
   array (
-    0 => 'Block_18141545145ef4542ada9973_62092389',
+    0 => 'Block_11753518505f3bd2f9b0a1b9_94128634',
   ),
   'navigation-right' => 
   array (
-    0 => 'Block_2801703555ef4542adaace1_82233453',
+    0 => 'Block_13901900195f3bd2f9b0c068_15062158',
   ),
   'navigation-notifications' => 
   array (
-    0 => 'Block_958265905ef4542adab638_85997259',
+    0 => 'Block_8376334805f3bd2f9b0d078_33314278',
   ),
   'navigation-admin' => 
   array (
-    0 => 'Block_9865270135ef4542adac2f8_69958700',
+    0 => 'Block_12440995305f3bd2f9b0e545_69117926',
   ),
   'content-wrapper' => 
   array (
-    0 => 'Block_127733145ef4542adb0116_44132559',
+    0 => 'Block_11996955875f3bd2f9b14664_04611167',
   ),
   'container-content' => 
   array (
-    0 => 'Block_7925215395ef4542adb2d62_37578724',
+    0 => 'Block_1626594885f3bd2f9b2d127_03057045',
+  ),
+  'table-head' => 
+  array (
+    0 => 'Block_15294986925f3bd2f9b386d9_82611818',
+  ),
+  'table-body' => 
+  array (
+    0 => 'Block_18472716095f3bd2f9b39cf9_58438121',
   ),
   'footer' => 
   array (
-    0 => 'Block_15570129325ef4542adba6e1_79435887',
+    0 => 'Block_12144954695f3bd2f9b44a77_03328963',
   ),
   'right-sidebar' => 
   array (
-    0 => 'Block_9097253185ef4542adbb6a9_26241460',
+    0 => 'Block_1439748405f3bd2f9b46835_77799593',
   ),
   'modal-container' => 
   array (
-    0 => 'Block_6419126725ef4542adbc948_56833774',
+    0 => 'Block_12892726025f3bd2f9b48732_99319853',
   ),
   'notification-container' => 
   array (
-    0 => 'Block_6494529325ef4542adbd616_58972348',
+    0 => 'Block_18668325995f3bd2f9b49801_51895414',
   ),
   'js-container' => 
   array (
-    0 => 'Block_6812145165ef4542adbe2a0_79314610',
+    0 => 'Block_1158201865f3bd2f9b4aad6_71553383',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -1346,12 +901,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 <!DOCTYPE html>
 <html lang="en">
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_15918933685ef4542ad7fe52_46586127', 'head', $this->tplIndex);
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_12484110475f3bd2f9ad06a4_47653977', 'head', $this->tplIndex);
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_18058155735ef4542ad85263_69638925', "body", $this->tplIndex);
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_10686327075f3bd2f9ad4d01_40535733', "body", $this->tplIndex);
 ?>
 
 

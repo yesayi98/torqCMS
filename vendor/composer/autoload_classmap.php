@@ -788,6 +788,7 @@ return array(
     'Payments' => $baseDir . '/engine/Models/Payments.php',
     'PhpTestCaseProxy' => $baseDir . '/engine/Library/php-sql-query-builder-master/vendor/phpunit/phpunit/tests/Extensions/PhptTestCaseTest.php',
     'Plugin' => $baseDir . '/engine/Models/Plugin.php',
+    'Popup' => $baseDir . '/engine/Models/Popup.php',
     'Prophecy\\Argument' => $baseDir . '/engine/Library/php-sql-query-builder-master/vendor/phpspec/prophecy/src/Prophecy/Argument.php',
     'Prophecy\\Argument\\ArgumentsWildcard' => $baseDir . '/engine/Library/php-sql-query-builder-master/vendor/phpspec/prophecy/src/Prophecy/Argument/ArgumentsWildcard.php',
     'Prophecy\\Argument\\Token\\AnyValueToken' => $baseDir . '/engine/Library/php-sql-query-builder-master/vendor/phpspec/prophecy/src/Prophecy/Argument/Token/AnyValueToken.php',

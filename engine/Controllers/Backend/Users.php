@@ -27,7 +27,8 @@ class usersController extends BackendController
 
     if (!empty($user_id)) {
       $user = $usersModel->getUser($user_id);
-      $view->setAssign('customer', $user);
+      $user['orders'] = $this->__get('Orders')->getOrdersByUserId($user_id);
+      $view->setAssign('user', $user);
     }
   }
 
@@ -37,7 +38,7 @@ class usersController extends BackendController
     $usersModel = $this->__get('Users');
 
     $usersModel->deleteUser($user_id);
-    
+
     \Router::redirect('backend/users');
   }
 }

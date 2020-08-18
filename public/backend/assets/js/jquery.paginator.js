@@ -16,7 +16,7 @@ var paginator = {
         return;
       }
       event.preventDefault();
-      var dataUrl = $(this).parents('.pagination').parents(me.contentSelector).data('url');
+      var dataUrl = $(this).parents('.pagination').parents(me.contentSelector).first().data('url');
       var url = dataUrl ? dataUrl : window.location.href ;
 
       var hrefParams = new URLSearchParams($(this).attr('href'));
@@ -40,7 +40,7 @@ var paginator = {
       return ;
     }
     $.get(url, function(data) {
-      $(self).parents(me.contentSelector).html(data);
+      $(self).parents(me.contentSelector).first().html(data);
     });
   }
 }

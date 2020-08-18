@@ -855,6 +855,7 @@ class ComposerStaticInit76fb5bd4931c6fb46f2466a4f4630ca9
         'Payments' => __DIR__ . '/../..' . '/engine/Models/Payments.php',
         'PhpTestCaseProxy' => __DIR__ . '/../..' . '/engine/Library/php-sql-query-builder-master/vendor/phpunit/phpunit/tests/Extensions/PhptTestCaseTest.php',
         'Plugin' => __DIR__ . '/../..' . '/engine/Models/Plugin.php',
+        'Popup' => __DIR__ . '/../..' . '/engine/Models/Popup.php',
         'Prophecy\\Argument' => __DIR__ . '/../..' . '/engine/Library/php-sql-query-builder-master/vendor/phpspec/prophecy/src/Prophecy/Argument.php',
         'Prophecy\\Argument\\ArgumentsWildcard' => __DIR__ . '/../..' . '/engine/Library/php-sql-query-builder-master/vendor/phpspec/prophecy/src/Prophecy/Argument/ArgumentsWildcard.php',
         'Prophecy\\Argument\\Token\\AnyValueToken' => __DIR__ . '/../..' . '/engine/Library/php-sql-query-builder-master/vendor/phpspec/prophecy/src/Prophecy/Argument/Token/AnyValueToken.php',

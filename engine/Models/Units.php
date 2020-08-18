@@ -67,7 +67,7 @@
 			if (!$id) {
 				return false;
 			}
-			$query = Connection()->set($sql);
+			$query = $this->delete('units', $id);
 
 
 			return $query;

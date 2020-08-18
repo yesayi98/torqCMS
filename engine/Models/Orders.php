@@ -124,6 +124,23 @@
 
 			return $orders;
 		}
+		/*status id*/
+		public function getOrderByDeliveryStatusWithPagination($status, $limit = 25)
+		{
+			$status = intval($status);
+
+			$sql = "SELECT o.*, u.name, u.lastname, pm.name pm_name, os.name os_name, ds.name ds_name FROM orders o
+							LEFT JOIN users u ON u.id = o.user_id
+							LEFT JOIN order_status os ON os.id = o.order_status
+							LEFT JOIN delivery_status ds ON ds.id = o.delivery_status
+							LEFT JOIN payment_methods pm ON pm.id = o.payment_method
+							WHERE o.delivery_status = $status
+							ORDER BY o.id DESC";
+			$_GET['limit'] = $limit;
+			$orders = Connection()->query($sql);
+
+			return $orders;
+		}
 
 
 		public function getOrdersByUserId($user_id)
