@@ -3614,7 +3614,8 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 .product_carousel .product_thumb a img {
-  width: 100%;
+  width: auto;
+  height: 100%;
   margin: 0 auto;
 }
 @media only screen and (max-width: 767px) {
@@ -6995,11 +6996,11 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 .related_products {
-  margin-bottom: 60px;
+  margin-bottom: 25px;
 }
 @media only screen and (max-width: 767px) {
   .related_products {
-    margin-bottom: 50px;
+    margin-bottom: 25px;
   }
 }
 .related_products .section_title::before {
@@ -11555,4 +11556,17 @@ input[type=number]::-webkit-inner-spin-button {
 .message.warning {
   background: #ffaf00c9;
   color: #fff;
+}
+.box-minimal .primary_img {
+    height: 200px;
+    display: block;
+}
+.box-minimal .primary_img .image-component {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.box-minimal .primary_img .image-component .image-container {
+    height: 100%;
 }

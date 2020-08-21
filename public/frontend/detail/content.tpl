@@ -1,6 +1,6 @@
 
     <!--product details start-->
-    <div class="product_details mt-70 mb-70">
+    <div class="product_details mt-5 mb-5">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-md-6">
@@ -54,11 +54,17 @@
 
                             {block name='button-group'}
                             <div class="product_d_action">
-                                 <ul>
-                                      <li class="wishlist{if $product.wished} wished{/if}">
+                                 <ul class="navbar-nav">
+                                      <li class="nav-item wishlist{if $product.wished} wished{/if} my-1">
                                         <a href="{url url='wishlist/add?a='|cat:$product.id}" title="{translator selector='wished'}" class="btn btn-outline-success btn-circle is-icon-left" data-wishlist="true">
                                           <span class="icon"><i class="lnr lnr-heart"></i></span>
                                           <span> {translator selector='wished'}</span>
+                                        </a>
+                                      </li>
+                                      <li class="nav-item compare my-1">
+                                        <a href="{url url='compare/add?a='|cat:$product.id}" title="{translator selector='wished'}" class="btn btn-outline-success btn-circle is-icon-left">
+                                          <span class="icon"><i class="ti ti-control-shuffle"></i></span>
+                                          <span> {translator selector='compare'}</span>
                                         </a>
                                       </li>
                                  </ul>

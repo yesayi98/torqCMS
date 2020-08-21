@@ -53,7 +53,7 @@ class categoryController extends Controller
       // filter attributes
       $suppliers = $this->__get('Supplier')->getSuppliersByCategory($category_id);
 
-      $filterGroups = $this->__get('Filters')->getFilterList();
+      $filterGroups = $this->__get('Filters')->getFilters();
       $filters;
       foreach ($filterGroups as $filterGroup) {
         $filters[] = $this->getFiltersByGroupName($filterGroup);
@@ -240,7 +240,7 @@ class categoryController extends Controller
     $title = $this->View()->translating('searchby').' '.$search;
     $categoryList = $this->getCategoryList(1);
     $category = $this->__get('Categories')->getCategoryById($category);
-    $filterGroups = $this->__get('Filters')->getFilterList();
+    $filterGroups = $this->__get('Filters')->getFilters();
     $filters;
     foreach ($filterGroups as $filterGroup) {
       $filters[] = $this->getFiltersByGroupName($filterGroup);
@@ -272,7 +272,7 @@ class categoryController extends Controller
   */
   private function getGroupsByRequest($groupContexts)
   {
-    $filterGroups = $this->__get('Filters')->getFilterList();
+    $filterGroups = $this->__get('Filters')->getFilters();
     $filters;
     foreach ($filterGroups as $filterGroup) {
       $filters[] = $this->getFiltersByGroupName($filterGroup, false);
@@ -296,7 +296,7 @@ class categoryController extends Controller
   */
   private function getPropertiesByRequest($propertyContexts)
   {
-    $filterGroups = $this->__get('Filters')->getFilterList();
+    $filterGroups = $this->__get('Filters')->getFilters();
     $filters;
     foreach ($filterGroups as $filterGroup) {
       $filters[] = $this->getFiltersByPropertyName($filterGroup, false);

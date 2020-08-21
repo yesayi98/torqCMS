@@ -21,11 +21,16 @@
   </div>
   <div class="col-12 col-lg-6 col-xl-6">
     <div class="form-group row">
-      <div class="col-10">
-        <input type="text" class="form-control" value="{$option.value}" disabled>
-      </div>
-      <div class="col-2">
-        <button type="button" class="btn btn-danger deleteDetailOption" data-url="{url url='backend/articles/deleteOption?o='|cat:$option.id}" name="button"><i class="fa fa-trash"></i></button>
+      <div class="col-12">
+        <div class="article-categories">
+          {foreach from=$option.values item=$value key='key' name='name'}
+            <div class="added-category-container">
+              <span class="added-category-text">{$value.value}</span>
+              <input class="added-category-input" type="hidden" value="{$value.id}">
+              <button class="added-category btn btn-danger" data-ajaxsend="true" type="button" data-url="{url url='backend/articles/deleteRelation'}"><i class="ti-close"></i></button>
+            </div>
+          {/foreach}
+        </div>
       </div>
     </div>
   </div>

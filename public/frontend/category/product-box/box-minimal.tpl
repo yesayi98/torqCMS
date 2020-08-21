@@ -6,13 +6,17 @@
             <div class="product-img">
                 {block name='image-link'}
                 <a class="primary_img" href="{url url='detail?a='|cat:$product.id}">
-                  {if $product.images.0.thumbnails.0}
-                  <img src="{$product.images.0.thumbnails.1.thumb_path}" alt="{$product.name}">
-                  {elseif $product.images.0}
-                  <img src="{$product.images.0.path}" alt="{$product.name}">
-                  {else}
-                  <img src="{$notFoundPath}" alt="{$product.name}">
-                  {/if}
+                  <span class="image-component">
+                    <span class="image-container">
+                      {if $product.images.0.thumbnails.0}
+                      <img src="{$product.images.0.thumbnails.1.thumb_path}" alt="{$product.name}">
+                      {elseif $product.images.0}
+                      <img src="{$product.images.0.path}" alt="{$product.name}">
+                      {else}
+                      <img src="{$notFoundPath}" alt="{$product.name}">
+                      {/if}
+                    </span>
+                  </span>
                 </a>
                 {/block}
                 {block name='button-group'}

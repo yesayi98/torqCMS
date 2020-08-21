@@ -13,6 +13,7 @@ class Articles extends \Model
   private $articleImages;
   private $articleCategories;
   private $wishlist = array();
+  public $ArticleOptions;
 
   function __construct($container)
   {
@@ -22,12 +23,18 @@ class Articles extends \Model
     $this->articleCategories = $this->ArticleCategories();
     $wishlistModel = new \Wishlist($container);
     $this->wishlist = $wishlistModel->getProductsBySession();
+    $this->ArticleOptions = new \Options($container);
   }
 
 
   public function ArticleImages()
   {
     return new ArticleImages($this->container);
+  }
+
+  public function ArticleOptions()
+  {
+    return $this->ArticleOptions;
   }
 
   public function ArticleCategories()
@@ -711,41 +718,6 @@ public function deletePopularArticle($id)
       return $article[$type];
   }
 
-  public function setArticleOptions($article_id, $options)
-  {
-    if(!$article_id || !$options){
-      return;
-    }
-    $sql = 'INSERT INTO article_options (
-                `name`,
-                `value`,
-                `article_id`
-             ) VALUES ';
-    foreach ($options as $key => $option) {
-      $article_id = $article_id;
-      $name = $option['name'];
-      $value = $option['value'];
-      $sql .= "(
-                 '$name',
-                 '$value',
-                 '$article_id'
-               )";
-
-        if ($option != end($options)) {
-          $sql .= ', ';
-        }
-    }
-    if($sql == ''){
-      return false;
-    }
-
-    $sql .= ";";
-
-    $query = Connection()->set($sql);
-
-    return $query;
-  }
-
   public function getArticleReviews()
   {
     $rewiews = Connection()->getList('article_comments');
@@ -758,9 +730,11 @@ public function deletePopularArticle($id)
       return;
     }
 
-    $sql = "SELECT * FROM article_options WHERE article_id = '$article_id'";
+    // $sql = "SELECT * FROM article_options WHERE article_id = '$article_id'";
 
-    $options = Connection()->fetchAll($sql);
+    $options = $this->ArticleOptions->getArticleOptions($article_id);
+
+    // $options = Connection()->fetchAll($sql);
 
     return $options;
   }

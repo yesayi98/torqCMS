@@ -63,35 +63,21 @@ function smarty_function_action($params, $template)
       $url .= $params['action'];
   }
 
-  $url = BASE_URL.'/'.$url;
+  // $url = BASE_URL.'/'.$url;
 
   $data = array();
   $data['widget'] = true;
   $data['lang'] = $_SESSION['lang'];
   $data['session_id'] = session_id();
+  $data['csrf'] = Container()->getSession('csrf');
 
   if ($params) {
       $data['params'] = $params;
   }
-  $postData = http_build_query($data);
-	// use key 'http' even if you send the request to https://...
-  $header = array(
-            "Content-Type: application/x-www-form-urlencoded",
-            "Content-Length: ".strlen($postdata)
-        );
-	$options = array(
-    "ssl"=>array(
-        "verify_peer"=>false,
-        "verify_peer_name"=>false,
-    ),
-    PROTOCOL => array(
-		    'method'  => 'POST',
-		    'header'  => implode("\r\n", $header),
-		    'content' => $postData
-    ),
-  );
-	$context  = stream_context_create($options);
-	return $result = file_get_contents($url, false, $context);
+  $_POST = $data;
+  $_GET['route'] = $url;
+
+  Router::start($_GET);
 }
 
 /*

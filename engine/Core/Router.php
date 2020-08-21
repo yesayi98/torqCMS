@@ -31,7 +31,9 @@ use Core\Compiller\ScssCompiller;
       $controller = self::getController($route);
       $action = $route['action'];
       // get controller file
-      include $controller['file'];
+      if (!in_array($controller['file'], get_included_files())) {
+        include $controller['file'];
+      }
 
       $controllerClassName = $controller['name'];
       // check ingnoreCSRF statemant
@@ -176,7 +178,7 @@ use Core\Compiller\ScssCompiller;
       $controllerFileName = ucfirst($route['controller']);
       $controllerClassName = $route['controller'].'Controller';
 
-      $controller['file'] = self::getFile($controllerFileName, $controllerBasePath);
+      $controller['file'] = realpath(self::getFile($controllerFileName, $controllerBasePath));
       $controller['name'] = $controllerClassName;
       if (!$controller['file']) {
         self::redirect('error');

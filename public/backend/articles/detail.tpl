@@ -149,7 +149,7 @@
                          <select class="form-control category-selector search-select">
                            <option value="">Select Category</option>
                            {foreach $categories as $category}
-                            <option value="{$category.id}">{$category.id}: {$category.name}</option>
+                              <option value="{$category.id}">{$category.id}: {$category.name}</option>
                            {/foreach}
                          </select>
                        </div>
@@ -348,7 +348,12 @@
                     <div class="form-group row">
                       <label class="col-12 col-form-label">Key</label>
                       <div class="col-12">
-                        <input type="text" name="name" class="form-control" value="">
+                        <select class="form-control option-select search-select" name="option_id" data-url={url url="backend/articles/getvalues"} data-save_option="{url url="backend/articles/saveOption"}">
+                          <option value="">Select Option</option>
+                          {foreach from=$options item=$option key=key name=name}
+                             <option value="{$option.name}" data-id="{$option.id}" data-position="{$key}">{$option.name}</option>
+                          {/foreach}
+                        </select>
                       </div>
                     </div>
                   </div>
@@ -356,7 +361,10 @@
                     <div class="form-group row">
                       <label class="col-12 col-form-label">Value</label>
                       <div class="col-12">
-                        <input type="text" name="value" class="form-control" value="">
+                        <select class="form-control value-select search-select" name="value_id" data-save_option="{url url="backend/articles/saveValue"}">
+                          <option value="">Select Value</option>
+
+                        </select>
                       </div>
                     </div>
                   </div>
@@ -387,5 +395,7 @@
   <script src="{$BASE_BACKEND}assets/js/jquery.detail.js"></script>
   <!-- ckeditor initer -->
   <script src="{$BASE_BACKEND}assets/js/jquery.editor.js"></script>
+  <!-- option js -->
+  <script src="{$BASE_BACKEND}assets/js/jquery.options.js"></script>
 
 {/block}

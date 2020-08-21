@@ -71,7 +71,7 @@ abstract class Model
 
   protected function getTableColumns($tablename, $getId = false)
   {
-    $db = DB_DATABASE;
+    $db = $GLOBALS['db']['db_name'];
     if (!$tablename) {
       return;
     }

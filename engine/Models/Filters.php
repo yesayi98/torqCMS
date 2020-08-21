@@ -11,7 +11,24 @@ class Filters extends Model
    */
   public function getFilterList()
   {
-    return $this->getList('filter_groups', 'all');
+    return $filters = $this->getList('filter_groups');
+  }
+
+  /**
+   * @return array $filters
+   */
+  public function getFilters()
+  {
+    return $filters = $this->getList('filter_groups', 'all');
+  }
+
+  /**
+   * @param int $filterID
+   * @return array $filter
+   */
+  public function getFilter($filterID)
+  {
+    return $filter = $this->get('filter_groups', $filterID);
   }
 }
 

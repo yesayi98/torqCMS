@@ -24,26 +24,86 @@ class articlesController extends BackendController
     $article_id = $this->getRequest()->get['a'];
     $units = $this->__get('Units')->getUnitList();
     $categories = $this->__get('Categories')->getCategoryList();
+    $options = $this->__get('Articles')->ArticleOptions()->getOptionList();
 
     if (!empty($article_id)) {
       $article = $this->__get('Articles')->getArticleById($article_id);
       $this->View()->setAssign('article', $article);
       $translations = $this->__get('Articles')->ArticleTranslation()->getArticleTranslation($article_id);
       $this->View()->setAssign('translations', $translations);
-
       array_walk($categories, array($this, 'unsetCategory'), $article['category_id']);
       $categories = $this->categories;
     }
 
+    $this->View()->setAssign('options', $options);
     $this->View()->setAssign('categories', $categories);
     $this->View()->setAssign('units', $units);
   }
 
-  public function unsetCategory(&$value, $key, $categories = [])
+  private function unsetCategory(&$value, $key, $categories = [])
   {
     if (!in_array($value['id'] , array_column($categories, 'id'))) {
       $this->categories[] = $value;
     }
+  }
+
+  // action get values
+  public function getvalues()
+  {
+    $option_id = $this->getRequest()->get['id'];
+    $values = $this->__get('Articles')->ArticleOptions()->getOptionValues($option_id);
+    if (empty($values[0])) {
+      $realValues[0] = $values;
+      $values = $realValues;
+    }
+
+    die(json_encode([
+        'option_id' => $option_id,
+        'values' => $values,
+      ]
+    ));
+  }
+
+  public function saveOption()
+  {
+    $request = $this->getRequest()->request;
+
+    $option['name'] = $request['name'];
+    $option['filterable'] = 0;
+    $success = $this->__get('Articles')->ArticleOptions()->setOption($option);
+
+    $option['id'] = Connection()->getInsertedId();
+    if (!$success) {
+      $message = Connection()->getError();
+    }else{
+      $message = 'success';
+    }
+    die(json_encode([
+      'success' => $success,
+      'option' => $option,
+      'message' => $message,
+    ]));
+  }
+
+  public function saveValue()
+  {
+    $request = $this->getRequest()->request;
+
+    $optionValue['value'] = $request['value'];
+    $optionValue['option_id'] = $request['option_id'];
+    $success = $this->__get('Articles')->ArticleOptions()->setOptionValue($optionValue);
+
+    $optionValue['id'] = Connection()->getInsertedId();
+    if (!$success) {
+      $message = Connection()->getError();
+    }else{
+      $message = 'success';
+    }
+    die(json_encode([
+      'success' => $success,
+      'option' => $optionValue,
+      'message' => $message,
+    ]));
   }
 
   public function save()
@@ -206,6 +266,38 @@ class articlesController extends BackendController
 
   }
 
+  public function saveOptions()
+  {
+    $request = $this->getRequest()->request;
+
+    $relation = array();
+    $relation['article_id'] = $request['article_id'];
+    $relation['value_id'] = $request['value_id'];
+    if (!empty($relation['value_id']) && !empty($relation['article_id'])) {
+      $success = $this->saveOptionRelation($relation);
+      // $message = $this->saveOptionRelation($relation);
+      if (!$success) {
+        $message = Connection()->getError();
+      }else{
+        $message = 'success';
+      }
+    }else{
+      $success = false;
+      $message = "empty value";
+    }
+
+    die(json_encode([
+      'success' => $success,
+      'message' => $message
+    ]));
+  }
+
+  public function deleteRelation()
+  {
+    $request = $this->getRequest()->request;
+    var_dump($request);exit;
+  }
+
   private function saveTranslation($translations)
   {
     $article_id = $translations['article_id'];
@@ -233,20 +325,18 @@ class articlesController extends BackendController
     }
   }
 
-  public function saveOptions()
+  public function saveOptionRelation($relation)
   {
-    $request = $this->getRequest()->request;
-    $article_id = $request['article_id'];
-    $options[0]['name'] = $request['name'];
-    $options[0]['value'] = $request['value'];
-    $query = $this->__get('Articles')->setArticleOptions($article_id, $options);
+    $optionModel = $this->__get('Articles')->ArticleOptions();
 
-    die(json_encode(
-        array(
-          'success' => $query,
-          'message' => Connection()->getError()?Connection()->getError():'success',
-        )
-      ));
+    /**
+    * @var bool $exist
+    */
+    $exist = $optionModel->checkIfRelationExist($relation);
+    if (!$exist) {
+      return $optionModel->setOptionRelation($relation);
+    }
+    return false;
   }
 
   public function options()
@@ -259,6 +349,7 @@ class articlesController extends BackendController
     $article['id'] = $article_id;
     $this->View()->setAssign('article', $article);
   }
+
   public function deleteOption()
   {
     $option_id = $this->getRequest()->get['o'];
