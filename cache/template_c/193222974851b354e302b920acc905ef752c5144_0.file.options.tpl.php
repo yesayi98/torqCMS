@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-08-21 17:05:17
+/* Smarty version 3.1.34-dev-7, created on 2020-08-22 10:43:33
   from 'C:\Users\User\OSPanel\domains\torq\public\backend\articles\options.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f3fd49dd76c58_84222552',
+  'unifunc' => 'content_5f40cca5bcb3c7_25261622',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '193222974851b354e302b920acc905ef752c5144' => 
     array (
       0 => 'C:\\Users\\User\\OSPanel\\domains\\torq\\public\\backend\\articles\\options.tpl',
-      1 => 1598018716,
+      1 => 1598082212,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f3fd49dd76c58_84222552 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f40cca5bcb3c7_25261622 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="row">
   <div class="col-12 col-lg-6 col-xl-6">
     <div class="form-group row">
@@ -64,9 +64,9 @@ $_smarty_tpl->tpl_vars['value']->do_else = false;
             <div class="added-category-container">
               <span class="added-category-text"><?php echo $_smarty_tpl->tpl_vars['value']->value['value'];?>
 </span>
-              <input class="added-category-input" type="hidden" value="<?php echo $_smarty_tpl->tpl_vars['value']->value['id'];?>
-">
-              <button class="added-category btn btn-danger" data-ajaxsend="true" type="button" data-url="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['url'][0], array( array('url'=>'backend/articles/deleteRelation'),$_smarty_tpl ) );?>
+              <button class="option-relation-deleter btn btn-danger ml-1 p-0" data-value_id=<?php echo $_smarty_tpl->tpl_vars['value']->value['id'];?>
+ data-article_id=<?php echo $_smarty_tpl->tpl_vars['article']->value['id'];?>
+ data-ajaxsend="true" type="button" data-url="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['url'][0], array( array('url'=>'backend/articles/deleteRelation'),$_smarty_tpl ) );?>
 "><i class="ti-close"></i></button>
             </div>
           <?php

@@ -26,8 +26,7 @@
           {foreach from=$option.values item=$value key='key' name='name'}
             <div class="added-category-container">
               <span class="added-category-text">{$value.value}</span>
-              <input class="added-category-input" type="hidden" value="{$value.id}">
-              <button class="added-category btn btn-danger" data-ajaxsend="true" type="button" data-url="{url url='backend/articles/deleteRelation'}"><i class="ti-close"></i></button>
+              <button class="option-relation-deleter btn btn-danger ml-1 p-0" data-value_id={$value.id} data-article_id={$article.id} data-ajaxsend="true" type="button" data-url="{url url='backend/articles/deleteRelation'}"><i class="ti-close"></i></button>
             </div>
           {/foreach}
         </div>

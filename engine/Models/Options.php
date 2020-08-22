@@ -67,16 +67,16 @@ class Options extends Model
     return $query;
   }
 
-  public function checkIfRelationExist($relation)
+  public function getRelationID($relation)
   {
 
     $relationValue = $relation['value_id'];
     $relationArticle = $relation['article_id'];
 
-    $sql = "SELECT * FROM article_options_relations WHERE article_id = $relationArticle AND value_id = $relationValue";
+    $sql = "SELECT id FROM article_options_relations WHERE article_id = $relationArticle AND value_id = $relationValue";
 
     $result = Connection()->fetchOne($sql);
-    return $result?true:false;
+    return $result['id'];
   }
 
   public function getOptionValueID($value)

@@ -1,6 +1,8 @@
 window.optionSystem = {
+  content: '*[data-content="true"]',
   valueSelectField: '.value-select',
   valueSelectFieldInput: '.select2-search__field',
+  articleOptionRelationDeleter: '.option-relation-deleter',
   response: [],
 
   init: function () {
@@ -14,6 +16,7 @@ window.optionSystem = {
 
     me.onNonExistOptionChange();
     me.onNonExistValueChange();
+    me.onOptionRelationDelete();
   },
 
   onNonExistValueChange: function () {
@@ -111,6 +114,30 @@ window.optionSystem = {
     });
 
     return me.response;
+  },
+
+  onOptionRelationDelete: function() {
+    var me = this;
+
+    $(document).on('click', me.articleOptionRelationDeleter, function() {
+      var data = $(this).data();
+      // console.log($(this).data());
+      url = data.url;
+      data.url = undefined;
+
+      var response = me.sendRequest(url, data, true);
+      if (response.success) {
+        round_success_noti(response.message);
+
+        var content = $(this).parents(me.content).first();
+        var url = content.data('url');
+        $.get(url, function(response) {
+          content.html(response);
+        });
+      }else{
+        round_error_noti(response.message)
+      }
+    });
   },
 
   changeSelectFieldValues: function (data) {

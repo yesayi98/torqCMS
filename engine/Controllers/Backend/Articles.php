@@ -295,7 +295,32 @@ class articlesController extends BackendController
   public function deleteRelation()
   {
     $request = $this->getRequest()->request;
-    var_dump($request);exit;
+
+    $optionModel = $this->__get('Articles')->ArticleOptions();
+
+    $relation['value_id'] = $request['value_id'];
+    $relation['article_id'] = $request['article_id'];
+    /**
+    * @var int $id
+    */
+    $id = $optionModel->getRelationID($relation);
+
+    if (!empty($id)) {
+      $success = $optionModel->deleteOptionRelation($id);
+      if (!$success) {
+        $message = Connection()->getError();
+      }
+    }else{
+      $success = false;
+      $message = 'Current ID not exist';
+    }
+
+    die(json_encode(
+        array(
+          'success' => $success,
+          'message' => $message,
+        )
+      ));
   }
 
   private function saveTranslation($translations)
@@ -330,9 +355,9 @@ class articlesController extends BackendController
     $optionModel = $this->__get('Articles')->ArticleOptions();
 
     /**
-    * @var bool $exist
+    * @var int $exist
     */
-    $exist = $optionModel->checkIfRelationExist($relation);
+    $exist = $optionModel->getRelationID($relation);
     if (!$exist) {
       return $optionModel->setOptionRelation($relation);
     }
