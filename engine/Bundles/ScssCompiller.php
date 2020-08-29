@@ -1,5 +1,5 @@
 <?php
-namespace Core\Compiller;
+namespace Bundles\Compiller;
 use Leafo\ScssPhp\Compiler;
 /**
  *

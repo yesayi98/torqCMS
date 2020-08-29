@@ -187,7 +187,7 @@ class Categories extends Model
     $slug = '';
     foreach ($paths as $key => $value) {
       $categoryName = $this->getCategoryById($value)['name'];
-      $slug .= SlugConverter::slug($categoryName).'/';
+      $slug .= Bundles\SlugConverter::slug($categoryName).'/';
     }
 
     $params = 'route=category&c='.end($paths);

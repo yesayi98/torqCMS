@@ -1,6 +1,6 @@
 <?php
-use Core\Compiller\ScssCompiller;
-use Core\Compiller\JsCompiller;
+use Bundles\Compiller\ScssCompiller;
+use Bundles\Compiller\JsCompiller;
 
 /**
  *
@@ -30,6 +30,31 @@ class cacheController extends BackendController
     if (!$jsCompilled) {
       $success = false;
       $message = 'js file not created or not compilled';
+    }
+    // tell some message on finish the proccess
+    die(json_encode(array(
+      'success' => $success,
+      "message" => $message
+    )));
+  }
+
+  public function updateUrls()
+  {
+    $categories = $this->__get('Categories')->getCategoryList();
+    foreach ($categories as $category) {
+      $this->__get('Categories')->runSlugMaker($category['path']);
+      $message = Connection()->getError();
+    }
+    $articles = $this->__get('Articles')->getArticleList('all');
+    foreach ($articles as $article) {
+      $this->__get('Articles')->runSlugMaker($article['id']);
+      $message = Connection()->getError();
+    }
+    if ($message) {
+      $success = false;
+    }else{
+      $success = true;
+      $message = 'done';
     }
     // tell some message on finish the proccess
     die(json_encode(array(

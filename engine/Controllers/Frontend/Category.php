@@ -1,4 +1,6 @@
 <?
+use Bundles\Search\ArticleSearchBundle;
+
 /**
  * category Controller
  */
@@ -190,9 +192,9 @@ class categoryController extends Controller
     $context['search'] = strtolower($request['search']);
     $context['sortType'] = $sortType;
     //getting Articles
-    $articleModel = $this->__get('Articles');
-    $articleModel->createQueryByContext($context);
-    $products = $articleModel->getArticlesByQuery();
+    $queryBundle = new ArticleSearchBundle($context)
+    $query = $queryBundle->getQueryByContext();
+    $products = $articleModel->getArticlesByQuery($query);
 
     $productCount = $products['total'];
 
