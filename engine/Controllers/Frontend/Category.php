@@ -76,6 +76,12 @@ class categoryController extends Controller
 
     $builder = $this->Articles->getQueryBuilder();
     $query = $builder->select()->setTable('article_options_relations');
+                     $query->leftJoin(
+                         'articles', //join table
+                         'article_id', //origin table field used to join
+                         'id', //join column
+                      )->where()
+                      ->equals('active', 1);
                       $query->leftJoin(
                           'article_category', //join table
                           'article_id', //origin table field used to join
@@ -89,10 +95,10 @@ class categoryController extends Controller
     foreach ($filters as $fil_key => $filter) {
       foreach ($filter['option']['values'] as $key => $value) {
         if (!in_array($value['id'], $valueIds)) {
-          unset($filter['option']['values'][$key]);
+          unset($filters[$fil_key]['option']['values'][$key]);
         }
       }
-      if (empty($filter['option']['values'])) {
+      if (empty($filters[$fil_key]['option']['values'])) {
         unset($filters[$fil_key]);
       }
     }
