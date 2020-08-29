@@ -43,7 +43,7 @@
     $_POST = [];
     header('location: '.$_SERVER['HTTP_HOST']);
   }elseif (!empty($_POST)) {
-    include __DIR__.'/config.php';
+    include realpath(__DIR__.'/../config.php');
     // set default admin
     $name = htmlspecialchars(trim($_POST['name']));
     $email = htmlspecialchars(trim($_POST['email']));
