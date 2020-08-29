@@ -1,6 +1,7 @@
 <?php
  if (!empty($_POST) && !is_file('lock.txt')) {
-    $db_configs = "// you can change there only db configs
+    $db_configs = "<?php
+    // you can change there only db configs
     // this file generating in installation process with your configs puted in the input form you will see in the installation
     \$db = [
       'timezone' => '".$_POST['TIMEZONE']."',
@@ -10,7 +11,7 @@
       'db_password' => '".$_POST['DB_PASSWORD']."',
       'db_name' => '".$_POST['DB_DATABASE']."',
       'db_port' => '".$_POST['DB_PORT']."'
-    ]";
+    ];";
 
     $file_path = fopen($_SERVER['DOCUMENT_ROOT'].'/config.php', 'a');
     fwrite($file_path, $db_configs);
@@ -42,14 +43,14 @@
     $_POST = [];
     header('location: '.$_SERVER['HTTP_HOST']);
   }elseif (!empty($_POST)) {
-    include 'config.php';
+    include __DIR__.'/config.php';
     // set default admin
     $name = htmlspecialchars(trim($_POST['name']));
     $email = htmlspecialchars(trim($_POST['email']));
     $username = htmlspecialchars(trim($_POST['username']));
     $password = md5(trim($_POST['password']));
     $admin_group = htmlspecialchars(trim($_POST['admin_group']));
-    $connection = new mysqli(DB_HOSTNAME, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
+    $connection = new mysqli($db['db_hostname'], $db['db_username'], $db['db_password'], $db['db_name']);
     // Check connection
     if ($connection->connect_error) {
       die("Connection failed: " . $connection->connect_error);
