@@ -13,7 +13,7 @@ return array(
       "public/frontend/assets/css/style.css",
     ],
   'scss' => [
-
+      "public/frontend/assets/scss/style.scss",
     ],
   'js' => [
     "public/frontend/assets/plugins/pubSub/jquery.pubSub.js",

@@ -844,4 +844,109 @@
       $(".filter-container").slideToggle();
     })
 
+    jQuery(document).ready(function($) {
+      if (window.route.controller == 'detail') {
+        // OVERCOMPLICATED VERSION: https://codepen.io/Betich/pen/XWmOaRE
+
+        var hues = [90, 100, 114, 134, 144]; // Color Scheme based on hue
+
+        $(document).ready(function() {
+          var stars = $(".star");
+        	var rating = parseInt($("#ratingInput").val());
+        	const ratingPreview = $("#ratingVal");
+
+          var Star = {
+            onClicked: function() {
+        			// Determine Input Value
+        		$("#ratingInput").val($(this).attr("star-rating"));
+        			rating = parseInt($("#ratingInput").val());
+
+        			// Assign Colors
+              $(this).siblings()
+        				.filter(".star").removeClass("clickedStars"); // Reset Color
+              assignColor(hues[rating - 1], "Color");
+              $(this).prevAll().addBack().addClass("clickedStars");
+            },
+
+            onHovered: function() {
+              const currIndex = $(this).index();
+
+        			// If the hovered star is higher than the clicked star,
+        			// Assign the current star's color value to all stars
+        			var ratingIdx = rating - 1; // Rating Index
+              if (currIndex > ratingIdx) {
+                assignColor(hues[currIndex], "Color");
+              }
+
+              $(this).prevAll().addBack().addClass("hoveredStars");
+
+        			let hovRating = parseInt($(this).attr("star-rating"));
+            },
+
+        		unHover: function() {
+        			// Reset Color
+            	$(this).prevAll().addBack()
+              	.removeClass("hoveredStars");
+        			assignColor(hues[rating - 1], "Color");
+
+          	}
+          };
+
+        	/* INIT: Set up stars beforehand */
+        	init(stars, rating);
+
+        	/* Star Events */
+          stars.click(Star.onClicked);
+          stars.hover(Star.onHovered, Star.unHover);
+        });
+
+        // Functions
+
+        function init(obj, initRating) {
+
+        	initRating--; // Convert to Array Index
+        	let initStar = obj.get(initRating);
+
+        	// Assign Colors
+          $(initStar).siblings()
+        		.filter(".star").removeClass("clickedStars"); // Reset Color
+          assignColor(hues[initRating], "Color");
+          $(initStar).prevAll().addBack().addClass("clickedStars");
+        }
+
+        function assignColor(hue, assignedVar) {
+          const sat = "65%",
+            		val = "45%"; // Saturation & Value
+          document.documentElement.style.setProperty(
+            "--" + assignedVar,
+            "hsl(" + hue + "," + sat + "," + val + ")"
+          );
+        }
+      }
+
+      // ajax forms
+      $("*[data-ajax='true']").submit(function(event) {
+        event.preventDefault();
+        var url = $(this).attr('action');
+        var method = $(this).attr('method');
+        var data = $(this).serializeArray();
+        var dataType = $(this).attr('datatype');
+
+        $.ajax({
+          url: url,
+          method: method,
+          dataType: dataType,
+          data: data,
+          success: function (response) {
+            if (response.success) {
+              $.fn.round_success_noti(response.message);
+            }else{
+              $.fn.round_error_noti(response.message);
+            }
+            $.publish('main/formSubmited', [$(this), response]);
+          }
+        })
+      });
+    });
+
 })(jQuery);

@@ -39,31 +39,29 @@
                    <input type="hidden" name="price[max]" id="max-price" value='{$maxPrice}'>
                  </div>
                  <input type="hidden" name="search" value="{$search}">
+                 <input type="hidden" name="sort" value="{$sort}" id="sorting_input">
                  <input type="hidden" name="c" value="{$category.id}">
              </form>
          </div>
-
-         {foreach from=$filters item=$filter key=$item}
          <div class="widget_list widget_color">
-              <h3>{$filter.filter_name}</h3>
+              <h3>{translator selector='suppliers'}</h3>
               <ul>
-                {foreach from=$filter.filter_values item=$filter_item key=$key}
+                {foreach from=$suppliers item=$supplier key=$key}
                 <li>
-                    <input type="checkbox" data-filter="true" id="fil_{$item}_{$key}" name="group[]" value="{$item}_{$key}" form="filter_form">
-                    <label for="fil_{$item}_{$key}"><a href="javascript:void(0)">{$filter_item.value}</a></label>
+                    <input type="checkbox" {if in_array($supplier.id, $context.suppliers)}checked{/if} data-filter="true" id="fil_supplier_{$key}" name="suppliers[]" value="{$supplier.id}" form="filter_form">
+                    <label for="fil_supplier_{$key}"><a href="javascript:void(0)">{$supplier.name}</a></label>
                 </li>
                 {/foreach}
               </ul>
           </div>
-         {/foreach}
-         {foreach from=$properties item=$property key=$item}
+         {foreach from=$filters item=$filter key=$item}
          <div class="widget_list widget_color">
-              <h3>{$property.filter_name}</h3>
+              <h3>{$filter.option.name}</h3>
               <ul>
-                {foreach from=$property.filter_values item=$filter_item key=$key}
+                {foreach from=$filter.option.values item=$value key=$key}
                 <li>
-                    <input type="checkbox" data-filter="true" id="fil_{$item}_{$key}" name="properties[]" value="{$item}_{$key}" form="filter_form">
-                    <label for="fil_{$item}_{$key}"><a href="javascript:void(0)">{$filter_item.value}</a></label>
+                    <input type="checkbox" {if in_array($value.id, $context.options)}checked{/if} data-filter="true" id="fil_{$item}_{$key}" name="options[]" value="{$value.id}" form="filter_form">
+                    <label for="fil_{$item}_{$key}"><a href="javascript:void(0)">{$value.value}</a></label>
                 </li>
                 {/foreach}
               </ul>

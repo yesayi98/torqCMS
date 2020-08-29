@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-15 09:50:43
+/* Smarty version 3.1.34-dev-7, created on 2020-08-28 15:11:49
   from 'C:\Users\User\OSPanel\domains\torq\public\frontend\category\listing.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ee71a4333e325_35922233',
+  'unifunc' => 'content_5f48f485857ec4_18670618',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '62ca2be0266977dc0428b63de6c91bb088bc3380' => 
     array (
       0 => 'C:\\Users\\User\\OSPanel\\domains\\torq\\public\\frontend\\category\\listing.tpl',
-      1 => 1590230868,
+      1 => 1598616708,
       2 => 'file',
     ),
   ),
@@ -21,31 +21,31 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:frontend/category/product-box/box-minimal.tpl' => 1,
   ),
 ),false)) {
-function content_5ee71a4333e325_35922233 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f48f485857ec4_18670618 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, false);
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_10907738395ee71a4331fe74_36192299', 'top-toolbar');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_4587295205f48f4858360f7_98980649', 'top-toolbar');
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_3957602905ee71a43337272_04594034', 'product-list');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1322099995f48f48584c8e2_91109293', 'product-list');
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_17682800365ee71a4333c126_38780352', 'bottom-toolbar');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1928000285f48f4858561b7_95546824', 'bottom-toolbar');
 ?>
 
 <!--shop toolbar end-->
 <?php }
 /* {block 'top-toolbar'} */
-class Block_10907738395ee71a4331fe74_36192299 extends Smarty_Internal_Block
+class Block_4587295205f48f4858360f7_98980649 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'top-toolbar' => 
   array (
-    0 => 'Block_10907738395ee71a4331fe74_36192299',
+    0 => 'Block_4587295205f48f4858360f7_98980649',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -63,22 +63,20 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
     <div class=" niceselect_option">
         <div class="select_option">
             <select name="sortby">
-                <option <?php if (!$_smarty_tpl->tpl_vars['sort']->value || $_smarty_tpl->tpl_vars['sort']->value == 'default') {?>selected<?php }?> value="default"><?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['translator'][0], array( array('selector'=>"sortby"),$_smarty_tpl ) );?>
+              <option value="default"><?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['translator'][0], array( array('selector'=>"sortby"),$_smarty_tpl ) );?>
 </option>
-                <option value="default"><?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['translator'][0], array( array('selector'=>"sortby"),$_smarty_tpl ) );?>
+              <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['sortings']->value, 'sorting', false, 'key');
+$_smarty_tpl->tpl_vars['sorting']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['key']->value => $_smarty_tpl->tpl_vars['sorting']->value) {
+$_smarty_tpl->tpl_vars['sorting']->do_else = false;
+?>
+                <option value="<?php echo $_smarty_tpl->tpl_vars['sorting']->value['selector'];?>
+" <?php if ($_smarty_tpl->tpl_vars['sort']->value == $_smarty_tpl->tpl_vars['sorting']->value['selector']) {?>selected disabled<?php }?>><?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['translator'][0], array( array('selector'=>((string)$_smarty_tpl->tpl_vars['sorting']->value['selector'])),$_smarty_tpl ) );?>
 </option>
-                <option value="name_asc" <?php if ($_smarty_tpl->tpl_vars['sort']->value == 'name_asc') {?>selected disabled<?php }?>><?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['translator'][0], array( array('selector'=>"name_asc"),$_smarty_tpl ) );?>
-</option>
-                <option value="name_desc" <?php if ($_smarty_tpl->tpl_vars['sort']->value == 'name_desc') {?>selected disabled<?php }?>><?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['translator'][0], array( array('selector'=>"name_desc"),$_smarty_tpl ) );?>
-</option>
-                <option value="price_asc" <?php if ($_smarty_tpl->tpl_vars['sort']->value == 'price_asc') {?>selected disabled<?php }?>><?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['translator'][0], array( array('selector'=>"price_asc"),$_smarty_tpl ) );?>
-</option>
-                <option value="price_desc" <?php if ($_smarty_tpl->tpl_vars['sort']->value == 'price_desc') {?>selected disabled<?php }?>><?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['translator'][0], array( array('selector'=>"price_desc"),$_smarty_tpl ) );?>
-</option>
-                <option  value="sales_sort" <?php if ($_smarty_tpl->tpl_vars['sort']->value == 'sales_sort') {?>selected disabled<?php }?>><?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['translator'][0], array( array('selector'=>"sales_sort"),$_smarty_tpl ) );?>
-</option>
-                <option value="sale_end" <?php if ($_smarty_tpl->tpl_vars['sort']->value == 'sale_end') {?>selected disabled<?php }?>><?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['translator'][0], array( array('selector'=>"sale_end"),$_smarty_tpl ) );?>
-</option>
+              <?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
             </select>
         </div>
     </div>
@@ -93,12 +91,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block 'top-toolbar'} */
 /* {block 'product-list'} */
-class Block_3957602905ee71a43337272_04594034 extends Smarty_Internal_Block
+class Block_1322099995f48f48584c8e2_91109293 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'product-list' => 
   array (
-    0 => 'Block_3957602905ee71a43337272_04594034',
+    0 => 'Block_1322099995f48f48584c8e2_91109293',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -125,12 +123,12 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 }
 /* {/block 'product-list'} */
 /* {block 'bottom-toolbar'} */
-class Block_17682800365ee71a4333c126_38780352 extends Smarty_Internal_Block
+class Block_1928000285f48f4858561b7_95546824 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'bottom-toolbar' => 
   array (
-    0 => 'Block_17682800365ee71a4333c126_38780352',
+    0 => 'Block_1928000285f48f4858561b7_95546824',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {

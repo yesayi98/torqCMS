@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-08-15 17:30:03
+/* Smarty version 3.1.34-dev-7, created on 2020-08-27 15:31:11
   from 'C:\Users\User\OSPanel\domains\torq\public\frontend\compare\index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f37f16b31a541_12583112',
+  'unifunc' => 'content_5f47a78f3709c0_36607629',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '30d79a0a87ceb2916f02aed2551e29796b0a83ac' => 
     array (
       0 => 'C:\\Users\\User\\OSPanel\\domains\\torq\\public\\frontend\\compare\\index.tpl',
-      1 => 1597501801,
+      1 => 1598531424,
       2 => 'file',
     ),
   ),
@@ -20,25 +20,25 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f37f16b31a541_12583112 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f47a78f3709c0_36607629 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_7937092245f37f16b2fa131_82921293', "pageContent");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_18100284535f47a78f34b304_73637950', "pageContent");
 ?>
 
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, "frontend/index/index.tpl");
 }
 /* {block "pageContent"} */
-class Block_7937092245f37f16b2fa131_82921293 extends Smarty_Internal_Block
+class Block_18100284535f47a78f34b304_73637950 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'pageContent' => 
   array (
-    0 => 'Block_7937092245f37f16b2fa131_82921293',
+    0 => 'Block_18100284535f47a78f34b304_73637950',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -110,8 +110,23 @@ if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['key']->value => 
 $_smarty_tpl->tpl_vars['productoption']->do_else = false;
 ?>
                   <?php if ($_smarty_tpl->tpl_vars['productoption']->value['name'] == $_smarty_tpl->tpl_vars['option']->value) {?>
-                    <?php echo $_smarty_tpl->tpl_vars['productoption']->value['value'];?>
-
+                    <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['productoption']->value['values'], 'value', false, 'key', 'foo', array (
+  'last' => true,
+  'iteration' => true,
+  'total' => true,
+));
+$_smarty_tpl->tpl_vars['value']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['key']->value => $_smarty_tpl->tpl_vars['value']->value) {
+$_smarty_tpl->tpl_vars['value']->do_else = false;
+$_smarty_tpl->tpl_vars['__smarty_foreach_foo']->value['iteration']++;
+$_smarty_tpl->tpl_vars['__smarty_foreach_foo']->value['last'] = $_smarty_tpl->tpl_vars['__smarty_foreach_foo']->value['iteration'] === $_smarty_tpl->tpl_vars['__smarty_foreach_foo']->value['total'];
+?>
+                      <?php echo $_smarty_tpl->tpl_vars['value']->value['value'];
+if (!(isset($_smarty_tpl->tpl_vars['__smarty_foreach_foo']->value['last']) ? $_smarty_tpl->tpl_vars['__smarty_foreach_foo']->value['last'] : null)) {?>, <?php }?>
+                    <?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                   <?php }?>
               <?php
 }

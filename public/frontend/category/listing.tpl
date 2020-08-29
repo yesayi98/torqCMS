@@ -11,14 +11,10 @@
     <div class=" niceselect_option">
         <div class="select_option">
             <select name="sortby">
-                <option {if !$sort || $sort == 'default'}selected{/if} value="default">{translator selector="sortby"}</option>
-                <option value="default">{translator selector="sortby"}</option>
-                <option value="name_asc" {if $sort == 'name_asc'}selected disabled{/if}>{translator selector="name_asc"}</option>
-                <option value="name_desc" {if $sort == 'name_desc'}selected disabled{/if}>{translator selector="name_desc"}</option>
-                <option value="price_asc" {if $sort == 'price_asc'}selected disabled{/if}>{translator selector="price_asc"}</option>
-                <option value="price_desc" {if $sort == 'price_desc'}selected disabled{/if}>{translator selector="price_desc"}</option>
-                <option  value="sales_sort" {if $sort == 'sales_sort'}selected disabled{/if}>{translator selector="sales_sort"}</option>
-                <option value="sale_end" {if $sort == 'sale_end'}selected disabled{/if}>{translator selector="sale_end"}</option>
+              <option value="default">{translator selector="sortby"}</option>
+              {foreach from=$sortings item=$sorting key=$key}
+                <option value="{$sorting.selector}" {if $sort == $sorting.selector}selected disabled{/if}>{translator selector="{$sorting.selector}"}</option>
+              {/foreach}
             </select>
         </div>
     </div>

@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.5
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Aug 12, 2020 at 09:17 AM
--- Server version: 10.4.13-MariaDB
--- PHP Version: 7.2.32
+-- Хост: 127.0.0.1:3306
+-- Время создания: Авг 29 2020 г., 09:50
+-- Версия сервера: 10.3.22-MariaDB-log
+-- Версия PHP: 7.3.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+04:00";
 
@@ -19,13 +18,13 @@ SET time_zone = "+04:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `torq_cms`
+-- База данных: `torq_cms`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admins`
+-- Структура таблицы `admins`
 --
 
 CREATE TABLE `admins` (
@@ -40,7 +39,7 @@ CREATE TABLE `admins` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `advertisings`
+-- Структура таблицы `advertisings`
 --
 
 CREATE TABLE `advertisings` (
@@ -54,7 +53,7 @@ CREATE TABLE `advertisings` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `advertising_attributes`
+-- Структура таблицы `advertising_attributes`
 --
 
 CREATE TABLE `advertising_attributes` (
@@ -67,7 +66,7 @@ CREATE TABLE `advertising_attributes` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `advertising_translations`
+-- Структура таблицы `advertising_translations`
 --
 
 CREATE TABLE `advertising_translations` (
@@ -81,7 +80,7 @@ CREATE TABLE `advertising_translations` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `articles`
+-- Структура таблицы `articles`
 --
 
 CREATE TABLE `articles` (
@@ -105,7 +104,7 @@ CREATE TABLE `articles` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `article_attributes`
+-- Структура таблицы `article_attributes`
 --
 
 CREATE TABLE `article_attributes` (
@@ -113,9 +112,6 @@ CREATE TABLE `article_attributes` (
   `article_id` int(11) NOT NULL,
   `video_article` int(1) NOT NULL DEFAULT 0,
   `video_url` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `size` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `color` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `material` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `ordernumber` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL,
   `sale_end` date NOT NULL,
   `supplier_id` int(11) NOT NULL,
@@ -125,7 +121,7 @@ CREATE TABLE `article_attributes` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `article_category`
+-- Структура таблицы `article_category`
 --
 
 CREATE TABLE `article_category` (
@@ -137,21 +133,7 @@ CREATE TABLE `article_category` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `article_comments`
---
-
-CREATE TABLE `article_comments` (
-  `id` int(11) NOT NULL,
-  `comment` varchar(2000) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `article_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `active` int(2) DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `article_images`
+-- Структура таблицы `article_images`
 --
 
 CREATE TABLE `article_images` (
@@ -163,34 +145,59 @@ CREATE TABLE `article_images` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `article_options`
+-- Структура таблицы `article_options`
 --
 
 CREATE TABLE `article_options` (
   `id` int(11) NOT NULL,
-  `name` varchar(512) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `value` varchar(1024) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `filtrable` int(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `article_options_relations`
+--
+
+CREATE TABLE `article_options_relations` (
+  `id` int(11) NOT NULL,
+  `value_id` int(11) NOT NULL,
   `article_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `article_rating`
+-- Структура таблицы `article_option_values`
+--
+
+CREATE TABLE `article_option_values` (
+  `id` int(11) NOT NULL,
+  `option_id` int(11) NOT NULL,
+  `value` text COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `article_rating`
 --
 
 CREATE TABLE `article_rating` (
   `id` int(11) NOT NULL,
   `rating_count` int(11) NOT NULL,
+  `comment` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `article_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `active` int(2) NOT NULL DEFAULT 0
+  `active` int(2) NOT NULL DEFAULT 0,
+  `added_in` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `article_translations`
+-- Структура таблицы `article_translations`
 --
 
 CREATE TABLE `article_translations` (
@@ -205,7 +212,7 @@ CREATE TABLE `article_translations` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `article_wishlist`
+-- Структура таблицы `article_wishlist`
 --
 
 CREATE TABLE `article_wishlist` (
@@ -219,7 +226,7 @@ CREATE TABLE `article_wishlist` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `basket`
+-- Структура таблицы `basket`
 --
 
 CREATE TABLE `basket` (
@@ -237,7 +244,7 @@ CREATE TABLE `basket` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `blog`
+-- Структура таблицы `blog`
 --
 
 CREATE TABLE `blog` (
@@ -249,13 +256,13 @@ CREATE TABLE `blog` (
   `category_id` int(11) NOT NULL,
   `created_date` date NOT NULL,
   `changed_date` date NOT NULL,
-  `active` tinyint(4) NOT NULL
+  `active` tinyint(4) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `blog_articles`
+-- Структура таблицы `blog_articles`
 --
 
 CREATE TABLE `blog_articles` (
@@ -267,7 +274,7 @@ CREATE TABLE `blog_articles` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categories`
+-- Структура таблицы `categories`
 --
 
 CREATE TABLE `categories` (
@@ -288,7 +295,7 @@ CREATE TABLE `categories` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category_translation`
+-- Структура таблицы `category_translation`
 --
 
 CREATE TABLE `category_translation` (
@@ -302,7 +309,7 @@ CREATE TABLE `category_translation` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `core`
+-- Структура таблицы `core`
 --
 
 CREATE TABLE `core` (
@@ -314,26 +321,24 @@ CREATE TABLE `core` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `core`
+-- Дамп данных таблицы `core`
 --
 
 INSERT INTO `core` (`id`, `name`, `content`, `content_type`, `description`) VALUES
-(1, 'meta-description', '1shop.am-ը  թվային հարթակ է , որը թույլ է տալիս գնումներ կատարել օնլայն կամ զանգի միջոցով՝ առանց տանից դուրս գալու։ Սպառողին առաջարկում է  մրգերի, բանջարեղենի, մսի, ձկնեղենի տեղական, թարմ և բարձրակարգ տեսականի։ Սննդամթերքի տեսականին թարմացվում է ամեն օր։ Առաքումը կատարվում է շատ արագ՝ 4-5 ժամվա ընթացքում։ Երեկոյան 18։00-ից հետո կատարած պատվերները կառաքվեն հաջորդ օրը՝ մինրև ժամը 12։00։', 'text', '&lt;p&gt;website description&lt;/p&gt;\r\n'),
-(2, 'meta-keywords', '1shop, 1shop.am, shop, natural, natural eco, food, 1shop, 1, gyuxmterq, gyuxamterq, snund, oneshop', 'text', '&lt;p&gt;website keywords&lt;/p&gt;\r\n'),
+(1, 'meta-description', ' «1SHOP.am»-ը օնլայն գյուղմթերք պատվիրելու հարթակ է, որը սպառողներին է հասցնում հայ գյուղացու աշխատանքի պտուղները։ Սպառողներին հասանելի է դարձել 2020 թվականի փետրվար ամսից։ Այսօր գյուղացին խնդիր ունի իր արտադրանքը սպառելու, իսկ քաղաքաբնակը կամ պարզապես սպառողը որակյալ, մատչելի գյուղմթերքի։', 'text', '&lt;p&gt;website description&lt;/p&gt;\r\n'),
+(2, 'meta-keywords', 'natural, natural eco, food, 1shop, 1, gyuxmterq, gyuxamterq, snund, oneshop', 'text', '&lt;p&gt;website keywords&lt;/p&gt;\r\n'),
 (3, 'logo-image', '21', 'image', '&lt;p&gt;website logo image&lt;/p&gt;\r\n'),
 (4, 'footer-logo', '21', 'image', '&lt;p&gt;website logo image&lt;/p&gt;\r\n'),
 (5, 'location', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3851.0886225623844!2d44.50680353402949!3d40.17076608056598!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x406abc599f231193%3A0xe9ae0dc326754034!2sTigran%20Metz%20Publishing%20House!5e1!3m2!1sru!2s!4v1573449669035!5m2!1sru!2s', 'text', '&lt;p&gt;company location;/p&amp;gt;&lt;/p&gt;\r\n'),
-(6, 'waterImage', '21', 'image', '&lt;p&gt;add image for watermark in added images which added in products album&lt;/p&gt;\r\n\r\n&lt;p&gt;Ավելացրեք նկար որը կերևա բոլոր ավելացված նկարների վրա որոնք ընկել են պրոդուկտների ալբոմի մեջ&lt;/p&gt;'),
+(6, 'waterImage', '327', 'image', '&lt;p&gt;add image for watermark in added images which added in products album&lt;/p&gt;\r\n\r\n&lt;p&gt;Ավելացրեք նկար որը կերևա բոլոր ավելացված նկարների վրա որոնք ընկել են պրոդուկտների ալբոմի մեջ&lt;/p&gt;\r\n'),
 (7, 'additionalDiscount', '', 'number', '&lt;p&gt;առաջին անգամ գնումներ կատարելուց հաճախորդին տրվող զեղջ (նշված տեսականու համար)&lt;/p&gt;\r\n'),
 (8, 'deliveryPrice', '250', 'number', 'նշեք առաքման գումարը'),
-(9, 'bonus', '5', 'number', 'bonus discount for every order checkout'),
-(10, 'sitename', '1Shop.am', 'text', 'site name'),
-(11, 'min-order', '3000', 'number', 'minimum amout for order');
+(9, 'bonus', '5', 'number', 'bonus discount for every order checkout');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `core_menu`
+-- Структура таблицы `core_menu`
 --
 
 CREATE TABLE `core_menu` (
@@ -347,7 +352,7 @@ CREATE TABLE `core_menu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `core_menu`
+-- Дамп данных таблицы `core_menu`
 --
 
 INSERT INTO `core_menu` (`id`, `name`, `url`, `parent_id`, `has_children`, `icon`, `sort_id`) VALUES
@@ -375,14 +380,19 @@ INSERT INTO `core_menu` (`id`, `name`, `url`, `parent_id`, `has_children`, `icon
 (22, 'Emotions', 'backend/emotions', 4, 0, 'zmdi zmdi-developer-board', 0),
 (23, 'new Blog', 'backend/blog/detail', 7, 0, 'zmdi zmdi-plus-circle-o', 0),
 (24, 'Overview', 'backend/blog/', 7, 0, 'zmdi zmdi-view-agenda', 0),
-(25, 'Advertisings', 'backend/advertisings', 4, 0, 'zmdi zmdi-view-dashboard', 1),
-(26, 'Order to call', 'backend/orders/ordertocall', 5, 0, 'zmdi zmdi-view-dashboard', 2),
-(28, 'Core', 'backend/core', 8, 0, 'zmdi zmdi-wrench', 0);
+(29, 'Advertisings', 'backend/advertisings/', 4, 0, 'zmdi zmdi-view-dashboard', 2),
+(30, 'Core', 'backend/core', 8, 0, 'zmdi zmdi-wrench', 1),
+(31, 'Suppliers', 'backend/suppliers/', 2, 0, 'zmdi zmdi-view-agenda', 2),
+(32, 'Languages', 'backend/languages', 8, 0, 'zmdi zmdi-translate', 1),
+(33, 'Currencies', 'backend/currencies', 8, 0, 'zmdi zmdi-money', 1),
+(34, 'Units', 'backend/units', 8, 0, 'zmdi zmdi-ruler', 1),
+(35, 'Payments', 'backend/payments', 8, 0, 'zmdi zmdi-balance', 1),
+(36, 'Reviews', 'backend/reviews/', 6, 0, 'zmdi zmdi-star', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `core_plugins`
+-- Структура таблицы `core_plugins`
 --
 
 CREATE TABLE `core_plugins` (
@@ -395,7 +405,7 @@ CREATE TABLE `core_plugins` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `core_url`
+-- Структура таблицы `core_url`
 --
 
 CREATE TABLE `core_url` (
@@ -408,7 +418,7 @@ CREATE TABLE `core_url` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `currencies`
+-- Структура таблицы `currencies`
 --
 
 CREATE TABLE `currencies` (
@@ -422,16 +432,17 @@ CREATE TABLE `currencies` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `currencies`
+-- Дамп данных таблицы `currencies`
 --
 
 INSERT INTO `currencies` (`id`, `name`, `description`, `default`, `symbol`, `course`, `code`) VALUES
-(1, 'Dram', '', 0, '֏', 1, 'AMD');
+(1, 'Dram', '', 1, '֏', 1, 'AMD'),
+(2, 'Rubly', '', 0, '₽', 6.73, 'RUB');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `delivery_city`
+-- Структура таблицы `delivery_city`
 --
 
 CREATE TABLE `delivery_city` (
@@ -443,11 +454,12 @@ CREATE TABLE `delivery_city` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `delivery_city`
+-- Дамп данных таблицы `delivery_city`
 --
 
 INSERT INTO `delivery_city` (`id`, `name`, `region_id`, `distance`, `price`) VALUES
-(1, 'Երևան', 1, 0, 250),
+(0, 'Երևան', 1, 0, 290),
+(1, 'Արարատ', 3, 46, 9200),
 (2, 'Արտաշատ', 3, 28, 5600),
 (3, 'Մասիս', 3, 11, 2200),
 (4, 'Վեդի', 3, 46, 9200),
@@ -486,13 +498,12 @@ INSERT INTO `delivery_city` (`id`, `name`, `region_id`, `distance`, `price`) VAL
 (37, 'Գորիս', 9, 230, 46000),
 (38, 'Կապան', 9, 300, 60000),
 (39, 'Քաջարան', 9, 320, 64000),
-(40, 'Մեղրի', 9, 370, 74000),
-(50, 'Արարատ', 3, 46, 9200);
+(40, 'Մեղրի', 9, 370, 74000);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `delivery_status`
+-- Структура таблицы `delivery_status`
 --
 
 CREATE TABLE `delivery_status` (
@@ -502,7 +513,7 @@ CREATE TABLE `delivery_status` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `delivery_status`
+-- Дамп данных таблицы `delivery_status`
 --
 
 INSERT INTO `delivery_status` (`id`, `name`, `code`) VALUES
@@ -514,7 +525,7 @@ INSERT INTO `delivery_status` (`id`, `name`, `code`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `emotions`
+-- Структура таблицы `emotions`
 --
 
 CREATE TABLE `emotions` (
@@ -530,7 +541,7 @@ CREATE TABLE `emotions` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `emotion_components`
+-- Структура таблицы `emotion_components`
 --
 
 CREATE TABLE `emotion_components` (
@@ -552,7 +563,7 @@ CREATE TABLE `emotion_components` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `emotion_types`
+-- Структура таблицы `emotion_types`
 --
 
 CREATE TABLE `emotion_types` (
@@ -564,7 +575,7 @@ CREATE TABLE `emotion_types` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `emotion_types`
+-- Дамп данных таблицы `emotion_types`
 --
 
 INSERT INTO `emotion_types` (`id`, `name`, `label`, `template`, `module`) VALUES
@@ -581,27 +592,88 @@ INSERT INTO `emotion_types` (`id`, `name`, `label`, `template`, `module`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `filter_groups`
+-- Структура таблицы `filter_groups`
 --
 
 CREATE TABLE `filter_groups` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'filter by what',
+  `option_id` int(11) NOT NULL,
   `active` int(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `filter_groups`
+-- Дамп данных таблицы `filter_groups`
 --
 
-INSERT INTO `filter_groups` (`id`, `name`, `active`) VALUES
-(1, 'color', 1),
-(2, 'size', 1);
+INSERT INTO `filter_groups` (`id`, `option_id`, `active`) VALUES
+(1, 2, 1),
+(2, 3, 1),
+(3, 5, 0),
+(4, 4, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `languages`
+-- Структура таблицы `filter_sortings`
+--
+
+CREATE TABLE `filter_sortings` (
+  `id` int(11) NOT NULL,
+  `selector` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `sorting_table` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `sorting_column` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `type` varchar(5) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Дамп данных таблицы `filter_sortings`
+--
+
+INSERT INTO `filter_sortings` (`id`, `selector`, `sorting_table`, `sorting_column`, `type`) VALUES
+(1, 'default', 'articles', 'id', 'ASC'),
+(2, 'name_asc', 'articles', 'name', 'ASC'),
+(3, 'name_desc', 'articles', 'name', 'DESC'),
+(4, 'price_asc', 'articles', 'price', 'ASC'),
+(5, 'price_desc', 'articles', 'price', 'DESC'),
+(6, 'sales_sort', 'articles', 'discount', 'DESC'),
+(7, 'sale_end', 'article_attributes', 'sale_end', 'DESC');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `filter_tables`
+--
+
+CREATE TABLE `filter_tables` (
+  `id` int(11) NOT NULL,
+  `selector` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `filter_table` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `filter_column` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Дамп данных таблицы `filter_tables`
+--
+
+INSERT INTO `filter_tables` (`id`, `selector`, `filter_table`, `filter_column`) VALUES
+(1, 'suppliers', 'suppliers', 'id'),
+(2, 'options', 'article_options_relations', 'value_id'),
+(3, 'price', 'articles', 'price'),
+(4, 'category', 'categories', 'id'),
+(5, 'search', 'articles', 'name'),
+(6, 'search', 'articles', 'keywords'),
+(7, 'search', 'articles', 'description'),
+(8, 'search', 'article_attributes', 'ordernumber'),
+(9, 'search', 'article_translations', 'name'),
+(10, 'search', 'article_translations', 'description'),
+(11, 'search', 'article_option_values', 'value'),
+(12, 'search', 'categories', 'name'),
+(13, 'search', 'category_translation', 'name');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `languages`
 --
 
 CREATE TABLE `languages` (
@@ -612,7 +684,7 @@ CREATE TABLE `languages` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `languages`
+-- Дамп данных таблицы `languages`
 --
 
 INSERT INTO `languages` (`id`, `name`, `short_code`, `is_default`) VALUES
@@ -623,7 +695,7 @@ INSERT INTO `languages` (`id`, `name`, `short_code`, `is_default`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `media`
+-- Структура таблицы `media`
 --
 
 CREATE TABLE `media` (
@@ -638,7 +710,7 @@ CREATE TABLE `media` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `media_albums`
+-- Структура таблицы `media_albums`
 --
 
 CREATE TABLE `media_albums` (
@@ -648,22 +720,10 @@ CREATE TABLE `media_albums` (
   `posiotion` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `media_albums`
---
-
-INSERT INTO `media_albums` (`id`, `name`, `description`, `posiotion`) VALUES
-(1, 'untitnled', 'all media which not have an selected album adding in this album', 1),
-(2, 'core', 'in this album will be inserted an images which need in the core\r\n', 2),
-(3, 'advertising', 'in this album will uploaded pictures for site content', 3),
-(4, 'category', 'in this album will uploaded pictures for categories', 4),
-(5, 'products', '', 5),
-(6, 'video', '', 6);
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `media_thumbnails`
+-- Структура таблицы `media_thumbnails`
 --
 
 CREATE TABLE `media_thumbnails` (
@@ -678,7 +738,7 @@ CREATE TABLE `media_thumbnails` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orders`
+-- Структура таблицы `orders`
 --
 
 CREATE TABLE `orders` (
@@ -690,7 +750,6 @@ CREATE TABLE `orders` (
   `total_price` float NOT NULL,
   `payment_method` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `user_name` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `address_id` int(11) NOT NULL,
   `order_status` int(11) NOT NULL,
   `delivery_status` int(11) NOT NULL,
@@ -701,7 +760,7 @@ CREATE TABLE `orders` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order_details`
+-- Структура таблицы `order_details`
 --
 
 CREATE TABLE `order_details` (
@@ -719,7 +778,7 @@ CREATE TABLE `order_details` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order_status`
+-- Структура таблицы `order_status`
 --
 
 CREATE TABLE `order_status` (
@@ -729,7 +788,7 @@ CREATE TABLE `order_status` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `order_status`
+-- Дамп данных таблицы `order_status`
 --
 
 INSERT INTO `order_status` (`id`, `name`, `code`) VALUES
@@ -741,7 +800,7 @@ INSERT INTO `order_status` (`id`, `name`, `code`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `payment_methods`
+-- Структура таблицы `payment_methods`
 --
 
 CREATE TABLE `payment_methods` (
@@ -754,40 +813,18 @@ CREATE TABLE `payment_methods` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `payment_methods`
+-- Дамп данных таблицы `payment_methods`
 --
 
 INSERT INTO `payment_methods` (`id`, `name`, `description`, `client_id`, `client_secret_key`, `client_password`) VALUES
 (1, 'Cash', '&lt;p&gt;asfsafasfsafasfasfasfasfasfa&lt;/p&gt;\r\n', '', '', ''),
-(2, 'Idram', '', '110000351', 'cwtSKR4esXzqXtBanKCxtACemv22zCr5HZ7YXw', ''),
-(3, 'Bank', '', '', '', '');
+(2, 'Idram', '', '110000193', 'r5m6GRKF7cfMb3YC7PwKRpynNatKM7HPJBtSGZ', ''),
+(4, 'WebX', '&lt;p&gt;PayX ենթակառուցվածքում առցանց առևտր WEBX ծրագրային միջոց&lt;/p&gt;\r\n', '683', '2e23783e2de19e8671eca4232e1a609b', '');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `popular_articles`
---
-
-CREATE TABLE `popular_articles` (
-  `id` int(11) NOT NULL,
-  `article_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `special_articles`
---
-
-CREATE TABLE `special_articles` (
-  `id` int(11) NOT NULL,
-  `article_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `suppliers`
+-- Структура таблицы `suppliers`
 --
 
 CREATE TABLE `suppliers` (
@@ -801,7 +838,7 @@ CREATE TABLE `suppliers` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `templates`
+-- Структура таблицы `templates`
 --
 
 CREATE TABLE `templates` (
@@ -813,7 +850,7 @@ CREATE TABLE `templates` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `templates`
+-- Дамп данных таблицы `templates`
 --
 
 INSERT INTO `templates` (`id`, `name`, `variables`, `media_id`, `description`) VALUES
@@ -823,7 +860,7 @@ INSERT INTO `templates` (`id`, `name`, `variables`, `media_id`, `description`) V
 -- --------------------------------------------------------
 
 --
--- Table structure for table `translations`
+-- Структура таблицы `translations`
 --
 
 CREATE TABLE `translations` (
@@ -835,7 +872,7 @@ CREATE TABLE `translations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `translations`
+-- Дамп данных таблицы `translations`
 --
 
 INSERT INTO `translations` (`id`, `selector`, `translate`, `lang`, `description`) VALUES
@@ -843,19 +880,19 @@ INSERT INTO `translations` (`id`, `selector`, `translate`, `lang`, `description`
 (2, 'link', 'Հղումներ', 1, ''),
 (3, 'contact', 'Հետադարձ կապ', 1, ''),
 (4, 'visitUs', 'Այցելեք մեզ', 1, ''),
-(5, 'allRights', '© 2020. Բոլոր իրավունքները պաշտպանված են։', 1, ''),
+(5, 'allRights', '© 2019. Բոլոր իրավունքները պաշտպանված են։', 1, ''),
 (6, 'allRights2', '․', 1, ''),
 (10, 'workDays', 'Աշխատանքային օրեր', 1, ''),
-(11, 'address', 'Մալաթիա Սեբաստիա, Վանցյան 56', 1, ''),
+(11, 'address', 'office address: &lt;br&gt; 59 Komitas Ave. Yerevan, RA  \r\n&lt;br&gt;\r\n&lt;br&gt;\r\nlogistics center address:\r\n&lt;br&gt; 10 Hakob Hakobyan Ave. Yerevan\r\n&lt;br&gt;\r\n&lt;br&gt; Սպանդանոցի հասցեն՝ գ. Պռոշյան Գայի 9/1', 1, ''),
 (12, 'weekDays', 'Երկուշաբթիից - Ուրբաթ', 1, ''),
 (13, 'saturday', 'Շաբաթ', 1, ''),
 (14, 'sunday', 'Կիրակի', 1, ''),
 (15, 'weekEnd', 'Ոչ աշխատանքային', 1, ''),
-(18, 'address2', 'Հասցե՝', 1, ''),
+(18, 'address2', 'Հասցե:', 1, ''),
 (19, 'contactPhone', 'Կոնտակտային համար', 1, ''),
-(20, 'phone', 'Բջջ․', 1, ''),
-(21, 'emailAddress', 'info@1shop.am', 1, ''),
-(22, 'email', 'Էլ. հասցե՝', 1, ''),
+(20, 'phone', 'Հեռ․', 1, ''),
+(21, 'emailAddress', 'info@natural.am', 1, ''),
+(22, 'email', 'Էլ. հասցե ', 1, ''),
 (23, 'follow', 'Հետևեք մեզ', 1, ''),
 (24, 'sendMessage', 'ՈՒՂԱՐԿԵԼ ՀԱՂՈՐԴԱԳՐՈՒԹՅՈՒՆ', 1, ''),
 (25, 'contactUs', 'Կապ մեզ հետ', 1, ''),
@@ -863,7 +900,7 @@ INSERT INTO `translations` (`id`, `selector`, `translate`, `lang`, `description`
 (27, 'youremail', 'Ձեր էլ-հասցեն', 1, ''),
 (28, 'yoursubject', 'Թեմա', 1, ''),
 (29, 'yourmessage', 'Ձեր նամակը', 1, ''),
-(30, 'send', 'Ուղարկել հաղորդագրություն', 1, ''),
+(30, 'send', 'Ուղարկել', 1, ''),
 (31, 'successMessage', 'Ձեր հաղորդագրությունը հաջողությամբ ուղարկվել է։', 1, ''),
 (32, 'error_name', 'Լրացրեք Ձեր անունը', 1, ''),
 (33, 'all', 'Բոլորը', 1, ''),
@@ -878,16 +915,16 @@ INSERT INTO `translations` (`id`, `selector`, `translate`, `lang`, `description`
 (42, 'lastWorks', 'ՄԵՐ ՎԵՐՋԻՆ ՆԱԽԱԳԾԵՐԸ', 1, ''),
 (43, 'about', 'կայքի մասին  ինֆորմացիա', 1, ''),
 (44, 'more', 'Ավելին', 1, ''),
-(45, 'phoneNumber', '077 234566', 1, ''),
+(45, 'phoneNumber', '077234566', 1, ''),
 (46, 'phoneNumber2', '', 1, ''),
-(47, 'aboutshort', '«1shop.am»-ը օնլայն գյուղմթերք պատվիրելու հարթակ է, որը սպառողներին է հասցնում հայ գյուղացու աշխատանքի պտուղները։ \r\nNatural.am-ը վերահսկվում է «Սննդամթերքի անվտանգության պետական ծառայություն»-ի կողմից', 1, ''),
+(47, 'aboutshort', '«1Shop.am»-ը օնլայն գյուղմթերք պատվիրելու հարթակ է, որը սպառողներին է հասցնում հայ գյուղացու աշխատանքի պտուղները։ \r\nNatural.am-ը վերահսկվում է «Սննդամթերքի անվտանգության պետական ծառայություն»-ի կողմից', 1, ''),
 (48, 'ourClients', 'Մեր հաճախորդները', 1, ''),
 (49, 'greatClients', 'Լավագույն հաճախորդները', 1, ''),
 (50, 'aboutUs', ' О нас', 2, ''),
 (51, 'link', 'Ссылки', 2, ''),
 (52, 'contact', 'Связаться с нами', 2, ''),
 (53, 'visitUs', 'Приходите к нам', 2, ''),
-(54, 'allRights', '© 2020. Все права защищены.', 2, ''),
+(54, 'allRights', '© 2019. Все права защищены. ', 2, ''),
 (55, 'allRights2', '․', 2, ''),
 (56, 'workDays', 'Рабочие дни', 2, ''),
 (57, 'address', 'Адрес офиса: пр. Комитаса 59&lt;br&gt;\r\nЛогистический центр Адрес: Акоп Акопян 10&lt;br&gt;\r\nАдрес скотобойни: с. Прошьяна', 2, ''),
@@ -898,7 +935,7 @@ INSERT INTO `translations` (`id`, `selector`, `translate`, `lang`, `description`
 (62, 'address2', 'Адрес', 2, ''),
 (63, 'contactPhone', 'Контактный номер', 2, ''),
 (64, 'phone', 'Тел․', 2, ''),
-(65, 'emailAddress', 'info@1shop.am', 2, ''),
+(65, 'emailAddress', 'info@natural.am', 2, ''),
 (66, 'email', 'Е-меил', 2, ''),
 (67, 'follow', 'Подписаться', 2, ''),
 (68, 'sendMessage', 'ОТПРАВИТЬ СООБЩЕНИЕ', 2, ''),
@@ -907,7 +944,7 @@ INSERT INTO `translations` (`id`, `selector`, `translate`, `lang`, `description`
 (71, 'youremail', 'Ваша эл-почта ', 2, ''),
 (72, 'yoursubject', 'Тема', 2, ''),
 (73, 'yourmessage', 'Ваше письмо', 2, ''),
-(74, 'send', 'Отправить сообщение', 2, ''),
+(74, 'send', 'Отправить', 2, ''),
 (75, 'successMessage', 'Ваше сообщение было успешно отправлено!', 2, ''),
 (76, 'error_name', 'Введите Ваше Имя', 2, ''),
 (77, 'all', 'Все', 2, ''),
@@ -920,19 +957,19 @@ INSERT INTO `translations` (`id`, `selector`, `translate`, `lang`, `description`
 (84, 'ourServices', 'Услуги', 2, ''),
 (85, 'weBuild', 'Создай свой', 2, ''),
 (86, 'lastWorks', 'НАШИ ПОСЛЕДНИЕ ПРОЕКТЫ\r\n', 2, ''),
-(87, 'about', 'կայքի մասին  ինֆորմացիա', 2, ''),
+(87, 'about', 'информация о сайте', 2, ''),
 (88, 'more', 'Больше', 2, ''),
-(89, 'phoneNumber', '077 234566', 2, ''),
+(89, 'phoneNumber', '0 8000 4000', 2, ''),
 (90, 'phoneNumber2', '', 2, ''),
-(91, 'aboutshort', 'Natural теперь предлагает покупателю доступную и качественную сельскохозяйственную продукцию, помогая фермерам развивать сельское хозяйство', 2, ''),
+(91, 'aboutshort', '1Shop.am теперь предлагает покупателю доступную и качественную сельскохозяйственную продукцию, помогая фермерам развивать сельское хозяйство', 2, ''),
 (92, 'ourClients', 'Наши клиенты:', 2, ''),
 (93, 'greatClients', 'Лучшие клиенты', 2, ''),
 (113, 'home', 'Գլխավոր', 1, ''),
 (114, 'home', 'Главная', 2, ''),
 (115, 'city', 'Քաղաք', 1, ''),
 (116, 'city', 'Քաղաք', 2, ''),
-(117, 'news', 'Նորություններ', 1, ''),
-(118, 'news', 'Новости', 2, ''),
+(117, 'newsdesc', 'Գրեք Ձեր էլ․ փոստը և ստացեք նորություններն առաջինը', 1, ''),
+(118, 'newsdesc', 'Новости', 2, ''),
 (119, 'search', 'Որոնել', 1, ''),
 (120, 'search', 'Поиск', 2, ''),
 (121, 'special', 'Հատուկ', 1, ''),
@@ -970,9 +1007,9 @@ INSERT INTO `translations` (`id`, `selector`, `translate`, `lang`, `description`
 (153, 'freeCalculation', '&lt;h5&gt;ՍՍՏԱՑԵՔ ԱՆՎՃԱՐ ՉԱՓԱԳՐՈՒՄ ՁԵՐ ՊՐՈԵԿՏԻ ՀԱՄԱՐ&lt;/h5&gt;\r\n&lt;p&gt;Ձեր էլ․հասցեին՝ 30ր ընթացքում&lt;/p&gt;', 1, ''),
 (154, 'freeCalculation', '&lt;h5&gt;ПОЛУЧИТЕ БЕСПЛАТНЫЙ РАСЧЕТ ВАШЕГО ПРОЕКТА СЕГОДНЯ!&lt;/h5&gt;\r\n&lt;p&gt;На ваш электронный адрес за 30 минут!&lt;/p&gt;\r\n', 2, ''),
 (155, 'freeCalculation', '&lt;h5&gt;GET FREE CALCULATION FOR YOUR PROJECT NOW&lt;/h5&gt;\r\n&lt;p&gt; To your email address in 30 minutes! &lt;/p&gt;', 3, ''),
-(156, 'workHours', 'Աշխատանքային ժամերը ՝ 09:00 - 20:00', 1, ''),
-(157, 'workHours', 'Рабочее время: 09:00 - 20:00', 2, ''),
-(158, 'workHours', 'Working hours: 09:00 - 20:00', 3, ''),
+(156, 'workHours', '11:00am-20:00pm', 1, ''),
+(157, 'workHours', '11:00am-20:00pm', 2, ''),
+(158, 'workHours', '11:00am-20:00pm', 3, ''),
 (159, 'categories', 'ԿԱՏԵԳՈՐԻԱՆԵՐ', 1, ''),
 (160, 'categories', 'КАТЕГОРИИ', 2, ''),
 (161, 'categories', 'CATEGORIES', 3, ''),
@@ -995,7 +1032,7 @@ INSERT INTO `translations` (`id`, `selector`, `translate`, `lang`, `description`
 (178, 'consultation', 'FREE CONSULTATION', 3, ''),
 (179, 'email', 'e-mail', 3, ''),
 (180, 'allRights2', '.', 3, ''),
-(181, 'allRights', '© 2020. All rights reserved.', 3, ''),
+(181, 'allRights', '© 2019. All rights reserved. ', 3, ''),
 (182, 'color', 'Գույն ', 1, ''),
 (183, 'color', 'Цвет', 2, ''),
 (184, 'color', 'Color', 3, ''),
@@ -1037,7 +1074,7 @@ INSERT INTO `translations` (`id`, `selector`, `translate`, `lang`, `description`
 (220, 'calculateOnLeftSide', 'ՁԵՐ ՊՐՈԵԿՏԻ ՀԱՇՎԱՐԿ', 1, ''),
 (221, 'calculateOnLeftSide', 'РАСЧЕТ ВАШЕГО ПРОЕКТА', 2, ''),
 (222, 'calculateOnLeftSide', 'CALCULATE FOR YOUR PROJECT', 3, ''),
-(223, 'emailAddress', 'info@1shop.am', 3, ''),
+(223, 'emailAddress', 'info@natural.am', 3, ''),
 (224, 'ourServices', 'Services', 3, ''),
 (225, 'sendNow', 'Դիմել հիմա', 1, ''),
 (226, 'sendNow', 'Подать заявку', 2, ''),
@@ -1052,7 +1089,7 @@ INSERT INTO `translations` (`id`, `selector`, `translate`, `lang`, `description`
 (235, 'order_subject', 'Заказ клиента', 2, ''),
 (236, 'order_subject', 'Order by customer', 3, ''),
 (237, 'address', 'Office Address: 59 Komitas Ave.&lt;br&gt;\r\nLogistic Center Address: Hakob Hakobyan 10&lt;br&gt;\r\nSlaughterhouse address: c. Proshyan', 3, ''),
-(238, 'phoneNumber', '077 234566', 3, ''),
+(238, 'phoneNumber', '0 8000 4000', 3, ''),
 (239, 'phoneNumber2', '', 3, ''),
 (243, 'phoneNumber', '+(374) 77 59 04 03', 4, ''),
 (244, 'phoneNumber', '+(374) 77 59 04 03', 5, ''),
@@ -1089,15 +1126,15 @@ INSERT INTO `translations` (`id`, `selector`, `translate`, `lang`, `description`
 (275, 'payments', 'Վճարման համակարգեր', 1, ''),
 (276, 'payments', 'Системы оплаты', 2, ''),
 (277, 'payments', 'Payment Systems', 3, ''),
-(278, 'sortby', 'Սորտավորել', 1, ''),
-(279, 'sortby', 'Сортировка', 2, ''),
-(280, 'sortby', 'Sorting', 3, ''),
+(278, 'sortby', 'Դասակարգել ըստ', 1, ''),
+(279, 'sortby', 'Сортировка по', 2, ''),
+(280, 'sortby', 'Sorting by', 3, ''),
 (281, 'default_sort', 'Լռելյայն', 1, ''),
 (282, 'default_sort', 'По умолчанию', 2, ''),
 (283, 'default_sort', 'Default', 3, ''),
-(284, 'sales_sort', 'ըստ զեղչերի', 1, ''),
-(285, 'sales_sort', 'по скидкам', 2, ''),
-(286, 'sales_sort', 'by sales', 3, ''),
+(284, 'sales_sort', 'զեղչերի', 1, ''),
+(285, 'sales_sort', 'скидкам', 2, ''),
+(286, 'sales_sort', 'sales', 3, ''),
 (287, 'price_asc', 'ըստ գնաճի', 1, ''),
 (288, 'price_asc', 'цена по возрастанию', 2, ''),
 (289, 'price_asc', 'price asc', 3, ''),
@@ -1128,7 +1165,7 @@ INSERT INTO `translations` (`id`, `selector`, `translate`, `lang`, `description`
 (314, 'account', 'Անձնական էջ', 1, ''),
 (315, 'account', 'Аккаунт', 2, ''),
 (316, 'account', 'Account', 3, ''),
-(317, 'wishlist', 'Նախընտրած', 1, ''),
+(317, 'wishlist', 'Ցանկալիներ', 1, ''),
 (318, 'wishlist', 'Избранные', 2, ''),
 (319, 'wishlist', 'Wishlist', 3, ''),
 (320, 'productname', 'անուն', 1, ''),
@@ -1194,9 +1231,9 @@ INSERT INTO `translations` (`id`, `selector`, `translate`, `lang`, `description`
 (380, 'hello', 'Ողջույն', 1, ''),
 (381, 'hello', 'Здравствуйте', 2, ''),
 (382, 'hello', 'Hello', 3, ''),
-(383, 'accountText', 'Դուք կարող եք հեշտությամբ ստուգել և դիտել ձեր վերջին պատվերները, կառավարել ձեր առաքման և բիլինգի հասցեները և խմբագրել ձեր գաղտնաբառի և էջի մանրամասները:', 1, ''),
-(384, 'accountText', 'Вы можете легко проверять и просматривать свои последние заказы, управлять адресами доставки и выставления счетов, редактировать свой пароль и детали страницы', 2, ''),
-(385, 'accountText', 'You can easily check and view your latest orders, manage your shipping and billing addresses, edit your password and page details.', 3, ''),
+(383, 'accountText', 'Քանի որ գրանցված հաճախորդ եք, Դուք հնարավորություն ունեք օգտվելու մի շարք առավելություններից․&lt;br&gt;\r\n1․ Տեսնել ձեր գնումների և պատվերների պատմությունը&lt;br&gt;\r\n2․ Կատարել գնումներ ապառիկով &lt;br&gt;\r\n3․ Հետևել խանութի թարմացումներին&lt;br&gt;\r\n4․ Իմանալ ձեր ներկայիս պատվերի ստատուսի մասին&lt;br&gt;\r\n', 1, ''),
+(384, 'accountText', 'Будучи зарегистрированным клиентом в нашем интернет-магазине, у вас есть возможность воспользоваться рядом преимуществ:&lt;br&gt;\r\n1) Смотреть историю ваших покупок и заказов&lt;br&gt;\r\n2) Делать покупки в кредит&lt;br&gt;\r\n3) Следить за обновлениями магазина&lt;br&gt;\r\n4) Знать о вашем текущем статусе заказа&lt;br&gt;', 2, ''),
+(385, 'accountText', 'Being a registered customer in our online store, you have the opportunity to take advantage of a number of advantages:&lt;br&gt;\r\n1) View your purchase and order history&lt;br&gt;\r\n2) Make purchases on credit&lt;br&gt;\r\n3) Follow store updates&lt;br&gt;\r\n4) Know about your current order status&lt;br&gt;', 3, ''),
 (386, 'changePassword', 'Փոխել գաղտնաբառը', 1, ''),
 (387, 'changePassword', 'Сменить пароль', 2, ''),
 (388, 'changePassword', 'Change password', 3, ''),
@@ -1305,7 +1342,7 @@ INSERT INTO `translations` (`id`, `selector`, `translate`, `lang`, `description`
 (491, 'about1', 'Info', 3, ''),
 (492, 'about2', 'Info', 3, ''),
 (493, 'about3', 'Info', 3, ''),
-(494, 'aboutshort', 'Natural now offers the buyer affordable and high quality agricultural products, helping farmers to develop agriculture', 3, ''),
+(494, 'aboutshort', '1Shop.am now offers the buyer affordable and high quality agricultural products, helping farmers to develop agriculture', 3, ''),
 (495, 'address2', 'Address:', 3, ''),
 (496, 'all', 'All', 3, ''),
 (497, 'contactpageabout', 'We work to make you feel comfortable. &lt;br&gt; Contact us and our staff will contact you in a short time.', 3, ''),
@@ -1317,14 +1354,14 @@ INSERT INTO `translations` (`id`, `selector`, `translate`, `lang`, `description`
 (503, 'link', 'Links', 3, ''),
 (504, 'location', 'Location', 3, ''),
 (505, 'more', 'More', 3, ''),
-(506, 'news', 'News', 3, ''),
+(506, 'newsdesc', 'News', 3, ''),
 (507, 'ourClients', 'Our clients:', 3, ''),
 (508, 'ourWorks', 'Our products', 3, ''),
 (509, 'phone', 'Tel.', 3, ''),
 (510, 'popular', 'Popular', 3, ''),
 (511, 'saturday', 'Saturday', 3, ''),
 (512, 'search', 'Search\r\n', 3, ''),
-(513, 'send', 'Send message', 3, ''),
+(513, 'send', 'Send', 3, ''),
 (514, 'sendMessage', 'SEND MESSAGE', 3, ''),
 (515, 'share', 'Կիսվել', 3, ''),
 (516, 'special', 'Special', 3, ''),
@@ -1344,12 +1381,12 @@ INSERT INTO `translations` (`id`, `selector`, `translate`, `lang`, `description`
 (530, 'yourmessage', 'Your message', 3, ''),
 (531, 'yourname', 'Name', 3, ''),
 (532, 'yoursubject', 'Subject', 3, ''),
-(533, 'facebook', 'https://www.facebook.com/1shop.am/', 1, ''),
-(534, 'facebook', 'https://www.facebook.com/1shop.am/', 2, ''),
-(535, 'facebook', 'https://www.facebook.com/1shop.am/', 3, ''),
-(536, 'instagram', 'https://www.instagram.com/1shop.am/', 1, ''),
-(537, 'instagram', 'https://www.instagram.com/1shop.am/', 2, ''),
-(538, 'instagram', 'https://www.instagram.com/1shop.am/', 3, ''),
+(533, 'facebook', 'https://www.facebook.com/groupnatural/', 1, ''),
+(534, 'facebook', 'https://www.facebook.com/groupnatural/', 2, ''),
+(535, 'facebook', 'https://www.facebook.com/groupnatural/', 3, ''),
+(536, 'instagram', 'https://www.instagram.com/natural.am/?hl=ru', 1, ''),
+(537, 'instagram', 'https://www.instagram.com/natural.am/?hl=ru', 2, ''),
+(538, 'instagram', 'https://www.instagram.com/natural.am/?hl=ru', 3, ''),
 (539, 'similarProducts', 'Նմանատիպ ապրանքներ', 1, ''),
 (540, 'similarProducts', 'Похожие', 2, ''),
 (541, 'similarProducts', 'Similar Products', 3, ''),
@@ -1418,7 +1455,7 @@ INSERT INTO `translations` (`id`, `selector`, `translate`, `lang`, `description`
 (604, 'findus', 'Find us', 3, ''),
 (605, 'countProducts', 'Ապրանքների քանակը՝ {$productCount}', 1, ''),
 (606, 'countProducts', 'Количество продуктов {$productCount}', 2, ''),
-(607, 'countProducts', 'Count Products {$productCount}', 3, ''),
+(607, 'countProducts', 'Count of Products {$productCount}', 3, ''),
 (608, 'filterByPrice', 'ֆիլտրել ըստ գնի', 1, ''),
 (609, 'filterByPrice', 'Фильтровать по цене', 2, ''),
 (610, 'filterByPrice', 'Filter by Price', 3, ''),
@@ -1443,9 +1480,9 @@ INSERT INTO `translations` (`id`, `selector`, `translate`, `lang`, `description`
 (629, 'characteristic', 'Բնութագիր', 1, ''),
 (630, 'characteristic', 'Характеристика', 2, ''),
 (631, 'characteristic', 'Characteristics', 3, ''),
-(632, 'details', 'Ապրանքի մանրամասները', 1, ''),
-(633, 'details', 'Детали Продкта', 2, ''),
-(634, 'details', 'Product Detail', 3, ''),
+(632, 'productdetail', 'Ապրանքի մանրամասները', 1, ''),
+(633, 'productdetail', 'Детали Продкта', 2, ''),
+(634, 'productdetail', 'Product Detail', 3, ''),
 (635, 'to', '-ից', 1, ''),
 (636, 'to', 'до', 2, ''),
 (637, 'to', 'to', 3, ''),
@@ -1459,8 +1496,8 @@ INSERT INTO `translations` (`id`, `selector`, `translate`, `lang`, `description`
 (645, 'subscribeUs', 'Подпишитесь на нас', 2, ''),
 (646, 'subscribeUs', 'Subscribe us', 3, ''),
 (647, 'getNews', 'ԳՐԱՆՑՎԵՔ ՆՈՐՈՒԹՅՈՒՆՆԵՐԻ ՀԱՄԱՐ', 1, ''),
-(648, 'getNews', 'ПОДПИСАТЬСЯ НА НОВОСТИ', 2, ''),
-(649, 'getNews', 'SIGN UP FOR NEWS', 3, ''),
+(648, 'getNews', 'получаете новости', 2, ''),
+(649, 'getNews', 'get News', 3, ''),
 (650, 'similarproducts', 'Նմանատիպ ապրանքներ', 1, ''),
 (651, 'similarproducts', 'Похожие продукты', 2, ''),
 (652, 'similarproducts', 'Similar Products', 3, ''),
@@ -1491,9 +1528,9 @@ INSERT INTO `translations` (`id`, `selector`, `translate`, `lang`, `description`
 (677, 'continueAsGuest', 'Շարունակել որպես հյուր', 1, ''),
 (678, 'continueAsGuest', 'Продолжить как гость', 2, ''),
 (679, 'continueAsGuest', 'Continue as guest', 3, ''),
-(680, 'accounttext', 'Դուք կարող եք հեշտությամբ ստուգել և դիտել ձեր վերջին պատվերները, կառավարել ձեր առաքման և բիլինգի հասցեները և խմբագրել ձեր գաղտնաբառի և էջի մանրամասները:', 1, ''),
-(681, 'accounttext', 'Вы можете легко проверять и просматривать свои последние заказы, управлять адресами доставки и выставления счетов, редактировать свой пароль и детали страницы', 2, ''),
-(682, 'accounttext', 'You can easily check and view your latest orders, manage your shipping and billing addresses, edit your password and page details.', 3, ''),
+(680, 'accounttext', 'Քանի որ գրանցված հաճախորդ եք, Դուք հնարավորություն ունեք օգտվելու մի շարք առավելություններից․&lt;br&gt;\r\n1․ Տեսնել ձեր գնումների և պատվերների պատմությունը&lt;br&gt;\r\n2․ Կատարել գնումներ ապառիկով &lt;br&gt;\r\n3․ Հետևել խանութի թարմացումներին&lt;br&gt;\r\n4․ Իմանալ ձեր ներկայիս պատվերի ստատուսի մասին&lt;br&gt;\r\n', 1, ''),
+(681, 'accounttext', 'Будучи зарегистрированным клиентом в нашем интернет-магазине, у вас есть возможность воспользоваться рядом преимуществ:&lt;br&gt;\r\n1) Смотреть историю ваших покупок и заказов&lt;br&gt;\r\n2) Делать покупки в кредит&lt;br&gt;\r\n3) Следить за обновлениями магазина&lt;br&gt;\r\n4) Знать о вашем текущем статусе заказа&lt;br&gt;', 2, ''),
+(682, 'accounttext', 'Being a registered customer in our online store, you have the opportunity to take advantage of a number of advantages:&lt;br&gt;\r\n1) View your purchase and order history&lt;br&gt;\r\n2) Make purchases on credit&lt;br&gt;\r\n3) Follow store updates&lt;br&gt;\r\n4) Know about your current order status&lt;br&gt;', 3, ''),
 (683, 'youNotHaveOrder', 'Դուք չունեք պատվիրված ապրանքներ', 1, ''),
 (684, 'youNotHaveOrder', 'Вы не имеете историю покупок', 2, ''),
 (685, 'youNotHaveOrder', 'You not have any orders', 3, ''),
@@ -1563,95 +1600,14 @@ INSERT INTO `translations` (`id`, `selector`, `translate`, `lang`, `description`
 (749, 'share', 'Կիսվել', 1, ''),
 (750, 'share', 'Կիսվել', 2, ''),
 (751, 'share', 'Կիսվել', 3, ''),
-(752, 'ifquestions', 'Հարցերի դեպքում', 1, NULL),
-(753, 'ifquestions', 'Если есть вопросы', 2, NULL),
-(754, 'ifquestions', 'If questions', 3, NULL),
-(755, 'newsdesc', 'Գրեք Ձեր էլ․ փոստը և ստացեք նորություններն առաջինը', 1, NULL),
-(756, 'newsdesc', 'Напишите свой эмаил и получите новости первыми', 2, NULL),
-(757, 'newsdesc', 'Write your email and get the news first', 3, NULL),
-(758, 'purchases', 'գնումներ', 1, NULL),
-(759, 'purchases', 'покупки', 2, NULL),
-(760, 'purchases', 'purchases', 3, NULL),
-(761, 'image', 'նկար', 1, NULL),
-(762, 'image', 'картинка', 2, NULL),
-(763, 'image', 'image', 3, NULL),
-(764, 'agreedwith', 'համաձայն եմ', 1, NULL),
-(765, 'agreedwith', 'согласен с', 2, NULL),
-(766, 'agreedwith', 'aggree with', 3, NULL),
-(767, 'terms', 'Պայմաններին', 1, NULL),
-(768, 'terms', 'Условиями', 2, NULL),
-(769, 'terms', 'Terms', 3, NULL),
-(770, 'paywithbonus', 'Վճարել բոնուսից', 1, NULL),
-(771, 'paywithbonus', 'Оплатить бонус', 2, NULL),
-(772, 'paywithbonus', 'Pay from the bonus', 3, NULL),
-(773, 'getPercent', 'Ստանալ 5% զեղչ', 1, NULL),
-(774, 'getPercent', 'Получи скидку 5%', 2, NULL),
-(775, 'getPercent', 'Get a 5% discount', 3, NULL),
-(776, 'setLabels', 'Լրացրեք դաշտերը', 1, NULL),
-(777, 'setLabels', 'Заполните поля', 2, NULL),
-(778, 'setLabels', 'Fill in the fields', 3, NULL),
-(779, 'submit', 'Հաստատել', 1, NULL),
-(780, 'submit', 'Подтвердить', 2, NULL),
-(781, 'submit', 'Submit', 3, NULL),
-(782, 'specific_id', 'Ձեր ID կոդը', 1, NULL),
-(783, 'specific_id', 'Ваш код', 2, NULL),
-(784, 'specific_id', 'Your ID code', 3, NULL),
-(785, 'youraccountbonuses', 'Դուք ունեք <strong>{$user.attributes.bonus} դրամ</strong> բոնուս: <br>\r\n                                    Ձեր գնումների <span>5%</span> -ը կարող եք վճարել Ձեր բոնուսից։', 1, NULL),
-(786, 'youraccountbonuses', 'У вас есть бонус <strong>{$user.attributes.bonus} AMD </ strong>. <br>\r\n                                     Вы можете заплатить <span> 5% </ span> за покупки из вашего бонуса.', 2, NULL),
-(787, 'youraccountbonuses', 'You also have a <strong> {$user.attributes.bonus} AMD </strong> bonus. <br>\r\n                                     You can pay <span>5% </span> of your purchases from your bonus.', 3, NULL),
-(788, 'thereAreYourAddresses', 'Այստեղ կպահվեն այն բոլոր հասցեները որոնք կնշեք պատվերի ժամանակ', 1, NULL),
-(789, 'thereAreYourAddresses', 'Все адреса, указанные вами при заказе, будут храниться здесь', 2, NULL),
-(790, 'thereAreYourAddresses', 'All the addresses you specify during the order will be kept here', 3, NULL),
-(791, 'change', 'փոփոխել', 1, NULL),
-(792, 'change', 'изменить', 2, NULL),
-(793, 'change', 'change', 3, NULL),
-(794, 'discounted', 'զեղջված է', 1, NULL),
-(795, 'discounted', 'скидка', 2, NULL),
-(796, 'discounted', 'discount', 3, NULL),
-(797, 'remove', 'Ջնջել', 1, NULL),
-(798, 'remove', 'Удалить', 2, NULL),
-(799, 'remove', 'Remove', 3, NULL),
-(800, 'facebookLink', 'https://www.facebook.com/1shop.am/', 1, NULL),
-(801, 'facebookLink', 'https://www.facebook.com/1shop.am/', 2, NULL),
-(802, 'facebookLink', 'https://www.facebook.com/1shop.am/', 3, NULL),
-(803, 'instagramLink', 'https://www.instagram.com/1shop.am/', 1, NULL),
-(804, 'instagramLink', 'https://www.instagram.com/1shop.am/', 2, NULL),
-(805, 'instagramLink', 'https://www.instagram.com/1shop.am/', 3, NULL),
-(806, 'newer', 'Նորերը', 1, NULL),
-(807, 'newer', 'Новые', 2, NULL),
-(808, 'newer', 'Newer', 3, NULL),
-(809, 'sales', 'Զեղչված', 1, NULL),
-(810, 'sales', 'Со скидкой', 2, NULL),
-(811, 'sales', 'Sale', 3, NULL),
-(812, 'topseller', 'Թոփ վաճառք', 1, NULL),
-(813, 'topseller', 'Топселлер', 2, NULL),
-(814, 'topseller', 'Topseller', 3, NULL),
-(815, 'send_again', 'Ուղարկել կրկին', 1, NULL),
-(816, 'send_again', 'Отправить повторно', 2, NULL),
-(817, 'send_again', 'Send again', 3, NULL),
-(818, 'youNotHaveAddress', 'Դուք չունեք գրանցված հասցեներ', 1, NULL),
-(819, 'youNotHaveAddress', 'У вас нет зарегистрированных адресов', 2, NULL),
-(820, 'youNotHaveAddress', 'You dont have any registered addresses', 3, NULL),
-(821, 'paywithidramdescription', 'վճարեք Idram օնլայն դրամապանակի միջոցով առանց պահումների', 1, NULL),
-(822, 'paywithidramdescription', 'оплатить с помощью интернет-кошелька Idram без вычетов', 2, NULL),
-(823, 'paywithidramdescription', 'pay using Idram online wallet without deductions', 3, NULL),
-(824, 'deliverytatus', 'Առաքման կարգավիճակ', 1, NULL),
-(825, 'deliverytatus', 'Статус доставки', 2, NULL),
-(826, 'deliverytatus', 'Delivery status', 3, NULL),
-(827, 'infoabouttotal', 'Վճարման վերջնական գումարը կարող է տատանվել ՝ կախված որոշակի մթերքների քաշից', 1, NULL),
-(828, 'infoabouttotal', 'Сумма оплаты может варьироваться  в зависимости от веса определенных продуктов', 2, NULL),
-(829, 'infoabouttotal', 'Payment amount may vary depending on the weight of certain products', 3, NULL),
-(830, 'ordercallmessage', 'Գրանցեք զանգի պատվեր։ Գրեք Ձեր հեռախոսահամարը մեր մասնագետները կկապնվեն Ձեր հետ', 1, NULL),
-(831, 'ordercallmessage', 'Зарегистрировать заказ звонка. Введите номер телефона Наши специалисты свяжутся с вами', 2, NULL),
-(832, 'ordercallmessage', 'Register a call order. Enter your phone number Our specialists will contact you', 3, NULL),
-(833, 'error_min_order', 'Պատվերի մինիմալ արժեքը 3000 դրամ է', 1, NULL),
-(834, 'error_min_order', 'Минимальная сумма заказа 3000 драм', 2, NULL),
-(835, 'error_min_order', 'Minimal amount of order 3000 drams', 3, NULL);
+(752, 'ifquestions', 'հարցերի դեպքում', 1, NULL),
+(753, 'ifquestions', 'если есть вопросы', 2, NULL),
+(754, 'ifquestions', 'if questions', 3, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `units`
+-- Структура таблицы `units`
 --
 
 CREATE TABLE `units` (
@@ -1661,7 +1617,7 @@ CREATE TABLE `units` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `units`
+-- Дамп данных таблицы `units`
 --
 
 INSERT INTO `units` (`id`, `name`, `code`) VALUES
@@ -1673,7 +1629,7 @@ INSERT INTO `units` (`id`, `name`, `code`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Структура таблицы `users`
 --
 
 CREATE TABLE `users` (
@@ -1693,14 +1649,14 @@ CREATE TABLE `users` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_address`
+-- Структура таблицы `user_address`
 --
 
 CREATE TABLE `user_address` (
   `id` int(11) NOT NULL,
   `address` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `city` int(11) NOT NULL DEFAULT 1,
-  `region` int(11) NOT NULL DEFAULT 1,
+  `city` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `region` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `postal_code` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `phone` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `notes` text COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -1712,7 +1668,7 @@ CREATE TABLE `user_address` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_attributes`
+-- Структура таблицы `user_attributes`
 --
 
 CREATE TABLE `user_attributes` (
@@ -1721,13 +1677,13 @@ CREATE TABLE `user_attributes` (
   `about` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `media_id` int(11) NOT NULL,
   `first_order` int(11) NOT NULL DEFAULT 1,
-  `bonus` float NOT NULL DEFAULT 10000
+  `bonus` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_confirmation`
+-- Структура таблицы `user_confirmation`
 --
 
 CREATE TABLE `user_confirmation` (
@@ -1742,7 +1698,7 @@ CREATE TABLE `user_confirmation` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_newsletter`
+-- Структура таблицы `user_newsletter`
 --
 
 CREATE TABLE `user_newsletter` (
@@ -1752,101 +1708,107 @@ CREATE TABLE `user_newsletter` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Indexes for dumped tables
+-- Индексы сохранённых таблиц
 --
 
 --
--- Indexes for table `admins`
+-- Индексы таблицы `admins`
 --
 ALTER TABLE `admins`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `advertisings`
+-- Индексы таблицы `advertisings`
 --
 ALTER TABLE `advertisings`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `advertising_attributes`
+-- Индексы таблицы `advertising_attributes`
 --
 ALTER TABLE `advertising_attributes`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `advertising_translations`
+-- Индексы таблицы `advertising_translations`
 --
 ALTER TABLE `advertising_translations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `articles`
+-- Индексы таблицы `articles`
 --
 ALTER TABLE `articles`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `article_attributes`
+-- Индексы таблицы `article_attributes`
 --
 ALTER TABLE `article_attributes`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `article_category`
+-- Индексы таблицы `article_category`
 --
 ALTER TABLE `article_category`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `article_comments`
---
-ALTER TABLE `article_comments`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `article_images`
+-- Индексы таблицы `article_images`
 --
 ALTER TABLE `article_images`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `article_options`
+-- Индексы таблицы `article_options`
 --
 ALTER TABLE `article_options`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `article_rating`
+-- Индексы таблицы `article_options_relations`
+--
+ALTER TABLE `article_options_relations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `article_option_values`
+--
+ALTER TABLE `article_option_values`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `article_rating`
 --
 ALTER TABLE `article_rating`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `article_translations`
+-- Индексы таблицы `article_translations`
 --
 ALTER TABLE `article_translations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `article_wishlist`
+-- Индексы таблицы `article_wishlist`
 --
 ALTER TABLE `article_wishlist`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `basket`
+-- Индексы таблицы `basket`
 --
 ALTER TABLE `basket`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `blog`
+-- Индексы таблицы `blog`
 --
 ALTER TABLE `blog`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `blog_articles`
+-- Индексы таблицы `blog_articles`
 --
 ALTER TABLE `blog_articles`
   ADD PRIMARY KEY (`id`),
@@ -1856,485 +1818,491 @@ ALTER TABLE `blog_articles`
   ADD KEY `id_4` (`id`);
 
 --
--- Indexes for table `categories`
+-- Индексы таблицы `categories`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `category_translation`
+-- Индексы таблицы `category_translation`
 --
 ALTER TABLE `category_translation`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `core`
+-- Индексы таблицы `core`
 --
 ALTER TABLE `core`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `core_menu`
+-- Индексы таблицы `core_menu`
 --
 ALTER TABLE `core_menu`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `core_plugins`
+-- Индексы таблицы `core_plugins`
 --
 ALTER TABLE `core_plugins`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `core_url`
+-- Индексы таблицы `core_url`
 --
 ALTER TABLE `core_url`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `currencies`
+-- Индексы таблицы `currencies`
 --
 ALTER TABLE `currencies`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `delivery_city`
+-- Индексы таблицы `delivery_city`
 --
 ALTER TABLE `delivery_city`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `delivery_status`
+-- Индексы таблицы `delivery_status`
 --
 ALTER TABLE `delivery_status`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `emotions`
+-- Индексы таблицы `emotions`
 --
 ALTER TABLE `emotions`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `emotion_components`
+-- Индексы таблицы `emotion_components`
 --
 ALTER TABLE `emotion_components`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `emotion_types`
+-- Индексы таблицы `emotion_types`
 --
 ALTER TABLE `emotion_types`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `filter_groups`
+-- Индексы таблицы `filter_groups`
 --
 ALTER TABLE `filter_groups`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `languages`
+-- Индексы таблицы `filter_sortings`
+--
+ALTER TABLE `filter_sortings`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `filter_tables`
+--
+ALTER TABLE `filter_tables`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `languages`
 --
 ALTER TABLE `languages`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `media`
+-- Индексы таблицы `media`
 --
 ALTER TABLE `media`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `media_albums`
+-- Индексы таблицы `media_albums`
 --
 ALTER TABLE `media_albums`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `media_thumbnails`
+-- Индексы таблицы `media_thumbnails`
 --
 ALTER TABLE `media_thumbnails`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `orders`
+-- Индексы таблицы `orders`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `order_details`
+-- Индексы таблицы `order_details`
 --
 ALTER TABLE `order_details`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `order_status`
+-- Индексы таблицы `order_status`
 --
 ALTER TABLE `order_status`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `payment_methods`
+-- Индексы таблицы `payment_methods`
 --
 ALTER TABLE `payment_methods`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `popular_articles`
---
-ALTER TABLE `popular_articles`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `special_articles`
---
-ALTER TABLE `special_articles`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `suppliers`
+-- Индексы таблицы `suppliers`
 --
 ALTER TABLE `suppliers`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `templates`
+-- Индексы таблицы `templates`
 --
 ALTER TABLE `templates`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `translations`
+-- Индексы таблицы `translations`
 --
 ALTER TABLE `translations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `units`
+-- Индексы таблицы `units`
 --
 ALTER TABLE `units`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `users`
+-- Индексы таблицы `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user_address`
+-- Индексы таблицы `user_address`
 --
 ALTER TABLE `user_address`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user_attributes`
+-- Индексы таблицы `user_attributes`
 --
 ALTER TABLE `user_attributes`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user_confirmation`
+-- Индексы таблицы `user_confirmation`
 --
 ALTER TABLE `user_confirmation`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user_newsletter`
+-- Индексы таблицы `user_newsletter`
 --
 ALTER TABLE `user_newsletter`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT для сохранённых таблиц
 --
 
 --
--- AUTO_INCREMENT for table `admins`
+-- AUTO_INCREMENT для таблицы `admins`
 --
 ALTER TABLE `admins`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `advertisings`
+-- AUTO_INCREMENT для таблицы `advertisings`
 --
 ALTER TABLE `advertisings`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `advertising_attributes`
+-- AUTO_INCREMENT для таблицы `advertising_attributes`
 --
 ALTER TABLE `advertising_attributes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `advertising_translations`
+-- AUTO_INCREMENT для таблицы `advertising_translations`
 --
 ALTER TABLE `advertising_translations`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `articles`
+-- AUTO_INCREMENT для таблицы `articles`
 --
 ALTER TABLE `articles`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `article_attributes`
+-- AUTO_INCREMENT для таблицы `article_attributes`
 --
 ALTER TABLE `article_attributes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `article_category`
+-- AUTO_INCREMENT для таблицы `article_category`
 --
 ALTER TABLE `article_category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `article_comments`
---
-ALTER TABLE `article_comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `article_images`
+-- AUTO_INCREMENT для таблицы `article_images`
 --
 ALTER TABLE `article_images`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `article_options`
+-- AUTO_INCREMENT для таблицы `article_options`
 --
 ALTER TABLE `article_options`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `article_rating`
+-- AUTO_INCREMENT для таблицы `article_options_relations`
+--
+ALTER TABLE `article_options_relations`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT для таблицы `article_option_values`
+--
+ALTER TABLE `article_option_values`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT для таблицы `article_rating`
 --
 ALTER TABLE `article_rating`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `article_translations`
+-- AUTO_INCREMENT для таблицы `article_translations`
 --
 ALTER TABLE `article_translations`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `article_wishlist`
+-- AUTO_INCREMENT для таблицы `article_wishlist`
 --
 ALTER TABLE `article_wishlist`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `basket`
+-- AUTO_INCREMENT для таблицы `basket`
 --
 ALTER TABLE `basket`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `blog`
+-- AUTO_INCREMENT для таблицы `blog`
 --
 ALTER TABLE `blog`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `blog_articles`
+-- AUTO_INCREMENT для таблицы `blog_articles`
 --
 ALTER TABLE `blog_articles`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `categories`
+-- AUTO_INCREMENT для таблицы `categories`
 --
 ALTER TABLE `categories`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `category_translation`
+-- AUTO_INCREMENT для таблицы `category_translation`
 --
 ALTER TABLE `category_translation`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `core`
+-- AUTO_INCREMENT для таблицы `core`
 --
 ALTER TABLE `core`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `core_menu`
+-- AUTO_INCREMENT для таблицы `core_menu`
 --
 ALTER TABLE `core_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
--- AUTO_INCREMENT for table `core_plugins`
+-- AUTO_INCREMENT для таблицы `core_plugins`
 --
 ALTER TABLE `core_plugins`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `core_url`
+-- AUTO_INCREMENT для таблицы `core_url`
 --
 ALTER TABLE `core_url`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `currencies`
+-- AUTO_INCREMENT для таблицы `currencies`
 --
 ALTER TABLE `currencies`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `delivery_city`
+-- AUTO_INCREMENT для таблицы `delivery_city`
 --
 ALTER TABLE `delivery_city`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
--- AUTO_INCREMENT for table `delivery_status`
+-- AUTO_INCREMENT для таблицы `delivery_status`
 --
 ALTER TABLE `delivery_status`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `emotions`
+-- AUTO_INCREMENT для таблицы `emotions`
 --
 ALTER TABLE `emotions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `emotion_components`
+-- AUTO_INCREMENT для таблицы `emotion_components`
 --
 ALTER TABLE `emotion_components`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `emotion_types`
+-- AUTO_INCREMENT для таблицы `emotion_types`
 --
 ALTER TABLE `emotion_types`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `filter_groups`
+-- AUTO_INCREMENT для таблицы `filter_groups`
 --
 ALTER TABLE `filter_groups`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `languages`
+-- AUTO_INCREMENT для таблицы `filter_sortings`
+--
+ALTER TABLE `filter_sortings`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT для таблицы `filter_tables`
+--
+ALTER TABLE `filter_tables`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT для таблицы `languages`
 --
 ALTER TABLE `languages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `media`
+-- AUTO_INCREMENT для таблицы `media`
 --
 ALTER TABLE `media`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `media_albums`
+-- AUTO_INCREMENT для таблицы `media_albums`
 --
 ALTER TABLE `media_albums`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `media_thumbnails`
+-- AUTO_INCREMENT для таблицы `media_thumbnails`
 --
 ALTER TABLE `media_thumbnails`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `orders`
+-- AUTO_INCREMENT для таблицы `orders`
 --
 ALTER TABLE `orders`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `order_details`
+-- AUTO_INCREMENT для таблицы `order_details`
 --
 ALTER TABLE `order_details`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `order_status`
+-- AUTO_INCREMENT для таблицы `order_status`
 --
 ALTER TABLE `order_status`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `payment_methods`
+-- AUTO_INCREMENT для таблицы `payment_methods`
 --
 ALTER TABLE `payment_methods`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `popular_articles`
---
-ALTER TABLE `popular_articles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `special_articles`
---
-ALTER TABLE `special_articles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `suppliers`
+-- AUTO_INCREMENT для таблицы `suppliers`
 --
 ALTER TABLE `suppliers`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `templates`
+-- AUTO_INCREMENT для таблицы `templates`
 --
 ALTER TABLE `templates`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `translations`
+-- AUTO_INCREMENT для таблицы `translations`
 --
 ALTER TABLE `translations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=836;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=755;
 
 --
--- AUTO_INCREMENT for table `units`
+-- AUTO_INCREMENT для таблицы `units`
 --
 ALTER TABLE `units`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `user_address`
+-- AUTO_INCREMENT для таблицы `user_address`
 --
 ALTER TABLE `user_address`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `user_attributes`
+-- AUTO_INCREMENT для таблицы `user_attributes`
 --
 ALTER TABLE `user_attributes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `user_confirmation`
+-- AUTO_INCREMENT для таблицы `user_confirmation`
 --
 ALTER TABLE `user_confirmation`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `user_newsletter`
+-- AUTO_INCREMENT для таблицы `user_newsletter`
 --
 ALTER TABLE `user_newsletter`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;

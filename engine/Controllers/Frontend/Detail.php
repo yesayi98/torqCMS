@@ -7,7 +7,7 @@ class detailController extends Controller
 
   public function index()
   {
-    $requestCategoryId = $_SESSION['category'];
+    $requestCategoryId = $this->View()->getSession('category');
     $requestCategory = Container()->Categories()->getCategoryById($requestCategoryId);
     $productId = intval($this->getRequest()->get['a']);
     $product = Container()->Articles()->getArticleById($productId);
@@ -70,7 +70,8 @@ class detailController extends Controller
   {
       $this->route = "frontend/detail/content";
 
-    $requestCategoryId = $_SESSION['category'];
+    $requestCategoryId = $this->View()->getSession('category');
+
     $requestCategory = Container()->Categories()->getCategoryById($requestCategoryId);
     $productId = intval($this->getRequest()->get['a']);
     $product = Container()->Articles()->getArticleById($productId);
@@ -128,6 +129,35 @@ class detailController extends Controller
     $this->route = "frontend/emotions/components/article_slider";
   }
 
+  public function rate()
+  {
+    $request = $this->getRequest()->request;
+
+    $rating['rating_count'] = ($request['rating'] <= 5)?$request['rating']:5;
+    $rating['comment'] = $request['comment'];
+    $rating['article_id'] = $request['article_id'];
+    $rating['user_id'] = Container()->getCurrentUser()['id'];
+    $rating['active'] = 0;
+
+    // same as $this->__get('Articles');
+    $articleModel = $this->Articles;
+    $success = $articleModel->setArticleReview($rating);
+    if ($success) {
+      $messageSelector = 'success_review';
+    }else{
+      $messageSelector = 'error_review';
+    }
+    $message = $this->View()->translating($messageSelector);
+
+    if ($request['XHR']) {
+      die(json_encode([
+        'success' => $success,
+        'message' => $message
+      ]));
+    }
+
+    Router::redirect('detail?a='.$request['article_id']);
+  }
 }
 
 ?>

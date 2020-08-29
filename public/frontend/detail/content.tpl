@@ -13,6 +13,11 @@
                             {block name='name-box'}
                               <img class="resposnsive rounden-circle w-25 float-sm-right" src="{$product.supplier.image.path}">
                               <h1>{$product.name|unescape}</h1>
+                              <div class="rating-container rated">
+                                <div class="float-right">
+                                  {'<i class="ti ti-star"></i>'|str_repeat:$product.rating}
+                                </div>
+                              </div>
                             {/block}
 
                             {block name='price-box'}
@@ -70,6 +75,7 @@
                                  </ul>
                             </div>
                             {/block}
+
                             <div class="modal_social mt-60">
                                 <h2>{translator selector='share'}</h2>
                                 {* <ul>
@@ -99,6 +105,56 @@
 
                     </div>
                 </div>
+                {block name="rate-component"}
+                {if $user}
+                <div id="main" class="col-12">
+                  <div class="card mt-3">
+                    <div class="card-header">
+                      <h3 class="my-3">{$product.name}: {translator selector="rate"}</h3>
+                    </div>
+                    <div id="container" class="rating-container card-body">
+                      <form id="rate-form"
+                            class="rate-form form-group"
+                            action="{url url="detail/rate"}"
+                            method="post"
+                            datatype="json"
+                            data-ajax='true'>
+                        <div class="ratings my-3">
+                          <i star-rating="1" class="ti ti-star star"></i>
+                          <i star-rating="2" class="ti ti-star star"></i>
+                          <i star-rating="3" class="ti ti-star star"></i>
+                          <i star-rating="4" class="ti ti-star star"></i>
+                          <i star-rating="5" class="ti ti-star star"></i>
+                          <input type="number"  name="rating" id="ratingInput" value="1" style="display: none;">
+                        </div>
+
+                        <label class="d-block w-100">
+                          <span class="text-muted">{translator selector="comment"}</span>
+                          <textarea name="comment" placeholder="{translator selector="comment"}" class="form-control"></textarea>
+                        </label>
+                        <input type="hidden" name="article_id" value="{$product.id}">
+                        <button type="submit" class="btn rate-button btn-large mt-3" name="button">{translator selector="submit"}</button>
+                      </form>
+                      <div class="my-3">
+                        {if $product.reviews}
+                        {foreach $product.reviews as $review}
+                          <div class="comment-item card mt-3">
+                            <div class="card-header">
+                                {$review.user.name} {$review.user.lastname}
+                            </div>
+                            <div class="card-body">
+                              <p>{'<i class="ti ti-star"></i>'|str_repeat:$review.rating_count}</p>
+                              <p>{$review.comment}</p>
+                            </div>
+                          </div>
+                        {/foreach}
+                        {/if}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {/if}
+                {/block}
             </div>
         </div>
     </div>

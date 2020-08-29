@@ -30,7 +30,9 @@
             <th scope="col">
               {foreach from=$product.options item=$productoption key='key'}
                   {if $productoption.name == $option}
-                    {$productoption.value}
+                    {foreach from=$productoption.values key='key' item='value' name='foo'}
+                      {$value.value}{if not $smarty.foreach.foo.last}, {/if}
+                    {/foreach}
                   {/if}
               {/foreach}
             </th>

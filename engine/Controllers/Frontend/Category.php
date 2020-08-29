@@ -39,7 +39,6 @@ class categoryController extends Controller
       }
 
       $products = $this->__get('Articles')->getArticlesByCategoryWithPagination($category_id, $sortType);
-
       $title = ucfirst($category['name']);
 
       $metaDesc = $this->View()->getAssign('metaDesc');
@@ -53,87 +52,53 @@ class categoryController extends Controller
       // filter attributes
       $suppliers = $this->__get('Supplier')->getSuppliersByCategory($category_id);
 
-      $filterGroups = $this->__get('Filters')->getFilters();
-      $filters;
-      foreach ($filterGroups as $filterGroup) {
-        $filters[] = $this->getFiltersByGroupName($filterGroup);
-        $properties[] = $this->getFiltersByPropertyName($filterGroup);
-      }
+      $sortings = $this->__get('Filters')->getSortingTypes();
+      $filters = $this->unsetUnAvaliableFilters($this->__get('Filters')->getFilters());
 
       $this->View()->setAssign('productCount', $productCount);
-      // $this->View()->setAssign('filters', $filters);
+      $this->View()->setAssign('filters', $filters);
       $this->View()->setAssign('properties', $properties);
       $this->View()->setAssign('Categories.category', $category);
       $this->View()->setAssign('suppliers', $suppliers);
       $this->View()->setAssign('sort', $sortType);
       $this->View()->setAssign('Categories.categoryList', $categoryList);
       $this->View()->setAssign('Articles.products', $products);
+      $this->View()->setAssign('sortings', $sortings);
 
       if ($this->getRequest()->get['XHR']) {
         $this->route = 'frontend/category/listing';
       }
   }
 
-    /**
-    * @param int $filterGroup
-    * @param bool $addUnsortedFilternames
-    * @return array $filter
-    */
-  private function getFiltersByGroupName($filterGroup, $addUnsortedFilternames = true)
+  public function unsetUnAvaliableFilters($filters)
   {
-    $articleModel = $this->__get('Articles');
-    if (!$filterGroup) {
-      return;
-    }
-    if ($addUnsortedFilternames) {
-      $unsortedFilterName = $this->View()->translating('unsorted');
-    }else{
-      $unsortedFilterName = null;
+    $category_id = $this->View()->getSession('category');
+
+    $builder = $this->Articles->getQueryBuilder();
+    $query = $builder->select()->setTable('article_options_relations');
+                      $query->leftJoin(
+                          'article_category', //join table
+                          'article_id', //origin table field used to join
+                          'article_id', //join column
+                       )
+                      ->where()
+                      ->equals('category_id', $category_id);
+    $query = $query->groupBy(['value_id']);
+    $builder->execute($query);
+    $valueIds = array_column($builder->fetchAll(), 'value_id');
+    foreach ($filters as $fil_key => $filter) {
+      foreach ($filter['option']['values'] as $key => $value) {
+        if (!in_array($value['id'], $valueIds)) {
+          unset($filter['option']['values'][$key]);
+        }
+      }
+      if (empty($filter['option']['values'])) {
+        unset($filters[$fil_key]);
+      }
     }
 
-    $filterValueList = $articleModel->getArticleAttributeValueTypes($filterGroup);
-    // $filterValueList = $articleModel->getArticleOptionTypes($filterGroup);
-    $filter;
-    $filter['filter_name'] = $filterGroup['name'];
-
-    foreach ($filterValueList as $key => $value) {
-      $filter['filter_values'][$key]['value'] = (!empty($value[$filterName]))?$value[$filterName]:$unsortedFilterName;
-    }
-
-    return $filter;
+    return $filters;
   }
-
-    /**
-    * @param int $filterGroup
-    * @param bool $addUnsortedFilternames
-    * @return array $filter
-    */
-  private function getFiltersByPropertyName($filterGroup, $addUnsortedFilternames = true)
-  {
-    $articleModel = $this->__get('Articles');
-    if (!$filterGroup) {
-      return;
-    }
-    if ($addUnsortedFilternames) {
-      $unsortedFilterName = $this->View()->translating('unsorted');
-    }else{
-      $unsortedFilterName = null;
-    }
-
-    // $filterValueList = $articleModel->getArticleAttributeValueTypes($filterGroup);
-    $filterValueList = $articleModel->getArticleOptionTypes($filterGroup);
-    $filter;
-    $filter['filter_name'] = $filterGroup['name'];
-
-    foreach ($filterValueList as $key => $value) {
-      $filter['filter_values'][$key]['value'] = $value['value'];
-    }
-    $filter['filter_values'][$key+1]['value'] = $unsortedFilterName;
-
-    return $filter;
-  }
-
-
   /**
   * @param int $category_id
   * @return array $categories (Categories)
@@ -205,31 +170,19 @@ class categoryController extends Controller
   public function search()
   {
     $request = $this->getRequest()->request;
-    $category = $request['c'];
+    $category_id = $request['c'];
     if ($this->getRequest()->get['sort']) {
       $sortType = $this->getRequest()->get['sort'];
     }else{
-      $sortType = null;
+      $sortType = 'default';
     }
-    $search = $request['search'];
-    $pricing;
-    $context;
-    // $suppliers = $this->getSuppliersByRequest($request['supplier']);
-    if (!empty($request['group'])) {
-      $groups = $this->getGroupsByRequest($request['group']);
-    }
-    if (!empty($request['properties'])) {
-      $properties = $this->getPropertiesByRequest($request['properties']);
-    }
-    $pricing = $request['price'];
-    // $context['suppliers'] = $suppliers;
-    $context['groups'] = $groups;
-    $context['properties'] = $properties;
-    $context['pricing'] = $pricing;
-    $context['category'] = $category;
-    $context['search'] = mb_strtolower($search);
-    $context['sortType'] = $sortType;
 
+    $context['category'] = $request['c'];
+    $context['options'] = $request['options'];
+    $context['suppliers'] = $request['suppliers'];
+    $context['price'] = $request['price'];
+    $context['search'] = strtolower($request['search']);
+    $context['sortType'] = $sortType;
     //getting Articles
     $articleModel = $this->__get('Articles');
     $articleModel->createQueryByContext($context);
@@ -239,23 +192,22 @@ class categoryController extends Controller
 
     $title = $this->View()->translating('searchby').' '.$search;
     $categoryList = $this->getCategoryList(1);
-    $category = $this->__get('Categories')->getCategoryById($category);
-    $filterGroups = $this->__get('Filters')->getFilters();
-    $filters;
-    foreach ($filterGroups as $filterGroup) {
-      $filters[] = $this->getFiltersByGroupName($filterGroup);
-      $properties[] = $this->getFiltersByPropertyName($filterGroup);
-    }
+    $category = $this->__get('Categories')->getCategoryById($category_id);
+
+    $suppliers = $this->__get('Supplier')->getSuppliersByCategory($category_id);
+    $filters = $this->unsetUnAvaliableFilters($this->__get('Filters')->getFilters());
+    $sortings = $this->__get('Filters')->getSortingTypes();
 
     $this->View()->setAssign('productCount', $productCount);
-    // $this->View()->setAssign('filters', $filters);
-    $this->View()->setAssign('properties', $properties);
+    $this->View()->setAssign('filters', $filters);
     $this->View()->setAssign('Categories.category', $category);
-    // $this->View()->setAssign('suppliers', $suppliers);
+    $this->View()->setAssign('suppliers', $suppliers);
     $this->View()->setAssign('Categories.categoryList', $categoryList);
     $this->View()->setAssign('Articles.products', $products);
     $this->View()->setAssign('title', $title);
     $this->View()->setAssign('sort', $sortType);
+    $this->View()->setAssign('sortings', $sortings);
+    $this->View()->setAssign('context', $context);
 
     $this->View()->setAssign('search', $search);
     if ($request['XHR']) {
@@ -264,75 +216,6 @@ class categoryController extends Controller
     }
 
     $this->route = 'frontend/category/index';
-  }
-
-  /**
-  * @param array $groupContexts
-  * @return array $groups
-  */
-  private function getGroupsByRequest($groupContexts)
-  {
-    $filterGroups = $this->__get('Filters')->getFilters();
-    $filters;
-    foreach ($filterGroups as $filterGroup) {
-      $filters[] = $this->getFiltersByGroupName($filterGroup, false);
-      $properties[] = $this->getFiltersByPropertyName($filterGroup, false);
-    }
-    foreach ($groupContexts as $key => $groupContext) {
-      if (!is_int($key)) {
-        continue;
-      }
-      $groupContext = explode('_', $groupContext);
-
-      $groups[$key]['name'] = $filters[$groupContext[0]]['filter_name'];
-      $groups[$key]['value'] = $filters[$groupContext[0]]['filter_values'][$groupContext[1]]['value'];
-
-    }
-    return $groups;
-  }
-  /**
-  * @param array $groupContexts
-  * @return array $groups
-  */
-  private function getPropertiesByRequest($propertyContexts)
-  {
-    $filterGroups = $this->__get('Filters')->getFilters();
-    $filters;
-    foreach ($filterGroups as $filterGroup) {
-      $filters[] = $this->getFiltersByPropertyName($filterGroup, false);
-    }
-    foreach ($propertyContexts as $key => $propertyContext) {
-      if (!is_int($key)) {
-        continue;
-      }
-      $propertyContext = explode('_', $propertyContext);
-
-      $properties[$key]['name'] = $filters[$propertyContext[0]]['filter_name'];
-      $properties[$key]['value'] = $filters[$propertyContext[0]]['filter_values'][$propertyContext[1]]['value'];
-
-    }
-    return $properties;
-  }
-
-
-  /**
-  * @param array $supplierIds
-  * @return array $suppliers
-  */
-  private function getSuppliersByRequest($supplierIds)
-  {
-    $suppliers = [];
-    $supplierModel = $this->__get('Supplier');
-    foreach ($supplierIds as $key => $supplierId) {
-      if (!is_int($key)) {
-        continue;
-      }
-      $supplier = $supplierModel->getSupplier($supplierId);
-      $suppliers[$key]['name'] = 'name';
-      $suppliers[$key]['value'] = $supplier['name'];
-    }
-
-    return $suppliers;
   }
 }
 

@@ -56,7 +56,7 @@ class Articles extends \Model
   public function getArticles($all = null)
   {
 
-    $sql = "SELECT a.*, aa.video_article, aa.video_url,aa.video_url, aa.size, aa.color, aa.material, aa.ordernumber FROM articles a
+    $sql = "SELECT a.*, aa.video_article, aa.video_url,aa.video_url, aa.ordernumber FROM articles a
             LEFT JOIN article_attributes aa ON aa.article_id = a.id";
             $route = \Router::getRoute();
             if ($route['module'] !== 'backend') {
@@ -67,6 +67,8 @@ class Articles extends \Model
       foreach ($articles['data'] as &$article) {
         $article['images'] = $this->articleImages->getArticleImages($article['id']);
         $article['category_id'] = $this->articleCategories->getArticleCategories($article['id']);
+
+        $article['rating'] = $this->getArticleRating($article['id']);
         $article['attributes'] = $this->getArticleAttributes($article['id']);
         $article['is_new'] = $this->getCheckNewer($article);
         $article['wished'] = $this->getCheckWished($article);
@@ -79,6 +81,8 @@ class Articles extends \Model
       foreach ($articles as &$article) {
         $article['images'] = $this->articleImages->getArticleImages($article['id']);
         $article['category_id'] = $this->articleCategories->getArticleCategories($article['id']);
+
+        $article['rating'] = $this->getArticleRating($article['id']);
         $article['attributes'] = $this->getArticleAttributes($article['id']);
         $article['is_new'] = $this->getCheckNewer($article);
         $article['wished'] = $this->getCheckWished($article);
@@ -137,7 +141,7 @@ class Articles extends \Model
   public function getLastArticles()
   {
 
-    $sql = "SELECT a.*, aa.video_article, aa.video_url,aa.video_url, aa.size, aa.color, aa.material, aa.ordernumber FROM articles a
+    $sql = "SELECT a.*, aa.video_article, aa.video_url,aa.video_url, aa.ordernumber FROM articles a
             LEFT JOIN article_attributes aa ON aa.article_id = a.id ORDER BY `date` DESC";
 
     $articles = Connection()->query($sql);
@@ -145,6 +149,8 @@ class Articles extends \Model
     foreach ($articles['data'] as &$article) {
       $article['images'] = $this->articleImages->getArticleImages($article['id']);
       $article['category_id'] = $this->articleCategories->getArticleCategories($article['id']);
+
+      $article['rating'] = $this->getArticleRating($article['id']);
       $article['attributes'] = $this->getArticleAttributes($article['id']);
       $article['is_new'] = $this->getCheckNewer($article);
       $article['wished'] = $this->getCheckWished($article);
@@ -158,7 +164,7 @@ class Articles extends \Model
   {
 
 
-    $sql = "SELECT a.*, aa.video_article, aa.video_url,aa.video_url, aa.size, aa.color, aa.material, aa.ordernumber FROM articles a
+    $sql = "SELECT a.*, aa.video_article, aa.video_url,aa.video_url, aa.ordernumber FROM articles a
             LEFT JOIN article_attributes aa ON aa.article_id = a.id ORDER BY rand()";
 
     $articles = Connection()->query($sql);
@@ -166,6 +172,8 @@ class Articles extends \Model
     foreach ($articles as &$article) {
       $article['images'] = $this->articleImages->getArticleImages($article['id']);
       $article['category_id'] = $this->articleCategories->getArticleCategories($article['id']);
+
+      $article['rating'] = $this->getArticleRating($article['id']);
       $article['is_new'] = $this->getCheckNewer($article);
       $article['wished'] = $this->getCheckWished($article);
       $article['supplier'] = $this->getArticleSupplier($article['attributes']['supplier_id']);
@@ -188,7 +196,7 @@ class Articles extends \Model
       return;
     }
 
-    $sql = "SELECT a.*, aa.video_article, aa.video_url,aa.video_url, aa.size, aa.color, aa.material, aa.ordernumber FROM articles a
+    $sql = "SELECT a.*, aa.video_article, aa.video_url,aa.video_url, aa.ordernumber FROM articles a
             LEFT JOIN article_attributes aa ON aa.article_id = a.id
             WHERE a.id = $id";
     $route = \Router::getRoute();
@@ -198,6 +206,8 @@ class Articles extends \Model
     $article = Connection()->fetchOne($sql);
     $article['images'] = $this->articleImages->getArticleImages($article['id']);
     $article['category_id'] = $this->articleCategories->getArticleCategories($article['id']);
+    $article['reviews'] = $this->getArticleReviewsByArticleID($article['id'], true);
+    $article['rating'] = $this->getArticleRating($article['id']);
     $article['attributes'] = $this->getArticleAttributes($article['id']);
     $article['is_new'] = $this->getCheckNewer($article);
     $article['wished'] = $this->getCheckWished($article);
@@ -217,7 +227,7 @@ class Articles extends \Model
     if ($route['module'] !== 'backend') {
       $query->where()->equals('active', 1)->end();
     }
-    $query->leftJoin('article_attributes', 'id', 'article_id', ['ordernumber', 'material', 'color']);
+    $query->leftJoin('article_attributes', 'id', 'article_id', ['ordernumber']);
     $query->leftJoin('article_category', 'id', 'article_id')->where()->equals('category_id', $categoryId)->end();
     $query->limit($offset, $limit);
     $builder->execute($query);
@@ -226,6 +236,7 @@ class Articles extends \Model
     foreach ($articles as &$article) {
       $article['images'] =  $this->articleImages->getArticleImages($article['id']);
       $article['category_id'] = $this->articleCategories->getArticleCategories($article['id']);
+      $article['rating'] = $this->getArticleRating($article['id']);
       $article['attributes'] = $this->getArticleAttributes($article['id']);
       $article['is_new'] = $this->getCheckNewer($article);
       $article['wished'] = $this->getCheckWished($article);
@@ -242,7 +253,7 @@ class Articles extends \Model
     if(!$categoryId){
       return;
     }
-    $sql = "SELECT a.*, aa.video_article, aa.video_url,aa.video_url, aa.size, aa.color, aa.material, aa.ordernumber FROM articles a
+    $sql = "SELECT a.*, aa.video_article, aa.video_url,aa.video_url, aa.ordernumber FROM articles a
             LEFT JOIN article_category ac ON ac.article_id = a.id
             LEFT JOIN categories c ON c.id = ac.category_id
             LEFT JOIN article_attributes aa ON aa.article_id = a.id
@@ -295,6 +306,7 @@ class Articles extends \Model
     foreach ($articles['data'] as &$article) {
       $article['images'] =  $this->articleImages->getArticleImages($article['id']);
       $article['category_id'] = $this->articleCategories->getArticleCategories($article['id']);
+      $article['rating'] = $this->getArticleRating($article['id']);
       $article['attributes'] = $this->getArticleAttributes($article['id']);
       $article['is_new'] = $this->getCheckNewer($article);
       $article['wished'] = $this->getCheckWished($article);
@@ -310,7 +322,7 @@ class Articles extends \Model
     if(count($categoryArray) == 0){
       return;
     }
-    $sql = "SELECT a.*, aa.video_article, aa.video_url,aa.video_url, aa.size, aa.color, aa.material, aa.ordernumber FROM articles a
+    $sql = "SELECT a.*, aa.video_article, aa.video_url,aa.video_url, aa.ordernumber FROM articles a
             LEFT JOIN article_category ac ON ac.article_id = a.id
             LEFT JOIN categories c ON c.id = ac.category_id
             LEFT JOIN article_attributes aa ON aa.article_id = a.id";
@@ -332,6 +344,7 @@ class Articles extends \Model
     foreach ($articles['data'] as &$article) {
       $article['images'] =  $this->articleImages->getArticleImages($article['id']);
       $article['category_id'] = $this->articleCategories->getArticleCategories($article['id']);
+      $article['rating'] = $this->getArticleRating($article['id']);
       $article['attributes'] = $this->getArticleAttributes($article['id']);
       $article['is_new'] = $this->getCheckNewer($article);
       $article['wished'] = $this->getCheckWished($article);
@@ -383,9 +396,6 @@ class Articles extends \Model
     $active	= $data['active'];
     $attributes['video_url'] = $data['video_url'];
     $attributes['video_article'] = $data['video_article'];
-    $attributes['size'] = $data['size'];
-    $attributes['color'] = $data['color'];
-    $attributes['material'] = $data['material'];
     $attributes['ordernumber'] = $data['ordernumber'];
     $attributes['sale_end'] = $data['sale_end'];
     $attributes['supplier_id'] = $data['supplier']['id'];
@@ -494,9 +504,6 @@ class Articles extends \Model
 
   $attributes['video_url'] = $data['video_url'];
   $attributes['video_article'] = $data['video_article'];
-  $attributes['size'] = $data['size'];
-  $attributes['color'] = $data['color'];
-  $attributes['material'] = $data['material'];
   $attributes['ordernumber'] = $data['ordernumber'];
   $attributes['sale_end'] = $data['sale_end'];
   $attributes['supplier_id'] = $data['supplier']['id'];
@@ -543,8 +550,6 @@ class Articles extends \Model
 }
 public function deleteArticle($articleId)
 {
-
-
   if(!$articleId){
     return;
   }
@@ -563,136 +568,7 @@ public function deleteArticle($articleId)
   $query = Connection()->set($sql);
   return $query;
 }
-public function setSpecialArticle($id)
-{
 
-  if(!$id){
-    return;
-  }
-  $sql = "INSERT INTO special_articles (article_id) VALUES ($id)";
-  $query = Connection()->set($sql);
-  if($query){
-    return true;
-  }
-}
-public function getSpecialArticles($all = false)
-{
-
-
-  $sql = "SELECT sa.id AS spec, a.*, aa.video_article, aa.video_url,aa.video_url,aa.size,aa.color,aa.material, aa.ordernumber FROM special_articles sa
-          LEFT JOIN articles a ON sa.article_id = a.id
-          LEFT JOIN article_attributes aa ON aa.article_id = a.id ";
-
-  if ($all) {
-    $articles = Connection()->fetchAll($sql);
-
-    if($articles){
-
-        foreach ($articles as &$article) {
-          $article['images'] = $this->articleImages->getArticleImages($article['id']);
-          $article['category_id'] = $this->articleCategories->getArticleCategories($article['id']);
-          $article['attributes'] = $this->getArticleAttributes($article['id']);
-          $article['is_new'] = $this->getCheckNewer($article);
-          $article['wished'] = $this->getCheckWished($article);
-        }
-
-      return $articles;
-    }
-  }else {
-    $articles = Connection()->query($sql);
-    if($articles['data']){
-
-        foreach ($articles['data'] as &$article) {
-          $article['images'] = $this->articleImages->getArticleImages($article['id']);
-          $article['category_id'] = $this->articleCategories->getArticleCategories($article['id']);
-          $article['attributes'] = $this->getArticleAttributes($article['id']);
-          $article['is_new'] = $this->getCheckNewer($article);
-          $article['wished'] = $this->getCheckWished($article);
-        }
-
-      return $articles;
-    }
-  }
-}
-public function deleteSpecialArticle($id)
-{
-
-  if(!$id){
-    return;
-  }
-
-  $sql = "DELETE FROM special_articles WHERE id = $id";
-  $articles = Connection()->set($sql);
-  if($articles){
-
-    return true;
-  }
-}
-
-public function setPopularArticle($id)
-{
-
-  if(!$id){
-    return;
-  }
-  $sql = "INSERT INTO popular_articles (article_id) VALUES ($id)";
-  $query = Connection()->set($sql);
-  if($query){
-    return true;
-  }
-}
-public function getPopularArticles($all = false)
-{
-
-
-  $sql = "SELECT pa.id AS spec, a.*, aa.video_article, aa.video_url,aa.video_url, aa.size, aa.color, aa.material, aa.ordernumber FROM popular_articles pa
-          LEFT JOIN articles a ON pa.article_id = a.id
-          LEFT JOIN article_attributes aa ON aa.article_id = a.id ORDER BY `date` DESC";
-
-  if ($all) {
-    $articles = Connection()->fetchAll($sql);
-    if($articles){
-
-        foreach ($articles as &$article) {
-          $article['images'] = $this->articleImages->getArticleImages($article['id']);
-          $article['category_id'] = $this->articleCategories->getArticleCategories($article['id']);
-          $article['attributes'] = $this->getArticleAttributes($article['id']);
-          $article['is_new'] = $this->getCheckNewer($article);
-          $article['wished'] = $this->getCheckWished($article);
-        }
-
-      return $articles;
-    }
-  }else {
-    $articles = Connection()->query($sql);
-    if($articles['data']){
-
-        foreach ($articles['data'] as &$article) {
-          $article['images'] = $this->articleImages->getArticleImages($article['id']);
-          $article['category_id'] = $this->articleCategories->getArticleCategories($article['id']);
-          $article['attributes'] = $this->getArticleAttributes($article['id']);
-          $article['is_new'] = $this->getCheckNewer($article);
-          $article['wished'] = $this->getCheckWished($article);
-        }
-
-      return $articles;
-    }
-  }
-
-}
-public function deletePopularArticle($id)
-{
-
-  if(!$id){
-    return;
-  }
-  $sql = "DELETE FROM popular_articles WHERE id = $id";
-  $query = Connection()->set($sql);
-  if($query){
-
-    return true;
-  }
-}
 
   public function getMin($type)
   {
@@ -720,8 +596,41 @@ public function deletePopularArticle($id)
 
   public function getArticleReviews()
   {
-    $rewiews = Connection()->getList('article_comments');
-    return $rewiews;
+    $reviews = $this->getList('article_rating');
+
+    foreach ($reviews['data'] as &$review) {
+      $review['product'] = $this->container->Articles()->getArticleById($review['article_id']);
+      $review['user'] = $this->container->Users()->getUser($review['user_id']);
+    }
+
+    return $reviews;
+  }
+
+  public function getArticleReviewsByArticleID($article_id, $active)
+  {
+    $active = (int) $active;
+    $reviews = $this->get('article_rating', $article_id."' AND active = '$active", 'article_id');
+    if (!empty($reviews) && !isset($reviews[0])) {
+      $revs[0] = $reviews;
+      $reviews = $revs;
+    }
+    foreach ($reviews as &$review) {
+      $review['user'] = $this->container->Users()->getUser($review['user_id']);
+    }
+    return $reviews;
+  }
+
+  public function setArticleReview($rating)
+  {
+    $reviews = $this->insert('article_rating', $rating);
+
+    return $reviews;
+  }
+
+  public function updateArticleReview($rating)
+  {
+    $reviews = $this->update('article_rating', $rating);
+    return $reviews;
   }
 
   public function getArticleOptions($article_id)
@@ -839,158 +748,74 @@ public function deletePopularArticle($id)
   */
   public function createQueryByContext($context)
   {
-    $contextTypes = array(
-      "suppliers" => 's',
-      "groups" => 'aa',
-      "properties" => 'ao',
-      "pricing" => 'a.price',
-      "category" => 'c.id',
-      "search" => 'search'
-    );
-    $sorting = $context['sortType'];
+    $filterModel = $this->container->Filters();
+    $filterTypes = $filterModel->getFilterTables();
+    
+    $sortTypes = $filterModel->getSortingTypes();
+
+    $sortType = $context['sortType'];
     unset($context['sortType']);
-    $sql = "SELECT a.*, aa.ordernumber FROM articles a
-            LEFT JOIN article_category ac ON ac.article_id = a.id
-            LEFT JOIN article_options ao ON ao.article_id = a.id
-            LEFT JOIN categories c ON c.id = ac.category_id
-            LEFT JOIN article_attributes aa ON aa.article_id = a.id
-            LEFT JOIN suppliers s ON s.id = aa.supplier_id
-            LEFT JOIN article_translations atr ON atr.article_id = a.id
-            LEFT JOIN category_translation ct ON ct.category_id = c.id";
 
-    if(empty($context)){
-      $sql .= " GROUP BY a.id";
-      $this->createdQuery = $sql;
-      return $sql;
-    }
+    // create query
+    $sql = "SELECT articles.* FROM articles
+            LEFT JOIN article_attributes ON article_attributes.article_id = articles.id
+            LEFT JOIN article_translations ON article_translations.article_id = articles.id
+            LEFT JOIN article_category ON article_category.article_id = articles.id
+            LEFT JOIN article_options_relations ON article_options_relations.article_id = articles.id
+            LEFT JOIN article_option_values ON article_option_values.id = article_options_relations.value_id
+            LEFT JOIN categories ON categories.id = article_category.category_id
+            LEFT JOIN category_translation ON category_translation.category_id = article_category.category_id
+            LEFT JOIN suppliers ON suppliers.id = article_attributes.supplier_id
+            WHERE articles.id > 0";
 
-    $sql .= " WHERE ";
-
-    foreach ($context as $key => $value) {
+    foreach ($context as $selector => $value) {
       if (empty($value)) {
         continue;
       }
-      $tableKey = $contextTypes[$key];
-
-
-      if ($tableKey === 'a.price') {
-        $min = $value['min'];
-        $max = $value['max'];
-        if ($min && $max) {
-          $sql .= "($tableKey BETWEEN '$min' AND '$max')";
-        }
-        if ($key !== end(array_keys($context))) {
-          $sql .= ' AND ';
-        }
-        continue;
-      }
-
-      if ($tableKey === 'c.id' && $value != null) {
-        $sql .= "$tableKey = $value";
-        if ($key !== end(array_keys($context))) {
-          $sql .= ' AND ';
-        }
-        continue;
-      }
-
-      if ($tableKey === "search" && $value != null) {
-        $sql .= " (LOWER(a.name) LIKE '%$value%' OR
-                 LOWER(a.keywords) LIKE '%$value%' OR
-                 LOWER(a.description) LIKE '%$value%' OR
-                 LOWER(aa.color) LIKE '%$value%' OR
-                 LOWER(aa.ordernumber) LIKE '%$value%' OR
-                 LOWER(atr.name) LIKE '%$value%' OR
-                 LOWER(atr.description) LIKE '%$value%' OR
-                 LOWER(c.name) LIKE '%$value%' OR
-                 LOWER(ct.name) LIKE '%$value%')";
-                 if ($key !== end(array_keys($context))) {
-                   $sql .= ' AND ';
-                 }
-                 continue;
-      }
-      if ($tableKey === "ao" && !empty($value)) {
-        $destruct = false;
-        $sql .= '(';
-        foreach ($value as $key => $property) {
-          $propName = $property['name'];
-          $propVal = $property['value'];
-          if (empty($propName) || empty($propVal)) {
-            $destruct = true;
-            break;
+      $table = $filterTypes[$selector];
+      if (!empty($table)) {
+        $sql .= " and (";
+        foreach ($table as $name => $column) {
+          $table_name = $column['filter_table'];
+          $column_name = $column['filter_column'];
+          if ($key === 'search') {
+            $sql .= " LOWER($table_name.$column_name) LIKE '%$value%' OR";
+            if (end($filterTypes[$selector])['filter_table'] == $table_name) {
+              $sql = substr($sql, 0,strlen($sql) - 2);
+            }
+            continue;
           }
-          $sql .= "($tableKey.name = '$propName' AND $tableKey.value = '$propVal')";
-
-          if ($key != count($value)-1) {
-            $sql .= " OR ";
+          if ($selector === 'price') {
+            $valueArrayToString = implode(' AND ', $value);
+            $sql .= " $table_name.$column_name BETWEEN $valueArrayToString";
+            continue;
+          }
+          if (!is_array($value)) {
+            $sql .= " $table_name.$column_name = $value";
           }else{
-            break;
+            $valueArrayToString = implode(', ', $value);
+            $sql .= " $table_name.$column_name IN ($valueArrayToString)";
           }
         }
-        if ($destruct) {
-          $sql = substr($sql, 0, strlen($sql) - 1);
-          continue;
-        }
-        $sql .= ') AND ';
-        continue;
+        $sql .= ")";
       }
-
-      if (!empty($value)) {
-        $sql .= '(';
-        foreach ($value as $key => $column) {
-          $colName = $column['name'];
-          $colVal = $column['value'];
-
-          $sql .= "$tableKey.$colName = '$colVal'";
-
-          if ($key != count($value)-1) {
-            $sql .= " OR ";
-          }else{
-            break;
-          }
-        }
-        $sql .= ') AND ';
-      }
-
-    }
-
-    if ($sorting == 'price_asc') {
-      $sortType = 'a.price ASC';
-    }
-    elseif ($sorting == 'price_desc') {
-      $sortType = 'a.price DESC';
-    }
-    elseif ($sorting == 'name_asc') {
-      $sortType = 'a.price ASC';
-    }
-    elseif ($sorting == 'name_desc') {
-      $sortType = 'a.price DESC';
-    }
-    elseif ($sorting == 'sale_end') {
-      $sortType = 'aa.sale_end DESC';
-    }
-    elseif ($sorting == 'sales') {
-      $sortType = 'a.discount DESC';
-    }
-    elseif ($sorting == 'newer') {
-      $sortType = 'a.added_in DESC';
-    }
-    elseif ($sorting == 'topseller') {
-      $sortType = 'a.sold DESC';
-    }
-    elseif ($sorting == null) {
-      $sortType = null;
-    }
-    if (strpos(substr($sql, -4), 'AND') !== false) {
-      $sql = substr($sql, 0, strlen($sql) - 4);
     }
     $route = \Router::getRoute();
+
     if ($route['module'] !== 'backend') {
-      $sql .= 'AND a.active = 1';
+      $sql .= ' AND articles.active = 1';
     }
-    $sql .= " GROUP BY a.id";
+
+    $sql .= " GROUP BY articles.id";
+
     if ($sortType) {
-      $sql .= " ORDER BY $sortType";
+      $table = $sortTypes[$sortType]['sorting_table'];
+      $column = $sortTypes[$sortType]['sorting_column'];
+      $type = $sortTypes[$sortType]['type'];
+      $sql .= " ORDER BY $table.$column $type";
     }
+
+
     $this->createdQuery = $sql;
     return $sql;
   }
@@ -1003,15 +828,18 @@ public function deletePopularArticle($id)
   public function getArticlesByQuery()
   {
     $sql = $this->createdQuery?$this->createdQuery:null;
+    // var_dump($sql);exit;
+
     if(!$sql){
       return;
     }
 
     $articles = Connection()->query($sql);
-
+    // var_dump(Connection()->getError());exit;
     foreach ($articles['data'] as &$article) {
       $article['images'] = $this->articleImages->getArticleImages($article['id']);
       $article['category_id'] = $this->articleCategories->getArticleCategories($article['id']);
+      $article['rating'] = $this->getArticleRating($article['id']);
       $article['attributes'] = $this->getArticleAttributes($article['id']);
       $article['is_new'] = $this->getCheckNewer($article);
       $article['wished'] = $this->getCheckWished($article);
@@ -1020,7 +848,14 @@ public function deletePopularArticle($id)
     return $articles;
   }
 
+  public function getArticleRating($articleID)
+  {
+    $sql = "SELECT sum(rating_count)/count(id) as rating FROM article_rating WHERE article_id = $articleID AND active = 1";
 
+    $query = Connection()->fetchOne($sql);
+
+    return $query['rating'];
+  }
 
 }
 

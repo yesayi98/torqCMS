@@ -1,0 +1,51 @@
+/* Dynamic  Variables */
+:root {
+  --Color:green;
+}
+.rate-form {
+    i {
+      margin-right: 5px;
+      user-select: none;
+      color: white;
+      background-color: #bbb;
+      font-size: 1.2em;
+      transition: .1s ease-in-out;
+      padding: 10px;
+      border-radius: 10px;
+      &:hover {
+        box-shadow: 1px 1.5px 3px #555;
+        transform: translate(0, -3px);
+      }
+      &:active {
+        transform: translate(0, 1px);
+      }
+      &.hoveredStars, &.clickedStars {
+        background-color: var(--Color);
+      }
+    }
+    .rate-button{
+      width: 100%;
+      max-width: 220px;
+      color: #fff;
+      background: #40a944;
+      border: 1px solid;
+      border-radius: 30px;
+      &:hover{
+        color: #40a944;
+        background: #fff;
+      }
+    }
+    span{
+      font-size: 16px;
+    }
+}
+#ratingVal {
+  position: absolute;
+  color: white;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.9);
+  padding: 12px 20px;
+  font-family: sans-serif;
+  border-radius: 5px;
+}

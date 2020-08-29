@@ -143,7 +143,7 @@ function smarty_function_split_array($params, &$smarty)
 function smarty_function_translator($params, $template)
 {
   if (!isset($params['selector'])) {
-    $smarty->trigger_error('translator: missing "param" parameter');
+    $smarty->trigger_error('translator: missing "selector" parameter');
     return;
   }
   $selector=$params['selector'];
