@@ -751,7 +751,6 @@ public function deleteArticle($articleId)
   public function getArticlesByQuery($query)
   {
     $sql = $query?$query:null;
-    // var_dump($sql);exit;
 
     if(!$sql){
       return;
@@ -808,7 +807,7 @@ public function deleteArticle($articleId)
       $data['changed_url'] = $slug;
       $coreUrlsModel->updateUrl($data);
     }
-
+  }
 }
 
  ?>

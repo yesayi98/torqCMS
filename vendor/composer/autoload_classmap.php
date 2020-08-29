@@ -34,7 +34,7 @@ return array(
     'Bor' => $baseDir . '/engine/Library/php-sql-query-builder-master/vendor/phpunit/php-code-coverage/tests/_files/source_with_ignore.php',
     'Bundles\\Compiller\\JsCompiller' => $baseDir . '/engine/Bundles/JsCompiller.php',
     'Bundles\\Compiller\\ScssCompiller' => $baseDir . '/engine/Bundles/ScssCompiller.php',
-    'Bundles\\Search\\ArticleSearchBundle' => $baseDir . '/engine/Bundles/Search/ArticleSearchBunde.php',
+    'Bundles\\Search\\ArticleSearchBundle' => $baseDir . '/engine/Bundles/Search/ArticleSearchBundle.php',
     'Bundles\\Search\\SearchBundle' => $baseDir . '/engine/Bundles/Search/SearchBundle.php',
     'Bundles\\SlugConverter\\SlugConverter' => $baseDir . '/engine/Bundles/SlugConverter.php',
     'Calculator' => $baseDir . '/engine/Library/php-sql-query-builder-master/vendor/phpunit/phpunit/tests/_files/Calculator.php',

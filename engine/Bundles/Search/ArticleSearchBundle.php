@@ -41,7 +41,7 @@ class ArticleSearchBundle extends SearchBundle
         foreach ($table as $name => $column) {
           $table_name = $column['filter_table'];
           $column_name = $column['filter_column'];
-          if ($key === 'search') {
+          if ($selector === 'search') {
             $sql .= " LOWER($table_name.$column_name) LIKE '%$value%' OR";
             if (end($filterTypes[$selector])['filter_table'] == $table_name) {
               $sql = substr($sql, 0,strlen($sql) - 2);

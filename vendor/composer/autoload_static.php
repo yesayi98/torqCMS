@@ -101,7 +101,7 @@ class ComposerStaticInit76fb5bd4931c6fb46f2466a4f4630ca9
         'Bor' => __DIR__ . '/../..' . '/engine/Library/php-sql-query-builder-master/vendor/phpunit/php-code-coverage/tests/_files/source_with_ignore.php',
         'Bundles\\Compiller\\JsCompiller' => __DIR__ . '/../..' . '/engine/Bundles/JsCompiller.php',
         'Bundles\\Compiller\\ScssCompiller' => __DIR__ . '/../..' . '/engine/Bundles/ScssCompiller.php',
-        'Bundles\\Search\\ArticleSearchBundle' => __DIR__ . '/../..' . '/engine/Bundles/Search/ArticleSearchBunde.php',
+        'Bundles\\Search\\ArticleSearchBundle' => __DIR__ . '/../..' . '/engine/Bundles/Search/ArticleSearchBundle.php',
         'Bundles\\Search\\SearchBundle' => __DIR__ . '/../..' . '/engine/Bundles/Search/SearchBundle.php',
         'Bundles\\SlugConverter\\SlugConverter' => __DIR__ . '/../..' . '/engine/Bundles/SlugConverter.php',
         'Calculator' => __DIR__ . '/../..' . '/engine/Library/php-sql-query-builder-master/vendor/phpunit/phpunit/tests/_files/Calculator.php',

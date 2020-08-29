@@ -191,9 +191,11 @@ class categoryController extends Controller
     $context['price'] = $request['price'];
     $context['search'] = strtolower($request['search']);
     $context['sortType'] = $sortType;
-    //getting Articles
-    $queryBundle = new ArticleSearchBundle($context)
+    // create query with Articles search bundle
+    $queryBundle = new ArticleSearchBundle($context);
     $query = $queryBundle->getQueryByContext();
+    // get articles by query
+    $articleModel = $this->Articles;
     $products = $articleModel->getArticlesByQuery($query);
 
     $productCount = $products['total'];

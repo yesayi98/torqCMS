@@ -6,9 +6,9 @@ namespace Bundles\Search;
 abstract class SearchBundle
 {
 
-  private $queryByContext;
-  private $container;
-  private $context;
+  protected $queryByContext;
+  protected $container;
+  protected $context;
 
   /**
    * @param array $context
