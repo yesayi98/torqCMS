@@ -178,7 +178,7 @@ class categoryController extends Controller
   public function search()
   {
     $request = $this->getRequest()->request;
-    $category_id = $request['c'];
+    $category_id = $request['c']?$request['c']:1;
     if ($this->getRequest()->get['sort']) {
       $sortType = $this->getRequest()->get['sort'];
     }else{

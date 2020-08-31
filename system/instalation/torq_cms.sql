@@ -720,6 +720,18 @@ CREATE TABLE `media_albums` (
   `posiotion` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Дамп данных таблицы `media_albums`
+--
+
+INSERT INTO `media_albums` (`id`, `name`, `description`, `posiotion`) VALUES
+(1, 'untitnled', 'all media which not have an selected album adding in this album', 1),
+(2, 'core', 'in this album will be inserted an images which need in the core\r\n', 2),
+(3, 'advertising', 'in this album will uploaded pictures for site content', 3),
+(4, 'category', 'in this album will uploaded pictures for categories', 4),
+(5, 'products', '', 5),
+(6, 'video', '', 6);
+
 -- --------------------------------------------------------
 
 --
@@ -734,6 +746,24 @@ CREATE TABLE `media_thumbnails` (
   `thumb_extension` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
   `size` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `ordernumber_generator`
+--
+
+CREATE TABLE `ordernumber_generator` (
+  `id` int(11) NOT NULL,
+  `ordernumber` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Дамп данных таблицы `ordernumber_generator`
+--
+
+INSERT INTO `ordernumber_generator` (`id`, `ordernumber`) VALUES
+(1, 10000);
 
 -- --------------------------------------------------------
 
@@ -883,7 +913,7 @@ INSERT INTO `translations` (`id`, `selector`, `translate`, `lang`, `description`
 (5, 'allRights', '© 2019. Բոլոր իրավունքները պաշտպանված են։', 1, ''),
 (6, 'allRights2', '․', 1, ''),
 (10, 'workDays', 'Աշխատանքային օրեր', 1, ''),
-(11, 'address', 'office address: &lt;br&gt; 59 Komitas Ave. Yerevan, RA  \r\n&lt;br&gt;\r\n&lt;br&gt;\r\nlogistics center address:\r\n&lt;br&gt; 10 Hakob Hakobyan Ave. Yerevan\r\n&lt;br&gt;\r\n&lt;br&gt; Սպանդանոցի հասցեն՝ գ. Պռոշյան Գայի 9/1', 1, ''),
+(11, 'address', 'Խանութի հասցեն', 1, ''),
 (12, 'weekDays', 'Երկուշաբթիից - Ուրբաթ', 1, ''),
 (13, 'saturday', 'Շաբաթ', 1, ''),
 (14, 'sunday', 'Կիրակի', 1, ''),
@@ -891,7 +921,7 @@ INSERT INTO `translations` (`id`, `selector`, `translate`, `lang`, `description`
 (18, 'address2', 'Հասցե:', 1, ''),
 (19, 'contactPhone', 'Կոնտակտային համար', 1, ''),
 (20, 'phone', 'Հեռ․', 1, ''),
-(21, 'emailAddress', 'info@natural.am', 1, ''),
+(21, 'emailAddress', 'info@armcoding.am', 1, ''),
 (22, 'email', 'Էլ. հասցե ', 1, ''),
 (23, 'follow', 'Հետևեք մեզ', 1, ''),
 (24, 'sendMessage', 'ՈՒՂԱՐԿԵԼ ՀԱՂՈՐԴԱԳՐՈՒԹՅՈՒՆ', 1, ''),
@@ -2221,7 +2251,8 @@ ALTER TABLE `media`
 -- AUTO_INCREMENT для таблицы `media_albums`
 --
 ALTER TABLE `media_albums`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+COMMIT;
 
 --
 -- AUTO_INCREMENT для таблицы `media_thumbnails`
@@ -2306,6 +2337,20 @@ ALTER TABLE `user_confirmation`
 --
 ALTER TABLE `user_newsletter`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+COMMIT;
+
+
+--
+-- Индексы сохранённых таблиц
+--
+ALTER TABLE `ordernumber_generator`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT для таблицы `ordernumber_generator`
+--
+ALTER TABLE `ordernumber_generator`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

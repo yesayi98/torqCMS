@@ -42,6 +42,9 @@
               <select class="form-control search-select" name="parent_id">
                 <option value=0>select parent</option>
                 {foreach from=$categoryList item=$item key=key name=name}
+                  {if $item.id == $category.id}
+                    {continue}
+                  {/if}
                   <option value="{$item.id}" {if $item.id==$category.parent_id}selected{/if}>{$item.id}: {$item.name}</option>
                 {/foreach}
               </select>

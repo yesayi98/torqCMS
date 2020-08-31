@@ -110,7 +110,7 @@ class articlesController extends BackendController
   {
     $request = $this->getRequest()->request;
     $article['name'] = $request['name'];
-    $article['ordernumber'] = $request['ordernumber'];
+    $article['ordernumber'] = $request['ordernumber']?$request['ordernumber']:$this->generateOrdernumber();
     $article['supplier'] = $this->getOrSetSupplier($request['supplier']);
     $article['get_price'] = $request['get_price']?$request['get_price']:0;
     $article['price'] = $request['price']?$request['price']:0;
@@ -188,7 +188,7 @@ class articlesController extends BackendController
     $supplierModel = $this->__get('Supplier');
     $supplier = $supplierModel->getSupplierByName($supplierName);
 
-    if (!empty($supplier)) {
+    if (!empty($supplier['id'])) {
       return $supplier;
     }
 
@@ -200,6 +200,13 @@ class articlesController extends BackendController
     );
 
     $isset = $supplierModel->setSupplier($supplier);
+
+    if (!$isset) {
+      die(json_encode([
+        "success" => $isset,
+        "message" => Connection()->getError()
+      ]));
+    }
     $supplier = $supplierModel->getSupplierByName($supplierName);
     return $supplier;
   }
@@ -373,6 +380,16 @@ class articlesController extends BackendController
     $article['options'] = $options;
     $article['id'] = $article_id;
     $this->View()->setAssign('article', $article);
+  }
+
+  public function generateOrdernumber()
+  {
+    $ordernumber = Connection()->fetchOne('SELECT ordernumber FROM ordernumber_generator')['ordernumber'];
+    $articleOrdernumber = "AC".$ordernumber;
+    $ordernumber += 1;
+    $ordernumber = Connection()->fetchOne("UPDATE ordernumber_generator SET ordernumber=$ordernumber WHERE id = 1");
+
+    return $articleOrdernumber;
   }
 
   public function deleteOption()
