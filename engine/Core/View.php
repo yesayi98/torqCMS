@@ -11,7 +11,8 @@ class View extends Container
   public $advertisings;
   public $theme;
   protected $assign = array();
-
+  protected $lang;
+  protected $currency;
   protected $connection;
 
   function __construct($lang, $currency, $connection)

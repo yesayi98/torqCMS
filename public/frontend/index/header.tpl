@@ -1,38 +1,3 @@
-<!Doctype html>
-<html class="no-js" lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>{$title}</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    {* <base href="{$BASE_FRONTEND}"> *}
-    <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{$BASE_FRONTEND}assets/img/favicon.ico">
-    {block name='stylesheet-area'}
-      <!-- CSS
-      ========================= -->
-      <!--font awesome css-->
-      <link rel="stylesheet" href="{$BASE_FRONTEND}assets/css/font.awesome.css">
-      <!--ionicons css-->
-      <link rel="stylesheet" href="{$BASE_FRONTEND}assets/css/ionicons.min.css">
-      <!--linearicons css-->
-      <link rel="stylesheet" href="{$BASE_FRONTEND}assets/css/linearicons.css">
-      <!--themify-icons css-->
-      <link rel="stylesheet" href="{$BASE_FRONTEND}assets/css/themify-icons.css">
-
-      <link rel="stylesheet" href="{$css}">
-    {/block}
-    <!--modernizr min js here-->
-    <script src="{$BASE_FRONTEND}assets/js/vendor/modernizr-3.7.1.min.js"></script>
-</head>
-
-<body>
-
-<!--header area start-->
-
-
 <!--offcanvas menu area start-->
     {block name='overlay'}
     <div class="off_canvars_overlay">
@@ -59,22 +24,22 @@
                             <div class="language_currency">
                                 <ul>
                                   {block name='header-language'}
-                                  {* <li class="language"><a href="index.html#"> Language <i class="icon-right ion-ios-arrow-down"></i></a>
+                                  <li class="language"><a href="javaScript:void(0)"> {$currentLang.name} {$language.short_code} <i class="icon-right ion-ios-arrow-down"></i></a>
                                       <ul class="dropdown_language">
-                                          <li><a href="index.html#">French</a></li>
-                                          <li><a href="index.html#">Spanish</a></li>
-                                          <li><a href="index.html#">Russian</a></li>
+                                        {foreach $languages as $language}
+                                          <li><a href="?lang={$language.id}">{$language.name} {$language.short_code}</a></li>
+                                        {/foreach}
                                       </ul>
-                                  </li> *}
+                                  </li>
                                   {/block}
                                   {block name='header-currency'}
-                                  {* <li class="currency"><a href="index.html#"> Currency <i class="icon-right ion-ios-arrow-down"></i></a>
+                                  <li class="currency"><a href="javaScript:void(0)">{$currentCur.name} {$currentCur.symbol} <i class="icon-right ion-ios-arrow-down"></i></a>
                                       <ul class="dropdown_currency">
-                                          <li><a href="index.html#">€ Euro</a></li>
-                                          <li><a href="index.html#">£ Pound Sterling</a></li>
-                                          <li><a href="index.html#">$ US Dollar</a></li>
+                                        {foreach $currencies as $currency}
+                                          <li><a href="?cur={$currency.id}">{$currency.name} {$currency.symbol}</a></li>
+                                        {/foreach}
                                       </ul>
-                                  </li> *}
+                                  </li>
                                   {/block}
                                 </ul>
                             </div>

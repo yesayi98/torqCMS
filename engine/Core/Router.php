@@ -63,9 +63,7 @@ use Core\Compiller\ScssCompiller;
       }
 
       $cur = $_SESSION['currency'];
-      //get globals
-      $lang = $GLOBALS['lang'];
-      $cur = $GLOBALS['cur'];
+      
       //create View object
       self::$_VIEW = new View($lang, $cur, Connection());
 

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-08-28 18:05:25
+/* Smarty version 3.1.34-dev-7, created on 2020-09-01 14:33:09
   from 'C:\Users\User\OSPanel\domains\torq\public\frontend\category\filter.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f491d35338ef4_55796215',
+  'unifunc' => 'content_5f4e31750ece98_81784393',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ba4bd5c5863aa8dba33e161aa131520cb862e98e' => 
     array (
       0 => 'C:\\Users\\User\\OSPanel\\domains\\torq\\public\\frontend\\category\\filter.tpl',
-      1 => 1598621371,
+      1 => 1598959987,
       2 => 'file',
     ),
   ),
@@ -20,13 +20,13 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f491d35338ef4_55796215 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f4e31750ece98_81784393 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
   'categories' => 
   array (
     'compiled_filepath' => 'C:\\Users\\User\\OSPanel\\domains\\torq\\cache\\template_c\\ba4bd5c5863aa8dba33e161aa131520cb862e98e_0.file.filter.tpl.php',
     'uid' => 'ba4bd5c5863aa8dba33e161aa131520cb862e98e',
-    'call_name' => 'smarty_template_function_categories_7296110845f491d352dd528_32973970',
+    'call_name' => 'smarty_template_function_categories_4913425995f4e3175074cc9_61220785',
   ),
 ));
 ?>
@@ -74,7 +74,7 @@ if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['key']->value => 
 $_smarty_tpl->tpl_vars['supplier']->do_else = false;
 ?>
                 <li>
-                    <input type="checkbox" <?php if (in_array($_smarty_tpl->tpl_vars['supplier']->value['id'],$_smarty_tpl->tpl_vars['context']->value['suppliers'])) {?>checked<?php }?> data-filter="true" id="fil_supplier_<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+                    <input type="checkbox" <?php if ($_smarty_tpl->tpl_vars['context']->value['suppliers'] && in_array($_smarty_tpl->tpl_vars['supplier']->value['id'],$_smarty_tpl->tpl_vars['context']->value['suppliers'])) {?>checked<?php }?> data-filter="true" id="fil_supplier_<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
 " name="suppliers[]" value="<?php echo $_smarty_tpl->tpl_vars['supplier']->value['id'];?>
 " form="filter_form">
                     <label for="fil_supplier_<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
@@ -103,7 +103,7 @@ if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['key']->value => 
 $_smarty_tpl->tpl_vars['value']->do_else = false;
 ?>
                 <li>
-                    <input type="checkbox" <?php if (in_array($_smarty_tpl->tpl_vars['value']->value['id'],$_smarty_tpl->tpl_vars['context']->value['options'])) {?>checked<?php }?> data-filter="true" id="fil_<?php echo $_smarty_tpl->tpl_vars['item']->value;?>
+                    <input type="checkbox" <?php if ($_smarty_tpl->tpl_vars['context']->value['options'] && in_array($_smarty_tpl->tpl_vars['value']->value['id'],$_smarty_tpl->tpl_vars['context']->value['options'])) {?>checked<?php }?> data-filter="true" id="fil_<?php echo $_smarty_tpl->tpl_vars['item']->value;?>
 _<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
 " name="options[]" value="<?php echo $_smarty_tpl->tpl_vars['value']->value['id'];?>
 " form="filter_form">
@@ -128,9 +128,9 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
  </aside>
  <!--sidebar widget end-->
 <?php }
-/* smarty_template_function_categories_7296110845f491d352dd528_32973970 */
-if (!function_exists('smarty_template_function_categories_7296110845f491d352dd528_32973970')) {
-function smarty_template_function_categories_7296110845f491d352dd528_32973970(Smarty_Internal_Template $_smarty_tpl,$params) {
+/* smarty_template_function_categories_4913425995f4e3175074cc9_61220785 */
+if (!function_exists('smarty_template_function_categories_4913425995f4e3175074cc9_61220785')) {
+function smarty_template_function_categories_4913425995f4e3175074cc9_61220785(Smarty_Internal_Template $_smarty_tpl,$params) {
 $params = array_merge(array('level'=>0), $params);
 foreach ($params as $key => $value) {
 $_smarty_tpl->tpl_vars[$key] = new Smarty_Variable($value, $_smarty_tpl->isRenderingCache);
@@ -173,5 +173,5 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
     </ul>
 <?php
 }}
-/*/ smarty_template_function_categories_7296110845f491d352dd528_32973970 */
+/*/ smarty_template_function_categories_4913425995f4e3175074cc9_61220785 */
 }

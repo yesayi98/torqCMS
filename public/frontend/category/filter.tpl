@@ -48,7 +48,7 @@
               <ul>
                 {foreach from=$suppliers item=$supplier key=$key}
                 <li>
-                    <input type="checkbox" {if in_array($supplier.id, $context.suppliers)}checked{/if} data-filter="true" id="fil_supplier_{$key}" name="suppliers[]" value="{$supplier.id}" form="filter_form">
+                    <input type="checkbox" {if $context.suppliers && in_array($supplier.id, $context.suppliers)}checked{/if} data-filter="true" id="fil_supplier_{$key}" name="suppliers[]" value="{$supplier.id}" form="filter_form">
                     <label for="fil_supplier_{$key}"><a href="javascript:void(0)">{$supplier.name}</a></label>
                 </li>
                 {/foreach}
@@ -60,7 +60,7 @@
               <ul>
                 {foreach from=$filter.option.values item=$value key=$key}
                 <li>
-                    <input type="checkbox" {if in_array($value.id, $context.options)}checked{/if} data-filter="true" id="fil_{$item}_{$key}" name="options[]" value="{$value.id}" form="filter_form">
+                    <input type="checkbox" {if $context.options && in_array($value.id, $context.options)}checked{/if} data-filter="true" id="fil_{$item}_{$key}" name="options[]" value="{$value.id}" form="filter_form">
                     <label for="fil_{$item}_{$key}"><a href="javascript:void(0)">{$value.value}</a></label>
                 </li>
                 {/foreach}
