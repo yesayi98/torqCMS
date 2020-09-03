@@ -111,6 +111,11 @@
 				return $this->connection->error;
 			}
 
+			public function setError($Error)
+			{
+				$this->connection->error = $Error;
+			}
+
 			public function getErrorList()
 			{
 				return $this->connection->error_list;

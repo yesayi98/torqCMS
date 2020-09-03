@@ -1,9 +1,9 @@
 <?php
-
+use Bundles\Files\MediaBundle;
 /**
  * Media class handle requests about media
  */
-class mediaController extends BackendController
+class mediaController extends \BackendController
 {
 
   public function index()
@@ -61,7 +61,8 @@ class mediaController extends BackendController
   /* action to regenerete media thumbnails*/
   public function regenerate()
   {
-    $this->__get('Media')->reGenerateThumbnails([100, 300], true);
+    $mediaBundle = new MediaBundle();
+    $mediaBundle->reGenerateThumbnails([100, 300], true);
     die(json_encode(array(
       'success'=>true,
       'message'=>'done'

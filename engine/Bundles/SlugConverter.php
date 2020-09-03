@@ -1,5 +1,5 @@
 <?php
-namespace Bundles\SlugConverter;
+namespace Bundles;
 
 class SlugConverter
 {
