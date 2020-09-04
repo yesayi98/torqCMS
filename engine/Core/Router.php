@@ -17,15 +17,23 @@ use Core\Compiller\ScssCompiller;
 
     public static $route;
 
-    public static function start($request){
+    public static function start(){
+      $request = Request::createFromGlobals();
+
       //create route
-      $url = Container()->CoreUrls()->getUrlByChanged($request['route'])['params'];
-      if (!empty($url)) {
-        $request = [];
-        parse_str($url, $request);
-        $_GET = array_merge($request, $_GET);
+      if ($request->getParam('route')) {
+        $url = Container()->CoreUrls()->getUrlByChanged($request->getParam('route'))['params'];
+      }else{
+        $url = null;
       }
-      $route = self::setRouterParams($request['route']);
+
+      if (!empty($url)) {
+        $params = [];
+        parse_str($url, $params);
+        $request->setQuery(array_merge($request->getQuery(), $params));
+      }
+
+      $route = self::setRouterParams($request->getParam('route'));
       self::$route = $route;
       $routefile = implode(SEPARATOR, $route);
       $controller = self::getController($route);
@@ -38,48 +46,28 @@ use Core\Compiller\ScssCompiller;
       $controllerClassName = $controller['name'];
       // check ingnoreCSRF statemant
       if (isset($controllerClassName::$ignoreCSRF)) {
-        $ignoreStatemant = $controllerClassName::$ignoreCSRF;
+        $ignoreStatemants = $controllerClassName::$ignoreCSRF;
       }else{
-        $ignoreStatemant = [];
+        $ignoreStatemants = [];
       }
-
-      // get language and currency
-      if (isset(self::get()['lang']) || isset(self::post($ignoreStatemant)['lang'])) {
-        $_SESSION['lang'] = (self::get()['lang'])?(self::get()['lang']):(self::post($ignoreStatemant)['lang']);
-      }else{
-        if (!$_SESSION['lang']) {
-          $_SESSION['lang'] = 1;
-        }
+      $request->setIgnoreStatemant($ignoreStatemants);
+      $request->validateCSRF();
+      if ($request->isXHR()) {
+        $request->setParam('XHR', true);
       }
-
-      $lang = $_SESSION['lang'];
-
-      if (isset(self::get()['cur'])) {
-        $_SESSION['currency'] = self::get()['cur'];
-      }else{
-        if (!$_SESSION['currency']) {
-          $_SESSION['currency'] = 1;
-        }
-      }
-
-      $cur = $_SESSION['currency'];
-      
       //create View object
-      self::$_VIEW = new View($lang, $cur, Connection());
+      self::$_VIEW = new View($request->getLanguage(), $request->getCurrency(), Connection());
 
       //create Assign for all
       if ($route['module'] === 'frontend') {
-        $assign = new Assign(self::$_VIEW, self::post($ignoreStatemant), self::get(), self::request(), $routefile);
+        $assign = new Assign(self::$_VIEW, $request, $routefile);
         $assign->view();
       }elseif ($route['module'] === 'backend') {
-        $assign = new BackendAssign(self::$_VIEW, self::post($ignoreStatemant), self::get(), self::request(), $routefile);
+        $assign = new BackendAssign(self::$_VIEW, $request, $routefile);
         $assign->view();
       }
 
-      self::setHeaders();
-
-
-      $controller = new $controllerClassName(self::$_VIEW, self::post($ignoreStatemant), self::get(), self::request(), $routefile);
+      $controller = new $controllerClassName(self::$_VIEW, $request, $routefile);
       // calling pre dispatch actions
       $controller->preDispatch();
 
@@ -221,56 +209,11 @@ use Core\Compiller\ScssCompiller;
       return BASE_URL.'/'.$routing;
     }
 
-
-    static function validator($request, $type = null, $ignoreStatemant = [])
-    {
-      if (isset($request)) {
-        $validator = new Validator($request, $type, $ignoreStatemant);
-      }
-      return $validator->getRequest();
-    }
-
-    /**
-    * @param array $ignoreStatemant
-    */
-    static function post($ignoreStatemant = [])
-    {
-      $request = $_POST;
-      if ($request) {
-        return self::validator($request, 'post', $ignoreStatemant);
-      }
-    }
-
-    static function get()
-    {
-      $request = $_GET;
-      if ($request) {
-        return self::validator($request);
-      }
-    }
-
-    static function request()
-    {
-      $request = $_REQUEST;
-      if ($request) {
-        return self::validator($request);
-      }
-    }
-
     public static function getRoute()
     {
       return self::$route;
     }
 
-    public static function setHeaders()
-    {
-      if (Container()->getSession('clearCache')) {
-        header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
-        header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
-        header("Cache-Control: post-check=0, pre-check=0", false);
-        header("Pragma: no-cache");
-      }
-    }
   }
 
 

@@ -6,23 +6,30 @@
 final class Validator
 {
   private $request;
-  private $validateRequest;
+  private $validRequest;
   private const POST = 'post';
   private const GET = 'get';
 
-  function __construct($request, $type = null, $ignoreStatemant)
+  public function setRequest(Request $request)
   {
-
     $this->request = $request;
+  }
+
+  public function csrf()
+  {
+    $request = $this->request;
     $redirect = false;
-    if ($type == self::POST && !empty($request)) {
-      if (isset($request['csrf']) && $request['csrf'] != Container()->getSession('csrf')) {
+    $post = $request->getPost();
+    if (!empty($post)) {
+
+      if (isset($post['csrf']) && $post['csrf'] != Container()->getSession('csrf')) {
         $redirect = true;
-      }elseif (!isset($request['csrf'])){
+      }elseif (!isset($post['csrf'])){
         $redirect = true;
       }
     }
 
+    $ignoreStatemant = $request->getIgnoreStatemant();
     if (!empty($ignoreStatemant)) {
       $route = Router::getRoute();
       if (in_array($route['action'], $ignoreStatemant)) {
@@ -30,18 +37,9 @@ final class Validator
       }
     }
 
-    if (isset($request['getCsrf'])) {
-      $redirect = false;
-    }
-
-    $this->validateRequest = $this->validate();
-    if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] === 'XMLHttpRequest') {
-      $this->validateRequest['XHR'] = true;
-    }
-
-
     if ($redirect === true) {
-      if ( $this->validateRequest['XHR'] == true) {
+      var_dump($post);exit;
+      if ( $request->getParam('XHR') == true) {
         throw new \Exception("Invalid CSRF token", 1);
       }
 
@@ -49,14 +47,9 @@ final class Validator
     }
   }
 
-  private function validate($request = null)
+  public function validate($request = null)
   {
     $validRequest;
-
-
-    if(!$request){
-      $request = $this->request;
-    }
 
     foreach ($request as $key => &$value) {
       if (is_array($value)) {
@@ -69,12 +62,12 @@ final class Validator
       $validRequest[$key] = htmlspecialchars($validRequest[$key], ENT_QUOTES);
     }
 
-    return $validRequest;
+    $this->validRequest = $validRequest;
   }
 
   public function getRequest()
   {
-    return $this->validateRequest;
+    return $this->validRequest;
   }
 }
 

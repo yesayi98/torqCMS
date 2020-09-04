@@ -7,16 +7,18 @@ abstract class Controller
   private $post;
   private $get;
   private $request;
+  private $mainRequest;
 
   protected $view;
 
   public $route;
 
-  function __construct($view, $post, $get, $request, $route)
+  function __construct($view, Request $request, $route)
   {
-    $this->post = $post;
-    $this->get = $get;
-    $this->request = $request;
+    $this->mainRequest = $request;
+    $this->post = $request->getPost();
+    $this->get = $request->getQuery();
+    $this->request = $request->getParams();
     $this->route = $route;
     $this->view = $view;
 
@@ -30,6 +32,11 @@ abstract class Controller
     $request->request = $this->request;
 
     return $request;
+  }
+
+  public function Request()
+  {
+    return $this->mainRequest;
   }
 
   public function View()

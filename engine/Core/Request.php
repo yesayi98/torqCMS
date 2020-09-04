@@ -12,19 +12,37 @@ class Request
     private $cookie = array();
     private $server = array();
 
+    private $lang;
+    private $currency;
+
     private $ignoreStatemant = array();
 
+    private $validator;
 
     function __construct($post, $get, $files, $request, $cookie, $server)
     {
+      $this->validator = new Validator();
 
-      $this->post = $post;
-      $this->get = $get;
-      $this->request = $request;
-      $this->files = $files;
+      $this->post = $this->validator($post);
+      $this->get = $this->validator($get);
+      $this->request = $this->validator($request);
+      $this->files = $this->validator($files);
       $this->cookie = $cookie;
       $this->server = $server;
 
+      $this->validator->setRequest($this);
+
+      $this->setShopParams();
+    }
+
+    public function setShopParams()
+    {
+      // get language and currency
+      $this->lang = Container()->Translator()->getLanguage((int) $this->getParam('lang', 1));
+      $this->setSession('lang', $this->language);
+
+      $this->currency = Container()->Currencies()->getCurrency((int) $this->getParam('cur', 1));
+      $this->setSession('currency', $this->currency);
     }
 
     /**
@@ -57,6 +75,15 @@ class Request
     }
 
     /**
+     * same as $_REQUEST[$param]
+     */
+    public function setParam($key, $value)
+    {
+      $this->request[$param] = $value;
+      $this->post[$param] = $value;
+    }
+
+    /**
      * same as $_GET[]
      */
     public function getQuery()
@@ -68,6 +95,7 @@ class Request
     public function setQuery($_get)
     {
       $this->get = $_get;
+      $this->request = array_merge($this->request, $this->get);
     }
 
     /**
@@ -134,11 +162,6 @@ class Request
 
     public function getSessionId()
     {
-      $request = Router::request();
-
-      if (isset($request['session_id'])) {
-        return $request['session_id'];
-      }
       return session_id();
     }
 
@@ -166,6 +189,11 @@ class Request
       return $this->files;
     }
 
+    public function getHeaders()
+    {
+      return $this->server;
+    }
+
     // get current session user if it exist
     public function getCurrentUser()
     {
@@ -175,6 +203,11 @@ class Request
       }
 
       return $user;
+    }
+
+    public function isXHR()
+    {
+      return isset($this->getHeaders()['HTTP_X_REQUESTED_WITH']) && $this->getHeaders()['HTTP_X_REQUESTED_WITH'] === 'XMLHttpRequest';
     }
 
     // update current session user if it exist
@@ -192,12 +225,13 @@ class Request
       $this->setCookie('user', $userDB);
     }
 
-    static function validator($request, $type = null)
+    public function validator($request)
     {
-      if (isset($request)) {
-        $validator = new Validator($request, $type, $this->ignoreStatemant);
+      if (!empty($request)) {
+        $this->validator->validate($request);
       }
-      return $validator->getRequest();
+
+      return $this->validator->getRequest();
     }
 
     public function setIgnoreStatemant($statemants)
@@ -205,9 +239,16 @@ class Request
       $this->ignoreStatemant = $statemants;
     }
 
-    public function getIgnoreStatemant($statemants)
+    public function getIgnoreStatemant()
     {
       return $this->ignoreStatemant;
+    }
+
+    public function validateCSRF()
+    {
+      if (!empty($this->post)) {
+        $this->validator->csrf();
+      }
     }
 }
 

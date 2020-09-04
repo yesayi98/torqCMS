@@ -118,11 +118,6 @@ class Container
 
   public function getSessionId()
   {
-    $request = Router::request();
-
-    if (isset($request['session_id'])) {
-      return $request['session_id'];
-    }
     return session_id();
   }
   // destroy session

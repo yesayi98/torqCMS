@@ -6,6 +6,9 @@
  */
 class csrfValidatorController extends Controller
 {
+  public static $ignoreCSRF = array(
+    "index"
+  );
 
   public function index()
   {
