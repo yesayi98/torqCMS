@@ -77,7 +77,7 @@ class Request
     /**
      * same as $_REQUEST[$param]
      */
-    public function setParam($key, $value)
+    public function setParam($param, $value)
     {
       $this->request[$param] = $value;
       $this->post[$param] = $value;

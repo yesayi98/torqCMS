@@ -32,11 +32,11 @@ class basketController extends Controller
     $this->View()->setAssign('Articles.basketProducts', $products);
     $this->View()->setAssign('totalPrice', $totalPrice);
     $this->View()->setAssign('deliveryPrice', $deliveryPrice);
-
+    
     if ($this->getRequest()->request['XHR']) {
       $this->route = 'frontend/basket/minicart';
     }
-    
+
     $this->View()->setAssign('title', $this->View()->translating('basket'));
   }
 

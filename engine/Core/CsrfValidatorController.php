@@ -10,6 +10,8 @@ class csrfValidatorController extends Controller
     "index"
   );
 
+  // default action Index
+  // calls for getting csrf token
   public function index()
   {
     $session = Container()->getSessionId();
