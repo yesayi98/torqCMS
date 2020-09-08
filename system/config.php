@@ -34,6 +34,12 @@ $db = [
   'db_name' => 'torq_cms',
   'db_port' => '3306'
 ];
+
+// model paths
+$modelPaths = [
+    '/enigine/Models',
+];
+
 if (is_file(DOCUMENT_ROOT.'/config.php')) {
   include DOCUMENT_ROOT.'/config.php';
 }

@@ -63,6 +63,7 @@ return array(
     'Core' => $baseDir . '/engine/Models/Core.php',
     'CoreMenu' => $baseDir . '/engine/Models/CoreMenu.php',
     'CoreUrls' => $baseDir . '/engine/Models/CoreUrls.php',
+    'Core\\Components\\ModelManager' => $baseDir . '/engine/Core/ModelManager.php',
     'CountTest' => $baseDir . '/engine/Library/php-sql-query-builder-master/vendor/phpunit/phpunit/tests/Framework/Constraint/CountTest.php',
     'CoverageClassExtendedTest' => $baseDir . '/engine/Library/php-sql-query-builder-master/vendor/phpunit/php-code-coverage/tests/_files/CoverageClassExtendedTest.php',
     'CoverageClassTest' => $baseDir . '/engine/Library/php-sql-query-builder-master/vendor/phpunit/php-code-coverage/tests/_files/CoverageClassTest.php',

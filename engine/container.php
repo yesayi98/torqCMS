@@ -24,6 +24,7 @@ class Container
   protected $currency;
   protected $lang;
 
+  private $modelManager;
 
   public function __construct($connection)
   {
@@ -67,7 +68,15 @@ class Container
     $this->$key = $value;
   }
 
+  public function setModelManager(\Core\Components\ModelManager $modelManager)
+  {
+    $this->modelManager = $modelManager;
+  }
 
+  public function ModelManager()
+  {
+    return $this->modelManager;
+  }
 
   public function setCookie($key,  $value, $expires = 24*3600, $path = '/')
   {
