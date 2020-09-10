@@ -44,18 +44,7 @@
   {/block}
   {block name="media-list"}
     <div class="media-content col-12 col-md-8 col-lg-10" data-content='true' data-url="{url url='backend/media'}{if $fromArticles}?image=0{/if}">
-      <div class="row">
-        {foreach $media.data as $image}
-          {if $ajax == true}
-            {include file="backend/media/media-box/basic-box.tpl" image=$image fromArticles=$ajax}
-          {else}
-            {include file="backend/media/media-box/basic-box.tpl" image=$image}
-          {/if}
-        {/foreach}
-      </div>
-      <div class="pagination-container">
-        {$media.pagination}
-      </div>
+      {include file="backend/media/mediagrid.tpl"}
     </div>
   {/block}
   </div>

@@ -1436,11 +1436,20 @@
     for (_i = 0, _len = dropzones.length; _i < _len; _i++) {
       dropzone = dropzones[_i];
       if (Dropzone.optionsForElement(dropzone) !== false) {
-        _results.push(new Dropzone(dropzone));
+        var createdDropzone = new Dropzone(dropzone);
+        createdDropzone.on("success", function(params) {
+          $.publish('dropzone/filesend/success', [this, params]);
+        });
+        createdDropzone.on("error", function(params) {
+          $.publish('dropzone/filesend/error', [this, params]);
+        });
+        _results.push(createdDropzone);
       } else {
         _results.push(void 0);
       }
     }
+    $.publish('dropzone/items/discovered', [this, _results]);
+
     return _results;
   };
 

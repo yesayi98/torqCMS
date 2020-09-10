@@ -98,7 +98,8 @@
       $deleted = true;
       if ($deleted) {
         $sql = "DELETE FROM media WHERE id = $id";
-        return $query = Connection()->set($sql);
+        $query = Connection()->set($sql);
+        return Connection()->set("DELETE FROM article_images WHERE media_id = $id");
       }else{
         return false;
       }

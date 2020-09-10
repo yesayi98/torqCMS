@@ -236,6 +236,11 @@ $(function() {
           me.onImageAlbumSelect();
           me.onAlbumItemClick();
           me.toAddDetailImage();
+
+          $.subscribe('dropzone/filesend/success', function (event, params) {
+            $(me.albumItem).first().click();
+          })
+
           if (window.route.controller == 'media') {
             me.onImageDelete();
           }
@@ -292,6 +297,7 @@ $(function() {
             var self = $(this);
             $.get(url, function(response, textStatus, jqXHR) {
               self.parents(me.modalContnent).html(response);
+              Dropzone.discover();
             });
           })
         },
@@ -367,8 +373,8 @@ $(function() {
               method: 'post',
               data: {image},
               success: function (response) {
-                content.html(response)
-              }
+                content.html(response);
+                Dropzone.discover();
             })
           })
         },

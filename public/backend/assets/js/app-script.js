@@ -252,7 +252,9 @@ function getCsrf(element) {
 }
 
 getCsrf();
-
+$.subscribe('dropzone/items/discovered', function (event, dropzones) {
+  getCsrf();
+})
 jQuery(document).ready(function($) {
   $.ajaxSetup({
     beforeSend: function(jqXHR, settings) {
