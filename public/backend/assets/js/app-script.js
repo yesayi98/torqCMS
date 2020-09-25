@@ -242,7 +242,12 @@ function getCsrf(element) {
     data: {getCsrf},
     success: function (response) {
       if ($('form[method="post"]').length > 0) {
-        $('form[method="post"]').append(response);
+        $('form[method="post"]').each(function(index, element) {
+          if ($(this).find('input[name="csrf"]').length == 0) {
+            $(this).append(response);
+          }
+        });;
+
       }else{
         $('body').append(response);
       }

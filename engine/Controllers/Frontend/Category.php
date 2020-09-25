@@ -151,20 +151,15 @@ class categoryController extends Controller
 
   /**
   * @param int $currentCategory_id
-  * @param array $currentCategoryList
   * @return array $currentCategoryList
   */
-  private function getParentsOfCurrentCategory($currentCategory_id, $currentCategoryList = [])
+  private function getParentsOfCurrentCategory($currentCategory_id)
   {
-    $currentCategoryList[] = $currentCategory_id;
     $currentCategory = $this->__get('Categories')->getCategoryById($currentCategory_id);
-    if ($currentCategory['parent_id'] != 0) {
-      $currentCategoryList = $this->getParentsOfCurrentCategory(intval($currentCategory['parent_id']), $currentCategoryList);
-    }
+    $currentCategoryList = array_filter(explode('|', $currentCategory['path']));
 
     return $currentCategoryList;
   }
-
 
   public function shop()
   {

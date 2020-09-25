@@ -55,29 +55,32 @@ function smarty_function_action($params, $template)
   $url = '';
   if(!empty($params['module'])) {
       $url .= $params['module'].'/';
+      unset($params['module']);
   }
   if(!empty($params['controller'])) {
       $url .= $params['controller'].'/';
+      unset($params['controller']);
   }
   if(!empty($params['action'])) {
       $url .= $params['action'];
+      unset($params['action']);
   }
 
   // $url = BASE_URL.'/'.$url;
 
   $data = array();
   $data['widget'] = true;
-  $data['lang'] = $_SESSION['lang'];
-  $data['session_id'] = session_id();
+  // $data['lang'] = Container()->getSession('lang');
+  // $data['session_id'] = session_id();
   $data['csrf'] = Container()->getSession('csrf');
-
   if ($params) {
-      $data['params'] = $params;
+    $data = array_merge($data, $params);
   }
   $_POST = $data;
   $_GET['route'] = $url;
+  $_REQUEST['route'] = $url;
 
-  Router::start($_GET);
+  Router::start();
 }
 
 /*

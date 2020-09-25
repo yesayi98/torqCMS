@@ -1,26 +1,20 @@
 $(function() {
   $.descEditor = function () {
-    var CKEDITOR = ClassicEditor;
-    // CKEDITOR.config.allowedContent = true;
+    // var CKEDITOR = ClassicEditor;
+    CKEDITOR.config.allowedContent = true;
     $("textarea[name='description']").each(function(){
-      var editor;
-      CKEDITOR.create(this)
-              .then( newEditor => {
-                  editor = newEditor;
-              })
-              .catch( error => {
-                  console.error( error );
-              } );
+      CKEDITOR.replace(this);
               var self = $(this);
       $(this).parents('form').submit(function () {
-        self.html(editor.getData());
+        self.html(CKEDITOR.instances[self.attr('name')].getData());
       });
     });
     $("*[data-description='true']").each(function(){
-      CKEDITOR.create(this)
-              .catch( error => {
-                  console.error( error );
-              } );
+      CKEDITOR.replace(this);
+              var self = $(this);
+      $(this).parents('form').submit(function () {
+        self.html(CKEDITOR.instances[self.data('desc')].getData());
+      });
     });
       $('.search-select').select2();
       $('.search-select').on('select2:open', function (event) {

@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_SCHEME'] == "https") {
 }else{
   define('PROTOCOL', "http");
 }
-define('DOCUMENT_ROOT', __DIR__.'/..');
+define('DOCUMENT_ROOT', realpath(__DIR__.SEPARATOR.'..'));
 if ($_SERVER['SERVER_NAME'] == 'localhost') {
   // write an folder address which you used
   define('BASE_URL', PROTOCOL.'://'.$_SERVER['HTTP_HOST'].'/torq');

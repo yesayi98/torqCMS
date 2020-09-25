@@ -375,6 +375,7 @@ $(function() {
               success: function (response) {
                 content.html(response);
                 Dropzone.discover();
+              }
             })
           })
         },

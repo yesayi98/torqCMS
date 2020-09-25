@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-22 19:06:26
+/* Smarty version 3.1.34-dev-7, created on 2020-09-24 17:11:41
   from 'C:\Users\User\OSPanel\domains\torq\public\backend\advertisings\table.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ef0c8f2160b89_55470010',
+  'unifunc' => 'content_5f6ca91de053d1_39684324',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd2b2106833a7554fd8b64a2475acb63a3ebb12c6' => 
     array (
       0 => 'C:\\Users\\User\\OSPanel\\domains\\torq\\public\\backend\\advertisings\\table.tpl',
-      1 => 1592838379,
+      1 => 1593263868,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ef0c8f2160b89_55470010 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f6ca91de053d1_39684324 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
@@ -29,18 +29,18 @@ $_smarty_tpl->inheritance->init($_smarty_tpl, true);
   <div class="col-lg-12">
     <div class="card">
       <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_20670850985ef0c8f213f926_04955923', "table-name");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_8666570775f6ca91ddede56_16131919', "table-name");
 ?>
 
       <div class="card-body">
         <div class="table-responsive">
           <table id="default-datatable" class="table table-bordered">
             <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_11302753315ef0c8f21414a1_30211479', "table-head");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_11858908525f6ca91ddeedb7_31314751', "table-head");
 ?>
 
             <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_10504183015ef0c8f21422d4_04273810', "table-body");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_17884028525f6ca91ddefa75_23759572', "table-body");
 ?>
 
           </table>
@@ -60,12 +60,12 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_10504183015ef0c8f2
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, "backend/articles/table.tpl");
 }
 /* {block "table-name"} */
-class Block_20670850985ef0c8f213f926_04955923 extends Smarty_Internal_Block
+class Block_8666570775f6ca91ddede56_16131919 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'table-name' => 
   array (
-    0 => 'Block_20670850985ef0c8f213f926_04955923',
+    0 => 'Block_8666570775f6ca91ddede56_16131919',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -77,12 +77,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block "table-name"} */
 /* {block "table-head"} */
-class Block_11302753315ef0c8f21414a1_30211479 extends Smarty_Internal_Block
+class Block_11858908525f6ca91ddeedb7_31314751 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'table-head' => 
   array (
-    0 => 'Block_11302753315ef0c8f21414a1_30211479',
+    0 => 'Block_11858908525f6ca91ddeedb7_31314751',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -102,12 +102,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block "table-head"} */
 /* {block "table-body"} */
-class Block_10504183015ef0c8f21422d4_04273810 extends Smarty_Internal_Block
+class Block_17884028525f6ca91ddefa75_23759572 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'table-body' => 
   array (
-    0 => 'Block_10504183015ef0c8f21422d4_04273810',
+    0 => 'Block_17884028525f6ca91ddefa75_23759572',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -126,7 +126,7 @@ $_smarty_tpl->tpl_vars['advertising']->do_else = false;
 </td>
                       <td><?php echo smarty_modifier_truncate($_smarty_tpl->tpl_vars['advertising']->value['name']);?>
 </td>
-                      <td><?php echo htmlspecialchars(preg_replace('!<[^>]*?>!', ' ', $_smarty_tpl->tpl_vars['advertising']->value['description']), ENT_QUOTES, 'UTF-8', true);?>
+                      <td><?php echo smarty_modifier_truncate(htmlspecialchars(preg_replace('!<[^>]*?>!', ' ', $_smarty_tpl->tpl_vars['advertising']->value['description']), ENT_QUOTES, 'UTF-8', true));?>
 </td>
                       <td><?php echo $_smarty_tpl->tpl_vars['advertising']->value['url'];?>
 </td>
