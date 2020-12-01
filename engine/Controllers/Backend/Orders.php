@@ -1,10 +1,11 @@
 <?php
+namespace Controllers\Backend;
 
 
 /**
  * Orders Controller extends BackendController
  */
-class ordersController extends BackendController
+class ordersController extends \BackendController
 {
   private $update = false;
 

@@ -1,9 +1,10 @@
 <?php
+namespace Controllers\Frontend;
 
 /**
  * wishlist Controller
  */
-class wishlistController extends Controller
+class wishlistController extends \Controller
 {
 
   public function index()

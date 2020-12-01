@@ -30,7 +30,8 @@
           "engine/Core/",
           "engine/Library/",
           "engine/Bundles/",
-          "engine/Models/"
+          "engine/Models/",
+          "engine/Controllers/"
       ]
     },
     "config" : {

@@ -1,9 +1,10 @@
 <?php
+namespace Controllers\Backend;
 
 /**
  * notification controller handler for admin panel notifications
  */
-class notificationsController extends BackendController
+class notificationsController extends \BackendController
 {
 
   public function orders()

@@ -1,8 +1,10 @@
 <?php
+namespace Controllers\Backend;
+
 /**
  *
  */
-class indexController extends BackendController
+class indexController extends \BackendController
 {
 
   public function index()
@@ -10,7 +12,7 @@ class indexController extends BackendController
     $userCount = $this->__get('Users')->getUserList()['total'];
     $orderCount = $this->__get('Orders')->getOrderList()['total'];
     $articleCount = $this->__get('Articles')->getArticleList()['total'];
-    $rewiewCount = $this->__get('Articles')->getArticleReviews()['total'];
+    $reviewCount = $this->__get('Articles')->getArticleReviews()['total'];
     // get confirmed orders from yesterday
     $lastOrders = $this->getConfirmedOrdersByDate(date('Y-m-d', time()-24*3600));
     $lastDayTotal = 0;

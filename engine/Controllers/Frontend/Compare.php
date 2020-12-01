@@ -1,9 +1,10 @@
 <?php
+namespace Controllers\Frontend;
 
 /**
  * compare controller class extends abstract class Controller
  */
-class compareController extends Controller
+class compareController extends \Controller
 {
   // default action index
   public function index()

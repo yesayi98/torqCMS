@@ -1,12 +1,13 @@
 <?php
+namespace Controllers\Backend;
 
 /**
  * class controller for blog system, backend
  */
-class blogController extends BackendController
+class blogController extends \BackendController
 {
   /**
-   * actions should be a public methodes
+   * actions should be a public methods
    * index is an default action, calls in running blog controller
    */
   public function index()

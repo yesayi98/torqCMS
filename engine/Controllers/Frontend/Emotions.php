@@ -1,9 +1,10 @@
 <?php
+namespace Controllers\Frontend;
 
 /**
  *
  */
-class emotionsController extends Controller
+class emotionsController extends \Controller
 {
   public function index()
   {

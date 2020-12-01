@@ -1,9 +1,10 @@
 <?php
+namespace Controllers\Backend;
 
 /**
  * currencies Controller extends from backendController abstract class
  */
-class deliveryController extends BackendController
+class deliveryController extends \BackendController
 {
   // index action
   // index is a default action

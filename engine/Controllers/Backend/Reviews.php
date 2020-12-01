@@ -1,10 +1,11 @@
 <?php
+namespace Controllers\Backend;
 
 /**
  * Customer Review Controller
  * extend from abstract class Controller
  */
-class reviewsController extends Controller
+class reviewsController extends \BackendController
 {
   /**
    * default action index

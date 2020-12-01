@@ -1,9 +1,10 @@
 <?php
+namespace Controllers\Backend;
 
 /**
  * units Controller extends from backendController abstract class
  */
-class unitsController extends BackendController
+class unitsController extends \BackendController
 {
   // index action
   // index is a default action

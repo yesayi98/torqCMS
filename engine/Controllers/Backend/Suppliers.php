@@ -1,9 +1,10 @@
 <?php
+namespace Controllers\Backend;
 
 /**
- * supplier Controller hanling an supplier requests
+ * supplier Controller handling an supplier requests
  */
-class suppliersController extends BackendController
+class suppliersController extends \BackendController
 {
   private $categories = [];
 

@@ -1,9 +1,10 @@
 <?php
+namespace Controllers\Frontend;
 
 /**
  * controller for single blogs
  */
-class blogController extends Controller
+class blogController extends \Controller
 {
 
   public function index()

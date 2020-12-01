@@ -38,13 +38,10 @@ use Core\Compiller\ScssCompiller;
       $routefile = implode(SEPARATOR, $route);
       $controller = self::getController($route);
       $action = $route['action'];
-      // get controller file
-      if (!in_array($controller['file'], get_included_files())) {
-        include $controller['file'];
-      }
 
-      $controllerClassName = $controller['name'];
-      // check ingnoreCSRF statemant
+
+      $controllerClassName = '\\Controllers\\'.ucfirst($route['module']).'\\'.$controller['name'];
+      // check ignoreCSRF statemant
       if (isset($controllerClassName::$ignoreCSRF)) {
         $ignoreStatemants = $controllerClassName::$ignoreCSRF;
       }else{

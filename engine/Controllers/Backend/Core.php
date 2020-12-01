@@ -1,9 +1,10 @@
 <?php
+namespace Controllers\Backend;
 
 /**
  * Core class extends abstract class Controller
  */
-class coreController extends BackendController
+class coreController extends \BackendController
 {
   // default action index
   // if not set action in the url the system loads this action

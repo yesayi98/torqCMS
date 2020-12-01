@@ -1,9 +1,10 @@
 <?php
+namespace Controllers\Backend;
 
 /**
  *
  */
-class filtersController extends BackendController
+class filtersController extends \BackendController
 {
 
   // default action index

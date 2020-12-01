@@ -1,8 +1,10 @@
 <?
+namespace Controllers\Frontend;
+
 /**
  * product Controller
  */
-class detailController extends Controller
+class detailController extends \Controller
 {
 
   public function index()

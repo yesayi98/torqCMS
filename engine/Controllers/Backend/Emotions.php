@@ -1,12 +1,13 @@
 <?php
+namespace Controllers\Backend;
 
 
 /**
- * emottionsController controller file for handling emotions
+ * emotionsController controller file for handling emotions
  * Torq CMS
- * emottionsController extends Controller base backend abstract class backendController
+ * emotionsController extends Controller base backend abstract class backendController
  */
-class emotionsController extends BackendController
+class emotionsController extends \BackendController
 {
   // action index calling if not set action property on a request
   // route = backend/emotions/index.tpl

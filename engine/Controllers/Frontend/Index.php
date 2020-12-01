@@ -1,9 +1,10 @@
 <?php
+namespace Controllers\Frontend;
 
 /**
  * index Controller
  */
-class indexController extends Controller
+class indexController extends \Controller
 {
 
   public function index()

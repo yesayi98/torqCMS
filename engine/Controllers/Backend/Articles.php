@@ -1,9 +1,10 @@
 <?php
+namespace Controllers\Backend;
 
 /**
- * article Controller hanling an article requests
+ * article Controller handling an article requests
  */
-class articlesController extends BackendController
+class articlesController extends \BackendController
 {
   private $categories = [];
 

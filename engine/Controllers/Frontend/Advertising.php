@@ -1,9 +1,10 @@
 <?php
+namespace Controllers\Frontend;
 
 /**
  *
  */
-class advertisingController extends Controller
+class advertisingController extends \Controller
 {
   public function popup()
   {

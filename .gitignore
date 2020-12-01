@@ -2,3 +2,6 @@
 /system/instalation/torq.lock
 /cache/
 /media/
+/vendor/
+/composer.lock
+/.idea

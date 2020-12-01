@@ -1,9 +1,10 @@
 <?php
+namespace Controllers\Frontend;
 
 /**
  * basket Controller
  */
-class basketController extends Controller
+class basketController extends \Controller
 {
 
   public function index()

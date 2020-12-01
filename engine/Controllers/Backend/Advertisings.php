@@ -1,10 +1,11 @@
 <?php
+namespace Controllers\Backend;
 
 
 /**
 * advertisings Controller hanling an article requests
 */
-class advertisingsController extends BackendController
+class advertisingsController extends \BackendController
 {
   /**
   * default action for advertisings

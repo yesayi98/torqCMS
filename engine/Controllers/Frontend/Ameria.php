@@ -1,10 +1,10 @@
 <?php
-
+namespace Controllers\Frontend;
 
 /**
  *
  */
-class ameriaController extends Controller
+class ameriaController extends \Controller
 {
   private $payment = 3;
   private $url = 'https://services.ameriabank.am/VPOS/';

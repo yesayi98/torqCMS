@@ -1,8 +1,9 @@
 <?
+namespace Controllers\Frontend;
 /**
  * account Controller
  */
-class accountController extends Controller
+class accountController extends \Controller
 {
 
   public function index()

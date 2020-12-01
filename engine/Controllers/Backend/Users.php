@@ -1,9 +1,10 @@
 <?php
+namespace Controllers\Backend;
 
 /**
  *
  */
-class usersController extends BackendController
+class usersController extends \BackendController
 {
 
   public function index()

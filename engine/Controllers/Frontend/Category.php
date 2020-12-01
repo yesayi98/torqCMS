@@ -1,10 +1,12 @@
 <?
+namespace Controllers\Frontend;
+
 use Bundles\Search\ArticleSearchBundle;
 
 /**
  * category Controller
  */
-class categoryController extends Controller
+class categoryController extends \Controller
 {
   private $limit = 12;
 

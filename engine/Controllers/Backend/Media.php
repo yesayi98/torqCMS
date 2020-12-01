@@ -1,4 +1,6 @@
 <?php
+namespace Controllers\Backend;
+
 use Bundles\Files\MediaBundle;
 /**
  * Media class handle requests about media

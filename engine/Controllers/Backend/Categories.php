@@ -1,9 +1,10 @@
 <?php
+namespace Controllers\Backend;
 
 /**
  * backend contreller for categories
  */
-class categoriesController extends BackendController
+class categoriesController extends \BackendController
 {
   public function index()
   {

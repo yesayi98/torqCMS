@@ -1,11 +1,13 @@
 <?php
+namespace Controllers\Backend;
+
 use Bundles\Compiller\ScssCompiller;
 use Bundles\Compiller\JsCompiller;
 
 /**
  *
  */
-class cacheController extends BackendController
+class cacheController extends \BackendController
 {
 
   public function index()

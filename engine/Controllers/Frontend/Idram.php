@@ -1,10 +1,11 @@
 <?php
+namespace Controllers\Frontend;
 
 
 /**
  *
  */
-class idramController extends Controller
+class idramController extends \Controller
 {
   private $payment = 2;
   private $url = 'https://money.idram.am/payment.aspx';

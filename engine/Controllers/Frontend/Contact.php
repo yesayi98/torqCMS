@@ -1,8 +1,10 @@
 <?
+namespace Controllers\Frontend;
+
 /**
  * contact Controller
  */
-class contactController extends Controller
+class contactController extends \Controller
 {
 
   public function index()

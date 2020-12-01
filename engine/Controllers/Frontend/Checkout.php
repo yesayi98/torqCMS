@@ -1,8 +1,10 @@
 <?
+namespace Controllers\Frontend;
+
 /**
  * checkout Controller
  */
-class checkoutController extends Controller
+class checkoutController extends \Controller
 {
 
   public function index()
